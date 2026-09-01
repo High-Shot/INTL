@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cerakote INTL Health</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&family=Bebas+Neue&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+:root{--bg:#0d0f14;--bg2:#13161e;--bg3:#1a1e28;--bg4:#222736;--border:#2a2f3d;--border2:#363d52;--white:#f0f2f7;--muted:#8891a8;--dim:#4a5268;--electric:#4fc3f7;--green:#4ade80;--amber:#fbbf24;--red:#f87171;--orange:#fb923c;--purple:#a78bfa;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);color:var(--white);font-family:'DM Sans',sans-serif;font-size:13px;line-height:1.4;min-height:100vh;}
+.mono{font-family:'DM Mono',monospace;}
+a{color:var(--electric);text-decoration:none;}
+.header{background:var(--bg2);border-bottom:1px solid var(--border);padding:0 32px;display:flex;align-items:stretch;justify-content:space-between;position:sticky;top:0;z-index:100;}
+.header-left{display:flex;align-items:center;gap:20px;padding:14px 0;}
+.brand{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:2px;color:var(--white);}
+.brand span{color:var(--electric);}
+.divider-v{width:1px;height:28px;background:var(--border);}
+.header-meta{display:flex;flex-direction:column;gap:1px;}
+.header-meta .lbl{font-size:9px;color:var(--dim);text-transform:uppercase;letter-spacing:1px;font-family:'DM Mono',monospace;}
+.header-meta .val{font-family:'DM Mono',monospace;font-size:12px;color:var(--white);}
+.header-right{display:flex;align-items:center;gap:6px;padding:14px 0;}
+.badge{padding:3px 8px;border-radius:3px;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:0.8px;font-family:'DM Mono',monospace;white-space:nowrap;}
+.badge-CRITICAL{background:rgba(248,113,113,0.15);color:var(--red);border:1px solid rgba(248,113,113,0.3);}
+.badge-URGENT{background:rgba(251,146,60,0.12);color:var(--orange);border:1px solid rgba(251,146,60,0.3);}
+.badge-WATCH{background:rgba(251,191,36,0.12);color:var(--amber);border:1px solid rgba(251,191,36,0.25);}
+.badge-OK{background:rgba(74,222,128,0.1);color:var(--green);border:1px solid rgba(74,222,128,0.2);}
+.badge-INFO{background:rgba(79,195,247,0.1);color:var(--electric);border:1px solid rgba(79,195,247,0.2);}
+.badge-dim{background:rgba(74,82,104,0.3);color:var(--dim);border:1px solid var(--border);}
+.badge-on{background:rgba(74,222,128,0.1);color:var(--green);border:1px solid rgba(74,222,128,0.2);}
+.badge-off{background:rgba(74,82,104,0.3);color:var(--dim);border:1px solid var(--border);text-decoration:line-through;}
+.week-ctrl{display:flex;align-items:center;gap:0;background:var(--bg3);border-bottom:1px solid var(--border);padding:6px 32px;flex-wrap:wrap;}
+.week-nav{padding:6px 12px;font-family:'DM Mono',monospace;font-size:11px;color:var(--dim);cursor:pointer;border:none;background:none;}
+.week-nav:hover{color:var(--white);} .week-nav:disabled{opacity:0.3;cursor:default;}
+.week-select{background:var(--bg2);color:var(--white);border:1px solid var(--border);border-radius:4px;padding:5px 10px;font-family:'DM Mono',monospace;font-size:11px;cursor:pointer;min-width:160px;}
+.week-note{margin-left:auto;font-family:'DM Mono',monospace;font-size:10px;color:var(--dim);}
+.trend-bar{background:var(--bg3);border-bottom:1px solid var(--border);padding:9px 32px;display:flex;align-items:center;gap:24px;overflow-x:auto;}
+.trend-item{display:flex;align-items:center;gap:7px;white-space:nowrap;cursor:pointer;}
+.trend-lbl{font-size:9px;color:var(--dim);text-transform:uppercase;letter-spacing:0.8px;font-family:'DM Mono',monospace;}
+.trend-v{font-family:'DM Mono',monospace;font-size:14px;font-weight:500;}
+.trend-v.c-CRITICAL{color:var(--red);} .trend-v.c-URGENT{color:var(--orange);} .trend-v.c-WATCH{color:var(--amber);} .trend-v.c-OK{color:var(--green);}
+.trend-delta{font-size:9px;font-family:'DM Mono',monospace;padding:1px 5px;border-radius:2px;}
+.up-bad{color:var(--red);background:rgba(248,113,113,0.12);} .down-good{color:var(--green);background:rgba(74,222,128,0.1);} .neutral{color:var(--dim);background:rgba(74,82,104,0.2);}
+.trend-div{width:1px;height:18px;background:var(--border);}
+.page{padding:22px 32px;max-width:1600px;margin:0 auto;}
+.sec{font-size:9px;text-transform:uppercase;letter-spacing:1.5px;color:var(--dim);margin-bottom:9px;font-family:'DM Mono',monospace;display:flex;align-items:center;gap:10px;}
+.sec .hint{color:var(--dim);text-transform:none;letter-spacing:0;font-family:'DM Sans',sans-serif;font-size:11px;}
+.mkt-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:2px;background:var(--border);border:1px solid var(--border);border-radius:6px;overflow:hidden;margin-bottom:22px;}
+.mc{background:var(--bg2);padding:12px 14px;cursor:pointer;transition:background 0.15s;position:relative;}
+.mc:hover{background:var(--bg3);} .mc.active{background:var(--bg3);box-shadow:inset 0 0 0 1px var(--electric);}
+.mc::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--dim);}
+.mc.s-CRITICAL::before{background:var(--red);} .mc.s-URGENT::before{background:var(--orange);} .mc.s-WATCH::before{background:var(--amber);} .mc.s-OK::before{background:var(--green);} .mc.s-NONE::before{background:var(--dim);}
+.mc-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:8px;}
+.mc-code{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:1.5px;}
+.mc-name{font-size:10px;color:var(--muted);}
+.tiles{display:grid;grid-template-columns:1fr 1fr 1fr;gap:4px;margin-bottom:8px;}
+.tile{background:var(--bg);border:1px solid var(--border);border-radius:4px;padding:6px 6px 5px;text-align:center;}
+.tile .t-lbl{font-size:8px;color:var(--dim);text-transform:uppercase;letter-spacing:0.6px;font-family:'DM Mono',monospace;margin-bottom:3px;}
+.tile .t-val{font-family:'DM Mono',monospace;font-size:12px;font-weight:500;}
+.tile.t-CRITICAL .t-val{color:var(--red);} .tile.t-URGENT .t-val{color:var(--orange);} .tile.t-WATCH .t-val{color:var(--amber);} .tile.t-OK .t-val{color:var(--green);} .tile.t-NONE .t-val{color:var(--dim);}
+.mc-foot{display:flex;justify-content:space-between;font-family:'DM Mono',monospace;font-size:9px;color:var(--dim);}
+.mc-cov{display:flex;gap:3px;margin-top:6px;}
+.cov{font-size:8px;padding:1px 4px;border-radius:2px;font-family:'DM Mono',monospace;border:1px solid var(--border);color:var(--dim);}
+.cov.on{color:var(--green);border-color:rgba(74,222,128,0.3);}
+.panel{background:var(--bg2);border:1px solid var(--border);border-radius:6px;overflow:hidden;margin-bottom:22px;}
+.panel-header{padding:9px 15px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;}
+.panel-title{font-size:10px;text-transform:uppercase;letter-spacing:1.2px;color:var(--muted);font-family:'DM Mono',monospace;font-weight:500;}
+.panel-body{padding:14px;}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+@media(max-width:1000px){.two-col{grid-template-columns:1fr;}}
+.chips{display:flex;gap:4px;flex-wrap:wrap;}
+.chip{padding:4px 9px;border-radius:3px;font-size:9px;font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:0.6px;border:1px solid var(--border);color:var(--muted);cursor:pointer;background:var(--bg);}
+.chip.active{border-color:var(--electric);color:var(--electric);}
+.btn{padding:5px 10px;border-radius:3px;font-size:10px;font-family:'DM Mono',monospace;border:1px solid var(--border2);color:var(--white);background:var(--bg3);cursor:pointer;}
+.btn:hover{border-color:var(--electric);}
+table{width:100%;border-collapse:collapse;font-size:12px;}
+th{font-size:9px;text-transform:uppercase;letter-spacing:0.8px;color:var(--dim);font-family:'DM Mono',monospace;text-align:left;padding:6px 8px;border-bottom:1px solid var(--border);font-weight:500;white-space:nowrap;}
+td{padding:7px 8px;border-bottom:1px solid var(--border);vertical-align:top;}
+tr:last-child td{border-bottom:none;}
+td.num,th.num{text-align:right;font-family:'DM Mono',monospace;white-space:nowrap;}
+.prod{font-weight:500;} .sub{font-family:'DM Mono',monospace;font-size:10px;color:var(--dim);}
+.reason{color:var(--muted);font-size:11px;}
+.new-tag{font-size:8px;color:var(--electric);font-family:'DM Mono',monospace;margin-left:4px;}
+.age{font-family:'DM Mono',monospace;font-size:10px;color:var(--dim);white-space:nowrap;}
+.est{color:var(--muted);} .rec{color:var(--green);}
+.empty{padding:20px;text-align:center;color:var(--dim);font-family:'DM Mono',monospace;font-size:11px;}
+.fb-row{display:flex;justify-content:space-between;align-items:baseline;padding:6px 0;border-bottom:1px solid var(--border);gap:10px;}
+.fb-row:last-child{border-bottom:none;}
+.fb-mk{font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:1px;width:36px;}
+.fb-rating{font-family:'DM Mono',monospace;font-size:12px;}
+.fb-neg{font-size:10px;color:var(--muted);flex:1;}
+.fb-neg div{padding:2px 0;}
+.note{font-size:11px;color:var(--muted);padding:10px 14px;border-top:1px solid var(--border);background:var(--bg3);}
+.diff-list{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+@media(max-width:900px){.diff-list{grid-template-columns:1fr;}}
+.diff-item{padding:5px 0;border-bottom:1px solid var(--border);font-size:11px;display:flex;gap:8px;align-items:baseline;}
+.diff-item:last-child{border-bottom:none;}
+.inv-tabs{display:flex;gap:2px;flex-wrap:wrap;}
+.inv-tab{padding:5px 10px;font-family:'DM Mono',monospace;font-size:10px;color:var(--dim);border:1px solid var(--border);border-radius:3px;cursor:pointer;background:var(--bg);}
+.inv-tab.active{color:var(--electric);border-color:var(--electric);}
+.chart-wrap canvas{max-height:220px;}
+.toast{position:fixed;bottom:20px;right:20px;background:var(--bg4);border:1px solid var(--border2);padding:8px 14px;border-radius:4px;font-family:'DM Mono',monospace;font-size:11px;display:none;z-index:200;}
+</style>
+</head>
+<body>
+<div class="header">
+  <div class="header-left">
+    <div class="brand">CERAKOTE <span>INTL</span></div>
+    <div class="divider-v"></div>
+    <div class="header-meta"><div class="lbl">Health tracker</div><div class="val" id="hdr-week">—</div></div>
+    <div class="divider-v"></div>
+    <div class="header-meta"><div class="lbl">Generated</div><div class="val" id="hdr-gen">—</div></div>
+  </div>
+  <div class="header-right" id="hdr-sources"></div>
+</div>
+<div class="week-ctrl">
+  <button class="week-nav" id="wk-prev">← Older</button>
+  <select class="week-select" id="wk-select"></select>
+  <button class="week-nav" id="wk-next">Newer →</button>
+  <div class="week-note" id="wk-note"></div>
+</div>
+<div class="trend-bar" id="trend"></div>
+<div class="page">
+  <div class="sec">Markets <span class="hint">click a market to filter the action list. DE FR IT ES NL SE share one EU FBA pool; days of cover there is pooled.</span></div>
+  <div class="mkt-cards" id="mkt-cards"></div>
+
+  <div class="panel" id="actions">
+    <div class="panel-header">
+      <div class="panel-title">Action list <span id="act-count" style="color:var(--dim)"></span></div>
+      <div class="chips" id="sev-chips">
+        <div class="chip active" data-sev="ALL">All</div>
+        <div class="chip" data-sev="CRITICAL">Critical</div>
+        <div class="chip" data-sev="URGENT">Urgent</div>
+        <div class="chip" data-sev="WATCH">Watch</div>
+        <div class="chip" data-type="stock">Stock</div>
+        <div class="chip" data-type="account">Account</div>
+        <div class="chip" data-new="1">New this week</div>
+      </div>
+      <button class="btn" id="copy-restock">Copy restock list</button>
+    </div>
+    <div style="overflow-x:auto"><table><thead><tr>
+      <th>Sev</th><th>Market</th><th>Product</th><th>Why</th><th class="num">Avail</th><th class="num">Inbound</th><th class="num">Days</th><th class="num">Vel/day</th><th class="num">Ads 30d</th><th class="num">Restock</th><th>Owner</th><th>Action</th><th>Open</th>
+    </tr></thead><tbody id="act-body"></tbody></table></div>
+    <div class="note">Restock: green = Amazon FBA recommendation (restock_recs.csv). Grey "est." = estimate to reach 60 days of cover at current velocity, shown only until Amazon's number is loaded. Owner "client" = Cerakote creates the shipment.</div>
+  </div>
+
+  <div class="two-col">
+    <div class="panel">
+      <div class="panel-header"><div class="panel-title">Changes vs prior week</div></div>
+      <div class="panel-body diff-list">
+        <div><div class="sec">New</div><div id="diff-new"></div></div>
+        <div><div class="sec">Resolved</div><div id="diff-resolved"></div></div>
+      </div>
+    </div>
+    <div class="panel">
+      <div class="panel-header"><div class="panel-title">Open items by week</div></div>
+      <div class="panel-body chart-wrap"><canvas id="hist"></canvas></div>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div class="panel">
+      <div class="panel-header"><div class="panel-title">Seller feedback (30d)</div></div>
+      <div class="panel-body" id="feedback"></div>
+    </div>
+    <div class="panel">
+      <div class="panel-header"><div class="panel-title">Account health feed</div></div>
+      <div class="panel-body" id="acct-feed"></div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <div class="panel-header">
+      <div class="panel-title">FBA inventory detail</div>
+      <div class="inv-tabs" id="inv-tabs"></div>
+    </div>
+    <div style="overflow-x:auto"><table><thead><tr>
+      <th>Sev</th><th>Product</th><th>SKU</th><th class="num">Avail</th><th class="num">Inbound</th><th class="num">Unfulf.</th><th class="num">Units 30d</th><th class="num">Vel/day</th><th class="num">Days (mkt)</th><th class="num">Days (pool)</th><th class="num">Ads 30d</th><th>Notes</th>
+    </tr></thead><tbody id="inv-body"></tbody></table></div>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+<script>
+/*__DATA__*/
+</script>
+<script>
+(function(){
+  if(!window.SNAPSHOTS||!SNAPSHOTS.length){document.body.innerHTML='<div class="empty">No snapshots yet.</div>';return;}
+  var S=SNAPSHOTS, idx=S.length-1, sevFilter='ALL', typeFilter=null, newOnly=false, mktFilter=null, invTab=null;
+  var $=function(id){return document.getElementById(id)};
+  var RANK={CRITICAL:0,URGENT:1,WATCH:2,INFO:3,OK:4,NONE:5};
+  function fmt(n,d){if(n===null||n===undefined)return '—';return Number(n).toLocaleString('en-US',{maximumFractionDigits:d===undefined?0:d})}
+  function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+  function badge(s){return '<span class="badge badge-'+s+'">'+s+'</span>'}
+  function amz(mk,asin){var d={US:'com',CA:'ca',UK:'co.uk',DE:'de',FR:'fr',IT:'it',ES:'es',NL:'nl',SE:'se',SA:'sa',AU:'com.au',EU:'de'};return 'https://www.amazon.'+(d[mk]||'com')+'/dp/'+asin}
+  function cur(mk){var m=S[idx].markets[mk];return m?m.cur:'€'}
+  function prevSnap(){return idx>0?S[idx-1]:null}
+  function ids(snap){var o={};(snap?snap.items:[]).forEach(function(i){o[i.id]=i});return o}
+  function firstSeen(id){var w=null;for(var k=idx;k>=0;k--){if(ids(S[k])[id])w=S[k].week;else break;}return w}
+  function weeksOpen(id){var n=0;for(var k=idx;k>=0;k--){if(ids(S[k])[id])n++;else break;}return n}
+
+  // Week selector
+  var sel=$('wk-select'); S.forEach(function(s,i){var o=document.createElement('option');o.value=i;o.textContent=s.week+'  ('+s.generated_at.slice(0,10)+')';sel.appendChild(o)});
+  sel.value=idx; sel.onchange=function(){idx=+sel.value;render()};
+  $('wk-prev').onclick=function(){if(idx>0){idx--;sel.value=idx;render()}};
+  $('wk-next').onclick=function(){if(idx<S.length-1){idx++;sel.value=idx;render()}};
+  $('sev-chips').onclick=function(e){var c=e.target.closest('.chip');if(!c)return;
+    if(c.dataset.sev){sevFilter=c.dataset.sev;typeFilter=null;newOnly=false}
+    else if(c.dataset.type){typeFilter=typeFilter===c.dataset.type?null:c.dataset.type}
+    else if(c.dataset.new){newOnly=!newOnly}
+    renderActions()};
+  $('copy-restock').onclick=copyRestock;
+
+  function render(){
+    var s=S[idx], p=prevSnap();
+    $('hdr-week').textContent=s.week; $('hdr-gen').textContent=s.generated_at.replace('T',' ').replace('Z',' UTC');
+    $('wk-prev').disabled=idx===0; $('wk-next').disabled=idx===S.length-1;
+    $('wk-note').textContent=p?'compared to '+p.week:'first snapshot, no comparison';
+    $('hdr-sources').innerHTML=Object.keys(s.sources).map(function(k){return '<span class="badge '+(s.sources[k]?'badge-on':'badge-off')+'">'+k.replace(/_/g,' ')+'</span>'}).join('');
+    // trend
+    var pt=p?p.totals:null, pid=ids(p), cid=ids(s);
+    var newN=Object.keys(cid).filter(function(k){return p&&!pid[k]}).length, resN=Object.keys(pid).filter(function(k){return !cid[k]}).length;
+    function delta(k){if(!pt)return '<span class="trend-delta neutral">—</span>';var d=s.totals[k]-pt[k];return '<span class="trend-delta '+(d>0?'up-bad':d<0?'down-good':'neutral')+'">'+(d>0?'+':'')+d+'</span>'}
+    $('trend').innerHTML=['CRITICAL','URGENT','WATCH'].map(function(k){return '<div class="trend-item" data-sev="'+k+'"><span class="trend-lbl">'+k+'</span><span class="trend-v c-'+k+'">'+s.totals[k]+'</span>'+delta(k)+'</div>'}).join('<div class="trend-div"></div>')
+      +'<div class="trend-div"></div><div class="trend-item"><span class="trend-lbl">New</span><span class="trend-v">'+(p?newN:'—')+'</span></div><div class="trend-item"><span class="trend-lbl">Resolved</span><span class="trend-v c-OK">'+(p?resN:'—')+'</span></div>'
+      +'<div class="trend-div"></div><div class="trend-item"><span class="trend-lbl">Thresholds</span><span class="trend-v" style="font-size:10px;color:var(--muted)">OOS+0 inbound = critical · &lt;'+s.thresholds.urgent_doc+'d = urgent · &lt;'+s.thresholds.watch_doc+'d = watch</span></div>';
+    Array.prototype.forEach.call($('trend').querySelectorAll('[data-sev]'),function(el){el.onclick=function(){sevFilter=el.dataset.sev;typeFilter=null;newOnly=false;renderActions()}});
+    renderCards(); renderActions(); renderDiff(); renderFeedback(); renderAcct(); renderInv(); renderChart();
+  }
+
+  function renderCards(){
+    var s=S[idx], html='';
+    s.order.forEach(function(mk){var m=s.markets[mk]; if(!m)return;
+      var covered=m.coverage.h10||m.coverage.si;
+      var worst=covered?['stock','account','listings'].map(function(k){return m.status[k]}).sort(function(a,b){return RANK[a]-RANK[b]})[0]:'NONE';
+      function tile(lbl,st,val){var sv=covered?st:'NONE';return '<div class="tile t-'+sv+'"><div class="t-lbl">'+lbl+'</div><div class="t-val">'+(covered?val:'n/a')+'</div></div>'}
+      var stockN=m.counts.CRITICAL+m.counts.URGENT, acctN=(m.account.notifications||[]).length+((m.feedback&&m.feedback.recent_negative.length)?1:0);
+      html+='<div class="mc s-'+worst+(mktFilter===mk?' active':'')+'" data-mk="'+mk+'">'
+        +'<div class="mc-head"><span class="mc-code">'+mk+'</span><span class="mc-name">'+esc(m.name)+(m.pool==='EU'?' · EU pool':'')+'</span></div>'
+        +'<div class="tiles">'+(m.coverage.si?tile('Stock',m.status.stock,m.status.stock==='OK'?'OK':stockN||m.counts.WATCH):'<div class="tile t-NONE"><div class="t-lbl">Stock</div><div class="t-val">no SI</div></div>')+tile('Account',m.status.account,m.status.account==='OK'?'OK':acctN)+tile('Listings',m.coverage.account_feed?m.status.listings:'NONE',m.coverage.account_feed?(m.status.listings==='OK'?'OK':'!'):'no feed')+'</div>'
+        +'<div class="mc-foot"><span>'+m.asin_count+' ASINs · '+fmt(m.fba_units)+' units</span><span>'+fmt(m.units30)+' sold 30d</span></div>'
+        +'<div class="mc-cov">'+['h10','si','feedback','account_feed'].map(function(k){return '<span class="cov '+(m.coverage[k]?'on':'')+'">'+k.replace('account_feed','SC').replace('feedback','FB').toUpperCase()+'</span>'}).join('')+'</div>'
+        +'</div>'});
+    $('mkt-cards').innerHTML=html;
+    Array.prototype.forEach.call($('mkt-cards').querySelectorAll('.mc'),function(el){el.onclick=function(){mktFilter=mktFilter===el.dataset.mk?null:el.dataset.mk;invTab=mktFilter||invTab;renderCards();renderActions();renderInv();if(mktFilter)$('actions').scrollIntoView({behavior:'smooth',block:'start'})}});
+  }
+
+  function itemMatchesMarket(it,mk){if(!mk)return true;if(it.market===mk)return true;if(it.market==='EU'&&it.pool_markets&&it.pool_markets.indexOf(mk)>=0)return true;return false}
+
+  function renderActions(){
+    var s=S[idx], p=prevSnap(), pid=ids(p);
+    Array.prototype.forEach.call($('sev-chips').querySelectorAll('.chip'),function(c){c.classList.toggle('active',!!((c.dataset.sev&&c.dataset.sev===sevFilter)||(c.dataset.type&&c.dataset.type===typeFilter)||(c.dataset.new&&newOnly)))});
+    var rows=s.items.filter(function(it){return (sevFilter==='ALL'||it.severity===sevFilter)&&(!typeFilter||it.type===typeFilter)&&(!newOnly||(p&&!pid[it.id]))&&itemMatchesMarket(it,mktFilter)});
+    $('act-count').textContent='('+rows.length+(mktFilter?' · '+mktFilter:'')+')';
+    if(!rows.length){$('act-body').innerHTML='<tr><td colspan="13" class="empty">Nothing matches.</td></tr>';return}
+    $('act-body').innerHTML=rows.map(function(it){
+      var isNew=p&&!pid[it.id], wk=weeksOpen(it.id);
+      var mkLabel=it.market==='EU'?'EU <span class="sub">'+(it.pool_markets||[]).join(' ')+'</span>':it.market;
+      var restock=it.restock_rec!=null?'<span class="rec">'+fmt(it.restock_rec)+'</span>':(it.restock_est!=null?'<span class="est">est. '+fmt(it.restock_est)+'</span>':'—');
+      return '<tr><td>'+badge(it.severity)+(isNew?'<span class="new-tag">NEW</span>':'')+'</td>'
+        +'<td class="mono">'+mkLabel+'</td>'
+        +'<td><div class="prod">'+esc(it.name)+'</div><div class="sub">'+(it.asin?it.asin+' · ':'')+esc(it.sku||'')+'</div></td>'
+        +'<td class="reason">'+esc(it.reason)+'</td>'
+        +'<td class="num">'+(it.type==='stock'?fmt(it.available):'')+'</td><td class="num">'+(it.type==='stock'?(it.inbound==null?'?':fmt(it.inbound)):'')+'</td>'
+        +'<td class="num">'+(it.type==='stock'?fmt(it.doc,1):'')+'</td><td class="num">'+(it.type==='stock'?fmt(it.vel,1):'')+'</td>'
+        +'<td class="num">'+(it.type==='stock'&&it.ad30?cur(it.market==='EU'?'DE':it.market)+fmt(it.ad30):'')+'</td>'
+        +'<td class="num">'+(it.type==='stock'?restock:'')+'</td>'
+        +'<td class="mono" style="font-size:10px">'+it.owner+'</td><td style="font-size:11px">'+esc(it.action)+'<div class="age">'+(wk>1?'open '+wk+' wks':'first seen '+s.week)+'</div></td>'
+        +'<td>'+(it.asin?'<a href="'+amz(it.market,it.asin)+'" target="_blank">↗</a>':'')+'</td></tr>'}).join('');
+  }
+
+  function renderDiff(){
+    var s=S[idx], p=prevSnap();
+    if(!p){$('diff-new').innerHTML='<div class="empty">First snapshot.</div>';$('diff-resolved').innerHTML='';return}
+    var pid=ids(p), cid=ids(s);
+    var nw=s.items.filter(function(i){return !pid[i.id]}), rs=p.items.filter(function(i){return !cid[i.id]});
+    function line(i){return '<div class="diff-item">'+badge(i.severity)+'<span class="mono" style="color:var(--muted)">'+i.market+'</span><span>'+esc(i.name)+'</span><span class="sub">'+esc(i.reason)+'</span></div>'}
+    $('diff-new').innerHTML=nw.length?nw.map(line).join(''):'<div class="empty">None</div>';
+    $('diff-resolved').innerHTML=rs.length?rs.map(line).join(''):'<div class="empty">None</div>';
+  }
+
+  function renderFeedback(){
+    var s=S[idx], html='';
+    s.order.forEach(function(mk){var m=s.markets[mk]; if(!m||!m.feedback)return; var f=m.feedback;
+      html+='<div class="fb-row"><span class="fb-mk">'+mk+'</span><span class="fb-rating">'+(f.rating!=null?f.rating.toFixed(1)+'★':'—')+' <span class="sub">'+f.count+' · '+(f.neg_pct!=null?Math.round(f.neg_pct*100)+'% neg':'')+'</span></span>'
+        +'<span class="fb-neg">'+(f.recent_negative.length?f.recent_negative.map(function(x){return '<div>'+esc(x)+'</div>'}).join(''):'<span style="color:var(--dim)">no negatives</span>')+'</span></div>'});
+    $('feedback').innerHTML=html||'<div class="empty">No feedback data.</div>';
+  }
+
+  function renderAcct(){
+    var s=S[idx], html='', any=false;
+    s.order.forEach(function(mk){var m=s.markets[mk]; if(!m||!m.coverage.account_feed)return; any=true; var a=m.account;
+      html+='<div class="fb-row"><span class="fb-mk">'+mk+'</span><span class="fb-rating">'+(a.ahr_status?badge(a.ahr_status==='Healthy'?'OK':'URGENT')+' '+esc(a.ahr_status):'')+(a.ahr_score!=null?' <span class="sub">AHR '+a.ahr_score+'</span>':'')+'</span>'
+        +'<span class="fb-neg">'+((a.notifications||[]).map(function(n){return '<div>'+esc(n.date)+' · '+esc(n.type)+(n.asin?' · '+n.asin:'')+' · '+esc(n.subject)+'</div>'}).join('')||'<span style="color:var(--dim)">no notifications</span>')+'</span></div>'});
+    $('acct-feed').innerHTML=any?html:'<div class="empty">No Seller Central feed yet.<br><br>Add barcus@high-shot.com under Settings → Notification Preferences (Account Health, Claims, Listings, Compliance) in each region, then the weekly run reads the notification emails into account_health.json.</div>';
+  }
+
+  function renderInv(){
+    var s=S[idx]; if(!invTab||!s.markets[invTab])invTab=s.order[0];
+    $('inv-tabs').innerHTML=s.order.map(function(mk){return '<div class="inv-tab'+(mk===invTab?' active':'')+'" data-mk="'+mk+'">'+mk+'</div>'}).join('');
+    Array.prototype.forEach.call($('inv-tabs').querySelectorAll('.inv-tab'),function(el){el.onclick=function(){invTab=el.dataset.mk;renderInv()}});
+    var m=s.markets[invTab], rows=m?m.inventory:[];
+    if(!rows.length){$('inv-body').innerHTML='<tr><td colspan="12" class="empty">No FBA rows for '+invTab+'.</td></tr>';return}
+    $('inv-body').innerHTML=rows.map(function(r){return '<tr><td>'+badge(r.severity)+'</td>'
+      +'<td><div class="prod">'+esc(r.name)+'</div><div class="sub">'+r.asin+'</div></td><td class="mono" style="font-size:10px">'+esc((r.skus||[r.sku]).join(', '))+'</td>'
+      +'<td class="num">'+fmt(r.available)+'</td><td class="num">'+(r.inbound==null?'?':fmt(r.inbound))+'</td><td class="num">'+fmt(r.unfulfillable)+'</td>'
+      +'<td class="num">'+fmt(r.units30)+'</td><td class="num">'+fmt(r.vel,2)+'</td><td class="num">'+fmt(r.doc,1)+'</td><td class="num">'+(r.pool_doc!=null?fmt(r.pool_doc,1)+' <span class="sub">'+fmt(r.pool_vel,1)+'/d</span>':'—')+'</td>'
+      +'<td class="num">'+(r.ad30?cur(invTab)+fmt(r.ad30):'—')+'</td><td class="reason">'+esc(r.reasons.join('; '))+(r.si_present?'':' (no SI velocity)')+'</td></tr>'}).join('');
+  }
+
+  var chart;
+  function renderChart(){
+    if(typeof Chart==='undefined'){$('hist').parentNode.innerHTML='<div class="empty">Chart library not loaded.</div>';return}
+    var labels=S.map(function(s){return s.week}), ds=['CRITICAL','URGENT','WATCH'].map(function(k,i){return {label:k,data:S.map(function(s){return s.totals[k]}),borderColor:['#f87171','#fb923c','#fbbf24'][i],backgroundColor:['#f87171','#fb923c','#fbbf24'][i],tension:0.25,pointRadius:3}});
+    if(chart)chart.destroy();
+    chart=new Chart($('hist'),{type:'line',data:{labels:labels,datasets:ds},options:{responsive:true,plugins:{legend:{labels:{color:'#8891a8',font:{family:'DM Mono',size:10}}}},scales:{x:{ticks:{color:'#4a5268',font:{family:'DM Mono',size:10}},grid:{color:'#2a2f3d'}},y:{beginAtZero:true,ticks:{color:'#4a5268',font:{family:'DM Mono',size:10},precision:0},grid:{color:'#2a2f3d'}}}}});
+  }
+
+  function copyRestock(){
+    var s=S[idx], lines=['Cerakote FBA restock list · '+s.week+' · generated '+s.generated_at.slice(0,10),''];
+    var items=s.items.filter(function(it){return it.type==='stock'&&it.severity!=='WATCH'&&itemMatchesMarket(it,mktFilter)});
+    var by={}; items.forEach(function(it){(by[it.market]=by[it.market]||[]).push(it)});
+    Object.keys(by).forEach(function(mk){lines.push(mk+(mk==='EU'?' (pooled: '+(by[mk][0].pool_markets||[]).join(' ')+')':''));
+      by[mk].forEach(function(it){var q=it.restock_rec!=null?it.restock_rec+' units (Amazon rec)':(it.restock_est!=null?'~'+it.restock_est+' units (estimate, 60d cover)':'qty TBD');
+        lines.push('  '+it.severity+' · '+it.sku+' · '+it.asin+' · '+it.name+' · avail '+it.available+' · inbound '+(it.inbound==null?'?':it.inbound)+' · '+q)});
+      lines.push('')});
+    var txt=lines.join('\n');
+    navigator.clipboard.writeText(txt).then(function(){toast('Restock list copied ('+items.length+' items)')},function(){toast('Copy failed; select text manually')});
+  }
+  function toast(m){var t=$('toast');t.textContent=m;t.style.display='block';setTimeout(function(){t.style.display='none'},2200)}
+  render();
+})();
+</script>
+</body>
+</html>

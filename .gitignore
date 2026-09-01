@@ -1,0 +1,4 @@
+.secrets/
+inbox/
+__pycache__/
+.DS_Store
