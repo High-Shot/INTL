@@ -301,5 +301,16 @@
     "owner": "client"
    }
   ]
+ },
+ "CC_AU": {
+  "as_of": "2026-09-01",
+  "ahr_status": "Healthy",
+  "ahr_score": 344,
+  "odr": "0% (0 of 3,864 FBA orders, 60d)",
+  "policy_violations": 0,
+  "atoz_claims": 0,
+  "listing_issues": false,
+  "notes": "Clean. Home page shows 1 outstanding shipment problem (Resolve shipment problems) and 1 buyer message pending under 24h; neither is an account-health item.",
+  "notifications": []
  }
 }

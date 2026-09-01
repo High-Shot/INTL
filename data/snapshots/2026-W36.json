@@ -6505,7 +6505,7 @@
     "si": true,
     "velocity": true,
     "feedback": true,
-    "account_feed": false
+    "account_feed": true
    },
    "inventory": [
     {
@@ -6858,13 +6858,13 @@
     "recent_negative": []
    },
    "account": {
-    "ahr_status": null,
-    "ahr_score": null,
-    "odr": null,
-    "policy_violations": null,
-    "atoz_claims": null,
+    "ahr_status": "Healthy",
+    "ahr_score": 344,
+    "odr": "0% (0 of 3,864 FBA orders, 60d)",
+    "policy_violations": 0,
+    "atoz_claims": 0,
     "notifications": [],
-    "as_of": null
+    "as_of": "2026-09-01"
    },
    "status": {
     "stock": "URGENT",

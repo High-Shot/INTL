@@ -95,7 +95,7 @@ Only steps 1 and 2 for the intl markets, no build, no push. Message Barcus only 
 ## 4b. Account health from Seller Central (built-in browser, weekly)
 The Claude built-in browser keeps Seller Central sessions. Three logins cover everything: sellercentral.amazon.com (CERAKOTE NA, NIC-Cerakote, PRISMATIC POWDERS), sellercentral-europe.amazon.com (CERAKOTE EU: UK, DE, FR, IT, ES, NL, AE, SA), sellercentral.amazon.com.au (Cerakote AU). If a page shows a sign-in form, stop and ask Barcus to sign in; never type credentials.
 Switch marketplace by URL (no clicking): append `?mons_sel_mkid=amzn1.mp.o.<MARKETPLACE_ID>&mons_sel_dir_mcid=<MERCHANT>&ignore_selection_changed=true`.
-Merchants: CERAKOTE NA = amzn1.merchant.d.AA37UGXB4LPBTST6FZERE4YVYHJA; CERAKOTE EU = amzn1.merchant.d.ADCXPM4GTPWUOVSTJRR3RPSCO24Q; NIC-Cerakote (Legacy) = amzn1.merchant.d.ACUXQDEGAV73SHG6YAPIILHF6M6A; PRISMATIC = amzn1.merchant.d.ADZTQZSFWHWF3KD3PEVJASRR6HRQ.
+Merchants: CERAKOTE NA = amzn1.merchant.d.AA37UGXB4LPBTST6FZERE4YVYHJA; Cerakote AU = amzn1.merchant.d.ACNCF7ANVUZX46RGS7BK3NWSJDDQ (on sellercentral.amazon.com.au); CERAKOTE EU = amzn1.merchant.d.ADCXPM4GTPWUOVSTJRR3RPSCO24Q; NIC-Cerakote (Legacy) = amzn1.merchant.d.ACUXQDEGAV73SHG6YAPIILHF6M6A; PRISMATIC = amzn1.merchant.d.ADZTQZSFWHWF3KD3PEVJASRR6HRQ.
 Marketplace IDs: US ATVPDKIKX0DER, CA A2EUQ1WTGCTBG2, MX A1AM78C64UM0Y8, UK A1F83G8C2ARO7P, DE A1PA6795UKMFR9, FR A13V1IB3VIYZZH, IT APJ6JRA9NG5V4, ES A1RKKUPIHCS9HS, NL A1805IZSGTT6HS, AE A2VIGQ35RCS4UG, SA A17E79C6D8DWNP, AU A39IBJ37TRP1C6.
 Per account x marketplace read two pages with get_page_text (wait 4s after navigate; the JS tool returns empty on the policies page):
 1. `/performance/dashboard` -> AHR score, ODR, priority actions, issue counts.
