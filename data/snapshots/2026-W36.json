@@ -27,7 +27,7 @@
  },
  "totals": {
   "CRITICAL": 13,
-  "URGENT": 25,
+  "URGENT": 24,
   "WATCH": 34
  },
  "items": [
@@ -439,23 +439,6 @@
    "action": "Client: add Import Entry Numbers to the flagged shipments in the UK Shipping Queue"
   },
   {
-   "id": "CC_UK|acct|other|2026-08-12",
-   "account": "CC_UK",
-   "brand": "CC",
-   "market": "UK",
-   "label": "UK AUTO",
-   "type": "account",
-   "severity": "URGENT",
-   "asin": null,
-   "sku": null,
-   "name": "Other",
-   "reason": "European VAT Registration Requirements: warning sent, address by 10 Nov 2026.",
-   "opened": "2026-08-12",
-   "status": "open, due 2026-11-10",
-   "owner": "barcus",
-   "action": "Client: submit VAT registration details"
-  },
-  {
    "id": "CC_DE|seller|feedback",
    "account": "CC_DE",
    "brand": "CC",
@@ -770,7 +753,7 @@
    "asin": null,
    "sku": null,
    "name": "Other",
-   "reason": "European VAT Registration Requirements (EU account-wide): warning sent 12 Aug, address by 10 Nov 2026. Companion notices: provide VAT registration details within 90/75 days to avoid inventory and FBA restrictions on Amazon.fr.",
+   "reason": "European VAT Registration Requirements (EU account-wide, also shown on UK): warning sent 12 Aug, address by 10 Nov 2026. Companion notices: provide VAT registration details within 90/75 days to avoid inventory and FBA restrictions on Amazon.fr.",
    "opened": "2026-08-12",
    "status": "open, due 2026-11-10",
    "owner": "barcus",
@@ -3941,15 +3924,6 @@
       "severity": "URGENT",
       "status": "open, past due since June",
       "action": "Client: add Import Entry Numbers to the flagged shipments in the UK Shipping Queue"
-     },
-     {
-      "date": "2026-08-12",
-      "type": "other",
-      "asin": null,
-      "subject": "European VAT Registration Requirements: warning sent, address by 10 Nov 2026.",
-      "severity": "URGENT",
-      "status": "open, due 2026-11-10",
-      "action": "Client: submit VAT registration details"
      }
     ],
     "as_of": "2026-09-01"
@@ -3961,7 +3935,7 @@
    },
    "counts": {
     "CRITICAL": 2,
-    "URGENT": 3,
+    "URGENT": 2,
     "WATCH": 2,
     "INFO": 0,
     "OK": 9
