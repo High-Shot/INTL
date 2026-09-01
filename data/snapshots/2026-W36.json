@@ -1,12 +1,12 @@
 {
  "week": "2026-W36",
- "generated_at": "2026-09-01T21:30:00Z",
+ "generated_at": "2026-09-01T23:30:00Z",
  "sources": {
   "h10_inventory": true,
   "h10_velocity": true,
   "si_inventory": true,
   "seller_feedback": true,
-  "account_health": false,
+  "account_health": true,
   "restock_recs": false
  },
  "thresholds": {
@@ -26,9 +26,9 @@
   "review_cover_days": 30
  },
  "totals": {
-  "CRITICAL": 9,
-  "URGENT": 20,
-  "WATCH": 29
+  "CRITICAL": 13,
+  "URGENT": 25,
+  "WATCH": 34
  },
  "items": [
   {
@@ -193,6 +193,23 @@
    "action": "Create FBA shipment"
   },
   {
+   "id": "CC_CA|B0DKVZRX69|listing_removed|2026-04-22",
+   "account": "CC_CA",
+   "brand": "CC",
+   "market": "CA",
+   "label": "CA AUTO",
+   "type": "account",
+   "severity": "CRITICAL",
+   "asin": "B0DKVZRX69",
+   "sku": null,
+   "name": "Listing Removed",
+   "reason": "Consumer Chemicals and Containers (CCCR) safety issue: Rapid Ceramic Interior Detailer listing removed on Amazon.ca, submission required. Open 4+ months; ASIN has no CA FBA offer in H10.",
+   "opened": "2026-04-22",
+   "status": "open since 2026-04-22, submission required",
+   "owner": "barcus",
+   "action": "Submit CCCR-compliant label/SDS evidence or bilingual hazard labelling in Manage Your Compliance"
+  },
+  {
    "id": "CC_UK|B07SHJVK4G|stock",
    "account": "CC_UK",
    "brand": "CC",
@@ -214,6 +231,57 @@
    "restock_est": 1590,
    "owner": "client",
    "action": "Create FBA shipment"
+  },
+  {
+   "id": "CC_UK|B0H51RDY69|ip_complaint|2026-08-28",
+   "account": "CC_UK",
+   "brand": "CC",
+   "market": "UK",
+   "label": "UK AUTO",
+   "type": "account",
+   "severity": "CRITICAL",
+   "asin": "B0H51RDY69",
+   "sku": null,
+   "name": "Ip Complaint",
+   "reason": "Trademark misuse (Boeing): Pro Ceramic Aircraft Coating Kit listing removed on Amazon.co.uk. AHR impact none. Submission required.",
+   "opened": "2026-08-28",
+   "status": "open, submission required",
+   "owner": "barcus",
+   "action": "Remove 'Boeing BSS7432 Certified' claim from title/bullets/images or provide authorisation, then submit"
+  },
+  {
+   "id": "CC_DE|B084RQKLV8|listing_removed|2026-08-12",
+   "account": "CC_DE",
+   "brand": "CC",
+   "market": "DE",
+   "label": "DE AUTO",
+   "type": "account",
+   "severity": "CRITICAL",
+   "asin": "B084RQKLV8",
+   "sku": null,
+   "name": "Listing Removed",
+   "reason": "Product Condition Complaint, Defective: Headlight Restoration Kit listing removed on Amazon.de. EUR 233,701.79 at-risk sales, PAST DUE. AHR impact Low. Appeal rejected 17 Aug and again 27 Aug ('preventative action does not address the complaints'). Listing stays deactivated; AHR impact runs 180 days from posting.",
+   "opened": "2026-08-12",
+   "status": "open, 2 appeals rejected",
+   "owner": "barcus",
+   "action": "Resubmit with a preventative action that maps to the VOC complaint reasons (see project notes on the DE headlight appeal)"
+  },
+  {
+   "id": "CC_ES|B0H1NM7467|compliance_documents|None",
+   "account": "CC_ES",
+   "brand": "CC",
+   "market": "ES",
+   "label": "ES AUTO",
+   "type": "account",
+   "severity": "CRITICAL",
+   "asin": "B0H1NM7467",
+   "sku": null,
+   "name": "Compliance Documents",
+   "reason": "EPR: Spain Packaging registration required, submission required. Listing at risk, EUR 19,469.68 at-risk sales, PAST DUE.",
+   "opened": null,
+   "status": "open, past due",
+   "owner": "barcus",
+   "action": "Client: provide Spain packaging EPR registration number in Manage Your Compliance"
   },
   {
    "id": "CL_CA|B0CL17YW21|stock",
@@ -354,6 +422,40 @@
    "action": "Create FBA shipment"
   },
   {
+   "id": "CC_UK|acct|other|2026-06-16",
+   "account": "CC_UK",
+   "brand": "CC",
+   "market": "UK",
+   "label": "UK AUTO",
+   "type": "account",
+   "severity": "URGENT",
+   "asin": null,
+   "sku": null,
+   "name": "Other",
+   "reason": "IEN (Import Entry Number) required for UK shipments received. PAST DUE. Inventory restrictions on the account; missing import details can block new UK shipments.",
+   "opened": "2026-06-16",
+   "status": "open, past due since June",
+   "owner": "barcus",
+   "action": "Client: add Import Entry Numbers to the flagged shipments in the UK Shipping Queue"
+  },
+  {
+   "id": "CC_UK|acct|other|2026-08-12",
+   "account": "CC_UK",
+   "brand": "CC",
+   "market": "UK",
+   "label": "UK AUTO",
+   "type": "account",
+   "severity": "URGENT",
+   "asin": null,
+   "sku": null,
+   "name": "Other",
+   "reason": "European VAT Registration Requirements: warning sent, address by 10 Nov 2026.",
+   "opened": "2026-08-12",
+   "status": "open, due 2026-11-10",
+   "owner": "barcus",
+   "action": "Client: submit VAT registration details"
+  },
+  {
    "id": "CC_DE|seller|feedback",
    "account": "CC_DE",
    "brand": "CC",
@@ -367,6 +469,23 @@
    "reason": "1 negative in 30d (17% of 6)",
    "owner": "barcus",
    "action": "Review, request removal if order-related"
+  },
+  {
+   "id": "CC_DE|acct|account_at_risk|2026-08-23",
+   "account": "CC_DE",
+   "brand": "CC",
+   "market": "DE",
+   "label": "DE AUTO",
+   "type": "account",
+   "severity": "URGENT",
+   "asin": null,
+   "sku": null,
+   "name": "Account At Risk",
+   "reason": "Invoice Defect Rate exceeded 5% (Amazon Business orders without invoice within 1 business day). 5th warning since April. Fix: activate VAT Calculation Service (automated invoices) or declare VAT exemption.",
+   "opened": "2026-08-23",
+   "status": "recurring, currently 0% (0 of 7, 7d)",
+   "owner": "barcus",
+   "action": "Client: enable VAT Calculation Service or VAT-exemption declaration so invoices auto-generate"
   },
   {
    "id": "CC_SA|B0F45C2YHV|stock",
@@ -632,6 +751,54 @@
    "restock_est": 254,
    "owner": "client",
    "action": "Create FBA shipment"
+  },
+  {
+   "id": "CC_EU|acct|other|2026-08-12",
+   "account": "CC_EU",
+   "brand": "CC",
+   "market": "EU",
+   "label": "EU AUTO",
+   "pool_markets": [
+    "DE",
+    "FR",
+    "IT",
+    "ES",
+    "NL"
+   ],
+   "type": "account",
+   "severity": "URGENT",
+   "asin": null,
+   "sku": null,
+   "name": "Other",
+   "reason": "European VAT Registration Requirements (EU account-wide): warning sent 12 Aug, address by 10 Nov 2026. Companion notices: provide VAT registration details within 90/75 days to avoid inventory and FBA restrictions on Amazon.fr.",
+   "opened": "2026-08-12",
+   "status": "open, due 2026-11-10",
+   "owner": "barcus",
+   "action": "Client: submit FR VAT registration details in Seller Central tax settings"
+  },
+  {
+   "id": "CC_EU|B0F8JJM54R|compliance_documents|2026-07-31",
+   "account": "CC_EU",
+   "brand": "CC",
+   "market": "EU",
+   "label": "EU AUTO",
+   "pool_markets": [
+    "DE",
+    "FR",
+    "IT",
+    "ES",
+    "NL"
+   ],
+   "type": "account",
+   "severity": "URGENT",
+   "asin": "B0F8JJM54R",
+   "sku": null,
+   "name": "Compliance Documents",
+   "reason": "GPSR warning and safety information: Clay Prep Mitt (B0F8JJM54R) at risk of removal on DE, FR, IT, ES, NL; submission required.",
+   "opened": "2026-07-31",
+   "status": "open, submission required",
+   "owner": "barcus",
+   "action": "Upload GPSR responsible-person and safety info in Manage Your Compliance"
   },
   {
    "id": "CL_NA|B0CJRVJFPR|stock",
@@ -1096,6 +1263,23 @@
    "action": "Review, request removal if order-related"
   },
   {
+   "id": "CC_US|B0H51RDY69|compliance_documents|2026-07-20",
+   "account": "CC_US",
+   "brand": "CC",
+   "market": "US",
+   "label": "US AUTO",
+   "type": "account",
+   "severity": "WATCH",
+   "asin": "B0H51RDY69",
+   "sku": null,
+   "name": "Compliance Documents",
+   "reason": "Submit product compliance documents to avoid listing removal (SDS, hazardous goods): Pro Ceramic Aircraft Coating Kit, SKUs AH-PROACKIT / AH-PROACKITA, deadline 2026-08-19",
+   "opened": "2026-07-20",
+   "status": "unknown, verify in Manage Your Compliance",
+   "owner": "barcus",
+   "action": "Confirm SDS accepted or listing status"
+  },
+  {
    "id": "CC_CA|B0H3QRH9B7|stock",
    "account": "CC_CA",
    "brand": "CC",
@@ -1193,6 +1377,74 @@
    "reason": "2 negative in 30d (6% of 37)",
    "owner": "barcus",
    "action": "Review, request removal if order-related"
+  },
+  {
+   "id": "CC_DE|acct|other|2026-08-07",
+   "account": "CC_DE",
+   "brand": "CC",
+   "market": "DE",
+   "label": "DE AUTO",
+   "type": "account",
+   "severity": "WATCH",
+   "asin": null,
+   "sku": null,
+   "name": "Other",
+   "reason": "Germany FBA Prime eligibility: cancellation rate (standard-size, units) first warning, performance period FAIL. Third infraction revokes Prime on the tier.",
+   "opened": "2026-08-07",
+   "status": "first warning",
+   "owner": "barcus",
+   "action": "Download the FBA Prime Eligibility report (reportcentral/prime_eligibility) and check cancellation cause"
+  },
+  {
+   "id": "CC_DE|acct|compliance_documents|2026-04-30",
+   "account": "CC_DE",
+   "brand": "CC",
+   "market": "DE",
+   "label": "DE AUTO",
+   "type": "account",
+   "severity": "WATCH",
+   "asin": null,
+   "sku": null,
+   "name": "Compliance Documents",
+   "reason": "Reactivate your EU listings, GPSR compliance required (18 Apr and 30 Apr notices).",
+   "opened": "2026-04-30",
+   "status": "unknown, partly resolved (10 Jun ASIN reinstated x2)",
+   "owner": "barcus",
+   "action": "Confirm no EU listings remain GPSR-deactivated"
+  },
+  {
+   "id": "CC_DE|acct|listing_removed|2026-03-11",
+   "account": "CC_DE",
+   "brand": "CC",
+   "market": "DE",
+   "label": "DE AUTO",
+   "type": "account",
+   "severity": "WATCH",
+   "asin": null,
+   "sku": null,
+   "name": "Listing Removed",
+   "reason": "Listings deactivated on Amazon.de due to missing packaging registration (LUCID), notices 20 Feb, 7 Mar, 11 Mar.",
+   "opened": "2026-03-11",
+   "status": "unknown",
+   "owner": "barcus",
+   "action": "Confirm LUCID registration number is on file and listings reactivated"
+  },
+  {
+   "id": "CC_IT|B0C4ZV53DR|compliance_documents|None",
+   "account": "CC_IT",
+   "brand": "CC",
+   "market": "IT",
+   "label": "IT AUTO",
+   "type": "account",
+   "severity": "WATCH",
+   "asin": "B0C4ZV53DR",
+   "sku": null,
+   "name": "Compliance Documents",
+   "reason": "GPSR: Responsible Person contact details, submission under review.",
+   "opened": null,
+   "status": "under review",
+   "owner": "barcus",
+   "action": "None until Amazon responds"
   },
   {
    "id": "CC_AU|B084RQKLV8|stock",
@@ -1378,6 +1630,57 @@
    "restock_est": 64,
    "owner": "client",
    "action": "Plan shipment"
+  },
+  {
+   "id": "CC_US|acct|other|2026-08-10",
+   "account": "CC_US",
+   "brand": "CC",
+   "market": "US",
+   "label": "US AUTO",
+   "type": "account",
+   "severity": "INFO",
+   "asin": null,
+   "sku": null,
+   "name": "Other",
+   "reason": "Formal Notice: certify business information within 20 days (INFORM Act); 'Certification complete' same day",
+   "opened": "2026-08-10",
+   "status": "resolved",
+   "owner": "barcus",
+   "action": "None"
+  },
+  {
+   "id": "CC_US|acct|other|2026-05-31",
+   "account": "CC_US",
+   "brand": "CC",
+   "market": "US",
+   "label": "US AUTO",
+   "type": "account",
+   "severity": "INFO",
+   "asin": null,
+   "sku": null,
+   "name": "Other",
+   "reason": "Your Amazon.com seller account (notice, content not read)",
+   "opened": "2026-05-31",
+   "status": "unknown",
+   "owner": "barcus",
+   "action": "Open notification"
+  },
+  {
+   "id": "CC_US|acct|other|2026-03-27",
+   "account": "CC_US",
+   "brand": "CC",
+   "market": "US",
+   "label": "US AUTO",
+   "type": "account",
+   "severity": "INFO",
+   "asin": null,
+   "sku": null,
+   "name": "Other",
+   "reason": "Address your On-time delivery rate (seller-fulfilled)",
+   "opened": "2026-03-27",
+   "status": "resolved (OTDR 96.25% now)",
+   "owner": "barcus",
+   "action": "None"
   }
  ],
  "accounts": {
@@ -1398,7 +1701,7 @@
     "si": true,
     "velocity": true,
     "feedback": true,
-    "account_feed": false
+    "account_feed": true
    },
    "inventory": [
     {
@@ -2659,13 +2962,50 @@
     ]
    },
    "account": {
-    "ahr_status": null,
-    "ahr_score": null,
-    "odr": null,
-    "policy_violations": null,
-    "atoz_claims": null,
-    "notifications": [],
-    "as_of": null
+    "ahr_status": "Healthy",
+    "ahr_score": 1000,
+    "odr": "0.01% (23 of 176,123 FBA orders, 60d)",
+    "policy_violations": 0,
+    "atoz_claims": 0,
+    "notifications": [
+     {
+      "date": "2026-07-20",
+      "type": "compliance_documents",
+      "asin": "B0H51RDY69",
+      "subject": "Submit product compliance documents to avoid listing removal (SDS, hazardous goods): Pro Ceramic Aircraft Coating Kit, SKUs AH-PROACKIT / AH-PROACKITA, deadline 2026-08-19",
+      "severity": "WATCH",
+      "status": "unknown, verify in Manage Your Compliance",
+      "action": "Confirm SDS accepted or listing status"
+     },
+     {
+      "date": "2026-08-10",
+      "type": "other",
+      "asin": null,
+      "subject": "Formal Notice: certify business information within 20 days (INFORM Act); 'Certification complete' same day",
+      "severity": "INFO",
+      "status": "resolved",
+      "action": "None"
+     },
+     {
+      "date": "2026-05-31",
+      "type": "other",
+      "asin": null,
+      "subject": "Your Amazon.com seller account (notice, content not read)",
+      "severity": "INFO",
+      "status": "unknown",
+      "action": "Open notification"
+     },
+     {
+      "date": "2026-03-27",
+      "type": "other",
+      "asin": null,
+      "subject": "Address your On-time delivery rate (seller-fulfilled)",
+      "severity": "INFO",
+      "status": "resolved (OTDR 96.25% now)",
+      "action": "None"
+     }
+    ],
+    "as_of": "2026-09-01"
    },
    "status": {
     "stock": "CRITICAL",
@@ -2675,8 +3015,8 @@
    "counts": {
     "CRITICAL": 7,
     "URGENT": 4,
-    "WATCH": 17,
-    "INFO": 0,
+    "WATCH": 18,
+    "INFO": 3,
     "OK": 12
    },
    "fba_units": 46329,
@@ -2700,7 +3040,7 @@
     "si": true,
     "velocity": true,
     "feedback": true,
-    "account_feed": false
+    "account_feed": true
    },
    "inventory": [
     {
@@ -3143,21 +3483,31 @@
     ]
    },
    "account": {
-    "ahr_status": null,
-    "ahr_score": null,
-    "odr": null,
-    "policy_violations": null,
-    "atoz_claims": null,
-    "notifications": [],
-    "as_of": null
+    "ahr_status": "Healthy",
+    "ahr_score": 1000,
+    "odr": "0.04% (9 of 21,291 FBA orders, 60d)",
+    "policy_violations": 1,
+    "atoz_claims": 0,
+    "notifications": [
+     {
+      "date": "2026-04-22",
+      "type": "listing_removed",
+      "asin": "B0DKVZRX69",
+      "subject": "Consumer Chemicals and Containers (CCCR) safety issue: Rapid Ceramic Interior Detailer listing removed on Amazon.ca, submission required. Open 4+ months; ASIN has no CA FBA offer in H10.",
+      "severity": "CRITICAL",
+      "status": "open since 2026-04-22, submission required",
+      "action": "Submit CCCR-compliant label/SDS evidence or bilingual hazard labelling in Manage Your Compliance"
+     }
+    ],
+    "as_of": "2026-09-01"
    },
    "status": {
     "stock": "WATCH",
-    "account": "WATCH",
-    "listings": "OK"
+    "account": "CRITICAL",
+    "listings": "CRITICAL"
    },
    "counts": {
-    "CRITICAL": 0,
+    "CRITICAL": 1,
     "URGENT": 0,
     "WATCH": 3,
     "INFO": 0,
@@ -3184,7 +3534,7 @@
     "si": true,
     "velocity": true,
     "feedback": true,
-    "account_feed": false
+    "account_feed": true
    },
    "inventory": [
     {
@@ -3568,22 +3918,50 @@
     ]
    },
    "account": {
-    "ahr_status": null,
-    "ahr_score": null,
-    "odr": null,
-    "policy_violations": null,
-    "atoz_claims": null,
-    "notifications": [],
-    "as_of": null
+    "ahr_status": "Healthy",
+    "ahr_score": 1000,
+    "odr": "0.01% (2 of 15,207 FBA orders, 60d)",
+    "policy_violations": 3,
+    "atoz_claims": 0,
+    "notifications": [
+     {
+      "date": "2026-08-28",
+      "type": "ip_complaint",
+      "asin": "B0H51RDY69",
+      "subject": "Trademark misuse (Boeing): Pro Ceramic Aircraft Coating Kit listing removed on Amazon.co.uk. AHR impact none. Submission required.",
+      "severity": "CRITICAL",
+      "status": "open, submission required",
+      "action": "Remove 'Boeing BSS7432 Certified' claim from title/bullets/images or provide authorisation, then submit"
+     },
+     {
+      "date": "2026-06-16",
+      "type": "other",
+      "asin": null,
+      "subject": "IEN (Import Entry Number) required for UK shipments received. PAST DUE. Inventory restrictions on the account; missing import details can block new UK shipments.",
+      "severity": "URGENT",
+      "status": "open, past due since June",
+      "action": "Client: add Import Entry Numbers to the flagged shipments in the UK Shipping Queue"
+     },
+     {
+      "date": "2026-08-12",
+      "type": "other",
+      "asin": null,
+      "subject": "European VAT Registration Requirements: warning sent, address by 10 Nov 2026.",
+      "severity": "URGENT",
+      "status": "open, due 2026-11-10",
+      "action": "Client: submit VAT registration details"
+     }
+    ],
+    "as_of": "2026-09-01"
    },
    "status": {
     "stock": "CRITICAL",
-    "account": "WATCH",
-    "listings": "OK"
+    "account": "CRITICAL",
+    "listings": "CRITICAL"
    },
    "counts": {
-    "CRITICAL": 1,
-    "URGENT": 1,
+    "CRITICAL": 2,
+    "URGENT": 3,
     "WATCH": 2,
     "INFO": 0,
     "OK": 9
@@ -3609,7 +3987,7 @@
     "si": true,
     "velocity": true,
     "feedback": true,
-    "account_feed": false
+    "account_feed": true
    },
    "inventory": [
     {
@@ -3989,23 +4367,69 @@
     ]
    },
    "account": {
-    "ahr_status": null,
-    "ahr_score": null,
-    "odr": null,
-    "policy_violations": null,
-    "atoz_claims": null,
-    "notifications": [],
-    "as_of": null
+    "ahr_status": "Healthy",
+    "ahr_score": 530,
+    "odr": "0.03% (2 of 7,920 FBA orders, 60d)",
+    "policy_violations": 3,
+    "atoz_claims": 0,
+    "notifications": [
+     {
+      "date": "2026-08-12",
+      "type": "listing_removed",
+      "asin": "B084RQKLV8",
+      "subject": "Product Condition Complaint, Defective: Headlight Restoration Kit listing removed on Amazon.de. EUR 233,701.79 at-risk sales, PAST DUE. AHR impact Low. Appeal rejected 17 Aug and again 27 Aug ('preventative action does not address the complaints'). Listing stays deactivated; AHR impact runs 180 days from posting.",
+      "severity": "CRITICAL",
+      "status": "open, 2 appeals rejected",
+      "action": "Resubmit with a preventative action that maps to the VOC complaint reasons (see project notes on the DE headlight appeal)"
+     },
+     {
+      "date": "2026-08-23",
+      "type": "account_at_risk",
+      "asin": null,
+      "subject": "Invoice Defect Rate exceeded 5% (Amazon Business orders without invoice within 1 business day). 5th warning since April. Fix: activate VAT Calculation Service (automated invoices) or declare VAT exemption.",
+      "severity": "URGENT",
+      "status": "recurring, currently 0% (0 of 7, 7d)",
+      "action": "Client: enable VAT Calculation Service or VAT-exemption declaration so invoices auto-generate"
+     },
+     {
+      "date": "2026-08-07",
+      "type": "other",
+      "asin": null,
+      "subject": "Germany FBA Prime eligibility: cancellation rate (standard-size, units) first warning, performance period FAIL. Third infraction revokes Prime on the tier.",
+      "severity": "WATCH",
+      "status": "first warning",
+      "action": "Download the FBA Prime Eligibility report (reportcentral/prime_eligibility) and check cancellation cause"
+     },
+     {
+      "date": "2026-04-30",
+      "type": "compliance_documents",
+      "asin": null,
+      "subject": "Reactivate your EU listings, GPSR compliance required (18 Apr and 30 Apr notices).",
+      "severity": "WATCH",
+      "status": "unknown, partly resolved (10 Jun ASIN reinstated x2)",
+      "action": "Confirm no EU listings remain GPSR-deactivated"
+     },
+     {
+      "date": "2026-03-11",
+      "type": "listing_removed",
+      "asin": null,
+      "subject": "Listings deactivated on Amazon.de due to missing packaging registration (LUCID), notices 20 Feb, 7 Mar, 11 Mar.",
+      "severity": "WATCH",
+      "status": "unknown",
+      "action": "Confirm LUCID registration number is on file and listings reactivated"
+     }
+    ],
+    "as_of": "2026-09-01"
    },
    "status": {
     "stock": "URGENT",
-    "account": "URGENT",
-    "listings": "OK"
+    "account": "CRITICAL",
+    "listings": "CRITICAL"
    },
    "counts": {
-    "CRITICAL": 0,
-    "URGENT": 3,
-    "WATCH": 2,
+    "CRITICAL": 1,
+    "URGENT": 6,
+    "WATCH": 5,
     "INFO": 0,
     "OK": 6
    },
@@ -4030,7 +4454,7 @@
     "si": true,
     "velocity": true,
     "feedback": true,
-    "account_feed": false
+    "account_feed": true
    },
    "inventory": [
     {
@@ -4445,22 +4869,22 @@
     "recent_negative": []
    },
    "account": {
-    "ahr_status": null,
-    "ahr_score": null,
-    "odr": null,
-    "policy_violations": null,
-    "atoz_claims": null,
+    "ahr_status": "Healthy",
+    "ahr_score": 296,
+    "odr": "0% (0 of 1,671 FBA orders, 60d)",
+    "policy_violations": 2,
+    "atoz_claims": 0,
     "notifications": [],
-    "as_of": null
+    "as_of": "2026-09-01"
    },
    "status": {
     "stock": "URGENT",
-    "account": "OK",
-    "listings": "OK"
+    "account": "URGENT",
+    "listings": "CRITICAL"
    },
    "counts": {
     "CRITICAL": 0,
-    "URGENT": 2,
+    "URGENT": 4,
     "WATCH": 3,
     "INFO": 0,
     "OK": 6
@@ -4486,7 +4910,7 @@
     "si": true,
     "velocity": true,
     "feedback": true,
-    "account_feed": false
+    "account_feed": true
    },
    "inventory": [
     {
@@ -4901,23 +5325,33 @@
     "recent_negative": []
    },
    "account": {
-    "ahr_status": null,
-    "ahr_score": null,
-    "odr": null,
-    "policy_violations": null,
-    "atoz_claims": null,
-    "notifications": [],
-    "as_of": null
+    "ahr_status": "Healthy",
+    "ahr_score": 240,
+    "odr": "0% (0 of 734 FBA orders, 60d)",
+    "policy_violations": 3,
+    "atoz_claims": 0,
+    "notifications": [
+     {
+      "date": null,
+      "type": "compliance_documents",
+      "asin": "B0C4ZV53DR",
+      "subject": "GPSR: Responsible Person contact details, submission under review.",
+      "severity": "WATCH",
+      "status": "under review",
+      "action": "None until Amazon responds"
+     }
+    ],
+    "as_of": "2026-09-01"
    },
    "status": {
     "stock": "URGENT",
-    "account": "OK",
-    "listings": "OK"
+    "account": "URGENT",
+    "listings": "CRITICAL"
    },
    "counts": {
     "CRITICAL": 0,
-    "URGENT": 2,
-    "WATCH": 3,
+    "URGENT": 4,
+    "WATCH": 4,
     "INFO": 0,
     "OK": 6
    },
@@ -4942,7 +5376,7 @@
     "si": true,
     "velocity": true,
     "feedback": true,
-    "account_feed": false
+    "account_feed": true
    },
    "inventory": [
     {
@@ -5325,22 +5759,32 @@
     "recent_negative": []
    },
    "account": {
-    "ahr_status": null,
-    "ahr_score": null,
-    "odr": null,
-    "policy_violations": null,
-    "atoz_claims": null,
-    "notifications": [],
-    "as_of": null
+    "ahr_status": "Healthy",
+    "ahr_score": 264,
+    "odr": "0.07% (1 of 1,410 FBA orders, 60d)",
+    "policy_violations": 3,
+    "atoz_claims": 0,
+    "notifications": [
+     {
+      "date": null,
+      "type": "compliance_documents",
+      "asin": "B0H1NM7467",
+      "subject": "EPR: Spain Packaging registration required, submission required. Listing at risk, EUR 19,469.68 at-risk sales, PAST DUE.",
+      "severity": "CRITICAL",
+      "status": "open, past due",
+      "action": "Client: provide Spain packaging EPR registration number in Manage Your Compliance"
+     }
+    ],
+    "as_of": "2026-09-01"
    },
    "status": {
     "stock": "URGENT",
-    "account": "OK",
-    "listings": "OK"
+    "account": "CRITICAL",
+    "listings": "CRITICAL"
    },
    "counts": {
-    "CRITICAL": 0,
-    "URGENT": 2,
+    "CRITICAL": 1,
+    "URGENT": 4,
     "WATCH": 3,
     "INFO": 0,
     "OK": 5
@@ -5366,7 +5810,7 @@
     "si": true,
     "velocity": true,
     "feedback": true,
-    "account_feed": false
+    "account_feed": true
    },
    "inventory": [
     {
@@ -5719,22 +6163,22 @@
     "recent_negative": []
    },
    "account": {
-    "ahr_status": null,
-    "ahr_score": null,
-    "odr": null,
-    "policy_violations": null,
-    "atoz_claims": null,
+    "ahr_status": "Healthy",
+    "ahr_score": 232,
+    "odr": "0% (0 of 556 FBA orders, 60d)",
+    "policy_violations": 2,
+    "atoz_claims": 0,
     "notifications": [],
-    "as_of": null
+    "as_of": "2026-09-01"
    },
    "status": {
     "stock": "URGENT",
-    "account": "OK",
-    "listings": "OK"
+    "account": "URGENT",
+    "listings": "CRITICAL"
    },
    "counts": {
     "CRITICAL": 0,
-    "URGENT": 2,
+    "URGENT": 4,
     "WATCH": 3,
     "INFO": 0,
     "OK": 4
@@ -5760,18 +6204,18 @@
     "si": false,
     "velocity": false,
     "feedback": false,
-    "account_feed": false
+    "account_feed": true
    },
    "inventory": [],
    "feedback": null,
    "account": {
-    "ahr_status": null,
-    "ahr_score": null,
-    "odr": null,
-    "policy_violations": null,
-    "atoz_claims": null,
+    "ahr_status": "Healthy",
+    "ahr_score": 200,
+    "odr": "N/A (no orders yet)",
+    "policy_violations": 0,
+    "atoz_claims": 0,
     "notifications": [],
-    "as_of": null
+    "as_of": "2026-09-01"
    },
    "status": {
     "stock": "OK",
@@ -5806,7 +6250,7 @@
     "si": false,
     "velocity": true,
     "feedback": true,
-    "account_feed": false
+    "account_feed": true
    },
    "inventory": [
     {
@@ -6095,13 +6539,13 @@
     "recent_negative": []
    },
    "account": {
-    "ahr_status": null,
-    "ahr_score": null,
-    "odr": null,
-    "policy_violations": null,
-    "atoz_claims": null,
+    "ahr_status": "Healthy",
+    "ahr_score": 204,
+    "odr": "0% (0 of 255 FBA orders, 60d)",
+    "policy_violations": 0,
+    "atoz_claims": 0,
     "notifications": [],
-    "as_of": null
+    "as_of": "2026-09-01"
    },
    "status": {
     "stock": "URGENT",
@@ -6530,7 +6974,7 @@
     "si": false,
     "velocity": true,
     "feedback": true,
-    "account_feed": false
+    "account_feed": true
    },
    "inventory": [
     {
@@ -6830,13 +7274,13 @@
     "recent_negative": []
    },
    "account": {
-    "ahr_status": null,
-    "ahr_score": null,
-    "odr": null,
-    "policy_violations": null,
-    "atoz_claims": null,
+    "ahr_status": "Healthy",
+    "ahr_score": 316,
+    "odr": "0% FBA (0 of 507), 0% MFN (0 of 1,307), 60d",
+    "policy_violations": 0,
+    "atoz_claims": 0,
     "notifications": [],
-    "as_of": null
+    "as_of": "2026-09-01"
    },
    "status": {
     "stock": "URGENT",
@@ -7207,7 +7651,7 @@
     "si": false,
     "velocity": true,
     "feedback": true,
-    "account_feed": false
+    "account_feed": true
    },
    "inventory": [
     {
@@ -7821,13 +8265,13 @@
     "recent_negative": []
    },
    "account": {
-    "ahr_status": null,
-    "ahr_score": null,
-    "odr": null,
-    "policy_violations": null,
-    "atoz_claims": null,
+    "ahr_status": "Healthy",
+    "ahr_score": 330,
+    "odr": "0% FBA (0 of 1,018), 0% MFN (0 of 683), 60d",
+    "policy_violations": 0,
+    "atoz_claims": 0,
     "notifications": [],
-    "as_of": null
+    "as_of": "2026-09-01"
    },
    "status": {
     "stock": "URGENT",

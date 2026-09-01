@@ -377,6 +377,25 @@ def build_snapshot(week, generated):
             'asin_count': len(inv_rows),
         }
 
+    # Region-wide account items (e.g. EU VAT, GPSR) live under the pool key (CC_EU) and appear once.
+    for pl in sorted(shared_pools):
+        ah = health.get(pl) or {}
+        if not ah:
+            continue
+        brand = pl.split('_')[0]
+        mkts = [ACC[c]['market'] for c in pool_members[pl]]
+        for n in ah.get('notifications', []):
+            sev = n.get('severity') or 'WATCH'
+            flat.append({'id': f"{pl}|{n.get('asin') or 'acct'}|{n.get('type')}|{n.get('date')}", 'account': pl, 'brand': brand,
+                         'market': pl.split('_')[1], 'label': pl.split('_')[1] + ' ' + BRANDS[brand]['label'], 'pool_markets': mkts, 'type': 'account',
+                         'severity': sev, 'asin': n.get('asin'), 'sku': None, 'name': n.get('type', 'notification').replace('_', ' ').title(),
+                         'reason': n.get('subject') or '', 'opened': n.get('date'), 'status': n.get('status'),
+                         'owner': 'barcus', 'action': n.get('action') or 'Open in Seller Central'})
+            for c in pool_members[pl]:
+                accounts_out[c]['counts'][sev] = accounts_out[c]['counts'].get(sev, 0) + 1
+                if SEV_RANK[sev] < SEV_RANK[accounts_out[c]['status']['account']]:
+                    accounts_out[c]['status']['account'] = sev
+                accounts_out[c]['coverage']['account_feed'] = True
     AORDER = ORDER + sorted(shared_pools)
     flat.sort(key=lambda f_: (SEV_RANK[f_['severity']], AORDER.index(f_['account']) if f_['account'] in AORDER else 99, f_.get('doc') if f_.get('doc') is not None else 9e9))
     totals = {k: sum(1 for f_ in flat if f_['severity'] == k) for k in ('CRITICAL', 'URGENT', 'WATCH')}
