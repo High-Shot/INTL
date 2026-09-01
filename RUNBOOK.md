@@ -71,8 +71,16 @@ do shell script "export PATH=/opt/homebrew/bin:/usr/local/bin:$PATH; cd \"$HOME/
 ```
 6c. If the Mac is unreachable: fall back to `.secrets/github_token` on the Mac if it exists (`git push https://x-access-token:$TOKEN@github.com/High-Shot/INTL.git main` from the cloud clone). If neither works, report "not published" in the summary; the files are already in the folder.
 
+## 6d. Client note (bi-weekly, with same-week exceptions)
+```
+python3 scripts/client_note.py $WEEK
+```
+It writes `notes/$WEEK-client-note.md` and prints `SEND=yes|no <reason>`. A note is due on even ISO weeks (first: 2026-W38, 14 Sep 2026), or any week a CRITICAL item is new or a deadline falls within 14 days. The note lists client-owned items (documents, registrations, shipments) first, then the restock list, then what we are handling, then what resolved. Commit the note with the snapshot (step 6).
+If SEND=yes: create a Gmail draft with `mcp__Gmail__create_draft`, to barcus@high-shot.com, subject "Amazon account health and restock, week of <Mon date>", body = the note with the DRAFT line removed. Barcus reviews, edits and forwards to NIC. Never send to the client directly.
+If SEND=no: skip the draft; the note is still committed for the record.
+
 ## 7. Summary message to Barcus (SendUserMessage)
-Lead line: "INTL $WEEK: N critical, N urgent, N watch (Δ vs last week)". Then one line per CRITICAL and URGENT stock item: market, SKU, name, available, inbound, days of cover, ads 30d, restock qty (Amazon rec or est.). Then account items. Then one line for anything that failed (a market with no SI data, Gmail empty, push failed). Link: https://high-shot.github.io/INTL/
+Lead line: "INTL $WEEK: N critical, N urgent, N watch (Δ vs last week)". Then one line per CRITICAL and URGENT stock item: market, SKU, name, available, inbound, days of cover, ads 30d, restock qty (Amazon rec or est.). Then account items. Then `Client note: SEND=yes (reason), Gmail draft created` or `Client note: SEND=no (reason)`. Then one line for anything that failed (a market with no SI data, Gmail empty, push failed, Seller Central session expired). Link: https://high-shot.github.io/INTL/
 No other prose.
 
 ## Rules

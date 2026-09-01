@@ -16,7 +16,8 @@
     "subject": "Submit product compliance documents to avoid listing removal (SDS, hazardous goods): Pro Ceramic Aircraft Coating Kit, SKUs AH-PROACKIT / AH-PROACKITA, deadline 2026-08-19",
     "severity": "WATCH",
     "status": "unknown, verify in Manage Your Compliance",
-    "action": "Confirm SDS accepted or listing status"
+    "action": "Confirm SDS accepted or listing status",
+    "owner": "client"
    },
    {
     "date": "2026-08-10",
@@ -25,7 +26,8 @@
     "subject": "Formal Notice: certify business information within 20 days (INFORM Act); 'Certification complete' same day",
     "severity": "INFO",
     "status": "resolved",
-    "action": "None"
+    "action": "None",
+    "owner": "barcus"
    },
    {
     "date": "2026-05-31",
@@ -34,7 +36,8 @@
     "subject": "Your Amazon.com seller account (notice, content not read)",
     "severity": "INFO",
     "status": "unknown",
-    "action": "Open notification"
+    "action": "Open notification",
+    "owner": "barcus"
    },
    {
     "date": "2026-03-27",
@@ -43,7 +46,8 @@
     "subject": "Address your On-time delivery rate (seller-fulfilled)",
     "severity": "INFO",
     "status": "resolved (OTDR 96.25% now)",
-    "action": "None"
+    "action": "None",
+    "owner": "barcus"
    }
   ]
  },
@@ -64,7 +68,8 @@
     "subject": "Product Condition Complaint, Defective: Headlight Restoration Kit listing removed on Amazon.de. EUR 233,701.79 at-risk sales, PAST DUE. AHR impact Low. Appeal rejected 17 Aug and again 27 Aug ('preventative action does not address the complaints'). Listing stays deactivated; AHR impact runs 180 days from posting.",
     "severity": "CRITICAL",
     "status": "open, 2 appeals rejected",
-    "action": "Resubmit with a preventative action that maps to the VOC complaint reasons (see project notes on the DE headlight appeal)"
+    "action": "Resubmit with a preventative action that maps to the VOC complaint reasons (see project notes on the DE headlight appeal)",
+    "owner": "barcus"
    },
    {
     "date": "2026-08-23",
@@ -73,7 +78,8 @@
     "subject": "Invoice Defect Rate exceeded 5% (Amazon Business orders without invoice within 1 business day). 5th warning since April. Fix: activate VAT Calculation Service (automated invoices) or declare VAT exemption.",
     "severity": "URGENT",
     "status": "recurring, currently 0% (0 of 7, 7d)",
-    "action": "Client: enable VAT Calculation Service or VAT-exemption declaration so invoices auto-generate"
+    "action": "Client: enable VAT Calculation Service or VAT-exemption declaration so invoices auto-generate",
+    "owner": "client"
    },
    {
     "date": "2026-08-07",
@@ -82,7 +88,8 @@
     "subject": "Germany FBA Prime eligibility: cancellation rate (standard-size, units) first warning, performance period FAIL. Third infraction revokes Prime on the tier.",
     "severity": "WATCH",
     "status": "first warning",
-    "action": "Download the FBA Prime Eligibility report (reportcentral/prime_eligibility) and check cancellation cause"
+    "action": "Download the FBA Prime Eligibility report (reportcentral/prime_eligibility) and check cancellation cause",
+    "owner": "barcus"
    },
    {
     "date": "2026-04-30",
@@ -91,7 +98,8 @@
     "subject": "Reactivate your EU listings, GPSR compliance required (18 Apr and 30 Apr notices).",
     "severity": "WATCH",
     "status": "unknown, partly resolved (10 Jun ASIN reinstated x2)",
-    "action": "Confirm no EU listings remain GPSR-deactivated"
+    "action": "Confirm no EU listings remain GPSR-deactivated",
+    "owner": "client"
    },
    {
     "date": "2026-03-11",
@@ -100,7 +108,8 @@
     "subject": "Listings deactivated on Amazon.de due to missing packaging registration (LUCID), notices 20 Feb, 7 Mar, 11 Mar.",
     "severity": "WATCH",
     "status": "unknown",
-    "action": "Confirm LUCID registration number is on file and listings reactivated"
+    "action": "Confirm LUCID registration number is on file and listings reactivated",
+    "owner": "client"
    }
   ]
  },
@@ -121,7 +130,8 @@
     "subject": "Trademark misuse (Boeing): Pro Ceramic Aircraft Coating Kit listing removed on Amazon.co.uk. AHR impact none. Submission required.",
     "severity": "CRITICAL",
     "status": "open, submission required",
-    "action": "Remove 'Boeing BSS7432 Certified' claim from title/bullets/images or provide authorisation, then submit"
+    "action": "Remove 'Boeing BSS7432 Certified' claim from title/bullets/images or provide authorisation, then submit",
+    "owner": "barcus"
    },
    {
     "date": "2026-06-16",
@@ -130,7 +140,8 @@
     "subject": "IEN (Import Entry Number) required for UK shipments received. PAST DUE. Inventory restrictions on the account; missing import details can block new UK shipments.",
     "severity": "URGENT",
     "status": "open, past due since June",
-    "action": "Client: add Import Entry Numbers to the flagged shipments in the UK Shipping Queue"
+    "action": "Client: add Import Entry Numbers to the flagged shipments in the UK Shipping Queue",
+    "owner": "client"
    }
   ]
  },
@@ -162,7 +173,8 @@
     "subject": "GPSR: Responsible Person contact details, submission under review.",
     "severity": "WATCH",
     "status": "under review",
-    "action": "None until Amazon responds"
+    "action": "None until Amazon responds",
+    "owner": "none"
    }
   ]
  },
@@ -183,7 +195,8 @@
     "subject": "EPR: Spain Packaging registration required, submission required. Listing at risk, EUR 19,469.68 at-risk sales, PAST DUE.",
     "severity": "CRITICAL",
     "status": "open, past due",
-    "action": "Client: provide Spain packaging EPR registration number in Manage Your Compliance"
+    "action": "Client: provide Spain packaging EPR registration number in Manage Your Compliance",
+    "owner": "client"
    }
   ]
  },
@@ -237,7 +250,8 @@
     "subject": "Consumer Chemicals and Containers (CCCR) safety issue: Rapid Ceramic Interior Detailer listing removed on Amazon.ca, submission required. Open 4+ months; ASIN has no CA FBA offer in H10.",
     "severity": "CRITICAL",
     "status": "open since 2026-04-22, submission required",
-    "action": "Submit CCCR-compliant label/SDS evidence or bilingual hazard labelling in Manage Your Compliance"
+    "action": "Submit CCCR-compliant label/SDS evidence or bilingual hazard labelling in Manage Your Compliance",
+    "owner": "client"
    }
   ]
  },
@@ -273,7 +287,8 @@
     "subject": "European VAT Registration Requirements (EU account-wide, also shown on UK): warning sent 12 Aug, address by 10 Nov 2026. Companion notices: provide VAT registration details within 90/75 days to avoid inventory and FBA restrictions on Amazon.fr.",
     "severity": "URGENT",
     "status": "open, due 2026-11-10",
-    "action": "Client: submit FR VAT registration details in Seller Central tax settings"
+    "action": "Client: submit FR VAT registration details in Seller Central tax settings",
+    "owner": "client"
    },
    {
     "date": "2026-07-31",
@@ -282,7 +297,8 @@
     "subject": "GPSR warning and safety information: Clay Prep Mitt (B0F8JJM54R) at risk of removal on DE, FR, IT, ES, NL; submission required.",
     "severity": "URGENT",
     "status": "open, submission required",
-    "action": "Upload GPSR responsible-person and safety info in Manage Your Compliance"
+    "action": "Upload GPSR responsible-person and safety info in Manage Your Compliance",
+    "owner": "client"
    }
   ]
  }

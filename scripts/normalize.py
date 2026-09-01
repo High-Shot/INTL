@@ -12,7 +12,7 @@ Writes data/snapshots/<WEEK>.json
 
 Usage: python3 scripts/normalize.py 2026-W36 [--generated 2026-09-01T12:00:00Z]
 """
-import csv, json, sys, os, glob, datetime as dt
+import csv, json, sys, os, re, glob, datetime as dt
 from collections import defaultdict
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -177,6 +177,18 @@ def load_json(week_dir, name):
         return None
     with open(p) as f:
         return json.load(f)
+
+
+
+def owner_of(n):
+    if n.get('owner'):
+        return n['owner']
+    return 'client' if (n.get('action') or '').strip().lower().startswith('client') else 'barcus'
+
+
+def clean_action(n):
+    a = (n.get('action') or 'Open in Seller Central').strip()
+    return re.sub(r'^client:\s*', '', a, flags=re.I)
 
 
 def classify(item, pool_vel, pool_doc):
@@ -344,7 +356,7 @@ def build_snapshot(week, generated):
                          'market': meta['market'], 'label': meta['label'], 'type': 'account',
                          'severity': sev, 'asin': n.get('asin'), 'sku': None, 'name': n.get('type', 'notification').replace('_', ' ').title(),
                          'reason': n.get('subject') or '', 'opened': n.get('date'), 'status': n.get('status'),
-                         'owner': 'barcus', 'action': n.get('action') or 'Open in Seller Central'})
+                         'owner': owner_of(n), 'action': clean_action(n)})
 
         counts = {k: 0 for k in SEV_RANK}
         for r in inv_rows:
@@ -386,7 +398,7 @@ def build_snapshot(week, generated):
                          'market': pl.split('_')[1], 'label': pl.split('_')[1] + ' ' + BRANDS[brand]['label'], 'pool_markets': mkts, 'type': 'account',
                          'severity': sev, 'asin': n.get('asin'), 'sku': None, 'name': n.get('type', 'notification').replace('_', ' ').title(),
                          'reason': n.get('subject') or '', 'opened': n.get('date'), 'status': n.get('status'),
-                         'owner': 'barcus', 'action': n.get('action') or 'Open in Seller Central'})
+                         'owner': owner_of(n), 'action': clean_action(n)})
             for c in pool_members[pl]:
                 accounts_out[c]['counts'][sev] = accounts_out[c]['counts'].get(sev, 0) + 1
                 if SEV_RANK[sev] < SEV_RANK[accounts_out[c]['status']['account']]:
