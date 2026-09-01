@@ -142,7 +142,7 @@ td.num,th.num{text-align:right;font-family:'DM Mono',monospace;white-space:nowra
     <div style="overflow-x:auto"><table><thead><tr>
       <th>Sev</th><th>Market</th><th>Product</th><th>Why</th><th class="num">Avail</th><th class="num">Inbound</th><th class="num">Days</th><th class="num">Vel/day</th><th class="num">Ads 30d</th><th class="num">Restock</th><th>Owner</th><th>Action</th><th>Open</th>
     </tr></thead><tbody id="act-body"></tbody></table></div>
-    <div class="note">Restock: green = Amazon FBA recommendation (restock_recs.csv). Grey "est." = estimate to reach 60 days of cover at current velocity, shown only until Amazon's number is loaded. Owner "client" = Cerakote creates the shipment.</div>
+    <div class="note">Restock: green = Amazon FBA recommendation (restock_recs.csv). Grey "est." = velocity x (lead time + 30 days) minus available and inbound; lead time assumed 14d NA, 45d UK/EU/AU/SA. Shown only until Amazon's number is loaded. Owner "client" = Cerakote creates the shipment.</div>
   </div>
 
   <div class="two-col">
@@ -322,7 +322,7 @@ td.num,th.num{text-align:right;font-family:'DM Mono',monospace;white-space:nowra
     var items=s.items.filter(function(it){return it.type==='stock'&&it.severity!=='WATCH'&&itemMatchesMarket(it,mktFilter)});
     var by={}; items.forEach(function(it){(by[it.market]=by[it.market]||[]).push(it)});
     Object.keys(by).forEach(function(mk){lines.push(mk+(mk==='EU'?' (pooled: '+(by[mk][0].pool_markets||[]).join(' ')+')':''));
-      by[mk].forEach(function(it){var q=it.restock_rec!=null?it.restock_rec+' units (Amazon rec)':(it.restock_est!=null?'~'+it.restock_est+' units (estimate, 60d cover)':'qty TBD');
+      by[mk].forEach(function(it){var q=it.restock_rec!=null?it.restock_rec+' units (Amazon rec)':(it.restock_est!=null?'~'+it.restock_est+' units (estimate: lead time + 30d cover)':'qty TBD');
         lines.push('  '+it.severity+' · '+it.sku+' · '+it.asin+' · '+it.name+' · avail '+it.available+' · inbound '+(it.inbound==null?'?':it.inbound)+' · '+q)});
       lines.push('')});
     var txt=lines.join('\n');

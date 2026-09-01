@@ -35,7 +35,12 @@ ORDER = ['US', 'CA', 'UK', 'DE', 'FR', 'IT', 'ES', 'NL', 'SE', 'SA', 'AU']
 # Thresholds (days of cover). Project rule: <14 days = URGENT, OOS = CRITICAL.
 URGENT_DOC = 14
 WATCH_DOC = 28
-TARGET_DOC = 60          # used only for the estimated restock qty fallback
+# Restock estimate (fallback when Amazon's recommendation is not loaded):
+#   qty = velocity x (lead_time_days + REVIEW_COVER_DAYS) - available - inbound
+# Lead times are ASSUMPTIONS as of 2026-09-01 (Barcus to correct): NA 14d, UK/EU/AU/SA 45d.
+LEAD_TIME_DAYS = {'US': 14, 'CA': 14, 'UK': 45, 'EU': 45, 'SA': 45, 'AU': 45}
+REVIEW_COVER_DAYS = 30
+TARGET_DOC = 60          # kept for reference; est now uses LEAD_TIME_DAYS + REVIEW_COVER_DAYS
 UNFULFILLABLE_WATCH = 10
 FEEDBACK_NEG_PCT_URGENT = 0.15
 FEEDBACK_MIN_COUNT = 5
@@ -219,7 +224,8 @@ def build_snapshot(week, generated):
             est = None
             v = pv if pv is not None else (it['vel'] or 0)
             if sev in ('CRITICAL', 'URGENT', 'WATCH') and v > 0:
-                est = max(0, int(round(v * TARGET_DOC)) - it['available'] - (it['inbound'] or 0))
+                horizon = LEAD_TIME_DAYS.get(meta['pool'], 30) + REVIEW_COVER_DAYS
+                est = max(0, int(round(v * horizon)) - it['available'] - (it['inbound'] or 0))
             row = {
                 'asin': asin, 'sku': it['sku'], 'skus': it.get('skus'), 'name': it['name'], 'title': it['title'], 'image': it['image'],
                 'available': it['available'], 'inbound': it['inbound'], 'inbound_reported': it['inbound_reported'],
@@ -301,7 +307,7 @@ def build_snapshot(week, generated):
         'week': week, 'generated_at': generated,
         'sources': {'h10_inventory': True, 'si_inventory': bool(si), 'seller_feedback': bool(feedback),
                     'account_health': bool(health), 'restock_recs': bool(recs)},
-        'thresholds': {'urgent_doc': URGENT_DOC, 'watch_doc': WATCH_DOC, 'target_doc': TARGET_DOC},
+        'thresholds': {'urgent_doc': URGENT_DOC, 'watch_doc': WATCH_DOC, 'target_doc': TARGET_DOC, 'lead_time_days': LEAD_TIME_DAYS, 'review_cover_days': REVIEW_COVER_DAYS},
         'totals': totals, 'items': flat, 'markets': markets_out, 'order': ORDER,
     }
     return snap

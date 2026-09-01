@@ -11,7 +11,16 @@
  "thresholds": {
   "urgent_doc": 14,
   "watch_doc": 28,
-  "target_doc": 60
+  "target_doc": 60,
+  "lead_time_days": {
+   "US": 14,
+   "CA": 14,
+   "UK": 45,
+   "EU": 45,
+   "SA": 45,
+   "AU": 45
+  },
+  "review_cover_days": 30
  },
  "totals": {
   "CRITICAL": 8,
@@ -35,7 +44,7 @@
    "vel": 0.03,
    "ad30": 21.47,
    "restock_rec": null,
-   "restock_est": 2,
+   "restock_est": 1,
    "owner": "client",
    "action": "Create FBA shipment"
   },
@@ -55,7 +64,7 @@
    "vel": 0.43,
    "ad30": 0.0,
    "restock_rec": null,
-   "restock_est": 26,
+   "restock_est": 19,
    "owner": "client",
    "action": "Create FBA shipment"
   },
@@ -75,7 +84,7 @@
    "vel": 3.17,
    "ad30": 0.0,
    "restock_rec": null,
-   "restock_est": 190,
+   "restock_est": 139,
    "owner": "client",
    "action": "Create FBA shipment"
   },
@@ -95,7 +104,7 @@
    "vel": 0.07,
    "ad30": 13.82,
    "restock_rec": null,
-   "restock_est": 4,
+   "restock_est": 3,
    "owner": "client",
    "action": "Create FBA shipment"
   },
@@ -115,7 +124,7 @@
    "vel": 0.07,
    "ad30": 0.0,
    "restock_rec": null,
-   "restock_est": 4,
+   "restock_est": 3,
    "owner": "client",
    "action": "Create FBA shipment"
   },
@@ -135,7 +144,7 @@
    "vel": 0.47,
    "ad30": 6.21,
    "restock_rec": null,
-   "restock_est": 28,
+   "restock_est": 21,
    "owner": "client",
    "action": "Create FBA shipment"
   },
@@ -155,7 +164,7 @@
    "vel": 0.43,
    "ad30": 0.0,
    "restock_rec": null,
-   "restock_est": 26,
+   "restock_est": 19,
    "owner": "client",
    "action": "Create FBA shipment"
   },
@@ -175,7 +184,7 @@
    "vel": 21.2,
    "ad30": 1049.73,
    "restock_rec": null,
-   "restock_est": 1272,
+   "restock_est": 1590,
    "owner": "client",
    "action": "Create FBA shipment"
   },
@@ -195,7 +204,7 @@
    "vel": 0.57,
    "ad30": 7.59,
    "restock_rec": null,
-   "restock_est": 30,
+   "restock_est": 21,
    "owner": "client",
    "action": "Create FBA shipment"
   },
@@ -215,7 +224,7 @@
    "vel": 34.5,
    "ad30": 0.0,
    "restock_rec": null,
-   "restock_est": 1813,
+   "restock_est": 1261,
    "owner": "client",
    "action": "Create FBA shipment"
   },
@@ -235,7 +244,7 @@
    "vel": 190.03,
    "ad30": 10612.75,
    "restock_rec": null,
-   "restock_est": 9969,
+   "restock_est": 6928,
    "owner": "client",
    "action": "Create FBA shipment"
   },
@@ -255,7 +264,7 @@
    "vel": 147.93,
    "ad30": 9609.94,
    "restock_rec": null,
-   "restock_est": 7327,
+   "restock_est": 4960,
    "owner": "client",
    "action": "Create FBA shipment"
   },
@@ -275,7 +284,7 @@
    "vel": 167.83,
    "ad30": 6717.26,
    "restock_rec": null,
-   "restock_est": 8100,
+   "restock_est": 10617,
    "owner": "client",
    "action": "Create FBA shipment"
   },
@@ -307,7 +316,7 @@
    "vel": 1.37,
    "ad30": 0.0,
    "restock_rec": null,
-   "restock_est": 79,
+   "restock_est": 100,
    "owner": "client",
    "action": "Create FBA shipment"
   },
@@ -327,7 +336,7 @@
    "vel": 11.9,
    "ad30": 751.77,
    "restock_rec": null,
-   "restock_est": 641,
+   "restock_est": 819,
    "owner": "client",
    "action": "Create FBA shipment"
   },
@@ -353,7 +362,7 @@
    "vel": 0.49,
    "ad30": 0.0,
    "restock_rec": null,
-   "restock_est": 23,
+   "restock_est": 31,
    "owner": "client",
    "action": "Create FBA shipment"
   },
@@ -379,7 +388,7 @@
    "vel": 4.11,
    "ad30": 0.0,
    "restock_rec": null,
-   "restock_est": 193,
+   "restock_est": 254,
    "owner": "client",
    "action": "Create FBA shipment"
   },
@@ -399,7 +408,7 @@
    "vel": 6.57,
    "ad30": 0.0,
    "restock_rec": null,
-   "restock_est": 275,
+   "restock_est": 170,
    "owner": "client",
    "action": "Plan shipment"
   },
@@ -439,7 +448,7 @@
    "vel": 537.53,
    "ad30": 21621.31,
    "restock_rec": null,
-   "restock_est": 14605,
+   "restock_est": 6004,
    "owner": "client",
    "action": "Plan shipment"
   },
@@ -459,7 +468,7 @@
    "vel": 14.93,
    "ad30": 0.0,
    "restock_rec": null,
-   "restock_est": 733,
+   "restock_est": 494,
    "owner": "client",
    "action": "Plan shipment"
   },
@@ -479,7 +488,7 @@
    "vel": 1471.93,
    "ad30": 55608.43,
    "restock_rec": null,
-   "restock_est": 49194,
+   "restock_est": 25643,
    "owner": "client",
    "action": "Plan shipment"
   },
@@ -499,7 +508,7 @@
    "vel": 6.7,
    "ad30": 0.0,
    "restock_rec": null,
-   "restock_est": 283,
+   "restock_est": 176,
    "owner": "client",
    "action": "Plan shipment"
   },
@@ -519,7 +528,7 @@
    "vel": 1.93,
    "ad30": 0.0,
    "restock_rec": null,
-   "restock_est": 83,
+   "restock_est": 52,
    "owner": "client",
    "action": "Plan shipment"
   },
@@ -539,7 +548,7 @@
    "vel": 11.13,
    "ad30": 0.0,
    "restock_rec": null,
-   "restock_est": 438,
+   "restock_est": 260,
    "owner": "client",
    "action": "Plan shipment"
   },
@@ -559,7 +568,7 @@
    "vel": 8.67,
    "ad30": 0.0,
    "restock_rec": null,
-   "restock_est": 327,
+   "restock_est": 188,
    "owner": "client",
    "action": "Plan shipment"
   },
@@ -579,7 +588,7 @@
    "vel": 4.87,
    "ad30": 0.0,
    "restock_rec": null,
-   "restock_est": 184,
+   "restock_est": 106,
    "owner": "client",
    "action": "Plan shipment"
   },
@@ -599,7 +608,7 @@
    "vel": 16.87,
    "ad30": 4116.25,
    "restock_rec": null,
-   "restock_est": 610,
+   "restock_est": 340,
    "owner": "client",
    "action": "Plan shipment"
   },
@@ -619,7 +628,7 @@
    "vel": 19.53,
    "ad30": 238.01,
    "restock_rec": null,
-   "restock_est": 697,
+   "restock_est": 384,
    "owner": "client",
    "action": "Plan shipment"
   },
@@ -639,7 +648,7 @@
    "vel": 0.63,
    "ad30": 1.2,
    "restock_rec": null,
-   "restock_est": 22,
+   "restock_est": 12,
    "owner": "client",
    "action": "Plan shipment"
   },
@@ -659,7 +668,7 @@
    "vel": 5.7,
    "ad30": 95.08,
    "restock_rec": null,
-   "restock_est": 193,
+   "restock_est": 102,
    "owner": "client",
    "action": "Plan shipment"
   },
@@ -679,7 +688,7 @@
    "vel": 68.83,
    "ad30": 1011.44,
    "restock_rec": null,
-   "restock_est": 2139,
+   "restock_est": 1038,
    "owner": "client",
    "action": "Plan shipment"
   },
@@ -731,7 +740,7 @@
    "vel": 0.17,
    "ad30": 0.0,
    "restock_rec": null,
-   "restock_est": 6,
+   "restock_est": 3,
    "owner": "client",
    "action": "Plan shipment"
   },
@@ -783,7 +792,7 @@
    "vel": 4.2,
    "ad30": 0.0,
    "restock_rec": null,
-   "restock_est": 146,
+   "restock_est": 209,
    "owner": "client",
    "action": "Plan shipment"
   },
@@ -815,7 +824,7 @@
    "vel": 40.63,
    "ad30": 1701.76,
    "restock_rec": null,
-   "restock_est": 0,
+   "restock_est": 395,
    "owner": "client",
    "action": "Plan shipment"
   },
@@ -841,7 +850,7 @@
    "vel": 1.37,
    "ad30": 0.0,
    "restock_rec": null,
-   "restock_est": 56,
+   "restock_est": 77,
    "owner": "client",
    "action": "Plan shipment"
   },
@@ -867,7 +876,7 @@
    "vel": 14.34,
    "ad30": 526.77,
    "restock_rec": null,
-   "restock_est": 264,
+   "restock_est": 480,
    "owner": "client",
    "action": "Plan shipment"
   },
@@ -892,7 +901,7 @@
    "vel": 66.37,
    "ad30": 2436.21,
    "restock_rec": null,
-   "restock_est": 270,
+   "restock_est": 1266,
    "owner": "client",
    "action": "Plan shipment"
   }
@@ -944,7 +953,7 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 2
+     "restock_est": 1
     },
     {
      "asin": "B0CXKPY6B8",
@@ -977,7 +986,7 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 26
+     "restock_est": 19
     },
     {
      "asin": "B0DKVBTNNT",
@@ -1010,7 +1019,7 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 190
+     "restock_est": 139
     },
     {
      "asin": "B0F23KPC5G",
@@ -1044,7 +1053,7 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 4
+     "restock_est": 3
     },
     {
      "asin": "B0F2BFSMZT",
@@ -1077,7 +1086,7 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 4
+     "restock_est": 3
     },
     {
      "asin": "B0F3GD9G6N",
@@ -1111,7 +1120,7 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 28
+     "restock_est": 21
     },
     {
      "asin": "B0H1SP98C3",
@@ -1143,7 +1152,7 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 26
+     "restock_est": 19
     },
     {
      "asin": "B0H3QRH9B7",
@@ -1176,7 +1185,7 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 30
+     "restock_est": 21
     },
     {
      "asin": "B08FF6X75N",
@@ -1208,7 +1217,7 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 1813
+     "restock_est": 1261
     },
     {
      "asin": "B0B94G13CN",
@@ -1242,7 +1251,7 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 9969
+     "restock_est": 6928
     },
     {
      "asin": "B0FYRJ1966",
@@ -1276,7 +1285,7 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 7327
+     "restock_est": 4960
     },
     {
      "asin": "B0H1NM7467",
@@ -1308,7 +1317,7 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 275
+     "restock_est": 170
     },
     {
      "asin": "B0DKVZRX69",
@@ -1374,7 +1383,7 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 14605
+     "restock_est": 6004
     },
     {
      "asin": "B0C4QX35KX",
@@ -1406,7 +1415,7 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 733
+     "restock_est": 494
     },
     {
      "asin": "B084RQKLV8",
@@ -1439,7 +1448,7 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 49194
+     "restock_est": 25643
     },
     {
      "asin": "B0DH5ZC1N4",
@@ -1471,7 +1480,7 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 283
+     "restock_est": 176
     },
     {
      "asin": "B0H1NDSGVJ",
@@ -1503,7 +1512,7 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 83
+     "restock_est": 52
     },
     {
      "asin": "B0GY1XLQMS",
@@ -1535,7 +1544,7 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 438
+     "restock_est": 260
     },
     {
      "asin": "B0DH5HKH5R",
@@ -1567,7 +1576,7 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 327
+     "restock_est": 188
     },
     {
      "asin": "B0H1NP4461",
@@ -1599,7 +1608,7 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 184
+     "restock_est": 106
     },
     {
      "asin": "B0CN8HJSYM",
@@ -1631,7 +1640,7 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 610
+     "restock_est": 340
     },
     {
      "asin": "B0FW6WFX4D",
@@ -1663,7 +1672,7 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 697
+     "restock_est": 384
     },
     {
      "asin": "B0H3QLBNZF",
@@ -1695,7 +1704,7 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 22
+     "restock_est": 12
     },
     {
      "asin": "B08DDJ49X7",
@@ -1727,7 +1736,7 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 193
+     "restock_est": 102
     },
     {
      "asin": "B0DJMW6283",
@@ -1759,7 +1768,7 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 2139
+     "restock_est": 1038
     },
     {
      "asin": "B0F45C2YHV",
@@ -2238,7 +2247,7 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 6
+     "restock_est": 3
     },
     {
      "asin": "B0B94G13CN",
@@ -2717,7 +2726,7 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 1272
+     "restock_est": 1590
     },
     {
      "asin": "B084RQKLV8",
@@ -2750,7 +2759,7 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 8100
+     "restock_est": 10617
     },
     {
      "asin": "B0FW6WFX4D",
@@ -2782,7 +2791,7 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 146
+     "restock_est": 209
     },
     {
      "asin": "B0FYRJ1966",
@@ -3141,7 +3150,7 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 23
+     "restock_est": 31
     },
     {
      "asin": "B0FYRJ1966",
@@ -3179,7 +3188,7 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 193
+     "restock_est": 254
     },
     {
      "asin": "B0DKVZRX69",
@@ -3217,7 +3226,7 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 56
+     "restock_est": 77
     },
     {
      "asin": "B07SHJVK4G",
@@ -3255,7 +3264,7 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 264
+     "restock_est": 480
     },
     {
      "asin": "B0F45C2YHV",
@@ -3556,7 +3565,7 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 23
+     "restock_est": 31
     },
     {
      "asin": "B0FYRJ1966",
@@ -3594,7 +3603,7 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 193
+     "restock_est": 254
     },
     {
      "asin": "B0DKVZRX69",
@@ -3632,7 +3641,7 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 56
+     "restock_est": 77
     },
     {
      "asin": "B07SHJVK4G",
@@ -3670,7 +3679,7 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 264
+     "restock_est": 480
     },
     {
      "asin": "B084RQKLV8",
@@ -3707,7 +3716,7 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 270
+     "restock_est": 1266
     },
     {
      "asin": "B0F45C2YHV",
@@ -4006,7 +4015,7 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 23
+     "restock_est": 31
     },
     {
      "asin": "B0FYRJ1966",
@@ -4044,7 +4053,7 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 193
+     "restock_est": 254
     },
     {
      "asin": "B0DKVZRX69",
@@ -4082,7 +4091,7 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 56
+     "restock_est": 77
     },
     {
      "asin": "B07SHJVK4G",
@@ -4120,7 +4129,7 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 264
+     "restock_est": 480
     },
     {
      "asin": "B084RQKLV8",
@@ -4157,7 +4166,7 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 270
+     "restock_est": 1266
     },
     {
      "asin": "B0F45C2YHV",
@@ -4456,7 +4465,7 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 23
+     "restock_est": 31
     },
     {
      "asin": "B0FYRJ1966",
@@ -4494,7 +4503,7 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 193
+     "restock_est": 254
     },
     {
      "asin": "B0DKVZRX69",
@@ -4532,7 +4541,7 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 56
+     "restock_est": 77
     },
     {
      "asin": "B07SHJVK4G",
@@ -4572,7 +4581,7 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 264
+     "restock_est": 480
     },
     {
      "asin": "B084RQKLV8",
@@ -4609,7 +4618,7 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 270
+     "restock_est": 1266
     },
     {
      "asin": "B0F45C2YHV",
@@ -4875,7 +4884,7 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 23
+     "restock_est": 31
     },
     {
      "asin": "B0FYRJ1966",
@@ -4914,7 +4923,7 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 193
+     "restock_est": 254
     },
     {
      "asin": "B0DKVZRX69",
@@ -4953,7 +4962,7 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 56
+     "restock_est": 77
     },
     {
      "asin": "B07SHJVK4G",
@@ -4994,7 +5003,7 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 264
+     "restock_est": 480
     },
     {
      "asin": "B084RQKLV8",
@@ -5032,7 +5041,7 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 270
+     "restock_est": 1266
     },
     {
      "asin": "B0F45C2YHV",
@@ -5615,7 +5624,7 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 79
+     "restock_est": 100
     },
     {
      "asin": "B07SHJVK4G",
@@ -5649,7 +5658,7 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 641
+     "restock_est": 819
     },
     {
      "asin": "B084RQKLV8",
@@ -5682,7 +5691,7 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 0
+     "restock_est": 395
     },
     {
      "asin": "B0DJMW6283",
