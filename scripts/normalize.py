@@ -12,25 +12,51 @@ Writes data/snapshots/<WEEK>.json
 
 Usage: python3 scripts/normalize.py 2026-W36 [--generated 2026-09-01T12:00:00Z]
 """
-import csv, json, sys, os, datetime as dt
+import csv, json, sys, os, glob, datetime as dt
 from collections import defaultdict
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-MARKETS = {
-    'US': {'name': 'United States', 'cur': '$',   'region': 'NA', 'pool': 'US',  'seller': 'AOXMQPMOL1F1Y'},
-    'CA': {'name': 'Canada',        'cur': 'C$',  'region': 'NA', 'pool': 'CA',  'seller': 'AOXMQPMOL1F1Y'},
-    'UK': {'name': 'United Kingdom','cur': '£',   'region': 'EU', 'pool': 'UK',  'seller': 'A3BMUMIXNXIR6G'},
-    'DE': {'name': 'Germany',       'cur': '€',   'region': 'EU', 'pool': 'EU',  'seller': 'A3BMUMIXNXIR6G'},
-    'FR': {'name': 'France',        'cur': '€',   'region': 'EU', 'pool': 'EU',  'seller': 'A3BMUMIXNXIR6G'},
-    'IT': {'name': 'Italy',         'cur': '€',   'region': 'EU', 'pool': 'EU',  'seller': 'A3BMUMIXNXIR6G'},
-    'ES': {'name': 'Spain',         'cur': '€',   'region': 'EU', 'pool': 'EU',  'seller': 'A3BMUMIXNXIR6G'},
-    'NL': {'name': 'Netherlands',   'cur': '€',   'region': 'EU', 'pool': 'EU',  'seller': 'A3BMUMIXNXIR6G'},
-    'SE': {'name': 'Sweden',        'cur': 'kr',  'region': 'EU', 'pool': 'EU',  'seller': 'A3BMUMIXNXIR6G'},
-    'SA': {'name': 'Saudi Arabia',  'cur': 'SAR', 'region': 'EU', 'pool': 'SA',  'seller': 'A3BMUMIXNXIR6G'},
-    'AU': {'name': 'Australia',     'cur': 'A$',  'region': 'FE', 'pool': 'AU',  'seller': 'A22UNGVVL3ZGDF'},
+BRANDS = {
+    'CC': {'name': 'Cerakote Auto',     'label': 'AUTO',   'site': 'https://cerakoteceramics.com/'},
+    'CL': {'name': 'Cerakote Legacy',   'label': 'LEGACY', 'site': 'https://www.cerakote.com/'},
+    'PP': {'name': 'Prismatic Powders', 'label': 'PRIS',   'site': 'https://www.prismaticpowders.com/'},
 }
-ORDER = ['US', 'CA', 'UK', 'DE', 'FR', 'IT', 'ES', 'NL', 'SE', 'SA', 'AU']
+MKT = {
+    'US': ('United States', '$'), 'CA': ('Canada', 'C$'), 'MX': ('Mexico', 'MX$'), 'UK': ('United Kingdom', '£'),
+    'DE': ('Germany', '€'), 'FR': ('France', '€'), 'IT': ('Italy', '€'), 'ES': ('Spain', '€'), 'NL': ('Netherlands', '€'),
+    'AE': ('UAE', 'AED'), 'SA': ('Saudi Arabia', 'SAR'), 'AU': ('Australia', 'A$'),
+}
+# One row per account tab. pool = FBA inventory pool (EU markets share one). launching = suppress stock alerts until first sales.
+ACCOUNTS = [
+    {'code': 'CC_US', 'brand': 'CC', 'market': 'US', 'seller': 'AOXMQPMOL1F1Y', 'pool': 'CC_US'},
+    {'code': 'CC_CA', 'brand': 'CC', 'market': 'CA', 'seller': 'AOXMQPMOL1F1Y', 'pool': 'CC_CA'},
+    {'code': 'CC_UK', 'brand': 'CC', 'market': 'UK', 'seller': 'A3BMUMIXNXIR6G', 'pool': 'CC_UK'},
+    {'code': 'CC_DE', 'brand': 'CC', 'market': 'DE', 'seller': 'A3BMUMIXNXIR6G', 'pool': 'CC_EU'},
+    {'code': 'CC_FR', 'brand': 'CC', 'market': 'FR', 'seller': 'A3BMUMIXNXIR6G', 'pool': 'CC_EU'},
+    {'code': 'CC_IT', 'brand': 'CC', 'market': 'IT', 'seller': 'A3BMUMIXNXIR6G', 'pool': 'CC_EU'},
+    {'code': 'CC_ES', 'brand': 'CC', 'market': 'ES', 'seller': 'A3BMUMIXNXIR6G', 'pool': 'CC_EU'},
+    {'code': 'CC_NL', 'brand': 'CC', 'market': 'NL', 'seller': 'A3BMUMIXNXIR6G', 'pool': 'CC_EU'},
+    {'code': 'CC_AE', 'brand': 'CC', 'market': 'AE', 'seller': 'A3BMUMIXNXIR6G', 'pool': 'CC_AE', 'launching': True},
+    {'code': 'CC_SA', 'brand': 'CC', 'market': 'SA', 'seller': 'A3BMUMIXNXIR6G', 'pool': 'CC_SA'},
+    {'code': 'CC_AU', 'brand': 'CC', 'market': 'AU', 'seller': 'A22UNGVVL3ZGDF', 'pool': 'CC_AU'},
+    {'code': 'CL_US', 'brand': 'CL', 'market': 'US', 'seller': 'A1KUYEQ8RRQVVI', 'pool': 'CL_NA'},
+    {'code': 'CL_CA', 'brand': 'CL', 'market': 'CA', 'seller': 'A1KUYEQ8RRQVVI', 'pool': 'CL_NA'},
+    {'code': 'CL_MX', 'brand': 'CL', 'market': 'MX', 'seller': 'A1KUYEQ8RRQVVI', 'pool': 'CL_NA'},
+    {'code': 'PP_US', 'brand': 'PP', 'market': 'US', 'seller': 'A21D21T8B6U09C', 'pool': 'PP_NA'},
+    {'code': 'PP_CA', 'brand': 'PP', 'market': 'CA', 'seller': 'A21D21T8B6U09C', 'pool': 'PP_NA'},
+    {'code': 'PP_MX', 'brand': 'PP', 'market': 'MX', 'seller': 'A21D21T8B6U09C', 'pool': 'PP_NA'},
+]
+for a in ACCOUNTS:
+    a['name'], a['cur'] = MKT[a['market']]
+    a['brand_name'] = BRANDS[a['brand']]['name']
+    a['label'] = f"{a['market']} {BRANDS[a['brand']]['label']}"
+    a.setdefault('launching', False)
+ACC = {a['code']: a for a in ACCOUNTS}
+BY_SELLER_MKT = {(a['seller'], a['market']): a['code'] for a in ACCOUNTS}
+ORDER = [a['code'] for a in ACCOUNTS]
+POOL_LEAD = {'CC_US': 14, 'CC_CA': 14, 'CL_NA': 14, 'PP_NA': 14,
+             'CC_UK': 45, 'CC_EU': 45, 'CC_AE': 45, 'CC_SA': 45, 'CC_AU': 45}
 
 # Thresholds (days of cover). Project rule: <14 days = URGENT, OOS = CRITICAL.
 URGENT_DOC = 14
@@ -38,7 +64,7 @@ WATCH_DOC = 28
 # Restock estimate (fallback when Amazon's recommendation is not loaded):
 #   qty = velocity x (lead_time_days + REVIEW_COVER_DAYS) - available - inbound
 # Lead times are ASSUMPTIONS as of 2026-09-01 (Barcus to correct): NA 14d, UK/EU/AU/SA 45d.
-LEAD_TIME_DAYS = {'US': 14, 'CA': 14, 'UK': 45, 'EU': 45, 'SA': 45, 'AU': 45}
+LEAD_TIME_DAYS = POOL_LEAD
 REVIEW_COVER_DAYS = 30
 TARGET_DOC = 60          # kept for reference; est now uses LEAD_TIME_DAYS + REVIEW_COVER_DAYS
 UNFULFILLABLE_WATCH = 10
@@ -68,35 +94,58 @@ def short_name(title):
 
 
 def load_h10(week_dir):
+    """H10 inventory rows keyed by (account_code, asin)."""
     p = os.path.join(week_dir, 'h10_inventory.json')
+    out = {}
+    files = [p] + sorted(glob.glob(os.path.join(week_dir, 'h10_inventory_*.json')))
+    for fp in files:
+        if not os.path.exists(fp):
+            continue
+        with open(fp) as f:
+            d = json.load(f)
+        for r in d['data']['rows']:
+            if r.get('fulfillment_type') != 'FBA':
+                continue
+            code = BY_SELLER_MKT.get((r.get('seller_id'), r['marketplace']))
+            if not code:
+                continue
+            inv = r.get('inventory', {})
+            key = (code, r['asin'])
+            inbound_keys = ['inbound_working', 'inbound_shipped', 'inbound_received']
+            has_inbound = any(k in inv for k in inbound_keys)
+            inbound = sum(int(inv.get(k) or 0) for k in inbound_keys) if has_inbound else None
+            rec = {
+                'asin': r['asin'], 'sku': r.get('sku'), 'name': short_name(r.get('product_name')),
+                'title': r.get('product_name'), 'image': r.get('image_url'),
+                'available': int(inv.get('available') or 0), 'inbound': inbound,
+                'inbound_reported': has_inbound,
+                'unfulfillable': int(inv.get('unfulfillable') or 0),
+            }
+            if key in out:
+                if rec['available'] > out[key]['available']:
+                    out[key].update({k: rec[k] for k in ('available', 'inbound', 'unfulfillable')})
+                out[key]['skus'] = sorted(set(out[key].get('skus', [out[key]['sku']]) + [rec['sku']]))
+            else:
+                rec['skus'] = [rec['sku']]
+                out[key] = rec
+    return out
+
+
+def load_h10_velocity(week_dir):
+    """H10 get_sales_velocity (FBA, one month bucket) -> units in window keyed by (account_code, asin)."""
+    p = os.path.join(week_dir, 'h10_velocity.json')
+    out = {}
+    if not os.path.exists(p):
+        return out
     with open(p) as f:
         d = json.load(f)
-    rows = d['data']['rows']
-    out = {}
-    for r in rows:
-        if r.get('fulfillment_type') != 'FBA':
+    for r in d['data']['rows']:
+        code = BY_SELLER_MKT.get((r.get('seller_id'), r['marketplace']))
+        if not code:
             continue
-        mk = r['marketplace']
-        inv = r.get('inventory', {})
-        key = (mk, r['asin'])
-        inbound_keys = ['inbound_working', 'inbound_shipped', 'inbound_received']
-        has_inbound = any(k in inv for k in inbound_keys)
-        inbound = sum(int(inv.get(k) or 0) for k in inbound_keys) if has_inbound else None
-        rec = {
-            'asin': r['asin'], 'sku': r.get('sku'), 'name': short_name(r.get('product_name')),
-            'title': r.get('product_name'), 'image': r.get('image_url'),
-            'available': int(inv.get('available') or 0), 'inbound': inbound,
-            'inbound_reported': has_inbound,
-            'unfulfillable': int(inv.get('unfulfillable') or 0),
-        }
-        # Same ASIN can appear under several SKUs in one market (merged listings). Keep max stock, first SKU.
-        if key in out:
-            if rec['available'] > out[key]['available']:
-                out[key].update({k: rec[k] for k in ('available', 'inbound', 'unfulfillable')})
-            out[key]['skus'] = sorted(set(out[key].get('skus', [out[key]['sku']]) + [rec['sku']]))
-        else:
-            rec['skus'] = [rec['sku']]
-            out[key] = rec
+        vals = (r.get('sales_velocity') or {}).get('values') or {}
+        units = sum(float(v or 0) for v in vals.values())
+        out[(code, r['asin'])] = out.get((code, r['asin']), 0) + units
     return out
 
 
@@ -107,7 +156,8 @@ def load_si(week_dir):
         return out
     with open(p, newline='') as f:
         for r in csv.DictReader(f):
-            out[(r['market'], r['asin'])] = {
+            code = r['market'] if '_' in r['market'] else 'CC_' + r['market']
+            out[(code, r['asin'])] = {
                 'name': (r.get('name') or '').strip() or None,
                 'fba': fnum(r.get('fba')), 'transfer': fnum(r.get('transfer'), 0), 'si_inbound': fnum(r.get('inbound'), 0),
                 'units30': fnum(r.get('units30'), 0), 'vel': fnum(r.get('vel'), 0), 'doc': fnum(r.get('doc')),
@@ -151,7 +201,10 @@ def classify(item, pool_vel, pool_doc):
         else:
             sev = 'INFO'; reasons.append('Out of stock, no sales in 30d (dormant)')
     elif avail <= 0 and inb > 0:
-        sev = 'URGENT'; reasons.append(f'Out of stock, {inb} inbound')
+        if selling:
+            sev = 'URGENT'; reasons.append(f'Out of stock, {inb} inbound')
+        else:
+            sev = 'INFO'; reasons.append(f'Out of stock, {inb} inbound, no sales in 30d')
     elif doc is not None and doc < URGENT_DOC and inb == 0:
         sev = 'URGENT'; reasons.append(f'{doc:.1f} days of cover, nothing inbound')
     elif doc is not None and doc < URGENT_DOC and inb > 0:
@@ -173,120 +226,144 @@ def classify(item, pool_vel, pool_doc):
 def build_snapshot(week, generated):
     week_dir = os.path.join(ROOT, 'data', 'raw', week)
     h10 = load_h10(week_dir)
+    h10v = load_h10_velocity(week_dir)
     si = load_si(week_dir)
     feedback = load_csv(week_dir, 'seller_feedback.csv')
-    recs = {(r['market'], r['asin']): r for r in load_csv(week_dir, 'restock_recs.csv')}
-    health = load_json(week_dir, 'account_health.json') or {}
+    recs = {}
+    for r in load_csv(week_dir, 'restock_recs.csv'):
+        code = r['market'] if '_' in r['market'] else 'CC_' + r['market']
+        recs[(code, r['asin'])] = r
+    health_raw = load_json(week_dir, 'account_health.json') or {}
+    health = {(k if '_' in k else 'CC_' + k): v for k, v in health_raw.items()}
 
-    # Merge H10 + SI per market/ASIN
-    items = defaultdict(dict)   # market -> asin -> item
-    for (mk, asin), h in h10.items():
-        if mk not in MARKETS:
-            continue
-        s = si.get((mk, asin), {})
-        items[mk][asin] = {
-            **h,
-            'units30': s.get('units30', 0), 'vel': s.get('vel', 0), 'doc': s.get('doc'),
-            'ad30': s.get('ad30', 0), 'si_risk': s.get('risk'), 'transfer': s.get('transfer', 0),
-            'si_present': bool(s),
+    VEL_DAYS = 30.0
+    items = defaultdict(dict)   # code -> asin -> item
+    for (code, asin), h in h10.items():
+        s_ = si.get((code, asin), {})
+        units_h10 = h10v.get((code, asin))
+        units30 = s_.get('units30') if s_ else units_h10
+        vel = s_.get('vel') if s_ else ((units_h10 or 0) / VEL_DAYS)
+        doc = s_.get('doc') if s_ else ((h['available'] / vel) if vel and vel > 0 else None)
+        items[code][asin] = {
+            **h, 'units30': units30 or 0, 'vel': vel or 0, 'doc': doc,
+            'ad30': s_.get('ad30', 0) if s_ else 0, 'si_risk': s_.get('risk') if s_ else None,
+            'transfer': s_.get('transfer', 0) if s_ else 0,
+            'si_present': bool(s_), 'vel_source': 'si' if s_ else ('h10' if units_h10 is not None else 'none'),
         }
-    # SI rows with no H10 row (rare): include with SI stock
-    for (mk, asin), s in si.items():
-        if mk in MARKETS and asin not in items[mk]:
-            items[mk][asin] = {
-                'asin': asin, 'sku': s.get('sku'), 'skus': [s.get('sku')], 'name': s.get('name') or asin, 'title': s.get('name') or asin, 'image': None,
-                'available': int(s.get('fba') or 0), 'inbound': int(s.get('si_inbound') or 0), 'inbound_reported': False,
-                'unfulfillable': 0, 'units30': s.get('units30', 0), 'vel': s.get('vel', 0), 'doc': s.get('doc'),
-                'ad30': s.get('ad30', 0), 'si_risk': s.get('risk'), 'transfer': s.get('transfer', 0), 'si_present': True,
+    for (code, asin), s_ in si.items():
+        if code in ACC and asin not in items[code]:
+            items[code][asin] = {
+                'asin': asin, 'sku': s_.get('sku'), 'skus': [s_.get('sku')], 'name': s_.get('name') or asin, 'title': s_.get('name') or asin, 'image': None,
+                'available': int(s_.get('fba') or 0), 'inbound': int(s_.get('si_inbound') or 0), 'inbound_reported': False,
+                'unfulfillable': 0, 'units30': s_.get('units30', 0), 'vel': s_.get('vel', 0), 'doc': s_.get('doc'),
+                'ad30': s_.get('ad30', 0), 'si_risk': s_.get('risk'), 'transfer': s_.get('transfer', 0), 'si_present': True, 'vel_source': 'si',
             }
 
-    # EU pool: DE/FR/IT/ES/NL/SE share one FBA stock. Days of cover must use the pooled velocity.
-    pool_vel = defaultdict(float)
-    pool_markets = defaultdict(set)
-    for mk in items:
-        if MARKETS[mk]['pool'] == 'EU':
-            for asin, it in items[mk].items():
-                pool_vel[asin] += it['vel'] or 0
-                pool_markets[asin].add(mk)
+    # Shared FBA pools (EU): pooled velocity per ASIN across the pool's markets
+    pool_members = defaultdict(list)
+    for a in ACCOUNTS:
+        pool_members[a['pool']].append(a['code'])
+    shared_pools = {pl for pl, mem in pool_members.items() if len(mem) > 1}
+    pool_vel = defaultdict(float)      # (pool, asin) -> summed velocity
+    pool_mkts = defaultdict(set)
+    pool_avail = defaultdict(set)
+    for code in items:
+        pl = ACC[code]['pool']
+        if pl in shared_pools:
+            for asin, it in items[code].items():
+                pool_vel[(pl, asin)] += it['vel'] or 0
+                pool_mkts[(pl, asin)].add(ACC[code]['market'])
+                pool_avail[(pl, asin)].add(it['available'])
+    # An ASIN is treated as pooled only when every member market reports the SAME available count
+    # (true shared FBA stock, e.g. Pan-EU or NA remote fulfilment). Otherwise each market stands alone.
+    pooled = {k for k, av in pool_avail.items() if len(av) == 1 and len(pool_mkts[k]) > 1}
 
-    markets_out = {}
+    accounts_out = {}
     flat = []
-    for mk in ORDER:
-        meta = MARKETS[mk]
+    for code in ORDER:
+        meta = ACC[code]
+        pl = meta['pool']
         inv_rows = []
-        for asin, it in sorted(items.get(mk, {}).items()):
+        for asin, it in sorted(items.get(code, {}).items()):
             pv = pd = None
-            if meta['pool'] == 'EU':
-                pv = pool_vel[asin]
+            is_pooled = (pl, asin) in pooled
+            if is_pooled:
+                pv = pool_vel[(pl, asin)]
                 pd = (it['available'] / pv) if pv > 0 else None
             sev, reasons = classify(it, pv, pd)
-            rec = recs.get((mk, asin))
+            if meta['launching'] and (it['units30'] or 0) == 0:
+                sev = 'INFO'
+                reasons = [f"Launching: {it['available']} available, {it['inbound'] if it['inbound'] is not None else '?'} inbound"]
+            rec = recs.get((code, asin))
             est = None
             v = pv if pv is not None else (it['vel'] or 0)
             if sev in ('CRITICAL', 'URGENT', 'WATCH') and v > 0:
-                horizon = LEAD_TIME_DAYS.get(meta['pool'], 30) + REVIEW_COVER_DAYS
+                horizon = LEAD_TIME_DAYS.get(pl, 30) + REVIEW_COVER_DAYS
                 est = max(0, int(round(v * horizon)) - it['available'] - (it['inbound'] or 0))
             row = {
                 'asin': asin, 'sku': it['sku'], 'skus': it.get('skus'), 'name': it['name'], 'title': it['title'], 'image': it['image'],
                 'available': it['available'], 'inbound': it['inbound'], 'inbound_reported': it['inbound_reported'],
                 'unfulfillable': it['unfulfillable'], 'transfer': it['transfer'],
-                'units30': it['units30'], 'vel': round(it['vel'] or 0, 2), 'doc': it['doc'],
-                'pool': meta['pool'], 'pool_vel': round(pv, 2) if pv is not None else None,
+                'units30': it['units30'], 'vel': round(it['vel'] or 0, 2), 'doc': round(it['doc'], 1) if it['doc'] is not None else None,
+                'pool': pl, 'pool_vel': round(pv, 2) if pv is not None else None,
                 'pool_doc': round(pd, 1) if pd is not None else None,
-                'pool_markets': sorted(pool_markets[asin]) if pv is not None else None,
-                'ad30': it['ad30'], 'si_risk': it['si_risk'], 'si_present': it['si_present'],
+                'pool_markets': sorted(pool_mkts[(pl, asin)]) if pv is not None else None,
+                'ad30': it['ad30'], 'si_risk': it['si_risk'], 'vel_source': it['vel_source'],
                 'severity': sev, 'reasons': reasons,
                 'restock_rec': int(rec['rec_qty']) if rec and rec.get('rec_qty') else None,
                 'restock_rec_date': rec.get('rec_date') if rec else None,
                 'restock_est': est,
             }
             inv_rows.append(row)
-            fm = 'EU' if meta['pool'] == 'EU' else mk
+            fm = pl if is_pooled else code
             if sev in ('CRITICAL', 'URGENT', 'WATCH') and not any(f_['id'] == f'{fm}|{asin}|stock' for f_ in flat):
-                flat.append({'id': f'{fm}|{asin}|stock', 'market': fm, 'type': 'stock', 'severity': sev,
-                             'pool_markets': row['pool_markets'],
+                flat.append({'id': f'{fm}|{asin}|stock', 'account': fm, 'brand': meta['brand'], 'market': pl.split('_')[1] if is_pooled else meta['market'],
+                             'label': (pl.split('_')[1] + ' ' + BRANDS[meta['brand']]['label']) if is_pooled else meta['label'],
+                             'pool_markets': row['pool_markets'], 'type': 'stock', 'severity': sev,
                              'asin': asin, 'sku': it['sku'], 'name': it['name'], 'reason': '; '.join(reasons),
                              'available': it['available'], 'inbound': it['inbound'],
-                             'doc': row['pool_doc'] if row['pool_doc'] is not None else it['doc'],
+                             'doc': row['pool_doc'] if row['pool_doc'] is not None else row['doc'],
                              'vel': row['pool_vel'] if row['pool_vel'] is not None else row['vel'],
                              'ad30': it['ad30'], 'restock_rec': row['restock_rec'], 'restock_est': est,
                              'owner': 'client', 'action': 'Create FBA shipment' if sev != 'WATCH' else 'Plan shipment'})
         inv_rows.sort(key=lambda r: (SEV_RANK[r['severity']], r['pool_doc'] if r['pool_doc'] is not None else (r['doc'] if r['doc'] is not None else 9e9)))
 
-        # Seller feedback
         fb = None
         for r in feedback:
-            if r['market'] == mk:
+            if BY_SELLER_MKT.get((r.get('seller_id'), r.get('market'))) == code or r.get('market') == code:
                 negs = [x.strip() for x in (r.get('recent_negative') or '').split('||') if x.strip()]
                 fb = {'window': r.get('window'), 'rating': fnum(r.get('rating')), 'count': int(fnum(r.get('count'), 0)),
                       'pos_pct': fnum(r.get('pos_pct')), 'neg_pct': fnum(r.get('neg_pct')), 'recent_negative': negs}
                 if negs:
                     sev = 'URGENT' if (fb['neg_pct'] or 0) >= FEEDBACK_NEG_PCT_URGENT and fb['count'] >= FEEDBACK_MIN_COUNT else 'WATCH'
-                    flat.append({'id': f'{mk}|seller|feedback', 'market': mk, 'type': 'account', 'severity': sev,
-                                 'asin': None, 'sku': None, 'name': 'Seller feedback',
+                    flat.append({'id': f'{code}|seller|feedback', 'account': code, 'brand': meta['brand'], 'market': meta['market'], 'label': meta['label'],
+                                 'type': 'account', 'severity': sev, 'asin': None, 'sku': None, 'name': 'Seller feedback',
                                  'reason': f"{len(negs)} negative in {fb['window']} ({int((fb['neg_pct'] or 0)*100)}% of {fb['count']})",
                                  'owner': 'barcus', 'action': 'Review, request removal if order-related'})
 
-        # Account health feed (Seller Central notifications, AHR)
-        ah = health.get(mk) or {}
+        ah = health.get(code) or {}
         for n in ah.get('notifications', []):
             sev = n.get('severity') or ('CRITICAL' if n.get('type') in ('policy_violation', 'atoz_claim', 'listing_removed', 'account_at_risk') else 'WATCH')
-            flat.append({'id': f"{mk}|{n.get('asin') or 'acct'}|{n.get('type')}|{n.get('date')}", 'market': mk, 'type': 'account',
+            flat.append({'id': f"{code}|{n.get('asin') or 'acct'}|{n.get('type')}|{n.get('date')}", 'account': code, 'brand': meta['brand'],
+                         'market': meta['market'], 'label': meta['label'], 'type': 'account',
                          'severity': sev, 'asin': n.get('asin'), 'sku': None, 'name': n.get('type', 'notification').replace('_', ' ').title(),
-                         'reason': n.get('subject') or '', 'owner': 'barcus', 'action': n.get('action') or 'Open in Seller Central'})
+                         'reason': n.get('subject') or '', 'opened': n.get('date'), 'status': n.get('status'),
+                         'owner': 'barcus', 'action': n.get('action') or 'Open in Seller Central'})
 
         counts = {k: 0 for k in SEV_RANK}
         for r in inv_rows:
             counts[r['severity']] += 1
         for f_ in flat:
-            if f_['market'] == mk and f_['type'] == 'account':
+            if f_['account'] == code and f_['type'] == 'account':
                 counts[f_['severity']] += 1
-        stock_sev = min((r['severity'] for r in inv_rows), key=lambda s: SEV_RANK[s], default='OK')
-        acct_items = [f_ for f_ in flat if f_['market'] == mk and f_['type'] == 'account']
-        acct_sev = min((f_['severity'] for f_ in acct_items), key=lambda s: SEV_RANK[s], default='OK')
-        markets_out[mk] = {
-            **meta, 'code': mk,
-            'coverage': {'h10': any(k[0] == mk for k in h10), 'si': any(k[0] == mk for k in si),
+        stock_sev = min((r['severity'] for r in inv_rows), key=lambda s_: SEV_RANK[s_], default='OK')
+        acct_items = [f_ for f_ in flat if f_['account'] == code and f_['type'] == 'account']
+        acct_sev = min((f_['severity'] for f_ in acct_items), key=lambda s_: SEV_RANK[s_], default='OK')
+        accounts_out[code] = {
+            **{k: meta[k] for k in ('code', 'brand', 'brand_name', 'market', 'name', 'cur', 'seller', 'pool', 'launching', 'label')},
+            'pool_shared': pl in shared_pools,
+            'coverage': {'h10': any(k[0] == code for k in h10), 'si': any(k[0] == code for k in si),
+                         'velocity': any(k[0] == code for k in h10v) or any(k[0] == code for k in si),
                          'feedback': fb is not None, 'account_feed': bool(ah)},
             'inventory': inv_rows, 'feedback': fb,
             'account': {'ahr_status': ah.get('ahr_status'), 'ahr_score': ah.get('ahr_score'), 'odr': ah.get('odr'),
@@ -300,15 +377,16 @@ def build_snapshot(week, generated):
             'asin_count': len(inv_rows),
         }
 
-    MORDER = ORDER + ['EU']
-    flat.sort(key=lambda f_: (SEV_RANK[f_['severity']], MORDER.index(f_['market']), f_.get('doc') if f_.get('doc') is not None else 9e9))
+    AORDER = ORDER + sorted(shared_pools)
+    flat.sort(key=lambda f_: (SEV_RANK[f_['severity']], AORDER.index(f_['account']) if f_['account'] in AORDER else 99, f_.get('doc') if f_.get('doc') is not None else 9e9))
     totals = {k: sum(1 for f_ in flat if f_['severity'] == k) for k in ('CRITICAL', 'URGENT', 'WATCH')}
     snap = {
         'week': week, 'generated_at': generated,
-        'sources': {'h10_inventory': True, 'si_inventory': bool(si), 'seller_feedback': bool(feedback),
+        'sources': {'h10_inventory': bool(h10), 'h10_velocity': bool(h10v), 'si_inventory': bool(si), 'seller_feedback': bool(feedback),
                     'account_health': bool(health), 'restock_recs': bool(recs)},
-        'thresholds': {'urgent_doc': URGENT_DOC, 'watch_doc': WATCH_DOC, 'target_doc': TARGET_DOC, 'lead_time_days': LEAD_TIME_DAYS, 'review_cover_days': REVIEW_COVER_DAYS},
-        'totals': totals, 'items': flat, 'markets': markets_out, 'order': ORDER,
+        'thresholds': {'urgent_doc': URGENT_DOC, 'watch_doc': WATCH_DOC, 'lead_time_days': LEAD_TIME_DAYS, 'review_cover_days': REVIEW_COVER_DAYS},
+        'totals': totals, 'items': flat, 'accounts': accounts_out, 'order': ORDER,
+        'brands': BRANDS, 'pools': {pl: [ACC[c]['market'] for c in mem] for pl, mem in pool_members.items() if len(mem) > 1},
     }
     return snap
 
@@ -330,7 +408,7 @@ def main():
     print(f"{week}: CRITICAL {t['CRITICAL']}  URGENT {t['URGENT']}  WATCH {t['WATCH']}  -> {out}")
     for it in snap['items']:
         if it['severity'] in ('CRITICAL', 'URGENT'):
-            print(f"  {it['severity']:8} {it['market']} {it['asin'] or '':10} {it['name'][:32]:32} {it['reason']}")
+            print(f"  {it['severity']:8} {it['label']:10} {it['asin'] or '':10} {it['name'][:32]:32} {it['reason']}")
 
 
 if __name__ == '__main__':
