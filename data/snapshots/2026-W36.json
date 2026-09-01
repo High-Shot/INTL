@@ -15,8 +15,8 @@
   "lead_time_days": {
    "CC_US": 14,
    "CC_CA": 14,
-   "CL_NA": 14,
-   "PP_NA": 14,
+   "CL_US": 14,
+   "PP_US": 14,
    "CC_UK": 45,
    "CC_EU": 45,
    "CC_AE": 45,
@@ -26,9 +26,9 @@
   "review_cover_days": 30
  },
  "totals": {
-  "CRITICAL": 13,
+  "CRITICAL": 12,
   "URGENT": 24,
-  "WATCH": 34
+  "WATCH": 33
  },
  "items": [
   {
@@ -282,29 +282,6 @@
    "status": "open, past due",
    "owner": "barcus",
    "action": "Client: provide Spain packaging EPR registration number in Manage Your Compliance"
-  },
-  {
-   "id": "CL_CA|B0CL17YW21|stock",
-   "account": "CL_CA",
-   "brand": "CL",
-   "market": "CA",
-   "label": "CA LEGACY",
-   "pool_markets": null,
-   "type": "stock",
-   "severity": "CRITICAL",
-   "asin": "B0CL17YW21",
-   "sku": "H-148TA",
-   "name": "(Oven Cure) H-Series Burnt Bronze [ 4oz ] H-148T",
-   "reason": "Out of stock, nothing inbound",
-   "available": 0,
-   "inbound": 0,
-   "doc": 0.0,
-   "vel": 0.07,
-   "ad30": 0,
-   "restock_rec": null,
-   "restock_est": 3,
-   "owner": "client",
-   "action": "Create FBA shipment"
   },
   {
    "id": "CC_US|B0H3QRH9B7|stock",
@@ -563,6 +540,29 @@
    "action": "Create FBA shipment"
   },
   {
+   "id": "CL_US|B0CJRVJFPR|stock",
+   "account": "CL_US",
+   "brand": "CL",
+   "market": "US",
+   "label": "US LEGACY",
+   "pool_markets": null,
+   "type": "stock",
+   "severity": "URGENT",
+   "asin": "B0CJRVJFPR",
+   "sku": "C-7600PA",
+   "name": "C-Series Glacier Black High-Temp Coating",
+   "reason": "Out of stock, 68 inbound",
+   "available": 0,
+   "inbound": 68,
+   "doc": 0.0,
+   "vel": 1.07,
+   "ad30": 0,
+   "restock_rec": null,
+   "restock_est": 0,
+   "owner": "client",
+   "action": "Create FBA shipment"
+  },
+  {
    "id": "CL_US|B0CJRWGTJN|stock",
    "account": "CL_US",
    "brand": "CL",
@@ -609,6 +609,29 @@
    "action": "Create FBA shipment"
   },
   {
+   "id": "CL_US|B0CL15VMJS|stock",
+   "account": "CL_US",
+   "brand": "CL",
+   "market": "US",
+   "label": "US LEGACY",
+   "pool_markets": null,
+   "type": "stock",
+   "severity": "URGENT",
+   "asin": "B0CL15VMJS",
+   "sku": "H-109TA",
+   "name": "H-Series Ceramic Coating",
+   "reason": "Out of stock, 68 inbound",
+   "available": 0,
+   "inbound": 68,
+   "doc": 0.0,
+   "vel": 0.67,
+   "ad30": 0,
+   "restock_rec": null,
+   "restock_est": 0,
+   "owner": "client",
+   "action": "Create FBA shipment"
+  },
+  {
    "id": "CL_US|B0CJRVPZ7K|stock",
    "account": "CL_US",
    "brand": "CL",
@@ -628,6 +651,29 @@
    "ad30": 0,
    "restock_rec": null,
    "restock_est": 22,
+   "owner": "client",
+   "action": "Create FBA shipment"
+  },
+  {
+   "id": "PP_US|B0CXWFGS2L|stock",
+   "account": "PP_US",
+   "brand": "PP",
+   "market": "US",
+   "label": "US PRIS",
+   "pool_markets": null,
+   "type": "stock",
+   "severity": "URGENT",
+   "asin": "B0CXWFGS2L",
+   "sku": "PPB-4329A",
+   "name": "PRISMATIC POWDERS Dazzling Blue",
+   "reason": "3.8 days of cover, nothing inbound",
+   "available": 3,
+   "inbound": 0,
+   "doc": 3.8,
+   "vel": 0.8,
+   "ad30": 0,
+   "restock_rec": null,
+   "restock_est": 32,
    "owner": "client",
    "action": "Create FBA shipment"
   },
@@ -782,85 +828,6 @@
    "status": "open, submission required",
    "owner": "barcus",
    "action": "Upload GPSR responsible-person and safety info in Manage Your Compliance"
-  },
-  {
-   "id": "CL_NA|B0CJRVJFPR|stock",
-   "account": "CL_NA",
-   "brand": "CL",
-   "market": "NA",
-   "label": "NA LEGACY",
-   "pool_markets": [
-    "CA",
-    "MX",
-    "US"
-   ],
-   "type": "stock",
-   "severity": "URGENT",
-   "asin": "B0CJRVJFPR",
-   "sku": "C-7600PA",
-   "name": "C-Series Glacier Black High-Temp Coating",
-   "reason": "Out of stock, 68 inbound",
-   "available": 0,
-   "inbound": 68,
-   "doc": 0.0,
-   "vel": 1.07,
-   "ad30": 0,
-   "restock_rec": null,
-   "restock_est": 0,
-   "owner": "client",
-   "action": "Create FBA shipment"
-  },
-  {
-   "id": "CL_NA|B0CL15VMJS|stock",
-   "account": "CL_NA",
-   "brand": "CL",
-   "market": "NA",
-   "label": "NA LEGACY",
-   "pool_markets": [
-    "CA",
-    "US"
-   ],
-   "type": "stock",
-   "severity": "URGENT",
-   "asin": "B0CL15VMJS",
-   "sku": "H-109TA",
-   "name": "H-Series Ceramic Coating",
-   "reason": "Out of stock, 68 inbound",
-   "available": 0,
-   "inbound": 68,
-   "doc": 0.0,
-   "vel": 0.67,
-   "ad30": 0,
-   "restock_rec": null,
-   "restock_est": 0,
-   "owner": "client",
-   "action": "Create FBA shipment"
-  },
-  {
-   "id": "PP_NA|B0CXWFGS2L|stock",
-   "account": "PP_NA",
-   "brand": "PP",
-   "market": "NA",
-   "label": "NA PRIS",
-   "pool_markets": [
-    "CA",
-    "US"
-   ],
-   "type": "stock",
-   "severity": "URGENT",
-   "asin": "B0CXWFGS2L",
-   "sku": "PPB-4329A",
-   "name": "PRISMATIC POWDERS Dazzling Blue",
-   "reason": "3.6 days of cover, nothing inbound",
-   "available": 3,
-   "inbound": 0,
-   "doc": 3.6,
-   "vel": 0.83,
-   "ad30": 0,
-   "restock_rec": null,
-   "restock_est": 34,
-   "owner": "client",
-   "action": "Create FBA shipment"
   },
   {
    "id": "CC_US|B0H1NM7467|stock",
@@ -1476,6 +1443,29 @@
    "action": "Plan shipment"
   },
   {
+   "id": "PP_US|B0CXW3SMH8|stock",
+   "account": "PP_US",
+   "brand": "PP",
+   "market": "US",
+   "label": "US PRIS",
+   "pool_markets": null,
+   "type": "stock",
+   "severity": "WATCH",
+   "asin": "B0CXW3SMH8",
+   "sku": "PPS-4442A",
+   "name": "PRISMATIC POWDERS CANDY PURPLE",
+   "reason": "26.2 days of cover, nothing inbound",
+   "available": 21,
+   "inbound": 0,
+   "doc": 26.2,
+   "vel": 0.8,
+   "ad30": 0,
+   "restock_rec": null,
+   "restock_est": 14,
+   "owner": "client",
+   "action": "Plan shipment"
+  },
+  {
    "id": "CC_EU|B0DKVZRX69|stock",
    "account": "CC_EU",
    "brand": "CC",
@@ -1558,59 +1548,6 @@
    "ad30": 2436.21,
    "restock_rec": null,
    "restock_est": 1266,
-   "owner": "client",
-   "action": "Plan shipment"
-  },
-  {
-   "id": "PP_NA|B0CXW3SMH8|stock",
-   "account": "PP_NA",
-   "brand": "PP",
-   "market": "NA",
-   "label": "NA PRIS",
-   "pool_markets": [
-    "CA",
-    "US"
-   ],
-   "type": "stock",
-   "severity": "WATCH",
-   "asin": "B0CXW3SMH8",
-   "sku": "PPS-4442A",
-   "name": "PRISMATIC POWDERS CANDY PURPLE",
-   "reason": "24.2 days of cover, nothing inbound",
-   "available": 21,
-   "inbound": 0,
-   "doc": 24.2,
-   "vel": 0.87,
-   "ad30": 0,
-   "restock_rec": null,
-   "restock_est": 17,
-   "owner": "client",
-   "action": "Plan shipment"
-  },
-  {
-   "id": "PP_NA|B08C5KXZQK|stock",
-   "account": "PP_NA",
-   "brand": "PP",
-   "market": "NA",
-   "label": "NA PRIS",
-   "pool_markets": [
-    "CA",
-    "MX",
-    "US"
-   ],
-   "type": "stock",
-   "severity": "WATCH",
-   "asin": "B08C5KXZQK",
-   "sku": "USS-2603A",
-   "name": "PRISMATIC POWDERS® Gloss Black",
-   "reason": "27.4 days of cover, nothing inbound",
-   "available": 105,
-   "inbound": 0,
-   "doc": 27.4,
-   "vel": 3.83,
-   "ad30": 0,
-   "restock_rec": null,
-   "restock_est": 64,
    "owner": "client",
    "action": "Plan shipment"
   },
@@ -6939,10 +6876,10 @@
    "name": "United States",
    "cur": "$",
    "seller": "A1KUYEQ8RRQVVI",
-   "pool": "CL_NA",
+   "pool": "CL_US",
    "launching": false,
    "label": "US LEGACY",
-   "pool_shared": true,
+   "pool_shared": false,
    "coverage": {
     "h10": true,
     "si": false,
@@ -6968,14 +6905,10 @@
      "units30": 32.0,
      "vel": 1.07,
      "doc": 0.0,
-     "pool": "CL_NA",
-     "pool_vel": 1.07,
-     "pool_doc": 0.0,
-     "pool_markets": [
-      "CA",
-      "MX",
-      "US"
-     ],
+     "pool": "CL_US",
+     "pool_vel": null,
+     "pool_doc": null,
+     "pool_markets": null,
      "ad30": 0,
      "si_risk": null,
      "vel_source": "h10",
@@ -7004,7 +6937,7 @@
      "units30": 29.0,
      "vel": 0.97,
      "doc": 0.0,
-     "pool": "CL_NA",
+     "pool": "CL_US",
      "pool_vel": null,
      "pool_doc": null,
      "pool_markets": null,
@@ -7036,7 +6969,7 @@
      "units30": 33.0,
      "vel": 1.1,
      "doc": 0.0,
-     "pool": "CL_NA",
+     "pool": "CL_US",
      "pool_vel": null,
      "pool_doc": null,
      "pool_markets": null,
@@ -7068,13 +7001,10 @@
      "units30": 20.0,
      "vel": 0.67,
      "doc": 0.0,
-     "pool": "CL_NA",
-     "pool_vel": 0.67,
-     "pool_doc": 0.0,
-     "pool_markets": [
-      "CA",
-      "US"
-     ],
+     "pool": "CL_US",
+     "pool_vel": null,
+     "pool_doc": null,
+     "pool_markets": null,
      "ad30": 0,
      "si_risk": null,
      "vel_source": "h10",
@@ -7103,7 +7033,7 @@
      "units30": 16.0,
      "vel": 0.53,
      "doc": 1.9,
-     "pool": "CL_NA",
+     "pool": "CL_US",
      "pool_vel": null,
      "pool_doc": null,
      "pool_markets": null,
@@ -7135,7 +7065,7 @@
      "units30": 20.0,
      "vel": 0.67,
      "doc": 19.5,
-     "pool": "CL_NA",
+     "pool": "CL_US",
      "pool_vel": null,
      "pool_doc": null,
      "pool_markets": null,
@@ -7165,7 +7095,7 @@
      "units30": 44.0,
      "vel": 1.47,
      "doc": 24.5,
-     "pool": "CL_NA",
+     "pool": "CL_US",
      "pool_vel": null,
      "pool_doc": null,
      "pool_markets": null,
@@ -7195,7 +7125,7 @@
      "units30": 98.0,
      "vel": 3.27,
      "doc": 64.6,
-     "pool": "CL_NA",
+     "pool": "CL_US",
      "pool_vel": null,
      "pool_doc": null,
      "pool_markets": null,
@@ -7225,7 +7155,7 @@
      "units30": 36.0,
      "vel": 1.2,
      "doc": 70.0,
-     "pool": "CL_NA",
+     "pool": "CL_US",
      "pool_vel": null,
      "pool_doc": null,
      "pool_markets": null,
@@ -7272,342 +7202,6 @@
    "units30": 328.0,
    "asin_count": 9
   },
-  "CL_CA": {
-   "code": "CL_CA",
-   "brand": "CL",
-   "brand_name": "Cerakote Legacy",
-   "market": "CA",
-   "name": "Canada",
-   "cur": "C$",
-   "seller": "A1KUYEQ8RRQVVI",
-   "pool": "CL_NA",
-   "launching": false,
-   "label": "CA LEGACY",
-   "pool_shared": true,
-   "coverage": {
-    "h10": true,
-    "si": false,
-    "velocity": true,
-    "feedback": true,
-    "account_feed": false
-   },
-   "inventory": [
-    {
-     "asin": "B0CL15VMJS",
-     "sku": "H-109TA",
-     "skus": [
-      "H-109TA"
-     ],
-     "name": "(Oven Cure) H-Series Gloss Black [ 4oz ] H-109T -Our Ceramic",
-     "title": "CERAKOTE (Oven Cure) H-Series Gloss Black [ 4oz ] H-109T -Our Ceramic Technology Combines Performance with Color on All- Metals, Polymers + More - (Part B) Included",
-     "image": "https://m.media-amazon.com/images/I/51IvYo6ZykL.jpg",
-     "available": 0,
-     "inbound": 0,
-     "inbound_reported": true,
-     "unfulfillable": 0,
-     "transfer": 0,
-     "units30": 0,
-     "vel": 0,
-     "doc": null,
-     "pool": "CL_NA",
-     "pool_vel": 0.67,
-     "pool_doc": 0.0,
-     "pool_markets": [
-      "CA",
-      "US"
-     ],
-     "ad30": 0,
-     "si_risk": null,
-     "vel_source": "none",
-     "severity": "CRITICAL",
-     "reasons": [
-      "Out of stock, nothing inbound"
-     ],
-     "restock_rec": null,
-     "restock_rec_date": null,
-     "restock_est": 29
-    },
-    {
-     "asin": "B0CL17YW21",
-     "sku": "H-148TA",
-     "skus": [
-      "H-148TA"
-     ],
-     "name": "(Oven Cure) H-Series Burnt Bronze [ 4oz ] H-148T",
-     "title": "CERAKOTE (Oven Cure) H-Series Burnt Bronze [ 4oz ] H-148T - Our Ceramic Technology Combines Performance with Color on All- Metals, Polymers + More - (Part B) Included",
-     "image": "https://m.media-amazon.com/images/I/51bX6r79dBL.jpg",
-     "available": 0,
-     "inbound": 0,
-     "inbound_reported": true,
-     "unfulfillable": 1,
-     "transfer": 0,
-     "units30": 2.0,
-     "vel": 0.07,
-     "doc": 0.0,
-     "pool": "CL_NA",
-     "pool_vel": null,
-     "pool_doc": null,
-     "pool_markets": null,
-     "ad30": 0,
-     "si_risk": null,
-     "vel_source": "h10",
-     "severity": "CRITICAL",
-     "reasons": [
-      "Out of stock, nothing inbound"
-     ],
-     "restock_rec": null,
-     "restock_rec_date": null,
-     "restock_est": 3
-    },
-    {
-     "asin": "B0CJRVJFPR",
-     "sku": "C-7600PA",
-     "skus": [
-      "C-7600PA"
-     ],
-     "name": "(AIR Cure) C-Series  Glacier Black [ 16oz ] C-7600P Performa",
-     "title": "CERAKOTE (AIR Cure) C-Series CERAKOTE Glacier Black [ 16oz ] C-7600P Performance Ceramic Technology + Color on All- Metals, Polymers + More",
-     "image": "https://m.media-amazon.com/images/I/51fTHBVNuhL.jpg",
-     "available": 0,
-     "inbound": 68,
-     "inbound_reported": true,
-     "unfulfillable": 0,
-     "transfer": 0,
-     "units30": 0,
-     "vel": 0,
-     "doc": null,
-     "pool": "CL_NA",
-     "pool_vel": 1.07,
-     "pool_doc": 0.0,
-     "pool_markets": [
-      "CA",
-      "MX",
-      "US"
-     ],
-     "ad30": 0,
-     "si_risk": null,
-     "vel_source": "h10",
-     "severity": "URGENT",
-     "reasons": [
-      "Out of stock, 68 inbound"
-     ],
-     "restock_rec": null,
-     "restock_rec_date": null,
-     "restock_est": 0
-    },
-    {
-     "asin": "B0CJRVPZ7K",
-     "sku": "C-140TA",
-     "skus": [
-      "C-140TA"
-     ],
-     "name": "(AIR Cure C-Series Bright White [ 4oz ] C-140T Performance C",
-     "title": "CERAKOTE® (AIR Cure C-Series Bright White [ 4oz ] C-140T Performance Ceramic Technology + Color on All- Metals, Polymers + More",
-     "image": "https://m.media-amazon.com/images/I/41vVEwZSmuL.jpg",
-     "available": 0,
-     "inbound": 0,
-     "inbound_reported": true,
-     "unfulfillable": 0,
-     "transfer": 0,
-     "units30": 0,
-     "vel": 0,
-     "doc": null,
-     "pool": "CL_NA",
-     "pool_vel": null,
-     "pool_doc": null,
-     "pool_markets": null,
-     "ad30": 0,
-     "si_risk": null,
-     "vel_source": "none",
-     "severity": "INFO",
-     "reasons": [
-      "Out of stock, no sales in 30d (dormant)"
-     ],
-     "restock_rec": null,
-     "restock_rec_date": null,
-     "restock_est": null
-    },
-    {
-     "asin": "B0CL19DFN7",
-     "sku": "H-146TA",
-     "skus": [
-      "H-146TA"
-     ],
-     "name": "H-Series Graphite Black 4 oz. Tester (H-146T)",
-     "title": "CERAKOTE H-Series Graphite Black 4 oz. Tester (H-146T) - Durable, High Performance Ceramic Coating - High Corrosion Resistance - 9H Hardness - Oven Cure - Part B Included",
-     "image": "https://m.media-amazon.com/images/I/51dn3CJOVeL.jpg",
-     "available": 0,
-     "inbound": 0,
-     "inbound_reported": true,
-     "unfulfillable": 0,
-     "transfer": 0,
-     "units30": 0,
-     "vel": 0,
-     "doc": null,
-     "pool": "CL_NA",
-     "pool_vel": null,
-     "pool_doc": null,
-     "pool_markets": null,
-     "ad30": 0,
-     "si_risk": null,
-     "vel_source": "none",
-     "severity": "INFO",
-     "reasons": [
-      "Out of stock, no sales in 30d (dormant)"
-     ],
-     "restock_rec": null,
-     "restock_rec_date": null,
-     "restock_est": null
-    },
-    {
-     "asin": "B0DVPJNVN9",
-     "sku": "H-190TA",
-     "skus": [
-      "H-190TA"
-     ],
-     "name": "(OVEN CURE H-SERIES ARMOR BLACK [ 4oz ] H-190T -Our Ceramic ",
-     "title": "CERAKOTE (OVEN CURE H-SERIES ARMOR BLACK [ 4oz ] H-190T -Our Ceramic Technology Combines Performance with Color on All- Metals, Polymers + More - (Part B) Included",
-     "image": "https://m.media-amazon.com/images/I/51ZVHkJilkL.jpg",
-     "available": 0,
-     "inbound": 0,
-     "inbound_reported": true,
-     "unfulfillable": 0,
-     "transfer": 0,
-     "units30": 0,
-     "vel": 0,
-     "doc": null,
-     "pool": "CL_NA",
-     "pool_vel": null,
-     "pool_doc": null,
-     "pool_markets": null,
-     "ad30": 0,
-     "si_risk": null,
-     "vel_source": "none",
-     "severity": "INFO",
-     "reasons": [
-      "Out of stock, no sales in 30d (dormant)"
-     ],
-     "restock_rec": null,
-     "restock_rec_date": null,
-     "restock_est": null
-    }
-   ],
-   "feedback": {
-    "window": "30d",
-    "rating": null,
-    "count": 0,
-    "pos_pct": null,
-    "neg_pct": null,
-    "recent_negative": []
-   },
-   "account": {
-    "ahr_status": null,
-    "ahr_score": null,
-    "odr": null,
-    "policy_violations": null,
-    "atoz_claims": null,
-    "notifications": [],
-    "as_of": null
-   },
-   "status": {
-    "stock": "CRITICAL",
-    "account": "OK",
-    "listings": "OK"
-   },
-   "counts": {
-    "CRITICAL": 2,
-    "URGENT": 1,
-    "WATCH": 0,
-    "INFO": 3,
-    "OK": 0
-   },
-   "fba_units": 0,
-   "units30": 2.0,
-   "asin_count": 6
-  },
-  "CL_MX": {
-   "code": "CL_MX",
-   "brand": "CL",
-   "brand_name": "Cerakote Legacy",
-   "market": "MX",
-   "name": "Mexico",
-   "cur": "MX$",
-   "seller": "A1KUYEQ8RRQVVI",
-   "pool": "CL_NA",
-   "launching": false,
-   "label": "MX LEGACY",
-   "pool_shared": true,
-   "coverage": {
-    "h10": true,
-    "si": false,
-    "velocity": true,
-    "feedback": false,
-    "account_feed": false
-   },
-   "inventory": [
-    {
-     "asin": "B0CJRVJFPR",
-     "sku": "C-7600PA",
-     "skus": [
-      "C-7600PA"
-     ],
-     "name": "(AIR Cure) Serie C  Glacier Black [16 oz] C-7600P Tecnología",
-     "title": "CERAKOTE (AIR Cure) Serie C CERAKOTE Glacier Black [16 oz] C-7600P Tecnología de cerámica de rendimiento + Color en todos los metales, polímeros + más",
-     "image": "https://m.media-amazon.com/images/I/51fTHBVNuhL.jpg",
-     "available": 0,
-     "inbound": 68,
-     "inbound_reported": true,
-     "unfulfillable": 0,
-     "transfer": 0,
-     "units30": 0,
-     "vel": 0,
-     "doc": null,
-     "pool": "CL_NA",
-     "pool_vel": 1.07,
-     "pool_doc": 0.0,
-     "pool_markets": [
-      "CA",
-      "MX",
-      "US"
-     ],
-     "ad30": 0,
-     "si_risk": null,
-     "vel_source": "h10",
-     "severity": "URGENT",
-     "reasons": [
-      "Out of stock, 68 inbound"
-     ],
-     "restock_rec": null,
-     "restock_rec_date": null,
-     "restock_est": 0
-    }
-   ],
-   "feedback": null,
-   "account": {
-    "ahr_status": null,
-    "ahr_score": null,
-    "odr": null,
-    "policy_violations": null,
-    "atoz_claims": null,
-    "notifications": [],
-    "as_of": null
-   },
-   "status": {
-    "stock": "URGENT",
-    "account": "OK",
-    "listings": "OK"
-   },
-   "counts": {
-    "CRITICAL": 0,
-    "URGENT": 1,
-    "WATCH": 0,
-    "INFO": 0,
-    "OK": 0
-   },
-   "fba_units": 0,
-   "units30": 0,
-   "asin_count": 1
-  },
   "PP_US": {
    "code": "PP_US",
    "brand": "PP",
@@ -7616,10 +7210,10 @@
    "name": "United States",
    "cur": "$",
    "seller": "A21D21T8B6U09C",
-   "pool": "PP_NA",
+   "pool": "PP_US",
    "launching": false,
    "label": "US PRIS",
-   "pool_shared": true,
+   "pool_shared": false,
    "coverage": {
     "h10": true,
     "si": false,
@@ -7645,23 +7239,20 @@
      "units30": 24.0,
      "vel": 0.8,
      "doc": 3.8,
-     "pool": "PP_NA",
-     "pool_vel": 0.83,
-     "pool_doc": 3.6,
-     "pool_markets": [
-      "CA",
-      "US"
-     ],
+     "pool": "PP_US",
+     "pool_vel": null,
+     "pool_doc": null,
+     "pool_markets": null,
      "ad30": 0,
      "si_risk": null,
      "vel_source": "h10",
      "severity": "URGENT",
      "reasons": [
-      "3.6 days of cover, nothing inbound"
+      "3.8 days of cover, nothing inbound"
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 34
+     "restock_est": 32
     },
     {
      "asin": "B0CWWJJYS1",
@@ -7680,7 +7271,7 @@
      "units30": 50.0,
      "vel": 1.67,
      "doc": 9.6,
-     "pool": "PP_NA",
+     "pool": "PP_US",
      "pool_vel": null,
      "pool_doc": null,
      "pool_markets": null,
@@ -7712,7 +7303,7 @@
      "units30": 87.0,
      "vel": 2.9,
      "doc": 10.7,
-     "pool": "PP_NA",
+     "pool": "PP_US",
      "pool_vel": null,
      "pool_doc": null,
      "pool_markets": null,
@@ -7744,7 +7335,7 @@
      "units30": 105.0,
      "vel": 3.5,
      "doc": 20.6,
-     "pool": "PP_NA",
+     "pool": "PP_US",
      "pool_vel": null,
      "pool_doc": null,
      "pool_markets": null,
@@ -7776,59 +7367,20 @@
      "units30": 24.0,
      "vel": 0.8,
      "doc": 26.2,
-     "pool": "PP_NA",
-     "pool_vel": 0.87,
-     "pool_doc": 24.2,
-     "pool_markets": [
-      "CA",
-      "US"
-     ],
+     "pool": "PP_US",
+     "pool_vel": null,
+     "pool_doc": null,
+     "pool_markets": null,
      "ad30": 0,
      "si_risk": null,
      "vel_source": "h10",
      "severity": "WATCH",
      "reasons": [
-      "24.2 days of cover, nothing inbound"
+      "26.2 days of cover, nothing inbound"
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 17
-    },
-    {
-     "asin": "B08C5KXZQK",
-     "sku": "USS-2603A",
-     "skus": [
-      "USS-2603A"
-     ],
-     "name": "PRISMATIC POWDERS® Gloss Black",
-     "title": "PRISMATIC POWDERS® Gloss Black - Solid Tone Urethane Powder Coating - High Gloss 1 LB - Durable, High Performance Coating for Automotive Metal, Wheels, Parts - Proudly Made in the USA - (USS-2603)",
-     "image": "https://m.media-amazon.com/images/I/31ICIDomG7L.jpg",
-     "available": 105,
-     "inbound": 0,
-     "inbound_reported": true,
-     "unfulfillable": 1,
-     "transfer": 0,
-     "units30": 100.0,
-     "vel": 3.33,
-     "doc": 31.5,
-     "pool": "PP_NA",
-     "pool_vel": 3.83,
-     "pool_doc": 27.4,
-     "pool_markets": [
-      "CA",
-      "MX",
-      "US"
-     ],
-     "ad30": 0,
-     "si_risk": null,
-     "vel_source": "h10",
-     "severity": "WATCH",
-     "reasons": [
-      "27.4 days of cover, nothing inbound"
-     ],
-     "restock_rec": null,
-     "restock_rec_date": null,
-     "restock_est": 64
+     "restock_est": 14
     },
     {
      "asin": "B086XLFY59",
@@ -7847,7 +7399,37 @@
      "units30": 36.0,
      "vel": 1.2,
      "doc": 25.8,
-     "pool": "PP_NA",
+     "pool": "PP_US",
+     "pool_vel": null,
+     "pool_doc": null,
+     "pool_markets": null,
+     "ad30": 0,
+     "si_risk": null,
+     "vel_source": "h10",
+     "severity": "OK",
+     "reasons": [],
+     "restock_rec": null,
+     "restock_rec_date": null,
+     "restock_est": null
+    },
+    {
+     "asin": "B08C5KXZQK",
+     "sku": "USS-2603A",
+     "skus": [
+      "USS-2603A"
+     ],
+     "name": "PRISMATIC POWDERS® Gloss Black",
+     "title": "PRISMATIC POWDERS® Gloss Black - Solid Tone Urethane Powder Coating - High Gloss 1 LB - Durable, High Performance Coating for Automotive Metal, Wheels, Parts - Proudly Made in the USA - (USS-2603)",
+     "image": "https://m.media-amazon.com/images/I/31ICIDomG7L.jpg",
+     "available": 105,
+     "inbound": 0,
+     "inbound_reported": true,
+     "unfulfillable": 1,
+     "transfer": 0,
+     "units30": 100.0,
+     "vel": 3.33,
+     "doc": 31.5,
+     "pool": "PP_US",
      "pool_vel": null,
      "pool_doc": null,
      "pool_markets": null,
@@ -7877,7 +7459,7 @@
      "units30": 129.0,
      "vel": 4.3,
      "doc": 31.6,
-     "pool": "PP_NA",
+     "pool": "PP_US",
      "pool_vel": null,
      "pool_doc": null,
      "pool_markets": null,
@@ -7907,13 +7489,10 @@
      "units30": 14.0,
      "vel": 0.47,
      "doc": 34.3,
-     "pool": "PP_NA",
-     "pool_vel": 0.5,
-     "pool_doc": 32.0,
-     "pool_markets": [
-      "CA",
-      "US"
-     ],
+     "pool": "PP_US",
+     "pool_vel": null,
+     "pool_doc": null,
+     "pool_markets": null,
      "ad30": 0,
      "si_risk": null,
      "vel_source": "h10",
@@ -7940,13 +7519,10 @@
      "units30": 18.0,
      "vel": 0.6,
      "doc": 41.7,
-     "pool": "PP_NA",
-     "pool_vel": 0.7,
-     "pool_doc": 35.7,
-     "pool_markets": [
-      "CA",
-      "US"
-     ],
+     "pool": "PP_US",
+     "pool_vel": null,
+     "pool_doc": null,
+     "pool_markets": null,
      "ad30": 0,
      "si_risk": null,
      "vel_source": "h10",
@@ -7973,7 +7549,7 @@
      "units30": 21.0,
      "vel": 0.7,
      "doc": 45.7,
-     "pool": "PP_NA",
+     "pool": "PP_US",
      "pool_vel": null,
      "pool_doc": null,
      "pool_markets": null,
@@ -8003,7 +7579,7 @@
      "units30": 29.0,
      "vel": 0.97,
      "doc": 53.8,
-     "pool": "PP_NA",
+     "pool": "PP_US",
      "pool_vel": null,
      "pool_doc": null,
      "pool_markets": null,
@@ -8033,7 +7609,7 @@
      "units30": 48.0,
      "vel": 1.6,
      "doc": 56.9,
-     "pool": "PP_NA",
+     "pool": "PP_US",
      "pool_vel": null,
      "pool_doc": null,
      "pool_markets": null,
@@ -8063,7 +7639,37 @@
      "units30": 11.0,
      "vel": 0.37,
      "doc": 87.3,
-     "pool": "PP_NA",
+     "pool": "PP_US",
+     "pool_vel": null,
+     "pool_doc": null,
+     "pool_markets": null,
+     "ad30": 0,
+     "si_risk": null,
+     "vel_source": "h10",
+     "severity": "OK",
+     "reasons": [],
+     "restock_rec": null,
+     "restock_rec_date": null,
+     "restock_est": null
+    },
+    {
+     "asin": "B08C5M41L8",
+     "sku": "PSS-1738A",
+     "skus": [
+      "PSS-1738A"
+     ],
+     "name": "PRISMATIC POWDERS® Astatic Red",
+     "title": "PRISMATIC POWDERS® Astatic Red - Solid Tone Polyester Powder Coating - High Gloss 1 LB - Durable, High Performance Coating for Automotive Metal, Wheels, Parts - Proudly Made in the USA - (PSS-1738)",
+     "image": "https://m.media-amazon.com/images/I/31SHiA+H6qL.jpg",
+     "available": 81,
+     "inbound": 0,
+     "inbound_reported": true,
+     "unfulfillable": 0,
+     "transfer": 0,
+     "units30": 24.0,
+     "vel": 0.8,
+     "doc": 101.2,
+     "pool": "PP_US",
      "pool_vel": null,
      "pool_doc": null,
      "pool_markets": null,
@@ -8093,40 +7699,7 @@
      "units30": 10.0,
      "vel": 0.33,
      "doc": 108.0,
-     "pool": "PP_NA",
-     "pool_vel": 0.37,
-     "pool_doc": 98.2,
-     "pool_markets": [
-      "CA",
-      "US"
-     ],
-     "ad30": 0,
-     "si_risk": null,
-     "vel_source": "h10",
-     "severity": "OK",
-     "reasons": [],
-     "restock_rec": null,
-     "restock_rec_date": null,
-     "restock_est": null
-    },
-    {
-     "asin": "B08C5M41L8",
-     "sku": "PSS-1738A",
-     "skus": [
-      "PSS-1738A"
-     ],
-     "name": "PRISMATIC POWDERS® Astatic Red",
-     "title": "PRISMATIC POWDERS® Astatic Red - Solid Tone Polyester Powder Coating - High Gloss 1 LB - Durable, High Performance Coating for Automotive Metal, Wheels, Parts - Proudly Made in the USA - (PSS-1738)",
-     "image": "https://m.media-amazon.com/images/I/31SHiA+H6qL.jpg",
-     "available": 81,
-     "inbound": 0,
-     "inbound_reported": true,
-     "unfulfillable": 0,
-     "transfer": 0,
-     "units30": 24.0,
-     "vel": 0.8,
-     "doc": 101.2,
-     "pool": "PP_NA",
+     "pool": "PP_US",
      "pool_vel": null,
      "pool_doc": null,
      "pool_markets": null,
@@ -8156,7 +7729,7 @@
      "units30": 6.0,
      "vel": 0.2,
      "doc": 130.0,
-     "pool": "PP_NA",
+     "pool": "PP_US",
      "pool_vel": null,
      "pool_doc": null,
      "pool_markets": null,
@@ -8186,7 +7759,7 @@
      "units30": 16.0,
      "vel": 0.53,
      "doc": 135.0,
-     "pool": "PP_NA",
+     "pool": "PP_US",
      "pool_vel": null,
      "pool_doc": null,
      "pool_markets": null,
@@ -8216,7 +7789,7 @@
      "units30": 11.0,
      "vel": 0.37,
      "doc": 193.6,
-     "pool": "PP_NA",
+     "pool": "PP_US",
      "pool_vel": null,
      "pool_doc": null,
      "pool_markets": null,
@@ -8255,355 +7828,13 @@
    "counts": {
     "CRITICAL": 0,
     "URGENT": 3,
-    "WATCH": 3,
+    "WATCH": 2,
     "INFO": 0,
-    "OK": 13
+    "OK": 14
    },
    "fba_units": 949,
    "units30": 763.0,
    "asin_count": 19
-  },
-  "PP_CA": {
-   "code": "PP_CA",
-   "brand": "PP",
-   "brand_name": "Prismatic Powders",
-   "market": "CA",
-   "name": "Canada",
-   "cur": "C$",
-   "seller": "A21D21T8B6U09C",
-   "pool": "PP_NA",
-   "launching": false,
-   "label": "CA PRIS",
-   "pool_shared": true,
-   "coverage": {
-    "h10": true,
-    "si": false,
-    "velocity": true,
-    "feedback": true,
-    "account_feed": false
-   },
-   "inventory": [
-    {
-     "asin": "B0CXWFGS2L",
-     "sku": "PPB-4329A",
-     "skus": [
-      "PPB-4329A"
-     ],
-     "name": "PRISMATIC POWDERS® Dazzling Blue (1 LB/PPB-4329)",
-     "title": "PRISMATIC POWDERS® Dazzling Blue (1 LB/PPB-4329) - The Powder Coat Color Experts",
-     "image": "https://m.media-amazon.com/images/I/41Uu4hRthIL.jpg",
-     "available": 3,
-     "inbound": 0,
-     "inbound_reported": true,
-     "unfulfillable": 0,
-     "transfer": 0,
-     "units30": 1.0,
-     "vel": 0.03,
-     "doc": 90.0,
-     "pool": "PP_NA",
-     "pool_vel": 0.83,
-     "pool_doc": 3.6,
-     "pool_markets": [
-      "CA",
-      "US"
-     ],
-     "ad30": 0,
-     "si_risk": null,
-     "vel_source": "h10",
-     "severity": "URGENT",
-     "reasons": [
-      "3.6 days of cover, nothing inbound"
-     ],
-     "restock_rec": null,
-     "restock_rec_date": null,
-     "restock_est": 34
-    },
-    {
-     "asin": "B0CXW3SMH8",
-     "sku": "PPS-4442A",
-     "skus": [
-      "PPS-4442A"
-     ],
-     "name": "PRISMATIC POWDERS® Candy Purple (1 LB/PPS-4442)",
-     "title": "PRISMATIC POWDERS® Candy Purple (1 LB/PPS-4442) - The Powder Coat Color Experts",
-     "image": "https://m.media-amazon.com/images/I/31gcGeb1KHL.jpg",
-     "available": 21,
-     "inbound": 0,
-     "inbound_reported": true,
-     "unfulfillable": 0,
-     "transfer": 0,
-     "units30": 2.0,
-     "vel": 0.07,
-     "doc": 315.0,
-     "pool": "PP_NA",
-     "pool_vel": 0.87,
-     "pool_doc": 24.2,
-     "pool_markets": [
-      "CA",
-      "US"
-     ],
-     "ad30": 0,
-     "si_risk": null,
-     "vel_source": "h10",
-     "severity": "WATCH",
-     "reasons": [
-      "24.2 days of cover, nothing inbound"
-     ],
-     "restock_rec": null,
-     "restock_rec_date": null,
-     "restock_est": 17
-    },
-    {
-     "asin": "B08C5KXZQK",
-     "sku": "USS-2603A",
-     "skus": [
-      "USS-2603A"
-     ],
-     "name": "PRISMATIC POWDERS® Gloss Black 1 lb",
-     "title": "PRISMATIC POWDERS® Gloss Black 1 lb",
-     "image": "https://m.media-amazon.com/images/I/31ICIDomG7L.jpg",
-     "available": 105,
-     "inbound": 0,
-     "inbound_reported": true,
-     "unfulfillable": 1,
-     "transfer": 0,
-     "units30": 15.0,
-     "vel": 0.5,
-     "doc": 210.0,
-     "pool": "PP_NA",
-     "pool_vel": 3.83,
-     "pool_doc": 27.4,
-     "pool_markets": [
-      "CA",
-      "MX",
-      "US"
-     ],
-     "ad30": 0,
-     "si_risk": null,
-     "vel_source": "h10",
-     "severity": "WATCH",
-     "reasons": [
-      "27.4 days of cover, nothing inbound"
-     ],
-     "restock_rec": null,
-     "restock_rec_date": null,
-     "restock_est": 64
-    },
-    {
-     "asin": "B0BVY59ZQ6",
-     "sku": "UPS-1506A",
-     "skus": [
-      "UPS-1506A"
-     ],
-     "name": "PRISMATIC POWDERS® Lollypop Red (1 LB/UPS-1506)",
-     "title": "PRISMATIC POWDERS® Lollypop Red (1 LB/UPS-1506) - The Powder Coat Color Experts",
-     "image": "https://m.media-amazon.com/images/I/41bcs+PLNRL.jpg",
-     "available": 16,
-     "inbound": 0,
-     "inbound_reported": true,
-     "unfulfillable": 0,
-     "transfer": 0,
-     "units30": 1.0,
-     "vel": 0.03,
-     "doc": 480.0,
-     "pool": "PP_NA",
-     "pool_vel": 0.5,
-     "pool_doc": 32.0,
-     "pool_markets": [
-      "CA",
-      "US"
-     ],
-     "ad30": 0,
-     "si_risk": null,
-     "vel_source": "h10",
-     "severity": "OK",
-     "reasons": [],
-     "restock_rec": null,
-     "restock_rec_date": null,
-     "restock_est": null
-    },
-    {
-     "asin": "B00MI55Y7Y",
-     "sku": "PMB-6905A",
-     "skus": [
-      "PMB-6905A"
-     ],
-     "name": "PRISMATIC POWDERS® Illusion Cherry (1 LB/PMB-6905)",
-     "title": "PRISMATIC POWDERS® Illusion Cherry (1 LB/PMB-6905) - The Powder Coat Color Experts",
-     "image": "https://m.media-amazon.com/images/I/41h31QSv0GL.jpg",
-     "available": 25,
-     "inbound": 0,
-     "inbound_reported": true,
-     "unfulfillable": 0,
-     "transfer": 0,
-     "units30": 3.0,
-     "vel": 0.1,
-     "doc": 250.0,
-     "pool": "PP_NA",
-     "pool_vel": 0.7,
-     "pool_doc": 35.7,
-     "pool_markets": [
-      "CA",
-      "US"
-     ],
-     "ad30": 0,
-     "si_risk": null,
-     "vel_source": "h10",
-     "severity": "OK",
-     "reasons": [],
-     "restock_rec": null,
-     "restock_rec_date": null,
-     "restock_est": null
-    },
-    {
-     "asin": "B00MI5A8GQ",
-     "sku": "PSB-4629A",
-     "skus": [
-      "PSB-4629A"
-     ],
-     "name": "PRISMATIC POWDERS® Illusion Purple (1 LB/PSB-4629)",
-     "title": "PRISMATIC POWDERS® Illusion Purple (1 LB/PSB-4629) - The Powder Coat Color Experts",
-     "image": "https://m.media-amazon.com/images/I/31IYmfg39-L.jpg",
-     "available": 36,
-     "inbound": 1,
-     "inbound_reported": true,
-     "unfulfillable": 0,
-     "transfer": 0,
-     "units30": 1.0,
-     "vel": 0.03,
-     "doc": 1080.0,
-     "pool": "PP_NA",
-     "pool_vel": 0.37,
-     "pool_doc": 98.2,
-     "pool_markets": [
-      "CA",
-      "US"
-     ],
-     "ad30": 0,
-     "si_risk": null,
-     "vel_source": "h10",
-     "severity": "OK",
-     "reasons": [],
-     "restock_rec": null,
-     "restock_rec_date": null,
-     "restock_est": null
-    }
-   ],
-   "feedback": {
-    "window": "30d",
-    "rating": null,
-    "count": 0,
-    "pos_pct": null,
-    "neg_pct": null,
-    "recent_negative": []
-   },
-   "account": {
-    "ahr_status": null,
-    "ahr_score": null,
-    "odr": null,
-    "policy_violations": null,
-    "atoz_claims": null,
-    "notifications": [],
-    "as_of": null
-   },
-   "status": {
-    "stock": "URGENT",
-    "account": "OK",
-    "listings": "OK"
-   },
-   "counts": {
-    "CRITICAL": 0,
-    "URGENT": 1,
-    "WATCH": 2,
-    "INFO": 0,
-    "OK": 3
-   },
-   "fba_units": 206,
-   "units30": 23.0,
-   "asin_count": 6
-  },
-  "PP_MX": {
-   "code": "PP_MX",
-   "brand": "PP",
-   "brand_name": "Prismatic Powders",
-   "market": "MX",
-   "name": "Mexico",
-   "cur": "MX$",
-   "seller": "A21D21T8B6U09C",
-   "pool": "PP_NA",
-   "launching": false,
-   "label": "MX PRIS",
-   "pool_shared": true,
-   "coverage": {
-    "h10": true,
-    "si": false,
-    "velocity": true,
-    "feedback": false,
-    "account_feed": false
-   },
-   "inventory": [
-    {
-     "asin": "B08C5KXZQK",
-     "sku": "USS-2603A",
-     "skus": [
-      "USS-2603A"
-     ],
-     "name": "PRISMATIC POWDERS Negro brillante",
-     "title": "PRISMATIC POWDERS Negro brillante, 1 libra",
-     "image": "https://m.media-amazon.com/images/I/31ICIDomG7L.jpg",
-     "available": 105,
-     "inbound": 0,
-     "inbound_reported": true,
-     "unfulfillable": 1,
-     "transfer": 0,
-     "units30": 0,
-     "vel": 0,
-     "doc": null,
-     "pool": "PP_NA",
-     "pool_vel": 3.83,
-     "pool_doc": 27.4,
-     "pool_markets": [
-      "CA",
-      "MX",
-      "US"
-     ],
-     "ad30": 0,
-     "si_risk": null,
-     "vel_source": "h10",
-     "severity": "WATCH",
-     "reasons": [
-      "27.4 days of cover, nothing inbound"
-     ],
-     "restock_rec": null,
-     "restock_rec_date": null,
-     "restock_est": 64
-    }
-   ],
-   "feedback": null,
-   "account": {
-    "ahr_status": null,
-    "ahr_score": null,
-    "odr": null,
-    "policy_violations": null,
-    "atoz_claims": null,
-    "notifications": [],
-    "as_of": null
-   },
-   "status": {
-    "stock": "WATCH",
-    "account": "OK",
-    "listings": "OK"
-   },
-   "counts": {
-    "CRITICAL": 0,
-    "URGENT": 0,
-    "WATCH": 1,
-    "INFO": 0,
-    "OK": 0
-   },
-   "fba_units": 105,
-   "units30": 0,
-   "asin_count": 1
   }
  },
  "order": [
@@ -8619,11 +7850,7 @@
   "CC_SA",
   "CC_AU",
   "CL_US",
-  "CL_CA",
-  "CL_MX",
-  "PP_US",
-  "PP_CA",
-  "PP_MX"
+  "PP_US"
  ],
  "brands": {
   "CC": {
@@ -8649,16 +7876,6 @@
    "IT",
    "ES",
    "NL"
-  ],
-  "CL_NA": [
-   "US",
-   "CA",
-   "MX"
-  ],
-  "PP_NA": [
-   "US",
-   "CA",
-   "MX"
   ]
  }
 }

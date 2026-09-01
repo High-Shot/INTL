@@ -2,7 +2,7 @@
 
 Runs every Monday 06:00 CT as a Cowork scheduled task. Fresh session, no memory. Everything needed is below.
 
-Accounts covered: Cerakote Auto (CC: US, CA, UK, DE, FR, IT, ES, NL, AE, SA, AU), Cerakote Legacy (CL: US, CA, MX), Prismatic Powders (PP: US, CA, MX). Seller IDs: AOXMQPMOL1F1Y = CC US/CA; A3BMUMIXNXIR6G = CC UK/EU/AE/SA; A22UNGVVL3ZGDF = CC AU; A1KUYEQ8RRQVVI = CL; A21D21T8B6U09C = PP.
+Accounts covered: Cerakote Auto (CC: US, CA, UK, DE, FR, IT, ES, NL, AE, SA, AU), Cerakote Legacy (CL: US only), Prismatic Powders (PP: US only). Seller IDs: AOXMQPMOL1F1Y = CC US/CA; A3BMUMIXNXIR6G = CC UK/EU/AE/SA; A22UNGVVL3ZGDF = CC AU; A1KUYEQ8RRQVVI = CL; A21D21T8B6U09C = PP.
 
 Goal: produce `data/raw/<WEEK>/*`, run normalize + build, push to GitHub, send Barcus a summary of CRITICAL and URGENT items only.
 
@@ -36,7 +36,7 @@ Map: fba=CurrentFBAStock, transfer=StockInTransfer, inbound=StockInbound, units3
 
 ## 3. Seller feedback (one call per seller x market)
 Call `mcp__Helium10__get_seller_feedback` with `time_window: "30d"` for:
-AOXMQPMOL1F1Y x US, CA; A3BMUMIXNXIR6G x UK, DE, FR, IT, ES, NL, AE, SA; A22UNGVVL3ZGDF x AU; A1KUYEQ8RRQVVI x US, CA; A21D21T8B6U09C x US, CA.
+AOXMQPMOL1F1Y x US, CA; A3BMUMIXNXIR6G x UK, DE, FR, IT, ES, NL, AE, SA; A22UNGVVL3ZGDF x AU; A1KUYEQ8RRQVVI x US; A21D21T8B6U09C x US.
 Write `data/raw/$WEEK/seller_feedback.csv`, header:
 ```
 seller_id,market,window,rating,count,pos_pct,neg_pct,recent_negative

@@ -40,12 +40,8 @@ ACCOUNTS = [
     {'code': 'CC_AE', 'brand': 'CC', 'market': 'AE', 'seller': 'A3BMUMIXNXIR6G', 'pool': 'CC_AE', 'launching': True},
     {'code': 'CC_SA', 'brand': 'CC', 'market': 'SA', 'seller': 'A3BMUMIXNXIR6G', 'pool': 'CC_SA'},
     {'code': 'CC_AU', 'brand': 'CC', 'market': 'AU', 'seller': 'A22UNGVVL3ZGDF', 'pool': 'CC_AU'},
-    {'code': 'CL_US', 'brand': 'CL', 'market': 'US', 'seller': 'A1KUYEQ8RRQVVI', 'pool': 'CL_NA'},
-    {'code': 'CL_CA', 'brand': 'CL', 'market': 'CA', 'seller': 'A1KUYEQ8RRQVVI', 'pool': 'CL_NA'},
-    {'code': 'CL_MX', 'brand': 'CL', 'market': 'MX', 'seller': 'A1KUYEQ8RRQVVI', 'pool': 'CL_NA'},
-    {'code': 'PP_US', 'brand': 'PP', 'market': 'US', 'seller': 'A21D21T8B6U09C', 'pool': 'PP_NA'},
-    {'code': 'PP_CA', 'brand': 'PP', 'market': 'CA', 'seller': 'A21D21T8B6U09C', 'pool': 'PP_NA'},
-    {'code': 'PP_MX', 'brand': 'PP', 'market': 'MX', 'seller': 'A21D21T8B6U09C', 'pool': 'PP_NA'},
+    {'code': 'CL_US', 'brand': 'CL', 'market': 'US', 'seller': 'A1KUYEQ8RRQVVI', 'pool': 'CL_US'},
+    {'code': 'PP_US', 'brand': 'PP', 'market': 'US', 'seller': 'A21D21T8B6U09C', 'pool': 'PP_US'},
 ]
 for a in ACCOUNTS:
     a['name'], a['cur'] = MKT[a['market']]
@@ -55,7 +51,7 @@ for a in ACCOUNTS:
 ACC = {a['code']: a for a in ACCOUNTS}
 BY_SELLER_MKT = {(a['seller'], a['market']): a['code'] for a in ACCOUNTS}
 ORDER = [a['code'] for a in ACCOUNTS]
-POOL_LEAD = {'CC_US': 14, 'CC_CA': 14, 'CL_NA': 14, 'PP_NA': 14,
+POOL_LEAD = {'CC_US': 14, 'CC_CA': 14, 'CL_US': 14, 'PP_US': 14,
              'CC_UK': 45, 'CC_EU': 45, 'CC_AE': 45, 'CC_SA': 45, 'CC_AU': 45}
 
 # Thresholds (days of cover). Project rule: <14 days = URGENT, OOS = CRITICAL.

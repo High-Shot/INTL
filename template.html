@@ -263,7 +263,7 @@ footer{padding:12px 32px 28px;text-align:center;font-family:var(--font-mono);fon
   function badge(s){return '<span class="badge badge-'+s+'">'+s+'</span>'}
   function amz(mk,asin){var d={US:'com',CA:'ca',MX:'com.mx',UK:'co.uk',DE:'de',FR:'fr',IT:'it',ES:'es',NL:'nl',AE:'ae',SA:'sa',AU:'com.au',EU:'de',NA:'com'};return 'https://www.amazon.'+(d[mk]||'com')+'/dp/'+asin}
   function cur(code){var a=S[idx].accounts[code];return a?a.cur:'$'}
-  function curFor(it){if(S[idx].accounts[it.account])return cur(it.account);var m={CC_EU:'€',CL_NA:'$',PP_NA:'$'};return m[it.account]||'$'}
+  function curFor(it){if(S[idx].accounts[it.account])return cur(it.account);var m={CC_EU:'€'};return m[it.account]||'$'}
   function prevSnap(){return idx>0?S[idx-1]:null}
   function ids(snap){var o={};(snap?snap.items:[]).forEach(function(i){o[i.id]=i});return o}
   function weeksOpen(id){var n=0;for(var k=idx;k>=0;k--){if(ids(S[k])[id])n++;else break;}return n}

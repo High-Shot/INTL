@@ -1,6 +1,6 @@
 # NIC Industries Account Health Tracker (INTL)
 
-Weekly account-health and FBA stock monitor for NIC Industries' Amazon accounts: Cerakote Auto (US, CA, UK, DE, FR, IT, ES, NL, AE, SA, AU), Cerakote Legacy (US, CA, MX), Prismatic Powders (US, CA, MX).
+Weekly account-health and FBA stock monitor for NIC Industries' Amazon accounts: Cerakote Auto (US, CA, UK, DE, FR, IT, ES, NL, AE, SA, AU), Cerakote Legacy (US only), Prismatic Powders (US only).
 Live page: https://high-shot.github.io/INTL/
 
 Same shape as the NIC tracker: a Python build injects weekly snapshot JSON into `template.html`, output is a static `index.html` on GitHub Pages.
@@ -21,7 +21,7 @@ WATCH: 14 to 28 days of cover with nothing inbound; under 14 days with inbound o
 
 Inbound = Helium10 inbound working + shipped + receiving. Scale Insights' inbound field is not used (it reads 0 even when H10 shows thousands of units in transit). Velocity = Scale Insights where connected (Cerakote Auto), else Helium10 get_sales_velocity (Legacy, Prismatic, SA).
 
-DE, FR, IT, ES, NL share one FBA pool; Legacy and Prismatic CA/MX are fulfilled from US stock. An ASIN is treated as pooled only when every market in the pool reports the same available count. Pooled days of cover = shared stock divided by the summed velocity, and the item appears once in the action list (EU AUTO, NA LEGACY, NA PRIS). Healthy rows are hidden by default.
+DE, FR, IT, ES, NL share one FBA pool. An ASIN is treated as pooled only when every market in the pool reports the same available count. Pooled days of cover = shared stock divided by the summed velocity, and the item appears once in the action list (EU AUTO). Healthy rows are hidden by default.
 
 Restock quantity: Amazon's FBA restock recommendation when `restock_recs.csv` is present for the week; otherwise velocity x (lead time + 30 days) minus available and inbound, labelled "est." (lead times in scripts/normalize.py POOL_LEAD).
 
