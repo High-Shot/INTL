@@ -11,9 +11,7 @@ WEEK = ISO week of the run date, formatted `YYYY-Www` (example: 2026-W37). `date
 git clone https://github.com/high-shot/INTL.git /home/claude/INTL && cd /home/claude/INTL
 mkdir -p data/raw/$WEEK
 ```
-GitHub token: read it from the linked computer, never commit it.
-`device_bash: cat "$HOME/mnt/Cerakote Management/intl-tracker/.secrets/github_token"`
-If the token file is missing, still do everything below and write the outputs to the linked folder instead of pushing (step 6b).
+Publishing happens FROM BARCUS'S MAC (gh is logged in there; no token is stored anywhere). See step 6.
 
 ## 1. Helium10 inventory (authoritative stock + inbound)
 Call `mcp__Helium10__get_inventory_values` with
@@ -58,10 +56,14 @@ If `"$HOME/mnt/Cerakote Management/intl-tracker/inbox/restock_*.csv"` exists on 
 ```
 python3 scripts/normalize.py $WEEK
 python3 scripts/build.py
-git add -A && git commit -m "Weekly snapshot $WEEK" 
-git push https://x-access-token:$TOKEN@github.com/high-shot/INTL.git main
 ```
-6b. If no token: `device_commit_files` index.html and data/snapshots/$WEEK.json into `Cerakote Management/intl-tracker/` and say so.
+Then copy the new files onto the Mac and push from there (the Mac's git already has GitHub credentials via gh):
+6a. SendUserFile + device_commit_files for: index.html, data/snapshots/$WEEK.json, and every file in data/raw/$WEEK/, into the matching paths under `/Users/barcus/Documents/Claude/Projects/Cerakote Management/intl-tracker/`.
+6b. mcp__remote-devices__Control_your_Mac__osascript:
+```
+do shell script "export PATH=/opt/homebrew/bin:/usr/local/bin:$PATH; cd \"$HOME/Documents/Claude/Projects/Cerakote Management/intl-tracker\" && git pull -q --rebase origin main; git add -A && git commit -q -m 'Weekly snapshot $WEEK' && git push -q origin main && git log --oneline -1"
+```
+6c. If the Mac is unreachable: fall back to `.secrets/github_token` on the Mac if it exists (`git push https://x-access-token:$TOKEN@github.com/High-Shot/INTL.git main` from the cloud clone). If neither works, report "not published" in the summary; the files are already in the folder.
 
 ## 7. Summary message to Barcus (SendUserMessage)
 Lead line: "INTL $WEEK: N critical, N urgent, N watch (Δ vs last week)". Then one line per CRITICAL and URGENT stock item: market, SKU, name, available, inbound, days of cover, ads 30d, restock qty (Amazon rec or est.). Then account items. Then one line for anything that failed (a market with no SI data, Gmail empty, push failed). Link: https://high-shot.github.io/INTL/
