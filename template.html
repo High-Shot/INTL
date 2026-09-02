@@ -193,6 +193,7 @@ footer{padding:12px 32px 28px;text-align:center;font-family:var(--font-mono);fon
         <div class="chip" data-sev="WATCH">Watch</div>
         <div class="chip" data-type="stock">Stock</div>
         <div class="chip" data-type="account">Account</div>
+        <div class="chip" data-type="case">Cases</div>
         <div class="chip" data-new="1">New this week</div>
       </div>
       <button class="btn" id="copy-restock">Copy restock list</button>
@@ -230,6 +231,17 @@ footer{padding:12px 32px 28px;text-align:center;font-family:var(--font-mono);fon
 
   <div class="panel">
     <div class="panel-header">
+      <div class="panel-title">Support cases <span id="case-count" style="color:var(--dim);font-weight:400"></span></div>
+      <div class="chip" id="show-answered">Show answered cases</div>
+    </div>
+    <div style="overflow-x:auto"><table><thead><tr>
+      <th>Status</th><th>Account</th><th>Case</th><th>Subject</th><th>Created</th><th>Last Amazon reply</th><th class="num">Age</th><th>ASIN</th>
+    </tr></thead><tbody id="case-body"></tbody></table></div>
+    <div class="note">Read from the Seller Central Case Log (10 most recent per account each week; no export exists). "Needs your attention" = Amazon is waiting on a reply and will auto-close. Cases whose subject carries an ASIN are linked to the matching action-list item.</div>
+  </div>
+
+  <div class="panel">
+    <div class="panel-header">
       <div class="panel-title">FBA inventory detail</div>
       <div class="inv-tabs" id="inv-tabs"></div>
       <div class="chip" id="show-ok">Show healthy rows</div>
@@ -255,7 +267,7 @@ footer{padding:12px 32px 28px;text-align:center;font-family:var(--font-mono);fon
 <script>
 (function(){
   if(!window.SNAPSHOTS||!SNAPSHOTS.length){document.body.innerHTML='<div class="empty">No snapshots yet.</div>';return;}
-  var S=SNAPSHOTS, idx=S.length-1, sevFilter='ALL', typeFilter=null, newOnly=false, acctFilter=null, brandFilter='ALL', invTab=null, showOk=false;
+  var S=SNAPSHOTS, idx=S.length-1, sevFilter='ALL', typeFilter=null, newOnly=false, acctFilter=null, brandFilter='ALL', invTab=null, showOk=false, showAnswered=false;
   var $=function(id){return document.getElementById(id)};
   var RANK={CRITICAL:0,URGENT:1,WATCH:2,INFO:3,OK:4,NONE:5};
   function fmt(n,d){if(n===null||n===undefined)return '—';return Number(n).toLocaleString('en-US',{maximumFractionDigits:d===undefined?0:d})}
@@ -281,6 +293,7 @@ footer{padding:12px 32px 28px;text-align:center;font-family:var(--font-mono);fon
     renderActions()};
   $('copy-restock').onclick=copyRestock;
   $('show-ok').onclick=function(){showOk=!showOk;$('show-ok').classList.toggle('active',showOk);renderInv()};
+  $('show-answered').onclick=function(){showAnswered=!showAnswered;$('show-answered').classList.toggle('active',showAnswered);renderCases()};
 
   function render(){
     var s=S[idx], p=prevSnap();
@@ -288,7 +301,7 @@ footer{padding:12px 32px 28px;text-align:center;font-family:var(--font-mono);fon
     $('wk-prev').disabled=idx===0; $('wk-next').disabled=idx===S.length-1;
     $('wk-note').textContent=p?'compared to '+p.week:'first snapshot, no comparison';
     $('hdr-sources').innerHTML=Object.keys(s.sources).map(function(k){return '<span class="badge '+(s.sources[k]?'badge-on':'badge-off')+'">'+k.replace(/_/g,' ')+'</span>'}).join('');
-    renderBrandBar(); renderTrend(); renderCards(); renderActions(); renderDiff(); renderFeedback(); renderAcct(); renderInv(); renderChart();
+    renderBrandBar(); renderTrend(); renderCards(); renderActions(); renderDiff(); renderFeedback(); renderAcct(); renderCases(); renderInv(); renderChart();
   }
 
   function brandCounts(b){var s=S[idx],c={CRITICAL:0,URGENT:0};s.items.forEach(function(it){if((b==='ALL'||it.brand===b)&&c[it.severity]!==undefined)c[it.severity]++});return c}
@@ -343,6 +356,8 @@ footer{padding:12px 32px 28px;text-align:center;font-family:var(--font-mono);fon
       var lab=esc(it.label)+(it.pool_markets?' <span class="sub">'+it.pool_markets.join(' ')+'</span>':'');
       var restock=it.restock_rec!=null?'<span class="rec">'+fmt(it.restock_rec)+'</span>':(it.restock_est!=null?'<span class="est">est. '+fmt(it.restock_est)+'</span>':'—');
       var opened=it.opened?'<div class="age">opened '+esc(it.opened)+(it.status?' · '+esc(it.status):'')+'</div>':'';
+      if(it.cases&&it.cases.length)opened+='<div class="age">cases: '+it.cases.map(function(c){var cs=(S[idx].cases||[]).filter(function(x){return x.id===c})[0];return cs?'<a href="'+cs.url+'" target="_blank">'+c+'</a>':c}).join(', ')+'</div>';
+      if(it.type==='case'&&it.url)opened+='<div class="age"><a href="'+it.url+'" target="_blank">open case &#8599;</a></div>';
       return '<tr><td>'+badge(it.severity)+(isNew?'<span class="new-tag">NEW</span>':'')+'</td>'
         +'<td class="mono" style="font-size:11px">'+lab+'</td>'
         +'<td><div class="prod">'+esc(it.name)+'</div><div class="sub">'+(it.asin?it.asin+' · ':'')+esc(it.sku||'')+'</div></td>'
@@ -396,6 +411,22 @@ footer{padding:12px 32px 28px;text-align:center;font-family:var(--font-mono);fon
       +'<td class="num">'+fmt(r.available)+'</td><td class="num">'+(r.inbound==null?'?':fmt(r.inbound))+'</td><td class="num">'+fmt(r.unfulfillable)+'</td>'
       +'<td class="num">'+fmt(r.units30)+'</td><td class="num">'+fmt(r.vel,2)+'</td><td class="num">'+fmt(r.doc,1)+'</td><td class="num">'+(r.pool_doc!=null?fmt(r.pool_doc,1)+' <span class="sub">'+fmt(r.pool_vel,1)+'/d</span>':'—')+'</td>'
       +'<td class="num">'+(r.ad30?cur(invTab)+fmt(r.ad30):'—')+'</td><td class="reason">'+esc(r.reasons.join('; '))+(r.vel_source==='h10'?' <span class="sub">(velocity: H10)</span>':'')+'</td></tr>'}).join('');
+  }
+
+
+  function caseSev(st){st=(st||'').toLowerCase();return st.indexOf('attention')>=0?'URGENT':(st.indexOf('progress')>=0?'WATCH':(st.indexOf('answered')>=0?'INFO':'OK'))}
+  function renderCases(){
+    var s=S[idx], all=(s.cases||[]).filter(function(c){return brandFilter==='ALL'||c.brand===brandFilter});
+    if(acctFilter)all=all.filter(function(c){return c.members.indexOf(acctFilter)>=0||c.group===acctFilter});
+    var rows=all.filter(function(c){return showAnswered||c.attention});
+    rows.sort(function(a,b){return (RANK[caseSev(a.status)]-RANK[caseSev(b.status)])||(b.created||'').localeCompare(a.created||'')});
+    var tot=s.case_totals||{}; var totN=Object.keys(tot).reduce(function(n,k){return n+(tot[k]||0)},0);
+    $('case-count').textContent='('+all.filter(function(c){return c.attention}).length+' need attention · '+totN+' total on file)';
+    if(!rows.length){$('case-body').innerHTML='<tr><td colspan="8" class="empty">No cases need attention.'+(all.length?' Toggle "Show answered cases" for the rest.':'')+'</td></tr>';return}
+    $('case-body').innerHTML=rows.map(function(c){return '<tr><td>'+badge(caseSev(c.status))+'<div class="sub">'+esc(c.status)+'</div></td>'
+      +'<td class="mono" style="font-size:11px">'+esc(c.label)+'</td><td class="mono" style="font-size:11px"><a href="'+c.url+'" target="_blank">'+c.id+'</a></td>'
+      +'<td>'+esc(c.subject)+(c.note?'<div class="sub">'+esc(c.note)+'</div>':'')+'</td><td class="mono" style="font-size:11px">'+esc(c.created||'')+'</td><td class="mono" style="font-size:11px">'+esc(c.last_reply||'no reply')+'</td>'
+      +'<td class="num">'+(c.age_days!=null?c.age_days+'d':'')+'</td><td class="mono" style="font-size:11px">'+(c.asin?'<a href="'+amz(c.region==='EU'?'DE':c.region,c.asin)+'" target="_blank">'+c.asin+'</a>':'')+'</td></tr>'}).join('');
   }
 
   var chart;

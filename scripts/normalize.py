@@ -191,6 +191,31 @@ def clean_action(n):
     return re.sub(r'^client:\s*', '', a, flags=re.I)
 
 
+CASE_GROUPS = {'CC_NA': ('CC', 'NA', ['CC_US', 'CC_CA']), 'CC_EU': ('CC', 'EU', ['CC_UK', 'CC_DE', 'CC_FR', 'CC_IT', 'CC_ES', 'CC_NL', 'CC_AE', 'CC_SA']),
+               'CC_AU': ('CC', 'AU', ['CC_AU']), 'CL_US': ('CL', 'US', ['CL_US']), 'PP_US': ('PP', 'US', ['PP_US'])}
+CASE_ATTENTION = ('needs your attention', 'work in progress')
+
+
+def load_cases(week_dir, week):
+    """cases.json -> list of case dicts with age, asin, attention flag."""
+    raw = load_json(week_dir, 'cases.json') or {}
+    monday = dt.date.fromisocalendar(int(week[:4]), int(week.split('-W')[1]), 1)
+    out = []
+    for key, grp in raw.items():
+        brand, region, members = CASE_GROUPS.get(key, (key.split('_')[0], key.split('_')[1], []))
+        for c in grp.get('cases', []):
+            cid, status, subject, created, last = c[0], c[1], c[2], c[3], c[4]
+            note = c[5] if len(c) > 5 else None
+            m = re.search(r'\b(B0[A-Z0-9]{8})\b', subject or '')
+            age = (monday - dt.date.fromisoformat(created)).days if created else None
+            out.append({'id': cid, 'group': key, 'brand': brand, 'region': region, 'members': members,
+                        'label': f"{region} {BRANDS[brand]['label']}", 'status': status, 'subject': subject,
+                        'created': created, 'last_reply': last, 'age_days': age, 'asin': m.group(1) if m else None,
+                        'attention': (status or '').lower() in CASE_ATTENTION, 'note': note,
+                        'url': f"https://{grp.get('domain', 'sellercentral.amazon.com')}/cu/case-dashboard/view-case?caseID={cid}"})
+    return out, {k: v.get('total') for k, v in raw.items()}
+
+
 def classify(item, pool_vel, pool_doc):
     """Return (severity, reasons[]). Uses pooled velocity for EU pool markets."""
     reasons = []
@@ -241,6 +266,7 @@ def build_snapshot(week, generated):
     for r in load_csv(week_dir, 'restock_recs.csv'):
         code = r['market'] if '_' in r['market'] else 'CC_' + r['market']
         recs[(code, r['asin'])] = r
+    cases, case_totals = load_cases(week_dir, week)
     health_raw = load_json(week_dir, 'account_health.json') or {}
     health = {(k if '_' in k else 'CC_' + k): v for k, v in health_raw.items()}
 
@@ -404,6 +430,21 @@ def build_snapshot(week, generated):
                 if SEV_RANK[sev] < SEV_RANK[accounts_out[c]['status']['account']]:
                     accounts_out[c]['status']['account'] = sev
                 accounts_out[c]['coverage']['account_feed'] = True
+    by_asin = defaultdict(list)
+    for c in cases:
+        if c['asin']:
+            by_asin[c['asin']].append(c['id'])
+    for f_ in flat:
+        if f_.get('asin') and by_asin.get(f_['asin']):
+            f_['cases'] = by_asin[f_['asin']]
+    for c in cases:
+        if c['attention']:
+            acct = c['members'][0] if c['members'] else c['group']
+            flat.append({'id': f"case|{c['id']}", 'account': c['group'], 'brand': c['brand'], 'market': c['region'], 'label': c['label'],
+                         'pool_markets': None, 'type': 'case', 'severity': 'URGENT' if 'attention' in c['status'].lower() else 'WATCH',
+                         'asin': c['asin'], 'sku': None, 'name': f"Case {c['id']}", 'reason': c['subject'] + (f" ({c['note']})" if c['note'] else ''),
+                         'opened': c['created'], 'status': c['status'] + (f", last Amazon reply {c['last_reply']}" if c['last_reply'] else ', no Amazon reply yet'),
+                         'owner': 'barcus', 'action': 'Reply in the case or route to the client', 'url': c['url']})
     AORDER = ORDER + sorted(shared_pools)
     flat.sort(key=lambda f_: (SEV_RANK[f_['severity']], AORDER.index(f_['account']) if f_['account'] in AORDER else 99, f_.get('doc') if f_.get('doc') is not None else 9e9))
     totals = {k: sum(1 for f_ in flat if f_['severity'] == k) for k in ('CRITICAL', 'URGENT', 'WATCH')}
@@ -413,6 +454,7 @@ def build_snapshot(week, generated):
                     'account_health': bool(health), 'restock_recs': bool(recs)},
         'thresholds': {'urgent_doc': URGENT_DOC, 'watch_doc': WATCH_DOC, 'lead_time_days': LEAD_TIME_DAYS, 'review_cover_days': REVIEW_COVER_DAYS},
         'totals': totals, 'items': flat, 'accounts': accounts_out, 'order': ORDER,
+        'cases': cases, 'case_totals': case_totals,
         'brands': BRANDS, 'pools': {pl: [ACC[c]['market'] for c in mem] for pl, mem in pool_members.items() if len(mem) > 1},
     }
     return snap

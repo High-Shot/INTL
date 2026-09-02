@@ -2,7 +2,7 @@
 
 _DRAFT for Barcus review before sending. Delete this line._
 
-Open across all accounts: 12 critical, 24 urgent. Dashboard: https://high-shot.github.io/INTL/
+Open across all accounts: 12 critical, 28 urgent. Dashboard: https://high-shot.github.io/INTL/
 
 ## Needs your action (documents, registrations, shipments)
 - **CA AUTO** · Listing Removed (B0DKVZRX69) · Consumer Chemicals and Containers (CCCR) safety issue: Rapid Ceramic Interior Detailer listing removed on Amazon.ca, submission required. Open 4+ months; ASIN has no CA FBA offer in H10. (open 131 days; open since 2026-04-22, submission required)

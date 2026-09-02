@@ -55,6 +55,18 @@ For each kept message, read it with get_thread and write `data/raw/$WEEK/account
 ```
 Keys are account codes: `CC_UK`, `CC_DE`, `CL_US`, `PP_US`, etc. (a bare market code like `UK` is read as `CC_UK`). Marketplace comes from the email's domain or body; brand from the seller account named in the email. Carry forward every still-open item from last week's `account_health.json` (same `date`, `type`, `asin`) unless a resolution email arrived; add `status` (open / appeal submitted / under review / resolved) when known. If no qualifying emails, copy last week's file forward and note "no new notifications" in the summary. If Gmail returns nothing at all for 3 runs in a row, tell Barcus the Notification Preferences setup may not have taken.
 
+## 4c. Support cases (built-in browser, weekly)
+No export exists; read the Case Log page per account. URLs (same merchant IDs as 4b):
+- CC_NA: https://sellercentral.amazon.com/cu/case-lobby?mons_sel_mkid=amzn1.mp.o.ATVPDKIKX0DER&mons_sel_dir_mcid=amzn1.merchant.d.AA37UGXB4LPBTST6FZERE4YVYHJA&ignore_selection_changed=true
+- CC_EU: https://sellercentral-europe.amazon.com/cu/case-lobby?mons_sel_mkid=amzn1.mp.o.A1F83G8C2ARO7P&mons_sel_dir_mcid=amzn1.merchant.d.ADCXPM4GTPWUOVSTJRR3RPSCO24Q&ignore_selection_changed=true
+- CC_AU: https://sellercentral.amazon.com.au/cu/case-lobby?mons_sel_mkid=amzn1.mp.o.A39IBJ37TRP1C6&mons_sel_dir_mcid=amzn1.merchant.d.ACNCF7ANVUZX46RGS7BK3NWSJDDQ&ignore_selection_changed=true
+- CL_US: https://sellercentral.amazon.com/cu/case-lobby?mons_sel_mkid=amzn1.mp.o.ATVPDKIKX0DER&mons_sel_dir_mcid=amzn1.merchant.d.ACUXQDEGAV73SHG6YAPIILHF6M6A&ignore_selection_changed=true
+- PP_US: https://sellercentral.amazon.com/cu/case-lobby?mons_sel_mkid=amzn1.mp.o.ATVPDKIKX0DER&mons_sel_dir_mcid=amzn1.merchant.d.ADZTQZSFWHWF3KD3PEVJASRR6HRQ&ignore_selection_changed=true
+After each navigate, run this in `javascript_tool` (wait 5s first): 
+`(async function(){await new Promise(r=>setTimeout(r,5000));var rows=[...document.querySelectorAll('tr')].map(tr=>[...tr.querySelectorAll('td')].map(td=>td.innerText.trim().replace(/\s+/g,' '))).filter(r=>r.length>=5);var m=document.body.innerText.match(/Cases \d+ to \d+ of (\d+)/);return JSON.stringify({total:m&&+m[1],rows:rows.map(r=>r.slice(0,5))})})()`
+The page shows the 10 most recent cases; pagination is inside a shadow DOM and does not respond, so 10 is the weekly window. Convert dates to YYYY-MM-DD ("No reply" -> null). For every case with status "Needs your attention" or "Work in progress", open `/cu/case-dashboard/view-case?caseID=<id>` on the same domain and put the latest Amazon message (one line) as the 6th element.
+Write `data/raw/$WEEK/cases.json`: `{ "<GROUP>": {"domain": "<host>", "total": N, "cases": [[id, status, subject, created, last_reply, note?], ...]} }` for groups CC_NA, CC_EU, CC_AU, CL_US, PP_US. Carry forward any "Needs your attention" case from last week that has dropped off the first page unless its status is now closed.
+
 ## 5. Amazon restock recommendations (optional)
 If `"$HOME/mnt/Cerakote Management/intl-tracker/inbox/restock_*.csv"` exists on the linked computer (Barcus drops the Seller Central Restock Inventory download there), convert it to `data/raw/$WEEK/restock_recs.csv` with header `market,asin,sku,rec_qty,rec_date` and move the source file to `inbox/processed/`. Otherwise skip; the dashboard shows estimates.
 
@@ -80,7 +92,7 @@ If SEND=yes: create a Gmail draft with `mcp__Gmail__create_draft`, to barcus@hig
 If SEND=no: skip the draft; the note is still committed for the record.
 
 ## 7. Summary message to Barcus (SendUserMessage)
-Lead line: "INTL $WEEK: N critical, N urgent, N watch (Δ vs last week)". Then one line per CRITICAL and URGENT stock item: market, SKU, name, available, inbound, days of cover, ads 30d, restock qty (Amazon rec or est.). Then account items. Then `Client note: SEND=yes (reason), Gmail draft created` or `Client note: SEND=no (reason)`. Then one line for anything that failed (a market with no SI data, Gmail empty, push failed, Seller Central session expired). Link: https://high-shot.github.io/INTL/
+Lead line: "INTL $WEEK: N critical, N urgent, N watch (Δ vs last week)". Then one line per support case needing attention (account, case ID, subject, age). Then one line per CRITICAL and URGENT stock item: market, SKU, name, available, inbound, days of cover, ads 30d, restock qty (Amazon rec or est.). Then account items. Then `Client note: SEND=yes (reason), Gmail draft created` or `Client note: SEND=no (reason)`. Then one line for anything that failed (a market with no SI data, Gmail empty, push failed, Seller Central session expired). Link: https://high-shot.github.io/INTL/
 No other prose.
 
 ## Rules

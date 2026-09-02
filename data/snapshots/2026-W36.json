@@ -27,8 +27,8 @@
  },
  "totals": {
   "CRITICAL": 12,
-  "URGENT": 24,
-  "WATCH": 33
+  "URGENT": 28,
+  "WATCH": 35
  },
  "items": [
   {
@@ -264,7 +264,10 @@
    "opened": "2026-08-12",
    "status": "open, 2 appeals rejected",
    "owner": "barcus",
-   "action": "Resubmit with a preventative action that maps to the VOC complaint reasons (see project notes on the DE headlight appeal)"
+   "action": "Resubmit with a preventative action that maps to the VOC complaint reasons (see project notes on the DE headlight appeal)",
+   "cases": [
+    "13194053852"
+   ]
   },
   {
    "id": "CC_ES|B0H1NM7467|compliance_documents|None",
@@ -373,7 +376,10 @@
    "restock_rec": null,
    "restock_est": 4962,
    "owner": "client",
-   "action": "Create FBA shipment"
+   "action": "Create FBA shipment",
+   "cases": [
+    "21770052381"
+   ]
   },
   {
    "id": "CC_UK|B084RQKLV8|stock",
@@ -396,7 +402,10 @@
    "restock_rec": null,
    "restock_est": 10624,
    "owner": "client",
-   "action": "Create FBA shipment"
+   "action": "Create FBA shipment",
+   "cases": [
+    "13194053852"
+   ]
   },
   {
    "id": "CC_UK|acct|other|2026-06-16",
@@ -655,6 +664,44 @@
    "action": "Create FBA shipment"
   },
   {
+   "id": "case|21524186051",
+   "account": "CL_US",
+   "brand": "CL",
+   "market": "US",
+   "label": "US LEGACY",
+   "pool_markets": null,
+   "type": "case",
+   "severity": "URGENT",
+   "asin": null,
+   "sku": null,
+   "name": "Case 21524186051",
+   "reason": "Action Required - Amazon Customer Insights Report - 510796695502",
+   "opened": "2026-08-07",
+   "status": "Needs your attention, last Amazon reply 2026-08-28",
+   "owner": "barcus",
+   "action": "Reply in the case or route to the client",
+   "url": "https://sellercentral.amazon.com/cu/case-dashboard/view-case?caseID=21524186051"
+  },
+  {
+   "id": "case|21012317741",
+   "account": "CL_US",
+   "brand": "CL",
+   "market": "US",
+   "label": "US LEGACY",
+   "pool_markets": null,
+   "type": "case",
+   "severity": "URGENT",
+   "asin": null,
+   "sku": null,
+   "name": "Case 21012317741",
+   "reason": "Action Required - Amazon Customer Insights Report - 510796695502",
+   "opened": "2026-07-03",
+   "status": "Needs your attention, last Amazon reply 2026-07-24",
+   "owner": "barcus",
+   "action": "Reply in the case or route to the client",
+   "url": "https://sellercentral.amazon.com/cu/case-dashboard/view-case?caseID=21012317741"
+  },
+  {
    "id": "PP_US|B0CXWFGS2L|stock",
    "account": "PP_US",
    "brand": "PP",
@@ -721,7 +768,10 @@
    "restock_rec": null,
    "restock_est": 97,
    "owner": "client",
-   "action": "Create FBA shipment"
+   "action": "Create FBA shipment",
+   "cases": [
+    "20238271501"
+   ]
   },
   {
    "id": "CC_EU|B0FW6WFX4D|stock",
@@ -779,7 +829,10 @@
    "restock_rec": null,
    "restock_est": 254,
    "owner": "client",
-   "action": "Create FBA shipment"
+   "action": "Create FBA shipment",
+   "cases": [
+    "21770052381"
+   ]
   },
   {
    "id": "CC_EU|acct|other|2026-08-12",
@@ -828,6 +881,44 @@
    "status": "open, submission required",
    "owner": "client",
    "action": "Upload GPSR responsible-person and safety info in Manage Your Compliance"
+  },
+  {
+   "id": "case|13215940942",
+   "account": "CC_EU",
+   "brand": "CC",
+   "market": "EU",
+   "label": "EU AUTO",
+   "pool_markets": null,
+   "type": "case",
+   "severity": "URGENT",
+   "asin": null,
+   "sku": null,
+   "name": "Case 13215940942",
+   "reason": "[Feedback Required] FBA Inbound - Labeling Issues with Heavy Package [HCA1] (Amazon reminder 1 Sep: still awaiting your response on this case.)",
+   "opened": "2026-08-27",
+   "status": "Needs your attention, last Amazon reply 2026-09-01",
+   "owner": "barcus",
+   "action": "Reply in the case or route to the client",
+   "url": "https://sellercentral-europe.amazon.com/cu/case-dashboard/view-case?caseID=13215940942"
+  },
+  {
+   "id": "case|12942299822",
+   "account": "CC_EU",
+   "brand": "CC",
+   "market": "EU",
+   "label": "EU AUTO",
+   "pool_markets": null,
+   "type": "case",
+   "severity": "URGENT",
+   "asin": null,
+   "sku": null,
+   "name": "Case 12942299822",
+   "reason": "Action recommended: Re-generate your VAT Transactions Report for April 2026",
+   "opened": "2026-07-02",
+   "status": "Needs your attention, last Amazon reply 2026-07-02",
+   "owner": "barcus",
+   "action": "Reply in the case or route to the client",
+   "url": "https://sellercentral-europe.amazon.com/cu/case-dashboard/view-case?caseID=12942299822"
   },
   {
    "id": "CC_US|B0H1NM7467|stock",
@@ -919,7 +1010,10 @@
    "restock_rec": null,
    "restock_est": 494,
    "owner": "client",
-   "action": "Plan shipment"
+   "action": "Plan shipment",
+   "cases": [
+    "21770174311"
+   ]
   },
   {
    "id": "CC_US|B084RQKLV8|stock",
@@ -942,7 +1036,10 @@
    "restock_rec": null,
    "restock_est": 25716,
    "owner": "client",
-   "action": "Plan shipment"
+   "action": "Plan shipment",
+   "cases": [
+    "13194053852"
+   ]
   },
   {
    "id": "CC_US|B0DH5ZC1N4|stock",
@@ -1417,7 +1514,10 @@
    "restock_rec": null,
    "restock_est": 396,
    "owner": "client",
-   "action": "Plan shipment"
+   "action": "Plan shipment",
+   "cases": [
+    "13194053852"
+   ]
   },
   {
    "id": "PP_US|B00MI5357U|stock",
@@ -1549,7 +1649,48 @@
    "restock_rec": null,
    "restock_est": 1266,
    "owner": "client",
-   "action": "Plan shipment"
+   "action": "Plan shipment",
+   "cases": [
+    "13194053852"
+   ]
+  },
+  {
+   "id": "case|13225682772",
+   "account": "CC_EU",
+   "brand": "CC",
+   "market": "EU",
+   "label": "EU AUTO",
+   "pool_markets": null,
+   "type": "case",
+   "severity": "WATCH",
+   "asin": null,
+   "sku": null,
+   "name": "Case 13225682772",
+   "reason": "Other account issues",
+   "opened": "2026-08-31",
+   "status": "Work in progress, no Amazon reply yet",
+   "owner": "barcus",
+   "action": "Reply in the case or route to the client",
+   "url": "https://sellercentral-europe.amazon.com/cu/case-dashboard/view-case?caseID=13225682772"
+  },
+  {
+   "id": "case|21800945731",
+   "account": "CC_NA",
+   "brand": "CC",
+   "market": "NA",
+   "label": "NA AUTO",
+   "pool_markets": null,
+   "type": "case",
+   "severity": "WATCH",
+   "asin": null,
+   "sku": null,
+   "name": "Case 21800945731",
+   "reason": "Other FBA Issue",
+   "opened": "2026-08-29",
+   "status": "Work in progress, last Amazon reply 2026-08-31",
+   "owner": "barcus",
+   "action": "Reply in the case or route to the client",
+   "url": "https://sellercentral.amazon.com/cu/case-dashboard/view-case?caseID=21800945731"
   },
   {
    "id": "CC_US|acct|other|2026-08-10",
@@ -7866,6 +8007,855 @@
   "CL_US",
   "PP_US"
  ],
+ "cases": [
+  {
+   "id": "21835604721",
+   "group": "CC_NA",
+   "brand": "CC",
+   "region": "NA",
+   "members": [
+    "CC_US",
+    "CC_CA"
+   ],
+   "label": "NA AUTO",
+   "status": "Answered",
+   "subject": "FBA19H9J16VX - Missing Items from Inbound",
+   "created": "2026-09-01",
+   "last_reply": "2026-09-01",
+   "age_days": -1,
+   "asin": null,
+   "attention": false,
+   "note": null,
+   "url": "https://sellercentral.amazon.com/cu/case-dashboard/view-case?caseID=21835604721"
+  },
+  {
+   "id": "21835750011",
+   "group": "CC_NA",
+   "brand": "CC",
+   "region": "NA",
+   "members": [
+    "CC_US",
+    "CC_CA"
+   ],
+   "label": "NA AUTO",
+   "status": "Answered",
+   "subject": "FBA19FHS21BV - Missing Items from Inbound",
+   "created": "2026-09-01",
+   "last_reply": "2026-09-01",
+   "age_days": -1,
+   "asin": null,
+   "attention": false,
+   "note": null,
+   "url": "https://sellercentral.amazon.com/cu/case-dashboard/view-case?caseID=21835750011"
+  },
+  {
+   "id": "21800945731",
+   "group": "CC_NA",
+   "brand": "CC",
+   "region": "NA",
+   "members": [
+    "CC_US",
+    "CC_CA"
+   ],
+   "label": "NA AUTO",
+   "status": "Work in progress",
+   "subject": "Other FBA Issue",
+   "created": "2026-08-29",
+   "last_reply": "2026-08-31",
+   "age_days": 2,
+   "asin": null,
+   "attention": true,
+   "note": null,
+   "url": "https://sellercentral.amazon.com/cu/case-dashboard/view-case?caseID=21800945731"
+  },
+  {
+   "id": "21770308461",
+   "group": "CC_NA",
+   "brand": "CC",
+   "region": "NA",
+   "members": [
+    "CC_US",
+    "CC_CA"
+   ],
+   "label": "NA AUTO",
+   "status": "Answered",
+   "subject": "Weights and Dimensions: FBA fees related issue for FNSKU X003UWPO7P",
+   "created": "2026-08-27",
+   "last_reply": "2026-08-27",
+   "age_days": 4,
+   "asin": null,
+   "attention": false,
+   "note": null,
+   "url": "https://sellercentral.amazon.com/cu/case-dashboard/view-case?caseID=21770308461"
+  },
+  {
+   "id": "21770174311",
+   "group": "CC_NA",
+   "brand": "CC",
+   "region": "NA",
+   "members": [
+    "CC_US",
+    "CC_CA"
+   ],
+   "label": "NA AUTO",
+   "status": "Answered",
+   "subject": "Weights and Dimensions: FBA fees related issue for FNSKU B0C4QX35KX",
+   "created": "2026-08-27",
+   "last_reply": "2026-08-27",
+   "age_days": 4,
+   "asin": "B0C4QX35KX",
+   "attention": false,
+   "note": null,
+   "url": "https://sellercentral.amazon.com/cu/case-dashboard/view-case?caseID=21770174311"
+  },
+  {
+   "id": "21770166401",
+   "group": "CC_NA",
+   "brand": "CC",
+   "region": "NA",
+   "members": [
+    "CC_US",
+    "CC_CA"
+   ],
+   "label": "NA AUTO",
+   "status": "Answered",
+   "subject": "Weights and Dimensions: FBA fees related issue for FNSKU X003UUPMAV",
+   "created": "2026-08-27",
+   "last_reply": "2026-08-27",
+   "age_days": 4,
+   "asin": null,
+   "attention": false,
+   "note": null,
+   "url": "https://sellercentral.amazon.com/cu/case-dashboard/view-case?caseID=21770166401"
+  },
+  {
+   "id": "21770052381",
+   "group": "CC_NA",
+   "brand": "CC",
+   "region": "NA",
+   "members": [
+    "CC_US",
+    "CC_CA"
+   ],
+   "label": "NA AUTO",
+   "status": "Answered",
+   "subject": "Weights and Dimensions: FBA fees related issue for FNSKU B0FYRJ1966",
+   "created": "2026-08-27",
+   "last_reply": "2026-08-27",
+   "age_days": 4,
+   "asin": "B0FYRJ1966",
+   "attention": false,
+   "note": null,
+   "url": "https://sellercentral.amazon.com/cu/case-dashboard/view-case?caseID=21770052381"
+  },
+  {
+   "id": "21726181541",
+   "group": "CC_NA",
+   "brand": "CC",
+   "region": "NA",
+   "members": [
+    "CC_US",
+    "CC_CA"
+   ],
+   "label": "NA AUTO",
+   "status": "Answered",
+   "subject": "FBA19HZJ94KB - Missing Items from Inbound",
+   "created": "2026-08-24",
+   "last_reply": "2026-08-25",
+   "age_days": 7,
+   "asin": null,
+   "attention": false,
+   "note": null,
+   "url": "https://sellercentral.amazon.com/cu/case-dashboard/view-case?caseID=21726181541"
+  },
+  {
+   "id": "21726225561",
+   "group": "CC_NA",
+   "brand": "CC",
+   "region": "NA",
+   "members": [
+    "CC_US",
+    "CC_CA"
+   ],
+   "label": "NA AUTO",
+   "status": "Answered",
+   "subject": "FBA19FTWQR6H - Missing Items from Inbound",
+   "created": "2026-08-24",
+   "last_reply": "2026-08-24",
+   "age_days": 7,
+   "asin": null,
+   "attention": false,
+   "note": null,
+   "url": "https://sellercentral.amazon.com/cu/case-dashboard/view-case?caseID=21726225561"
+  },
+  {
+   "id": "21654438851",
+   "group": "CC_NA",
+   "brand": "CC",
+   "region": "NA",
+   "members": [
+    "CC_US",
+    "CC_CA"
+   ],
+   "label": "NA AUTO",
+   "status": "Answered",
+   "subject": "Other account issues",
+   "created": "2026-08-17",
+   "last_reply": "2026-08-18",
+   "age_days": 14,
+   "asin": null,
+   "attention": false,
+   "note": null,
+   "url": "https://sellercentral.amazon.com/cu/case-dashboard/view-case?caseID=21654438851"
+  },
+  {
+   "id": "13225682772",
+   "group": "CC_EU",
+   "brand": "CC",
+   "region": "EU",
+   "members": [
+    "CC_UK",
+    "CC_DE",
+    "CC_FR",
+    "CC_IT",
+    "CC_ES",
+    "CC_NL",
+    "CC_AE",
+    "CC_SA"
+   ],
+   "label": "EU AUTO",
+   "status": "Work in progress",
+   "subject": "Other account issues",
+   "created": "2026-08-31",
+   "last_reply": null,
+   "age_days": 0,
+   "asin": null,
+   "attention": true,
+   "note": null,
+   "url": "https://sellercentral-europe.amazon.com/cu/case-dashboard/view-case?caseID=13225682772"
+  },
+  {
+   "id": "13215940942",
+   "group": "CC_EU",
+   "brand": "CC",
+   "region": "EU",
+   "members": [
+    "CC_UK",
+    "CC_DE",
+    "CC_FR",
+    "CC_IT",
+    "CC_ES",
+    "CC_NL",
+    "CC_AE",
+    "CC_SA"
+   ],
+   "label": "EU AUTO",
+   "status": "Needs your attention",
+   "subject": "[Feedback Required] FBA Inbound - Labeling Issues with Heavy Package [HCA1]",
+   "created": "2026-08-27",
+   "last_reply": "2026-09-01",
+   "age_days": 4,
+   "asin": null,
+   "attention": true,
+   "note": "Amazon reminder 1 Sep: still awaiting your response on this case.",
+   "url": "https://sellercentral-europe.amazon.com/cu/case-dashboard/view-case?caseID=13215940942"
+  },
+  {
+   "id": "13194053852",
+   "group": "CC_EU",
+   "brand": "CC",
+   "region": "EU",
+   "members": [
+    "CC_UK",
+    "CC_DE",
+    "CC_FR",
+    "CC_IT",
+    "CC_ES",
+    "CC_NL",
+    "CC_AE",
+    "CC_SA"
+   ],
+   "label": "EU AUTO",
+   "status": "Answered",
+   "subject": "FBA Reserved Inventory Issues - B084RQKLV8",
+   "created": "2026-08-20",
+   "last_reply": "2026-08-25",
+   "age_days": 11,
+   "asin": "B084RQKLV8",
+   "attention": false,
+   "note": null,
+   "url": "https://sellercentral-europe.amazon.com/cu/case-dashboard/view-case?caseID=13194053852"
+  },
+  {
+   "id": "13095839002",
+   "group": "CC_EU",
+   "brand": "CC",
+   "region": "EU",
+   "members": [
+    "CC_UK",
+    "CC_DE",
+    "CC_FR",
+    "CC_IT",
+    "CC_ES",
+    "CC_NL",
+    "CC_AE",
+    "CC_SA"
+   ],
+   "label": "EU AUTO",
+   "status": "Answered",
+   "subject": "Investigate the Inventory Discrepancy in Shipment ID: FBA15LX5BMMK",
+   "created": "2026-07-27",
+   "last_reply": "2026-08-01",
+   "age_days": 35,
+   "asin": null,
+   "attention": false,
+   "note": null,
+   "url": "https://sellercentral-europe.amazon.com/cu/case-dashboard/view-case?caseID=13095839002"
+  },
+  {
+   "id": "13051476312",
+   "group": "CC_EU",
+   "brand": "CC",
+   "region": "EU",
+   "members": [
+    "CC_UK",
+    "CC_DE",
+    "CC_FR",
+    "CC_IT",
+    "CC_ES",
+    "CC_NL",
+    "CC_AE",
+    "CC_SA"
+   ],
+   "label": "EU AUTO",
+   "status": "Answered",
+   "subject": "Other account issues",
+   "created": "2026-07-17",
+   "last_reply": "2026-07-18",
+   "age_days": 45,
+   "asin": null,
+   "attention": false,
+   "note": null,
+   "url": "https://sellercentral-europe.amazon.com/cu/case-dashboard/view-case?caseID=13051476312"
+  },
+  {
+   "id": "13049228682",
+   "group": "CC_EU",
+   "brand": "CC",
+   "region": "EU",
+   "members": [
+    "CC_UK",
+    "CC_DE",
+    "CC_FR",
+    "CC_IT",
+    "CC_ES",
+    "CC_NL",
+    "CC_AE",
+    "CC_SA"
+   ],
+   "label": "EU AUTO",
+   "status": "Answered",
+   "subject": "Other account issues",
+   "created": "2026-07-16",
+   "last_reply": "2026-07-16",
+   "age_days": 46,
+   "asin": null,
+   "attention": false,
+   "note": null,
+   "url": "https://sellercentral-europe.amazon.com/cu/case-dashboard/view-case?caseID=13049228682"
+  },
+  {
+   "id": "12941853542",
+   "group": "CC_EU",
+   "brand": "CC",
+   "region": "EU",
+   "members": [
+    "CC_UK",
+    "CC_DE",
+    "CC_FR",
+    "CC_IT",
+    "CC_ES",
+    "CC_NL",
+    "CC_AE",
+    "CC_SA"
+   ],
+   "label": "EU AUTO",
+   "status": "Answered",
+   "subject": "[Action Required] - Update Inventory -FBA",
+   "created": "2026-07-02",
+   "last_reply": "2026-07-02",
+   "age_days": 60,
+   "asin": null,
+   "attention": false,
+   "note": null,
+   "url": "https://sellercentral-europe.amazon.com/cu/case-dashboard/view-case?caseID=12941853542"
+  },
+  {
+   "id": "12942299822",
+   "group": "CC_EU",
+   "brand": "CC",
+   "region": "EU",
+   "members": [
+    "CC_UK",
+    "CC_DE",
+    "CC_FR",
+    "CC_IT",
+    "CC_ES",
+    "CC_NL",
+    "CC_AE",
+    "CC_SA"
+   ],
+   "label": "EU AUTO",
+   "status": "Needs your attention",
+   "subject": "Action recommended: Re-generate your VAT Transactions Report for April 2026",
+   "created": "2026-07-02",
+   "last_reply": "2026-07-02",
+   "age_days": 60,
+   "asin": null,
+   "attention": true,
+   "note": null,
+   "url": "https://sellercentral-europe.amazon.com/cu/case-dashboard/view-case?caseID=12942299822"
+  },
+  {
+   "id": "12935683972",
+   "group": "CC_EU",
+   "brand": "CC",
+   "region": "EU",
+   "members": [
+    "CC_UK",
+    "CC_DE",
+    "CC_FR",
+    "CC_IT",
+    "CC_ES",
+    "CC_NL",
+    "CC_AE",
+    "CC_SA"
+   ],
+   "label": "EU AUTO",
+   "status": "Answered",
+   "subject": "[Action Required] - Update Inventory -FBA",
+   "created": "2026-07-01",
+   "last_reply": "2026-07-01",
+   "age_days": 61,
+   "asin": null,
+   "attention": false,
+   "note": null,
+   "url": "https://sellercentral-europe.amazon.com/cu/case-dashboard/view-case?caseID=12935683972"
+  },
+  {
+   "id": "12917515092",
+   "group": "CC_EU",
+   "brand": "CC",
+   "region": "EU",
+   "members": [
+    "CC_UK",
+    "CC_DE",
+    "CC_FR",
+    "CC_IT",
+    "CC_ES",
+    "CC_NL",
+    "CC_AE",
+    "CC_SA"
+   ],
+   "label": "EU AUTO",
+   "status": "Answered",
+   "subject": "Inventory Health: Restock Your Best-Selling Items",
+   "created": "2026-06-25",
+   "last_reply": "2026-06-25",
+   "age_days": 67,
+   "asin": null,
+   "attention": false,
+   "note": null,
+   "url": "https://sellercentral-europe.amazon.com/cu/case-dashboard/view-case?caseID=12917515092"
+  },
+  {
+   "id": "21772679941",
+   "group": "CL_US",
+   "brand": "CL",
+   "region": "US",
+   "members": [
+    "CL_US"
+   ],
+   "label": "US LEGACY",
+   "status": "Answered",
+   "subject": "Dangerous goods (hazmat)",
+   "created": "2026-08-27",
+   "last_reply": "2026-08-28",
+   "age_days": 4,
+   "asin": null,
+   "attention": false,
+   "note": null,
+   "url": "https://sellercentral.amazon.com/cu/case-dashboard/view-case?caseID=21772679941"
+  },
+  {
+   "id": "21729525501",
+   "group": "CL_US",
+   "brand": "CL",
+   "region": "US",
+   "members": [
+    "CL_US"
+   ],
+   "label": "US LEGACY",
+   "status": "Answered",
+   "subject": "Dangerous goods (hazmat)",
+   "created": "2026-08-24",
+   "last_reply": "2026-08-29",
+   "age_days": 7,
+   "asin": null,
+   "attention": false,
+   "note": null,
+   "url": "https://sellercentral.amazon.com/cu/case-dashboard/view-case?caseID=21729525501"
+  },
+  {
+   "id": "21690150841",
+   "group": "CL_US",
+   "brand": "CL",
+   "region": "US",
+   "members": [
+    "CL_US"
+   ],
+   "label": "US LEGACY",
+   "status": "Answered",
+   "subject": "Hazmat Issues",
+   "created": "2026-08-20",
+   "last_reply": null,
+   "age_days": 11,
+   "asin": null,
+   "attention": false,
+   "note": null,
+   "url": "https://sellercentral.amazon.com/cu/case-dashboard/view-case?caseID=21690150841"
+  },
+  {
+   "id": "21612898411",
+   "group": "CL_US",
+   "brand": "CL",
+   "region": "US",
+   "members": [
+    "CL_US"
+   ],
+   "label": "US LEGACY",
+   "status": "Answered",
+   "subject": "Dangerous Goods Warning",
+   "created": "2026-08-13",
+   "last_reply": "2026-08-19",
+   "age_days": 18,
+   "asin": null,
+   "attention": false,
+   "note": null,
+   "url": "https://sellercentral.amazon.com/cu/case-dashboard/view-case?caseID=21612898411"
+  },
+  {
+   "id": "21524186051",
+   "group": "CL_US",
+   "brand": "CL",
+   "region": "US",
+   "members": [
+    "CL_US"
+   ],
+   "label": "US LEGACY",
+   "status": "Needs your attention",
+   "subject": "Action Required - Amazon Customer Insights Report - 510796695502",
+   "created": "2026-08-07",
+   "last_reply": "2026-08-28",
+   "age_days": 24,
+   "asin": null,
+   "attention": true,
+   "note": null,
+   "url": "https://sellercentral.amazon.com/cu/case-dashboard/view-case?caseID=21524186051"
+  },
+  {
+   "id": "21369795451",
+   "group": "CL_US",
+   "brand": "CL",
+   "region": "US",
+   "members": [
+    "CL_US"
+   ],
+   "label": "US LEGACY",
+   "status": "Answered",
+   "subject": "Dangerous goods (hazmat)",
+   "created": "2026-07-29",
+   "last_reply": "2026-07-29",
+   "age_days": 33,
+   "asin": null,
+   "attention": false,
+   "note": null,
+   "url": "https://sellercentral.amazon.com/cu/case-dashboard/view-case?caseID=21369795451"
+  },
+  {
+   "id": "21339756331",
+   "group": "CL_US",
+   "brand": "CL",
+   "region": "US",
+   "members": [
+    "CL_US"
+   ],
+   "label": "US LEGACY",
+   "status": "Answered",
+   "subject": "Dangerous goods (hazmat)",
+   "created": "2026-07-27",
+   "last_reply": null,
+   "age_days": 35,
+   "asin": null,
+   "attention": false,
+   "note": null,
+   "url": "https://sellercentral.amazon.com/cu/case-dashboard/view-case?caseID=21339756331"
+  },
+  {
+   "id": "21012317741",
+   "group": "CL_US",
+   "brand": "CL",
+   "region": "US",
+   "members": [
+    "CL_US"
+   ],
+   "label": "US LEGACY",
+   "status": "Needs your attention",
+   "subject": "Action Required - Amazon Customer Insights Report - 510796695502",
+   "created": "2026-07-03",
+   "last_reply": "2026-07-24",
+   "age_days": 59,
+   "asin": null,
+   "attention": true,
+   "note": null,
+   "url": "https://sellercentral.amazon.com/cu/case-dashboard/view-case?caseID=21012317741"
+  },
+  {
+   "id": "20960808711",
+   "group": "CL_US",
+   "brand": "CL",
+   "region": "US",
+   "members": [
+    "CL_US"
+   ],
+   "label": "US LEGACY",
+   "status": "Answered",
+   "subject": "Action Required: Website Suppressed ASINs",
+   "created": "2026-06-28",
+   "last_reply": "2026-06-28",
+   "age_days": 64,
+   "asin": null,
+   "attention": false,
+   "note": null,
+   "url": "https://sellercentral.amazon.com/cu/case-dashboard/view-case?caseID=20960808711"
+  },
+  {
+   "id": "20846403291",
+   "group": "CL_US",
+   "brand": "CL",
+   "region": "US",
+   "members": [
+    "CL_US"
+   ],
+   "label": "US LEGACY",
+   "status": "Answered",
+   "subject": "[Action Required] - Update Inventory -FBA",
+   "created": "2026-06-15",
+   "last_reply": "2026-06-15",
+   "age_days": 77,
+   "asin": null,
+   "attention": false,
+   "note": null,
+   "url": "https://sellercentral.amazon.com/cu/case-dashboard/view-case?caseID=20846403291"
+  },
+  {
+   "id": "21446513541",
+   "group": "PP_US",
+   "brand": "PP",
+   "region": "US",
+   "members": [
+    "PP_US"
+   ],
+   "label": "US PRIS",
+   "status": "Answered",
+   "subject": "SELLER: A21D21T8B6U09C, ASIN: B0BW26CTFX, MARKETPLACE: 1 - CSC - DOC REVIEW",
+   "created": "2026-08-03",
+   "last_reply": "2026-08-03",
+   "age_days": 28,
+   "asin": "B0BW26CTFX",
+   "attention": false,
+   "note": null,
+   "url": "https://sellercentral.amazon.com/cu/case-dashboard/view-case?caseID=21446513541"
+  },
+  {
+   "id": "21154734971",
+   "group": "PP_US",
+   "brand": "PP",
+   "region": "US",
+   "members": [
+    "PP_US"
+   ],
+   "label": "US PRIS",
+   "status": "Answered",
+   "subject": "Update Image",
+   "created": "2026-07-14",
+   "last_reply": null,
+   "age_days": 48,
+   "asin": null,
+   "attention": false,
+   "note": null,
+   "url": "https://sellercentral.amazon.com/cu/case-dashboard/view-case?caseID=21154734971"
+  },
+  {
+   "id": "21006111301",
+   "group": "PP_US",
+   "brand": "PP",
+   "region": "US",
+   "members": [
+    "PP_US"
+   ],
+   "label": "US PRIS",
+   "status": "Answered",
+   "subject": "Listing not buyable",
+   "created": "2026-07-02",
+   "last_reply": null,
+   "age_days": 60,
+   "asin": null,
+   "attention": false,
+   "note": null,
+   "url": "https://sellercentral.amazon.com/cu/case-dashboard/view-case?caseID=21006111301"
+  },
+  {
+   "id": "20857921931",
+   "group": "PP_US",
+   "brand": "PP",
+   "region": "US",
+   "members": [
+    "PP_US"
+   ],
+   "label": "US PRIS",
+   "status": "Answered",
+   "subject": "Questions regarding my Account Health",
+   "created": "2026-06-16",
+   "last_reply": "2026-06-16",
+   "age_days": 76,
+   "asin": null,
+   "attention": false,
+   "note": null,
+   "url": "https://sellercentral.amazon.com/cu/case-dashboard/view-case?caseID=20857921931"
+  },
+  {
+   "id": "20746669911",
+   "group": "PP_US",
+   "brand": "PP",
+   "region": "US",
+   "members": [
+    "PP_US"
+   ],
+   "label": "US PRIS",
+   "status": "Answered",
+   "subject": "Account Reactivation",
+   "created": "2026-06-11",
+   "last_reply": "2026-06-11",
+   "age_days": 81,
+   "asin": null,
+   "attention": false,
+   "note": null,
+   "url": "https://sellercentral.amazon.com/cu/case-dashboard/view-case?caseID=20746669911"
+  },
+  {
+   "id": "20443854731",
+   "group": "PP_US",
+   "brand": "PP",
+   "region": "US",
+   "members": [
+    "PP_US"
+   ],
+   "label": "US PRIS",
+   "status": "Answered",
+   "subject": "Amazon documentation request 174500870902 B00MI5A8GQ",
+   "created": "2026-06-02",
+   "last_reply": "2026-06-17",
+   "age_days": 90,
+   "asin": "B00MI5A8GQ",
+   "attention": false,
+   "note": null,
+   "url": "https://sellercentral.amazon.com/cu/case-dashboard/view-case?caseID=20443854731"
+  },
+  {
+   "id": "20340477611",
+   "group": "PP_US",
+   "brand": "PP",
+   "region": "US",
+   "members": [
+    "PP_US"
+   ],
+   "label": "US PRIS",
+   "status": "Answered",
+   "subject": "Questions regarding my Account Health",
+   "created": "2026-05-19",
+   "last_reply": null,
+   "age_days": 104,
+   "asin": null,
+   "attention": false,
+   "note": null,
+   "url": "https://sellercentral.amazon.com/cu/case-dashboard/view-case?caseID=20340477611"
+  },
+  {
+   "id": "20340581081",
+   "group": "PP_US",
+   "brand": "PP",
+   "region": "US",
+   "members": [
+    "PP_US"
+   ],
+   "label": "US PRIS",
+   "status": "Answered",
+   "subject": "US - Suspected intellectual Property Violation Appeal for Porsche - ASIN: B08C5M41L8",
+   "created": "2026-05-19",
+   "last_reply": "2026-05-19",
+   "age_days": 104,
+   "asin": "B08C5M41L8",
+   "attention": false,
+   "note": null,
+   "url": "https://sellercentral.amazon.com/cu/case-dashboard/view-case?caseID=20340581081"
+  },
+  {
+   "id": "20238271501",
+   "group": "PP_US",
+   "brand": "PP",
+   "region": "US",
+   "members": [
+    "PP_US"
+   ],
+   "label": "US PRIS",
+   "status": "Answered",
+   "subject": "SELLER: A21D21T8B6U09C, ASIN: B0CY3H9K1L, MARKETPLACE: 1 - CSC - DOC REVIEW",
+   "created": "2026-05-06",
+   "last_reply": "2026-05-07",
+   "age_days": 117,
+   "asin": "B0CY3H9K1L",
+   "attention": false,
+   "note": null,
+   "url": "https://sellercentral.amazon.com/cu/case-dashboard/view-case?caseID=20238271501"
+  },
+  {
+   "id": "20060313931",
+   "group": "PP_US",
+   "brand": "PP",
+   "region": "US",
+   "members": [
+    "PP_US"
+   ],
+   "label": "US PRIS",
+   "status": "Answered",
+   "subject": "[Action Required]: Deactivated Listings due to Active Vacation status.",
+   "created": "2026-04-21",
+   "last_reply": "2026-04-21",
+   "age_days": 132,
+   "asin": null,
+   "attention": false,
+   "note": null,
+   "url": "https://sellercentral.amazon.com/cu/case-dashboard/view-case?caseID=20060313931"
+  }
+ ],
+ "case_totals": {
+  "CC_NA": 1077,
+  "CC_EU": 39,
+  "CC_AU": 0,
+  "CL_US": 87,
+  "PP_US": 84
+ },
  "brands": {
   "CC": {
    "name": "Cerakote Auto",
