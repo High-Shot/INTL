@@ -342,7 +342,7 @@ var SNAPSHOTS = [{"week":"2026-W36","generated_at":"2026-09-01T23:30:00Z","sourc
         +'<div class="mc-cov">'+[['h10','H10'],['velocity','VEL'],['si','SI'],['feedback','FB'],['account_feed','SC']].map(function(k){return '<span class="cov '+(a.coverage[k[0]]?'on':'')+'">'+k[1]+'</span>'}).join('')+'</div>'
         +'</div>'});
     $('mkt-cards').innerHTML=html||'<div class="empty">No accounts for this brand.</div>';
-    Array.prototype.forEach.call($('mkt-cards').querySelectorAll('.mc'),function(el){el.onclick=function(){acctFilter=acctFilter===el.dataset.code?null:el.dataset.code;invTab=acctFilter||invTab;renderCards();renderActions();renderInv();if(acctFilter)$('actions').scrollIntoView({behavior:'smooth',block:'start'})}});
+    Array.prototype.forEach.call($('mkt-cards').querySelectorAll('.mc'),function(el){el.onclick=function(){acctFilter=acctFilter===el.dataset.code?null:el.dataset.code;invTab=acctFilter||invTab;render();if(acctFilter)$('actions').scrollIntoView({behavior:'smooth',block:'start'})}});
   }
 
   function renderActions(){
