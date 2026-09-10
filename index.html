@@ -374,7 +374,7 @@ var SNAPSHOTS = [{"week":"2026-W36","generated_at":"2026-09-01T23:30:00Z","sourc
     var s=S[idx], p=prevSnap();
     if(!p){$('diff-new').innerHTML='<div class="empty">First snapshot.</div>';$('diff-resolved').innerHTML='';return}
     var pid=ids(p), cid=ids(s);
-    var nw=s.items.filter(function(i){return inBrand(i)&&!pid[i.id]}), rs=p.items.filter(function(i){return inBrand(i)&&!cid[i.id]});
+    var nw=s.items.filter(function(i){return inBrand(i)&&inAcct(i)&&!pid[i.id]}), rs=p.items.filter(function(i){return inBrand(i)&&inAcct(i)&&!cid[i.id]});
     function line(i){return '<div class="diff-item">'+badge(i.severity)+'<span class="mono" style="color:var(--muted);font-size:10px">'+esc(i.label)+'</span><span>'+esc(i.name)+'</span><span class="sub">'+esc(i.reason)+'</span></div>'}
     $('diff-new').innerHTML=nw.length?nw.map(line).join(''):'<div class="empty">None</div>';
     $('diff-resolved').innerHTML=rs.length?rs.map(line).join(''):'<div class="empty">None</div>';
@@ -382,7 +382,7 @@ var SNAPSHOTS = [{"week":"2026-W36","generated_at":"2026-09-01T23:30:00Z","sourc
 
   function renderFeedback(){
     var s=S[idx], html='';
-    s.order.forEach(function(code){var a=s.accounts[code]; if(!a||!a.feedback)return; if(brandFilter!=='ALL'&&a.brand!==brandFilter)return; var f=a.feedback;
+    s.order.forEach(function(code){var a=s.accounts[code]; if(!a||!a.feedback)return; if(brandFilter!=='ALL'&&a.brand!==brandFilter)return; if(acctFilter&&!inAcct({account:code}))return; var f=a.feedback;
       if(!f.count&&!f.recent_negative.length)return;
       html+='<div class="fb-row"><span class="fb-mk">'+esc(a.label)+'</span><span class="fb-rating">'+(f.rating!=null?f.rating.toFixed(1)+'&#9733;':'—')+' <span class="sub">'+f.count+' · '+(f.neg_pct!=null?Math.round(f.neg_pct*100)+'% neg':'')+'</span></span>'
         +'<span class="fb-neg">'+(f.recent_negative.length?f.recent_negative.map(function(x){return '<div>'+esc(x)+'</div>'}).join(''):'<span style="color:var(--dim)">no negatives</span>')+'</span></div>'});
@@ -391,7 +391,7 @@ var SNAPSHOTS = [{"week":"2026-W36","generated_at":"2026-09-01T23:30:00Z","sourc
 
   function renderAcct(){
     var s=S[idx], html='', any=false;
-    s.order.forEach(function(code){var a=s.accounts[code]; if(!a||!a.coverage.account_feed)return; if(brandFilter!=='ALL'&&a.brand!==brandFilter)return; any=true; var h=a.account;
+    s.order.forEach(function(code){var a=s.accounts[code]; if(!a||!a.coverage.account_feed)return; if(brandFilter!=='ALL'&&a.brand!==brandFilter)return; if(acctFilter&&!inAcct({account:code}))return; any=true; var h=a.account;
       html+='<div class="fb-row"><span class="fb-mk">'+esc(a.label)+'</span><span class="fb-rating">'+(h.ahr_status?badge(h.ahr_status==='Healthy'?'OK':'URGENT')+' '+esc(h.ahr_status):'')+(h.ahr_score!=null?' <span class="sub">AHR '+h.ahr_score+'</span>':'')+(h.odr!=null?' <span class="sub">ODR '+h.odr+'</span>':'')+'</span>'
         +'<span class="fb-neg">'+((h.notifications||[]).map(function(n){return '<div>'+badge(n.severity||'WATCH')+' '+esc(n.date)+' · '+esc(n.type)+(n.asin?' · '+n.asin:'')+' · '+esc(n.subject)+(n.status?' <span class="sub">'+esc(n.status)+'</span>':'')+'</div>'}).join('')||'<span style="color:var(--dim)">no open notifications</span>')+'</span></div>'});
     $('acct-feed').innerHTML=any?html:'<div class="empty">No Seller Central feed yet.<br>Account Health, policy violations and A-to-Z claims appear here once the notification emails reach barcus@high-shot.com and the backlog is loaded into account_health.json.</div>';
