@@ -280,7 +280,7 @@ footer{padding:12px 32px 28px;text-align:center;font-family:var(--font-mono);fon
   function ids(snap){var o={};(snap?snap.items:[]).forEach(function(i){o[i.id]=i});return o}
   function weeksOpen(id){var n=0;for(var k=idx;k>=0;k--){if(ids(S[k])[id])n++;else break;}return n}
   function inBrand(it){return brandFilter==='ALL'||it.brand===brandFilter}
-  function inAcct(it){if(!acctFilter)return true;if(it.account===acctFilter)return true;var a=S[idx].accounts[acctFilter];return !!(a&&a.pool_shared&&it.account===a.pool)}
+  function inAcct(it){if(!acctFilter)return true;if(it.account===acctFilter)return true;var a=S[idx].accounts[acctFilter];if(!a)return false;if(a.pool_shared&&it.account===a.pool&&it.pool_markets&&it.pool_markets.indexOf(a.market)>=0)return true;if(it.type==='case'){var cid=String(it.id).split('|').pop();var cs=(S[idx].cases||[]).filter(function(x){return String(x.id)===cid})[0];if(cs&&((cs.members&&cs.members.indexOf(acctFilter)>=0)||cs.group===acctFilter))return true;}return false;}
 
   var sel=$('wk-select'); S.forEach(function(s,i){var o=document.createElement('option');o.value=i;o.textContent=s.week+'  ('+s.generated_at.slice(0,10)+')';sel.appendChild(o)});
   sel.value=idx; sel.onchange=function(){idx=+sel.value;render()};
