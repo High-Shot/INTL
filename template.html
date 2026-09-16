@@ -280,7 +280,7 @@ footer{padding:12px 32px 28px;text-align:center;font-family:var(--font-mono);fon
   function ids(snap){var o={};(snap?snap.items:[]).forEach(function(i){o[i.id]=i});return o}
   function weeksOpen(id){var n=0;for(var k=idx;k>=0;k--){if(ids(S[k])[id])n++;else break;}return n}
   function inBrand(it){return brandFilter==='ALL'||it.brand===brandFilter}
-  function inAcct(it){if(!acctFilter)return true;if(it.account===acctFilter)return true;var a=S[idx].accounts[acctFilter];return !!(a&&a.pool_shared&&it.account===a.pool)}
+  function inAcct(it){if(!acctFilter)return true;if(it.account===acctFilter)return true;var a=S[idx].accounts[acctFilter];if(!a)return false;if(a.pool_shared&&it.account===a.pool&&it.pool_markets&&it.pool_markets.indexOf(a.market)>=0)return true;if(it.type==='case'){var cid=String(it.id).split('|').pop();var cs=(S[idx].cases||[]).filter(function(x){return String(x.id)===cid})[0];if(cs&&((cs.members&&cs.members.indexOf(acctFilter)>=0)||cs.group===acctFilter))return true;}return false;}
 
   var sel=$('wk-select'); S.forEach(function(s,i){var o=document.createElement('option');o.value=i;o.textContent=s.week+'  ('+s.generated_at.slice(0,10)+')';sel.appendChild(o)});
   sel.value=idx; sel.onchange=function(){idx=+sel.value;render()};
@@ -342,7 +342,7 @@ footer{padding:12px 32px 28px;text-align:center;font-family:var(--font-mono);fon
         +'<div class="mc-cov">'+[['h10','H10'],['velocity','VEL'],['si','SI'],['feedback','FB'],['account_feed','SC']].map(function(k){return '<span class="cov '+(a.coverage[k[0]]?'on':'')+'">'+k[1]+'</span>'}).join('')+'</div>'
         +'</div>'});
     $('mkt-cards').innerHTML=html||'<div class="empty">No accounts for this brand.</div>';
-    Array.prototype.forEach.call($('mkt-cards').querySelectorAll('.mc'),function(el){el.onclick=function(){acctFilter=acctFilter===el.dataset.code?null:el.dataset.code;invTab=acctFilter||invTab;renderCards();renderActions();renderInv();if(acctFilter)$('actions').scrollIntoView({behavior:'smooth',block:'start'})}});
+    Array.prototype.forEach.call($('mkt-cards').querySelectorAll('.mc'),function(el){el.onclick=function(){acctFilter=acctFilter===el.dataset.code?null:el.dataset.code;invTab=acctFilter||invTab;render();if(acctFilter)$('actions').scrollIntoView({behavior:'smooth',block:'start'})}});
   }
 
   function renderActions(){
@@ -374,7 +374,7 @@ footer{padding:12px 32px 28px;text-align:center;font-family:var(--font-mono);fon
     var s=S[idx], p=prevSnap();
     if(!p){$('diff-new').innerHTML='<div class="empty">First snapshot.</div>';$('diff-resolved').innerHTML='';return}
     var pid=ids(p), cid=ids(s);
-    var nw=s.items.filter(function(i){return inBrand(i)&&!pid[i.id]}), rs=p.items.filter(function(i){return inBrand(i)&&!cid[i.id]});
+    var nw=s.items.filter(function(i){return inBrand(i)&&inAcct(i)&&!pid[i.id]}), rs=p.items.filter(function(i){return inBrand(i)&&inAcct(i)&&!cid[i.id]});
     function line(i){return '<div class="diff-item">'+badge(i.severity)+'<span class="mono" style="color:var(--muted);font-size:10px">'+esc(i.label)+'</span><span>'+esc(i.name)+'</span><span class="sub">'+esc(i.reason)+'</span></div>'}
     $('diff-new').innerHTML=nw.length?nw.map(line).join(''):'<div class="empty">None</div>';
     $('diff-resolved').innerHTML=rs.length?rs.map(line).join(''):'<div class="empty">None</div>';
@@ -382,7 +382,7 @@ footer{padding:12px 32px 28px;text-align:center;font-family:var(--font-mono);fon
 
   function renderFeedback(){
     var s=S[idx], html='';
-    s.order.forEach(function(code){var a=s.accounts[code]; if(!a||!a.feedback)return; if(brandFilter!=='ALL'&&a.brand!==brandFilter)return; var f=a.feedback;
+    s.order.forEach(function(code){var a=s.accounts[code]; if(!a||!a.feedback)return; if(brandFilter!=='ALL'&&a.brand!==brandFilter)return; if(acctFilter&&!inAcct({account:code}))return; var f=a.feedback;
       if(!f.count&&!f.recent_negative.length)return;
       html+='<div class="fb-row"><span class="fb-mk">'+esc(a.label)+'</span><span class="fb-rating">'+(f.rating!=null?f.rating.toFixed(1)+'&#9733;':'—')+' <span class="sub">'+f.count+' · '+(f.neg_pct!=null?Math.round(f.neg_pct*100)+'% neg':'')+'</span></span>'
         +'<span class="fb-neg">'+(f.recent_negative.length?f.recent_negative.map(function(x){return '<div>'+esc(x)+'</div>'}).join(''):'<span style="color:var(--dim)">no negatives</span>')+'</span></div>'});
@@ -391,7 +391,7 @@ footer{padding:12px 32px 28px;text-align:center;font-family:var(--font-mono);fon
 
   function renderAcct(){
     var s=S[idx], html='', any=false;
-    s.order.forEach(function(code){var a=s.accounts[code]; if(!a||!a.coverage.account_feed)return; if(brandFilter!=='ALL'&&a.brand!==brandFilter)return; any=true; var h=a.account;
+    s.order.forEach(function(code){var a=s.accounts[code]; if(!a||!a.coverage.account_feed)return; if(brandFilter!=='ALL'&&a.brand!==brandFilter)return; if(acctFilter&&!inAcct({account:code}))return; any=true; var h=a.account;
       html+='<div class="fb-row"><span class="fb-mk">'+esc(a.label)+'</span><span class="fb-rating">'+(h.ahr_status?badge(h.ahr_status==='Healthy'?'OK':'URGENT')+' '+esc(h.ahr_status):'')+(h.ahr_score!=null?' <span class="sub">AHR '+h.ahr_score+'</span>':'')+(h.odr!=null?' <span class="sub">ODR '+h.odr+'</span>':'')+'</span>'
         +'<span class="fb-neg">'+((h.notifications||[]).map(function(n){return '<div>'+badge(n.severity||'WATCH')+' '+esc(n.date)+' · '+esc(n.type)+(n.asin?' · '+n.asin:'')+' · '+esc(n.subject)+(n.status?' <span class="sub">'+esc(n.status)+'</span>':'')+'</div>'}).join('')||'<span style="color:var(--dim)">no open notifications</span>')+'</span></div>'});
     $('acct-feed').innerHTML=any?html:'<div class="empty">No Seller Central feed yet.<br>Account Health, policy violations and A-to-Z claims appear here once the notification emails reach barcus@high-shot.com and the backlog is loaded into account_health.json.</div>';

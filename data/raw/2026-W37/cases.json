@@ -1,0 +1,320 @@
+{
+ "CC_NA": {
+  "domain": "sellercentral.amazon.com",
+  "total": 1066,
+  "cases": [
+   [
+    "21968038031",
+    "Needs your attention",
+    "ASIN:B0F45C2YHV has issues with product group. Request to update the product group.",
+    "2026-09-09",
+    "2026-09-09",
+    "Amazon needs the target GL category, Product Type and Browse Node ID for B0F45C2YHV; auto-closes after 3 business days without a reply (reminder 9 Sep)."
+   ],
+   [
+    "21947520351",
+    "Needs your attention",
+    "Amazon documentation request 108372421602 B0H51RDY69",
+    "2026-09-08",
+    "2026-09-10",
+    "Hazmat review could not classify the aircraft kit; attach a compliant SDS (16 sections, GHS/CLP, matching title and brand). Units unfulfillable; FC stock may be disposed if nothing within 14 business days of 8 Sep."
+   ],
+   [
+    "21893274031",
+    "Needs your attention",
+    "Action Required - Amazon Customer Insights Report - 108372421602",
+    "2026-09-04",
+    "2026-09-04",
+    "SAS Brand Experience team monthly report; reply Yes/No on whether you will act on the review/return insights."
+   ],
+   [
+    "21886055481",
+    "Answered",
+    "Avoid Suspension of Optimized Placement Access",
+    "2026-09-03",
+    "2026-09-09"
+   ],
+   [
+    "21835604721",
+    "Answered",
+    "FBA19H9J16VX - Missing Items from Inbound",
+    "2026-09-01",
+    "2026-09-01"
+   ],
+   [
+    "21835750011",
+    "Answered",
+    "FBA19FHS21BV - Missing Items from Inbound",
+    "2026-09-01",
+    "2026-09-01"
+   ],
+   [
+    "21800945731",
+    "Work in progress",
+    "Other FBA Issue",
+    "2026-08-29",
+    "2026-09-08",
+    "RC Paint B0B94G13CN reserved units (1,193 in transfer): Amazon confirms transshipment completes 21 Sep, then units return to available and Prime coverage restores. Case held open to that date."
+   ],
+   [
+    "21770308461",
+    "Answered",
+    "Weights and Dimensions: FBA fees related issue for FNSKU X003UWPO7P",
+    "2026-08-27",
+    "2026-08-27"
+   ],
+   [
+    "21770174311",
+    "Answered",
+    "Weights and Dimensions: FBA fees related issue for FNSKU B0C4QX35KX",
+    "2026-08-27",
+    "2026-08-27"
+   ],
+   [
+    "21770166401",
+    "Answered",
+    "Weights and Dimensions: FBA fees related issue for FNSKU X003UUPMAV",
+    "2026-08-27",
+    "2026-08-27"
+   ]
+  ]
+ },
+ "CC_EU": {
+  "domain": "sellercentral-europe.amazon.com",
+  "total": 39,
+  "cases": [
+   [
+    "13225682772",
+    "Work in progress",
+    "Other account issues",
+    "2026-08-31",
+    "2026-09-06",
+    "DE headlight B084RQKLV8 reinstatement inquiry after 2 rejected appeals; Amazon 6 Sep: 'researching with the responsible team', no ask outstanding."
+   ],
+   [
+    "13215940942",
+    "Answered",
+    "[Feedback Required] FBA Inbound - Labeling Issues with Heavy Package [HCA1]",
+    "2026-08-27",
+    "2026-09-10"
+   ],
+   [
+    "13194053852",
+    "Answered",
+    "FBA Reserved Inventory Issues - B084RQKLV8",
+    "2026-08-20",
+    "2026-08-25"
+   ],
+   [
+    "13095839002",
+    "Answered",
+    "Investigate the Inventory Discrepancy in Shipment ID: FBA15LX5BMMK",
+    "2026-07-27",
+    "2026-08-01"
+   ],
+   [
+    "13051476312",
+    "Answered",
+    "Other account issues",
+    "2026-07-17",
+    "2026-07-18"
+   ],
+   [
+    "13049228682",
+    "Answered",
+    "Other account issues",
+    "2026-07-16",
+    "2026-07-16"
+   ],
+   [
+    "12941853542",
+    "Answered",
+    "[Action Required] – Update Inventory -FBA",
+    "2026-07-02",
+    "2026-07-02"
+   ],
+   [
+    "12942299822",
+    "Needs your attention",
+    "Action recommended: Re-generate your VAT Transactions Report for April 2026",
+    "2026-07-02",
+    "2026-07-02",
+    "Carried from W36: re-generate the April 2026 VAT Transactions Report; no Amazon reply since 2 Jul."
+   ],
+   [
+    "12935683972",
+    "Answered",
+    "[Action Required] – Update Inventory -FBA",
+    "2026-07-01",
+    "2026-07-01"
+   ],
+   [
+    "12917515092",
+    "Answered",
+    "Inventory Health: Restock Your Best-Selling Items",
+    "2026-06-25",
+    "2026-06-25"
+   ]
+  ]
+ },
+ "CC_AU": {
+  "domain": "sellercentral.amazon.com.au",
+  "total": 0,
+  "cases": []
+ },
+ "CL_US": {
+  "domain": "sellercentral.amazon.com",
+  "total": 88,
+  "cases": [
+   [
+    "21893407101",
+    "Answered",
+    "Action Required - Amazon Customer Insights Report - 510796695502",
+    "2026-09-04",
+    "2026-09-04"
+   ],
+   [
+    "21878431931",
+    "Needs your attention",
+    "Listing not buyable",
+    "2026-09-03",
+    "2026-09-10",
+    "Amazon needs 6-sided images and an SDS for B0DVPJNVN9 (hazmat review); B0CJRVPZ7K reserved inventory escalated internally. Reminder 10 Sep."
+   ],
+   [
+    "21772679941",
+    "Answered",
+    "Dangerous goods (hazmat)",
+    "2026-08-27",
+    "2026-08-28"
+   ],
+   [
+    "21729525501",
+    "Answered",
+    "Dangerous goods (hazmat)",
+    "2026-08-24",
+    "2026-08-29"
+   ],
+   [
+    "21690150841",
+    "Answered",
+    "Hazmat Issues",
+    "2026-08-20",
+    null
+   ],
+   [
+    "21612898411",
+    "Answered",
+    "Dangerous Goods Warning",
+    "2026-08-13",
+    "2026-08-19"
+   ],
+   [
+    "21524186051",
+    "Needs your attention",
+    "Action Required - Amazon Customer Insights Report - 510796695502",
+    "2026-08-07",
+    "2026-08-28",
+    "SAS Customer Insights report; reply Yes/No. Reminder 28 Aug."
+   ],
+   [
+    "21369795451",
+    "Answered",
+    "Dangerous goods (hazmat)",
+    "2026-07-29",
+    "2026-07-29"
+   ],
+   [
+    "21339756331",
+    "Answered",
+    "Dangerous goods (hazmat)",
+    "2026-07-27",
+    null
+   ],
+   [
+    "21012317741",
+    "Needs your attention",
+    "Action Required - Amazon Customer Insights Report - 510796695502",
+    "2026-07-03",
+    "2026-07-24",
+    "SAS Customer Insights report (July); reply Yes/No."
+   ]
+  ]
+ },
+ "PP_US": {
+  "domain": "sellercentral.amazon.com",
+  "total": 84,
+  "cases": [
+   [
+    "21446513541",
+    "Answered",
+    "SELLER: A21D21T8B6U09C, ASIN: B0BW26CTFX, MARKETPLACE: 1 - CSC - DOC REVIEW",
+    "2026-08-03",
+    "2026-08-03"
+   ],
+   [
+    "21154734971",
+    "Answered",
+    "Update Image",
+    "2026-07-14",
+    null
+   ],
+   [
+    "21006111301",
+    "Answered",
+    "Listing not buyable",
+    "2026-07-02",
+    null
+   ],
+   [
+    "20857921931",
+    "Answered",
+    "Questions regarding my Account Health",
+    "2026-06-16",
+    "2026-06-16"
+   ],
+   [
+    "20746669911",
+    "Answered",
+    "Account Reactivation",
+    "2026-06-11",
+    "2026-06-11"
+   ],
+   [
+    "20443854731",
+    "Answered",
+    "Amazon documentation request 174500870902 B00MI5A8GQ",
+    "2026-06-02",
+    "2026-06-17"
+   ],
+   [
+    "20340477611",
+    "Answered",
+    "Questions regarding my Account Health",
+    "2026-05-19",
+    null
+   ],
+   [
+    "20340581081",
+    "Answered",
+    "US - Suspected intellectual Property Violation Appeal for Porsche - ASIN: B08C5M41L8",
+    "2026-05-19",
+    "2026-05-19"
+   ],
+   [
+    "20238271501",
+    "Answered",
+    "SELLER: A21D21T8B6U09C, ASIN: B0CY3H9K1L, MARKETPLACE: 1 - CSC - DOC REVIEW",
+    "2026-05-06",
+    "2026-05-07"
+   ],
+   [
+    "20060313931",
+    "Answered",
+    "[Action Required]: Deactivated Listings due to “Active” Vacation status.",
+    "2026-04-21",
+    "2026-04-21"
+   ]
+  ]
+ }
+}
