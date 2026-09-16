@@ -227,12 +227,13 @@ def classify(item, pool_vel, pool_doc):
     doc = pool_doc if pool_doc is not None else item['doc']
     selling = (item['units30'] or 0) > 0 or (vel or 0) > 0
 
+    had_sales_30d = (item['units30'] or 0) > 0
     sev = 'OK'
     if avail <= 0 and inb == 0:
-        if selling:
-            sev = 'CRITICAL'; reasons.append('Out of stock, nothing inbound')
+        if had_sales_30d:
+            sev = 'CRITICAL'; reasons.append('Out of stock, nothing inbound, sales in last 30d')
         else:
-            sev = 'INFO'; reasons.append('Out of stock, no sales in 30d (dormant)')
+            sev = 'URGENT'; reasons.append('Out of stock, nothing inbound, no sales in last 30d')
     elif avail <= 0 and inb > 0:
         if selling:
             sev = 'URGENT'; reasons.append(f'Out of stock, {inb} inbound')
@@ -261,6 +262,12 @@ def build_snapshot(week, generated):
     h10 = load_h10(week_dir)
     h10v = load_h10_velocity(week_dir)
     si = load_si(week_dir)
+    # Optional: 30-day sales revenue per (account, asin) from Scale Insights get_sales_data.
+    # Used to estimate lost revenue on out-of-stock items (avg daily sales x days OOS).
+    rev30_map = {}
+    for r in load_csv(week_dir, 'sales_rev30.csv'):
+        code_ = r['market'] if '_' in r['market'] else 'CC_' + r['market']
+        rev30_map[(code_, r['asin'])] = fnum(r.get('rev30'), None)
     feedback = load_csv(week_dir, 'seller_feedback.csv')
     recs = {}
     for r in load_csv(week_dir, 'restock_recs.csv'):
@@ -334,6 +341,11 @@ def build_snapshot(week, generated):
             if sev in ('CRITICAL', 'URGENT', 'WATCH') and v > 0:
                 horizon = LEAD_TIME_DAYS.get(pl, 30) + REVIEW_COVER_DAYS
                 est = max(0, int(round(v * horizon)) - it['available'] - (it['inbound'] or 0))
+            if is_pooled:
+                _rv = sum((rev30_map.get((c, asin)) or 0) for c in pool_members[pl])
+                rev30 = _rv if _rv else None
+            else:
+                rev30 = rev30_map.get((code, asin))
             row = {
                 'asin': asin, 'sku': it['sku'], 'skus': it.get('skus'), 'name': it['name'], 'title': it['title'], 'image': it['image'],
                 'available': it['available'], 'inbound': it['inbound'], 'inbound_reported': it['inbound_reported'],
@@ -346,7 +358,7 @@ def build_snapshot(week, generated):
                 'severity': sev, 'reasons': reasons,
                 'restock_rec': int(rec['rec_qty']) if rec and rec.get('rec_qty') else None,
                 'restock_rec_date': rec.get('rec_date') if rec else None,
-                'restock_est': est,
+                'restock_est': est, 'rev30': rev30,
             }
             inv_rows.append(row)
             fm = pl if is_pooled else code
@@ -358,7 +370,7 @@ def build_snapshot(week, generated):
                              'available': it['available'], 'inbound': it['inbound'],
                              'doc': row['pool_doc'] if row['pool_doc'] is not None else row['doc'],
                              'vel': row['pool_vel'] if row['pool_vel'] is not None else row['vel'],
-                             'ad30': it['ad30'], 'restock_rec': row['restock_rec'], 'restock_est': est,
+                             'ad30': it['ad30'], 'restock_rec': row['restock_rec'], 'restock_est': est, 'rev30': rev30,
                              'owner': 'client', 'action': 'Create FBA shipment' if sev != 'WATCH' else 'Plan shipment'})
         inv_rows.sort(key=lambda r: (SEV_RANK[r['severity']], r['pool_doc'] if r['pool_doc'] is not None else (r['doc'] if r['doc'] is not None else 9e9)))
 

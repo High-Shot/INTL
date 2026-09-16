@@ -43,7 +43,7 @@
    "asin": "B0CN8MFBLH",
    "sku": null,
    "name": "Professional Ceramic Coating 360 ml Kit",
-   "reason": "Out of stock, nothing inbound; Ads still running; Inbound unknown (not reported), treated as 0",
+   "reason": "Out of stock, nothing inbound, sales in last 30d; Ads still running; Inbound unknown (not reported), treated as 0",
    "available": 0,
    "inbound": 0,
    "doc": 0.0,
@@ -51,6 +51,7 @@
    "ad30": 21.47,
    "restock_rec": null,
    "restock_est": 1,
+   "rev30": 549.95,
    "owner": "client",
    "action": "Create FBA shipment"
   },
@@ -66,7 +67,7 @@
    "asin": "B0CXKPY6B8",
    "sku": null,
    "name": "Headlight Restoration Pro Kit, 10 Vehicle Bundle",
-   "reason": "Out of stock, nothing inbound; Inbound unknown (not reported), treated as 0",
+   "reason": "Out of stock, nothing inbound, sales in last 30d; Inbound unknown (not reported), treated as 0",
    "available": 0,
    "inbound": 0,
    "doc": 0.0,
@@ -74,6 +75,7 @@
    "ad30": 0.0,
    "restock_rec": null,
    "restock_est": 19,
+   "rev30": 1523.35,
    "owner": "client",
    "action": "Create FBA shipment"
   },
@@ -89,7 +91,7 @@
    "asin": "B0DKVBTNNT",
    "sku": null,
    "name": "Interior Detailer 2 Pack",
-   "reason": "Out of stock, nothing inbound; Inbound unknown (not reported), treated as 0",
+   "reason": "Out of stock, nothing inbound, sales in last 30d; Inbound unknown (not reported), treated as 0",
    "available": 0,
    "inbound": 0,
    "doc": 0.0,
@@ -97,6 +99,7 @@
    "ad30": 0.0,
    "restock_rec": null,
    "restock_est": 139,
+   "rev30": 1888.2,
    "owner": "client",
    "action": "Create FBA shipment"
   },
@@ -112,7 +115,7 @@
    "asin": "B0F23KPC5G",
    "sku": null,
    "name": "Car Wash and Detailing Kit, All In, 11 Piece",
-   "reason": "Out of stock, nothing inbound; Ads still running; Inbound unknown (not reported), treated as 0",
+   "reason": "Out of stock, nothing inbound, sales in last 30d; Ads still running; Inbound unknown (not reported), treated as 0",
    "available": 0,
    "inbound": 0,
    "doc": 0.0,
@@ -120,6 +123,7 @@
    "ad30": 13.82,
    "restock_rec": null,
    "restock_est": 3,
+   "rev30": 483.9,
    "owner": "client",
    "action": "Create FBA shipment"
   },
@@ -135,7 +139,7 @@
    "asin": "B0F2BFSMZT",
    "sku": null,
    "name": "Ceramic Coating Kit for Cars, 5 Piece",
-   "reason": "Out of stock, nothing inbound; Inbound unknown (not reported), treated as 0",
+   "reason": "Out of stock, nothing inbound, sales in last 30d; Inbound unknown (not reported), treated as 0",
    "available": 0,
    "inbound": 0,
    "doc": 0.0,
@@ -143,6 +147,7 @@
    "ad30": 0.0,
    "restock_rec": null,
    "restock_est": 3,
+   "rev30": 289.9,
    "owner": "client",
    "action": "Create FBA shipment"
   },
@@ -158,7 +163,7 @@
    "asin": "B0F3GD9G6N",
    "sku": null,
    "name": "Car Detailing Bundle, Fully Covered, 8 Piece",
-   "reason": "Out of stock, nothing inbound; Ads still running; Inbound unknown (not reported), treated as 0",
+   "reason": "Out of stock, nothing inbound, sales in last 30d; Ads still running; Inbound unknown (not reported), treated as 0",
    "available": 0,
    "inbound": 0,
    "doc": 0.0,
@@ -166,6 +171,7 @@
    "ad30": 6.21,
    "restock_rec": null,
    "restock_est": 21,
+   "rev30": 1589.6,
    "owner": "client",
    "action": "Create FBA shipment"
   },
@@ -181,7 +187,7 @@
    "asin": "B0H1SP98C3",
    "sku": "AH-RCPV-QA",
    "name": "Rapid Ceramic PPF and Vinyl Protective Sealant",
-   "reason": "Out of stock, nothing inbound",
+   "reason": "Out of stock, nothing inbound, sales in last 30d",
    "available": 0,
    "inbound": 0,
    "doc": 0.0,
@@ -189,6 +195,7 @@
    "ad30": 0.0,
    "restock_rec": null,
    "restock_est": 19,
+   "rev30": 519.35,
    "owner": "client",
    "action": "Create FBA shipment"
   },
@@ -221,7 +228,7 @@
    "asin": "B07SHJVK4G",
    "sku": "AH-TRKITA",
    "name": "Ceramic Trim Coat Kit",
-   "reason": "Out of stock, nothing inbound; Ads still running",
+   "reason": "Out of stock, nothing inbound, sales in last 30d; Ads still running",
    "available": 0,
    "inbound": 0,
    "doc": 0.0,
@@ -229,6 +236,7 @@
    "ad30": 1049.73,
    "restock_rec": null,
    "restock_est": 1590,
+   "rev30": 10767.87,
    "owner": "client",
    "action": "Create FBA shipment"
   },
@@ -306,6 +314,7 @@
    "ad30": 7.59,
    "restock_rec": null,
    "restock_est": 21,
+   "rev30": null,
    "owner": "client",
    "action": "Create FBA shipment"
   },
@@ -329,6 +338,7 @@
    "ad30": 0.0,
    "restock_rec": null,
    "restock_est": 1262,
+   "rev30": null,
    "owner": "client",
    "action": "Create FBA shipment"
   },
@@ -352,6 +362,7 @@
    "ad30": 10612.75,
    "restock_rec": null,
    "restock_est": 6961,
+   "rev30": null,
    "owner": "client",
    "action": "Create FBA shipment"
   },
@@ -375,6 +386,7 @@
    "ad30": 9609.94,
    "restock_rec": null,
    "restock_est": 4962,
+   "rev30": null,
    "owner": "client",
    "action": "Create FBA shipment",
    "cases": [
@@ -401,6 +413,7 @@
    "ad30": 6717.26,
    "restock_rec": null,
    "restock_est": 10624,
+   "rev30": null,
    "owner": "client",
    "action": "Create FBA shipment",
    "cases": [
@@ -476,6 +489,7 @@
    "ad30": 0,
    "restock_rec": null,
    "restock_est": 115,
+   "rev30": null,
    "owner": "client",
    "action": "Create FBA shipment"
   },
@@ -499,6 +513,7 @@
    "ad30": 0,
    "restock_rec": null,
    "restock_est": 65,
+   "rev30": null,
    "owner": "client",
    "action": "Create FBA shipment"
   },
@@ -522,6 +537,7 @@
    "ad30": 0.0,
    "restock_rec": null,
    "restock_est": 100,
+   "rev30": null,
    "owner": "client",
    "action": "Create FBA shipment"
   },
@@ -545,6 +561,7 @@
    "ad30": 751.77,
    "restock_rec": null,
    "restock_est": 819,
+   "rev30": null,
    "owner": "client",
    "action": "Create FBA shipment"
   },
@@ -568,6 +585,7 @@
    "ad30": 0,
    "restock_rec": null,
    "restock_est": 0,
+   "rev30": null,
    "owner": "client",
    "action": "Create FBA shipment"
   },
@@ -591,6 +609,7 @@
    "ad30": 0,
    "restock_rec": null,
    "restock_est": 0,
+   "rev30": null,
    "owner": "client",
    "action": "Create FBA shipment"
   },
@@ -614,6 +633,7 @@
    "ad30": 0,
    "restock_rec": null,
    "restock_est": 0,
+   "rev30": null,
    "owner": "client",
    "action": "Create FBA shipment"
   },
@@ -637,6 +657,7 @@
    "ad30": 0,
    "restock_rec": null,
    "restock_est": 0,
+   "rev30": null,
    "owner": "client",
    "action": "Create FBA shipment"
   },
@@ -660,6 +681,7 @@
    "ad30": 0,
    "restock_rec": null,
    "restock_est": 22,
+   "rev30": null,
    "owner": "client",
    "action": "Create FBA shipment"
   },
@@ -721,6 +743,7 @@
    "ad30": 0,
    "restock_rec": null,
    "restock_est": 32,
+   "rev30": null,
    "owner": "client",
    "action": "Create FBA shipment"
   },
@@ -744,6 +767,7 @@
    "ad30": 0,
    "restock_rec": null,
    "restock_est": 57,
+   "rev30": null,
    "owner": "client",
    "action": "Create FBA shipment"
   },
@@ -767,6 +791,7 @@
    "ad30": 0,
    "restock_rec": null,
    "restock_est": 97,
+   "rev30": null,
    "owner": "client",
    "action": "Create FBA shipment",
    "cases": [
@@ -799,6 +824,7 @@
    "ad30": 0.0,
    "restock_rec": null,
    "restock_est": 31,
+   "rev30": null,
    "owner": "client",
    "action": "Create FBA shipment"
   },
@@ -828,6 +854,7 @@
    "ad30": 0.0,
    "restock_rec": null,
    "restock_est": 254,
+   "rev30": null,
    "owner": "client",
    "action": "Create FBA shipment",
    "cases": [
@@ -940,6 +967,7 @@
    "ad30": 0.0,
    "restock_rec": null,
    "restock_est": 170,
+   "rev30": null,
    "owner": "client",
    "action": "Plan shipment"
   },
@@ -963,6 +991,7 @@
    "ad30": 3994.91,
    "restock_rec": null,
    "restock_est": 0,
+   "rev30": null,
    "owner": "client",
    "action": "Plan shipment"
   },
@@ -986,6 +1015,7 @@
    "ad30": 21621.31,
    "restock_rec": null,
    "restock_est": 6022,
+   "rev30": null,
    "owner": "client",
    "action": "Plan shipment"
   },
@@ -1009,6 +1039,7 @@
    "ad30": 0.0,
    "restock_rec": null,
    "restock_est": 494,
+   "rev30": null,
    "owner": "client",
    "action": "Plan shipment",
    "cases": [
@@ -1035,6 +1066,7 @@
    "ad30": 55608.43,
    "restock_rec": null,
    "restock_est": 25716,
+   "rev30": null,
    "owner": "client",
    "action": "Plan shipment",
    "cases": [
@@ -1061,6 +1093,7 @@
    "ad30": 0.0,
    "restock_rec": null,
    "restock_est": 176,
+   "rev30": null,
    "owner": "client",
    "action": "Plan shipment"
   },
@@ -1084,6 +1117,7 @@
    "ad30": 0.0,
    "restock_rec": null,
    "restock_est": 52,
+   "rev30": null,
    "owner": "client",
    "action": "Plan shipment"
   },
@@ -1107,6 +1141,7 @@
    "ad30": 0.0,
    "restock_rec": null,
    "restock_est": 260,
+   "rev30": null,
    "owner": "client",
    "action": "Plan shipment"
   },
@@ -1130,6 +1165,7 @@
    "ad30": 0.0,
    "restock_rec": null,
    "restock_est": 188,
+   "rev30": null,
    "owner": "client",
    "action": "Plan shipment"
   },
@@ -1153,6 +1189,7 @@
    "ad30": 0.0,
    "restock_rec": null,
    "restock_est": 106,
+   "rev30": null,
    "owner": "client",
    "action": "Plan shipment"
   },
@@ -1176,6 +1213,7 @@
    "ad30": 4116.25,
    "restock_rec": null,
    "restock_est": 340,
+   "rev30": null,
    "owner": "client",
    "action": "Plan shipment"
   },
@@ -1199,6 +1237,7 @@
    "ad30": 238.01,
    "restock_rec": null,
    "restock_est": 384,
+   "rev30": null,
    "owner": "client",
    "action": "Plan shipment"
   },
@@ -1222,6 +1261,7 @@
    "ad30": 1.2,
    "restock_rec": null,
    "restock_est": 12,
+   "rev30": null,
    "owner": "client",
    "action": "Plan shipment"
   },
@@ -1245,6 +1285,7 @@
    "ad30": 95.08,
    "restock_rec": null,
    "restock_est": 102,
+   "rev30": null,
    "owner": "client",
    "action": "Plan shipment"
   },
@@ -1268,6 +1309,7 @@
    "ad30": 1011.44,
    "restock_rec": null,
    "restock_est": 1037,
+   "rev30": null,
    "owner": "client",
    "action": "Plan shipment"
   },
@@ -1291,6 +1333,7 @@
    "ad30": 0,
    "restock_rec": null,
    "restock_est": 0,
+   "rev30": null,
    "owner": "client",
    "action": "Plan shipment"
   },
@@ -1346,6 +1389,7 @@
    "ad30": 0.0,
    "restock_rec": null,
    "restock_est": 3,
+   "rev30": null,
    "owner": "client",
    "action": "Plan shipment"
   },
@@ -1369,6 +1413,7 @@
    "ad30": 2522.92,
    "restock_rec": null,
    "restock_est": 0,
+   "rev30": null,
    "owner": "client",
    "action": "Plan shipment"
   },
@@ -1407,6 +1452,7 @@
    "ad30": 0.0,
    "restock_rec": null,
    "restock_est": 209,
+   "rev30": null,
    "owner": "client",
    "action": "Plan shipment"
   },
@@ -1513,6 +1559,7 @@
    "ad30": 1701.76,
    "restock_rec": null,
    "restock_est": 396,
+   "rev30": null,
    "owner": "client",
    "action": "Plan shipment",
    "cases": [
@@ -1539,6 +1586,7 @@
    "ad30": 0,
    "restock_rec": null,
    "restock_est": 82,
+   "rev30": null,
    "owner": "client",
    "action": "Plan shipment"
   },
@@ -1562,6 +1610,7 @@
    "ad30": 0,
    "restock_rec": null,
    "restock_est": 14,
+   "rev30": null,
    "owner": "client",
    "action": "Plan shipment"
   },
@@ -1591,6 +1640,7 @@
    "ad30": 0.0,
    "restock_rec": null,
    "restock_est": 77,
+   "rev30": null,
    "owner": "client",
    "action": "Plan shipment"
   },
@@ -1620,6 +1670,7 @@
    "ad30": 526.77,
    "restock_rec": null,
    "restock_est": 481,
+   "rev30": null,
    "owner": "client",
    "action": "Plan shipment"
   },
@@ -1648,6 +1699,7 @@
    "ad30": 2436.21,
    "restock_rec": null,
    "restock_est": 1266,
+   "rev30": null,
    "owner": "client",
    "action": "Plan shipment",
    "cases": [
@@ -1791,13 +1843,14 @@
      "vel_source": "si",
      "severity": "CRITICAL",
      "reasons": [
-      "Out of stock, nothing inbound",
+      "Out of stock, nothing inbound, sales in last 30d",
       "Ads still running",
       "Inbound unknown (not reported), treated as 0"
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 1
+     "restock_est": 1,
+     "rev30": 549.95
     },
     {
      "asin": "B0CXKPY6B8",
@@ -1825,12 +1878,13 @@
      "vel_source": "si",
      "severity": "CRITICAL",
      "reasons": [
-      "Out of stock, nothing inbound",
+      "Out of stock, nothing inbound, sales in last 30d",
       "Inbound unknown (not reported), treated as 0"
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 19
+     "restock_est": 19,
+     "rev30": 1523.35
     },
     {
      "asin": "B0DKVBTNNT",
@@ -1858,12 +1912,13 @@
      "vel_source": "si",
      "severity": "CRITICAL",
      "reasons": [
-      "Out of stock, nothing inbound",
+      "Out of stock, nothing inbound, sales in last 30d",
       "Inbound unknown (not reported), treated as 0"
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 139
+     "restock_est": 139,
+     "rev30": 1888.2
     },
     {
      "asin": "B0F23KPC5G",
@@ -1891,13 +1946,14 @@
      "vel_source": "si",
      "severity": "CRITICAL",
      "reasons": [
-      "Out of stock, nothing inbound",
+      "Out of stock, nothing inbound, sales in last 30d",
       "Ads still running",
       "Inbound unknown (not reported), treated as 0"
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 3
+     "restock_est": 3,
+     "rev30": 483.9
     },
     {
      "asin": "B0F2BFSMZT",
@@ -1925,12 +1981,13 @@
      "vel_source": "si",
      "severity": "CRITICAL",
      "reasons": [
-      "Out of stock, nothing inbound",
+      "Out of stock, nothing inbound, sales in last 30d",
       "Inbound unknown (not reported), treated as 0"
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 3
+     "restock_est": 3,
+     "rev30": 289.9
     },
     {
      "asin": "B0F3GD9G6N",
@@ -1958,13 +2015,14 @@
      "vel_source": "si",
      "severity": "CRITICAL",
      "reasons": [
-      "Out of stock, nothing inbound",
+      "Out of stock, nothing inbound, sales in last 30d",
       "Ads still running",
       "Inbound unknown (not reported), treated as 0"
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 21
+     "restock_est": 21,
+     "rev30": 1589.6
     },
     {
      "asin": "B0H1SP98C3",
@@ -1992,11 +2050,12 @@
      "vel_source": "si",
      "severity": "CRITICAL",
      "reasons": [
-      "Out of stock, nothing inbound"
+      "Out of stock, nothing inbound, sales in last 30d"
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 19
+     "restock_est": 19,
+     "rev30": 519.35
     },
     {
      "asin": "B0H3QRH9B7",
@@ -2029,7 +2088,8 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 21
+     "restock_est": 21,
+     "rev30": null
     },
     {
      "asin": "B08FF6X75N",
@@ -2061,7 +2121,8 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 1262
+     "restock_est": 1262,
+     "rev30": null
     },
     {
      "asin": "B0B94G13CN",
@@ -2095,7 +2156,8 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 6961
+     "restock_est": 6961,
+     "rev30": null
     },
     {
      "asin": "B0FYRJ1966",
@@ -2129,7 +2191,8 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 4962
+     "restock_est": 4962,
+     "rev30": null
     },
     {
      "asin": "B0H1NM7467",
@@ -2161,7 +2224,8 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 170
+     "restock_est": 170,
+     "rev30": null
     },
     {
      "asin": "B0DKVZRX69",
@@ -2194,7 +2258,8 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 0
+     "restock_est": 0,
+     "rev30": null
     },
     {
      "asin": "B07SHJVK4G",
@@ -2227,7 +2292,8 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 6022
+     "restock_est": 6022,
+     "rev30": null
     },
     {
      "asin": "B0C4QX35KX",
@@ -2259,7 +2325,8 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 494
+     "restock_est": 494,
+     "rev30": null
     },
     {
      "asin": "B084RQKLV8",
@@ -2292,7 +2359,8 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 25716
+     "restock_est": 25716,
+     "rev30": null
     },
     {
      "asin": "B0DH5ZC1N4",
@@ -2324,7 +2392,8 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 176
+     "restock_est": 176,
+     "rev30": null
     },
     {
      "asin": "B0H1NDSGVJ",
@@ -2356,7 +2425,8 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 52
+     "restock_est": 52,
+     "rev30": null
     },
     {
      "asin": "B0GY1XLQMS",
@@ -2388,7 +2458,8 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 260
+     "restock_est": 260,
+     "rev30": null
     },
     {
      "asin": "B0DH5HKH5R",
@@ -2420,7 +2491,8 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 188
+     "restock_est": 188,
+     "rev30": null
     },
     {
      "asin": "B0H1NP4461",
@@ -2452,7 +2524,8 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 106
+     "restock_est": 106,
+     "rev30": null
     },
     {
      "asin": "B0CN8HJSYM",
@@ -2484,7 +2557,8 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 340
+     "restock_est": 340,
+     "rev30": null
     },
     {
      "asin": "B0FW6WFX4D",
@@ -2516,7 +2590,8 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 384
+     "restock_est": 384,
+     "rev30": null
     },
     {
      "asin": "B0H3QLBNZF",
@@ -2548,7 +2623,8 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 12
+     "restock_est": 12,
+     "rev30": null
     },
     {
      "asin": "B08DDJ49X7",
@@ -2580,7 +2656,8 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 102
+     "restock_est": 102,
+     "rev30": null
     },
     {
      "asin": "B0DJMW6283",
@@ -2612,7 +2689,8 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 1037
+     "restock_est": 1037,
+     "rev30": null
     },
     {
      "asin": "B0F45C2YHV",
@@ -2644,7 +2722,8 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 0
+     "restock_est": 0,
+     "rev30": null
     },
     {
      "asin": "B08DDGFXPK",
@@ -2674,7 +2753,8 @@
      "reasons": [],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": null
+     "restock_est": null,
+     "rev30": null
     },
     {
      "asin": "B0F2JBJXYJ",
@@ -2704,7 +2784,8 @@
      "reasons": [],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": null
+     "restock_est": null,
+     "rev30": null
     },
     {
      "asin": "B0DVV6K9Y6",
@@ -2734,7 +2815,8 @@
      "reasons": [],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": null
+     "restock_est": null,
+     "rev30": null
     },
     {
      "asin": "B0GYBH76BR",
@@ -2764,7 +2846,8 @@
      "reasons": [],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": null
+     "restock_est": null,
+     "rev30": null
     },
     {
      "asin": "B0CQN1RXYB",
@@ -2794,7 +2877,8 @@
      "reasons": [],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": null
+     "restock_est": null,
+     "rev30": null
     },
     {
      "asin": "B0F8JJM54R",
@@ -2824,7 +2908,8 @@
      "reasons": [],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": null
+     "restock_est": null,
+     "rev30": null
     },
     {
      "asin": "B0F3G1V5SF",
@@ -2854,7 +2939,8 @@
      "reasons": [],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": null
+     "restock_est": null,
+     "rev30": null
     },
     {
      "asin": "B0GZSHD4GP",
@@ -2884,7 +2970,8 @@
      "reasons": [],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": null
+     "restock_est": null,
+     "rev30": null
     },
     {
      "asin": "B0DVB4P9KQ",
@@ -2914,7 +3001,8 @@
      "reasons": [],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": null
+     "restock_est": null,
+     "rev30": null
     },
     {
      "asin": "B0C4ZVMRRK",
@@ -2945,7 +3033,8 @@
      "reasons": [],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": null
+     "restock_est": null,
+     "rev30": null
     },
     {
      "asin": "B0F2JL4F2W",
@@ -2975,7 +3064,8 @@
      "reasons": [],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": null
+     "restock_est": null,
+     "rev30": null
     },
     {
      "asin": "B0F3G9BC3G",
@@ -3005,7 +3095,8 @@
      "reasons": [],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": null
+     "restock_est": null,
+     "rev30": null
     }
    ],
    "feedback": {
@@ -3138,7 +3229,8 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 3
+     "restock_est": 3,
+     "rev30": null
     },
     {
      "asin": "B0B94G13CN",
@@ -3170,7 +3262,8 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 0
+     "restock_est": 0,
+     "rev30": null
     },
     {
      "asin": "B084RQKLV8",
@@ -3200,7 +3293,8 @@
      "reasons": [],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": null
+     "restock_est": null,
+     "rev30": null
     },
     {
      "asin": "B0F45C2YHV",
@@ -3230,7 +3324,8 @@
      "reasons": [],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": null
+     "restock_est": null,
+     "rev30": null
     },
     {
      "asin": "B0DJMW6283",
@@ -3260,7 +3355,8 @@
      "reasons": [],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": null
+     "restock_est": null,
+     "rev30": null
     },
     {
      "asin": "B07SHJVK4G",
@@ -3290,7 +3386,8 @@
      "reasons": [],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": null
+     "restock_est": null,
+     "rev30": null
     },
     {
      "asin": "B0FYRJ1966",
@@ -3320,7 +3417,8 @@
      "reasons": [],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": null
+     "restock_est": null,
+     "rev30": null
     },
     {
      "asin": "B0FW6WFX4D",
@@ -3350,7 +3448,8 @@
      "reasons": [],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": null
+     "restock_est": null,
+     "rev30": null
     },
     {
      "asin": "B0DVB4P9KQ",
@@ -3380,7 +3479,8 @@
      "reasons": [],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": null
+     "restock_est": null,
+     "rev30": null
     },
     {
      "asin": "B0H1NM7467",
@@ -3410,7 +3510,8 @@
      "reasons": [],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": null
+     "restock_est": null,
+     "rev30": null
     },
     {
      "asin": "B0F8JJM54R",
@@ -3440,7 +3541,8 @@
      "reasons": [],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": null
+     "restock_est": null,
+     "rev30": null
     },
     {
      "asin": "B08DDGFXPK",
@@ -3470,7 +3572,8 @@
      "reasons": [],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": null
+     "restock_est": null,
+     "rev30": null
     },
     {
      "asin": "B0C4QX35KX",
@@ -3500,7 +3603,8 @@
      "reasons": [],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": null
+     "restock_est": null,
+     "rev30": null
     },
     {
      "asin": "B0F3G1V5SF",
@@ -3530,7 +3634,8 @@
      "reasons": [],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": null
+     "restock_est": null,
+     "rev30": null
     }
    ],
    "feedback": {
@@ -3629,12 +3734,13 @@
      "vel_source": "si",
      "severity": "CRITICAL",
      "reasons": [
-      "Out of stock, nothing inbound",
+      "Out of stock, nothing inbound, sales in last 30d",
       "Ads still running"
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 1590
+     "restock_est": 1590,
+     "rev30": 10767.87
     },
     {
      "asin": "B084RQKLV8",
@@ -3667,7 +3773,8 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 10624
+     "restock_est": 10624,
+     "rev30": null
     },
     {
      "asin": "B0FW6WFX4D",
@@ -3699,7 +3806,8 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 209
+     "restock_est": 209,
+     "rev30": null
     },
     {
      "asin": "B0FYRJ1966",
@@ -3729,7 +3837,8 @@
      "reasons": [],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": null
+     "restock_est": null,
+     "rev30": null
     },
     {
      "asin": "B0CQN1RXYB",
@@ -3759,7 +3868,8 @@
      "reasons": [],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": null
+     "restock_est": null,
+     "rev30": null
     },
     {
      "asin": "B0CN8HJSYM",
@@ -3789,7 +3899,8 @@
      "reasons": [],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": null
+     "restock_est": null,
+     "rev30": null
     },
     {
      "asin": "B0F45C2YHV",
@@ -3819,7 +3930,8 @@
      "reasons": [],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": null
+     "restock_est": null,
+     "rev30": null
     },
     {
      "asin": "B0DJMW6283",
@@ -3849,7 +3961,8 @@
      "reasons": [],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": null
+     "restock_est": null,
+     "rev30": null
     },
     {
      "asin": "B0B94G13CN",
@@ -3879,7 +3992,8 @@
      "reasons": [],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": null
+     "restock_est": null,
+     "rev30": null
     },
     {
      "asin": "B0DKVZRX69",
@@ -3909,7 +4023,8 @@
      "reasons": [],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": null
+     "restock_est": null,
+     "rev30": null
     },
     {
      "asin": "B0DVB4P9KQ",
@@ -3939,7 +4054,8 @@
      "reasons": [],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": null
+     "restock_est": null,
+     "rev30": null
     },
     {
      "asin": "B0FX5WH19H",
@@ -3969,7 +4085,8 @@
      "reasons": [],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": null
+     "restock_est": null,
+     "rev30": null
     }
    ],
    "feedback": {
@@ -4085,7 +4202,8 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 31
+     "restock_est": 31,
+     "rev30": null
     },
     {
      "asin": "B0FYRJ1966",
@@ -4123,7 +4241,8 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 254
+     "restock_est": 254,
+     "rev30": null
     },
     {
      "asin": "B0DKVZRX69",
@@ -4161,7 +4280,8 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 77
+     "restock_est": 77,
+     "rev30": null
     },
     {
      "asin": "B07SHJVK4G",
@@ -4199,7 +4319,8 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 481
+     "restock_est": 481,
+     "rev30": null
     },
     {
      "asin": "B0F45C2YHV",
@@ -4235,7 +4356,8 @@
      "reasons": [],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": null
+     "restock_est": null,
+     "rev30": null
     },
     {
      "asin": "B0CQN1RXYB",
@@ -4271,7 +4393,8 @@
      "reasons": [],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": null
+     "restock_est": null,
+     "rev30": null
     },
     {
      "asin": "B0B94G13CN",
@@ -4307,7 +4430,8 @@
      "reasons": [],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": null
+     "restock_est": null,
+     "rev30": null
     },
     {
      "asin": "B0DJMW6283",
@@ -4343,7 +4467,8 @@
      "reasons": [],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": null
+     "restock_est": null,
+     "rev30": null
     },
     {
      "asin": "B0DVB4P9KQ",
@@ -4378,7 +4503,8 @@
      "reasons": [],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": null
+     "restock_est": null,
+     "rev30": null
     },
     {
      "asin": "B0CN8HJSYM",
@@ -4412,7 +4538,8 @@
      "reasons": [],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": null
+     "restock_est": null,
+     "rev30": null
     }
    ],
    "feedback": {
@@ -4557,7 +4684,8 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 31
+     "restock_est": 31,
+     "rev30": null
     },
     {
      "asin": "B0FYRJ1966",
@@ -4595,7 +4723,8 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 254
+     "restock_est": 254,
+     "rev30": null
     },
     {
      "asin": "B0DKVZRX69",
@@ -4633,7 +4762,8 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 77
+     "restock_est": 77,
+     "rev30": null
     },
     {
      "asin": "B07SHJVK4G",
@@ -4671,7 +4801,8 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 481
+     "restock_est": 481,
+     "rev30": null
     },
     {
      "asin": "B084RQKLV8",
@@ -4708,7 +4839,8 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 1266
+     "restock_est": 1266,
+     "rev30": null
     },
     {
      "asin": "B0F45C2YHV",
@@ -4744,7 +4876,8 @@
      "reasons": [],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": null
+     "restock_est": null,
+     "rev30": null
     },
     {
      "asin": "B0CQN1RXYB",
@@ -4780,7 +4913,8 @@
      "reasons": [],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": null
+     "restock_est": null,
+     "rev30": null
     },
     {
      "asin": "B0B94G13CN",
@@ -4816,7 +4950,8 @@
      "reasons": [],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": null
+     "restock_est": null,
+     "rev30": null
     },
     {
      "asin": "B0DJMW6283",
@@ -4852,7 +4987,8 @@
      "reasons": [],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": null
+     "restock_est": null,
+     "rev30": null
     },
     {
      "asin": "B0DVB4P9KQ",
@@ -4887,7 +5023,8 @@
      "reasons": [],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": null
+     "restock_est": null,
+     "rev30": null
     },
     {
      "asin": "B0CN8HJSYM",
@@ -4921,7 +5058,8 @@
      "reasons": [],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": null
+     "restock_est": null,
+     "rev30": null
     }
    ],
    "feedback": {
@@ -5013,7 +5151,8 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 31
+     "restock_est": 31,
+     "rev30": null
     },
     {
      "asin": "B0FYRJ1966",
@@ -5051,7 +5190,8 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 254
+     "restock_est": 254,
+     "rev30": null
     },
     {
      "asin": "B0DKVZRX69",
@@ -5089,7 +5229,8 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 77
+     "restock_est": 77,
+     "rev30": null
     },
     {
      "asin": "B07SHJVK4G",
@@ -5127,7 +5268,8 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 481
+     "restock_est": 481,
+     "rev30": null
     },
     {
      "asin": "B084RQKLV8",
@@ -5164,7 +5306,8 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 1266
+     "restock_est": 1266,
+     "rev30": null
     },
     {
      "asin": "B0F45C2YHV",
@@ -5200,7 +5343,8 @@
      "reasons": [],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": null
+     "restock_est": null,
+     "rev30": null
     },
     {
      "asin": "B0CQN1RXYB",
@@ -5236,7 +5380,8 @@
      "reasons": [],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": null
+     "restock_est": null,
+     "rev30": null
     },
     {
      "asin": "B0B94G13CN",
@@ -5272,7 +5417,8 @@
      "reasons": [],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": null
+     "restock_est": null,
+     "rev30": null
     },
     {
      "asin": "B0DJMW6283",
@@ -5308,7 +5454,8 @@
      "reasons": [],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": null
+     "restock_est": null,
+     "rev30": null
     },
     {
      "asin": "B0DVB4P9KQ",
@@ -5343,7 +5490,8 @@
      "reasons": [],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": null
+     "restock_est": null,
+     "rev30": null
     },
     {
      "asin": "B0CN8HJSYM",
@@ -5377,7 +5525,8 @@
      "reasons": [],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": null
+     "restock_est": null,
+     "rev30": null
     }
    ],
    "feedback": {
@@ -5480,7 +5629,8 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 31
+     "restock_est": 31,
+     "rev30": null
     },
     {
      "asin": "B0FYRJ1966",
@@ -5518,7 +5668,8 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 254
+     "restock_est": 254,
+     "rev30": null
     },
     {
      "asin": "B0DKVZRX69",
@@ -5556,7 +5707,8 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 77
+     "restock_est": 77,
+     "rev30": null
     },
     {
      "asin": "B07SHJVK4G",
@@ -5596,7 +5748,8 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 481
+     "restock_est": 481,
+     "rev30": null
     },
     {
      "asin": "B084RQKLV8",
@@ -5633,7 +5786,8 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 1266
+     "restock_est": 1266,
+     "rev30": null
     },
     {
      "asin": "B0F45C2YHV",
@@ -5669,7 +5823,8 @@
      "reasons": [],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": null
+     "restock_est": null,
+     "rev30": null
     },
     {
      "asin": "B0CQN1RXYB",
@@ -5705,7 +5860,8 @@
      "reasons": [],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": null
+     "restock_est": null,
+     "rev30": null
     },
     {
      "asin": "B0B94G13CN",
@@ -5741,7 +5897,8 @@
      "reasons": [],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": null
+     "restock_est": null,
+     "rev30": null
     },
     {
      "asin": "B0DJMW6283",
@@ -5777,7 +5934,8 @@
      "reasons": [],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": null
+     "restock_est": null,
+     "rev30": null
     },
     {
      "asin": "B0DVB4P9KQ",
@@ -5812,7 +5970,8 @@
      "reasons": [],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": null
+     "restock_est": null,
+     "rev30": null
     }
    ],
    "feedback": {
@@ -5916,7 +6075,8 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 31
+     "restock_est": 31,
+     "rev30": null
     },
     {
      "asin": "B0FYRJ1966",
@@ -5955,7 +6115,8 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 254
+     "restock_est": 254,
+     "rev30": null
     },
     {
      "asin": "B0DKVZRX69",
@@ -5994,7 +6155,8 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 77
+     "restock_est": 77,
+     "rev30": null
     },
     {
      "asin": "B07SHJVK4G",
@@ -6035,7 +6197,8 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 481
+     "restock_est": 481,
+     "rev30": null
     },
     {
      "asin": "B084RQKLV8",
@@ -6073,7 +6236,8 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 1266
+     "restock_est": 1266,
+     "rev30": null
     },
     {
      "asin": "B0F45C2YHV",
@@ -6109,7 +6273,8 @@
      "reasons": [],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": null
+     "restock_est": null,
+     "rev30": null
     },
     {
      "asin": "B0CQN1RXYB",
@@ -6145,7 +6310,8 @@
      "reasons": [],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": null
+     "restock_est": null,
+     "rev30": null
     },
     {
      "asin": "B0B94G13CN",
@@ -6181,7 +6347,8 @@
      "reasons": [],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": null
+     "restock_est": null,
+     "rev30": null
     },
     {
      "asin": "B0DJMW6283",
@@ -6217,7 +6384,8 @@
      "reasons": [],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": null
+     "restock_est": null,
+     "rev30": null
     }
    ],
    "feedback": {
@@ -6350,7 +6518,8 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 115
+     "restock_est": 115,
+     "rev30": null
     },
     {
      "asin": "B0DKVZRX69",
@@ -6383,7 +6552,8 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 65
+     "restock_est": 65,
+     "rev30": null
     },
     {
      "asin": "B0B94G13CN",
@@ -6413,7 +6583,8 @@
      "reasons": [],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": null
+     "restock_est": null,
+     "rev30": null
     },
     {
      "asin": "B084RQKLV8",
@@ -6443,7 +6614,8 @@
      "reasons": [],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": null
+     "restock_est": null,
+     "rev30": null
     },
     {
      "asin": "B0DVB4P9KQ",
@@ -6473,7 +6645,8 @@
      "reasons": [],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": null
+     "restock_est": null,
+     "rev30": null
     },
     {
      "asin": "B0DJMW6283",
@@ -6503,7 +6676,8 @@
      "reasons": [],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": null
+     "restock_est": null,
+     "rev30": null
     },
     {
      "asin": "B0FW6WFX4D",
@@ -6533,7 +6707,8 @@
      "reasons": [],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": null
+     "restock_est": null,
+     "rev30": null
     },
     {
      "asin": "B0CQN1RXYB",
@@ -6563,7 +6738,8 @@
      "reasons": [],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": null
+     "restock_est": null,
+     "rev30": null
     },
     {
      "asin": "B0CN8HJSYM",
@@ -6593,7 +6769,8 @@
      "reasons": [],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": null
+     "restock_est": null,
+     "rev30": null
     }
    ],
    "feedback": {
@@ -6680,7 +6857,8 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 100
+     "restock_est": 100,
+     "rev30": null
     },
     {
      "asin": "B07SHJVK4G",
@@ -6714,7 +6892,8 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 819
+     "restock_est": 819,
+     "rev30": null
     },
     {
      "asin": "B084RQKLV8",
@@ -6747,7 +6926,8 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 396
+     "restock_est": 396,
+     "rev30": null
     },
     {
      "asin": "B0DJMW6283",
@@ -6777,7 +6957,8 @@
      "reasons": [],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": null
+     "restock_est": null,
+     "rev30": null
     },
     {
      "asin": "B0FYRJ1966",
@@ -6807,7 +6988,8 @@
      "reasons": [],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": null
+     "restock_est": null,
+     "rev30": null
     },
     {
      "asin": "B0DVB4P9KQ",
@@ -6837,7 +7019,8 @@
      "reasons": [],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": null
+     "restock_est": null,
+     "rev30": null
     },
     {
      "asin": "B0FW6WFX4D",
@@ -6867,7 +7050,8 @@
      "reasons": [],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": null
+     "restock_est": null,
+     "rev30": null
     },
     {
      "asin": "B0F45C2YHV",
@@ -6897,7 +7081,8 @@
      "reasons": [],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": null
+     "restock_est": null,
+     "rev30": null
     },
     {
      "asin": "B0CQN1RXYB",
@@ -6927,7 +7112,8 @@
      "reasons": [],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": null
+     "restock_est": null,
+     "rev30": null
     },
     {
      "asin": "B0B94G13CN",
@@ -6957,7 +7143,8 @@
      "reasons": [],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": null
+     "restock_est": null,
+     "rev30": null
     },
     {
      "asin": "B0CN8HJSYM",
@@ -6987,7 +7174,8 @@
      "reasons": [],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": null
+     "restock_est": null,
+     "rev30": null
     }
    ],
    "feedback": {
@@ -7073,7 +7261,8 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 0
+     "restock_est": 0,
+     "rev30": null
     },
     {
      "asin": "B0CJRWGTJN",
@@ -7105,7 +7294,8 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 0
+     "restock_est": 0,
+     "rev30": null
     },
     {
      "asin": "B0CJRXFW47",
@@ -7137,7 +7327,8 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 0
+     "restock_est": 0,
+     "rev30": null
     },
     {
      "asin": "B0CL15VMJS",
@@ -7169,7 +7360,8 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 0
+     "restock_est": 0,
+     "rev30": null
     },
     {
      "asin": "B0CJRVPZ7K",
@@ -7201,7 +7393,8 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 22
+     "restock_est": 22,
+     "rev30": null
     },
     {
      "asin": "B0CJRVC2N9",
@@ -7231,7 +7424,8 @@
      "reasons": [],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": null
+     "restock_est": null,
+     "rev30": null
     },
     {
      "asin": "B0CL19DFN7",
@@ -7261,7 +7455,8 @@
      "reasons": [],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": null
+     "restock_est": null,
+     "rev30": null
     },
     {
      "asin": "B0CJRV63CT",
@@ -7291,7 +7486,8 @@
      "reasons": [],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": null
+     "restock_est": null,
+     "rev30": null
     },
     {
      "asin": "B0CL17YW21",
@@ -7321,7 +7517,8 @@
      "reasons": [],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": null
+     "restock_est": null,
+     "rev30": null
     }
    ],
    "feedback": {
@@ -7407,7 +7604,8 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 32
+     "restock_est": 32,
+     "rev30": null
     },
     {
      "asin": "B0CWWJJYS1",
@@ -7439,7 +7637,8 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 57
+     "restock_est": 57,
+     "rev30": null
     },
     {
      "asin": "B0CY3H9K1L",
@@ -7471,7 +7670,8 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 97
+     "restock_est": 97,
+     "rev30": null
     },
     {
      "asin": "B00MI5357U",
@@ -7503,7 +7703,8 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 82
+     "restock_est": 82,
+     "rev30": null
     },
     {
      "asin": "B0CXW3SMH8",
@@ -7535,7 +7736,8 @@
      ],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": 14
+     "restock_est": 14,
+     "rev30": null
     },
     {
      "asin": "B086XLFY59",
@@ -7565,7 +7767,8 @@
      "reasons": [],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": null
+     "restock_est": null,
+     "rev30": null
     },
     {
      "asin": "B08C5KXZQK",
@@ -7595,7 +7798,8 @@
      "reasons": [],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": null
+     "restock_est": null,
+     "rev30": null
     },
     {
      "asin": "B0CWVWKS22",
@@ -7625,7 +7829,8 @@
      "reasons": [],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": null
+     "restock_est": null,
+     "rev30": null
     },
     {
      "asin": "B0BVY59ZQ6",
@@ -7655,7 +7860,8 @@
      "reasons": [],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": null
+     "restock_est": null,
+     "rev30": null
     },
     {
      "asin": "B00MI55Y7Y",
@@ -7685,7 +7891,8 @@
      "reasons": [],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": null
+     "restock_est": null,
+     "rev30": null
     },
     {
      "asin": "B0BW2657Z5",
@@ -7715,7 +7922,8 @@
      "reasons": [],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": null
+     "restock_est": null,
+     "rev30": null
     },
     {
      "asin": "B00MI5B7UC",
@@ -7745,7 +7953,8 @@
      "reasons": [],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": null
+     "restock_est": null,
+     "rev30": null
     },
     {
      "asin": "B00MI516TO",
@@ -7775,7 +7984,8 @@
      "reasons": [],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": null
+     "restock_est": null,
+     "rev30": null
     },
     {
      "asin": "B0CXW3XLKR",
@@ -7805,7 +8015,8 @@
      "reasons": [],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": null
+     "restock_est": null,
+     "rev30": null
     },
     {
      "asin": "B08C5M41L8",
@@ -7835,7 +8046,8 @@
      "reasons": [],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": null
+     "restock_est": null,
+     "rev30": null
     },
     {
      "asin": "B00MI5A8GQ",
@@ -7865,7 +8077,8 @@
      "reasons": [],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": null
+     "restock_est": null,
+     "rev30": null
     },
     {
      "asin": "B00MI56YHI",
@@ -7895,7 +8108,8 @@
      "reasons": [],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": null
+     "restock_est": null,
+     "rev30": null
     },
     {
      "asin": "B07WRS49LM",
@@ -7925,7 +8139,8 @@
      "reasons": [],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": null
+     "restock_est": null,
+     "rev30": null
     },
     {
      "asin": "B013WJWXJ6",
@@ -7955,7 +8170,8 @@
      "reasons": [],
      "restock_rec": null,
      "restock_rec_date": null,
-     "restock_est": null
+     "restock_est": null,
+     "rev30": null
     }
    ],
    "feedback": {
