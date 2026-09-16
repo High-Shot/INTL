@@ -34,6 +34,14 @@ market,asin,sku,fba,transfer,inbound,units30,vel,doc,ad30,risk,spending_low,name
 ```
 Map: fba=CurrentFBAStock, transfer=StockInTransfer, inbound=StockInbound, units30=UnitsSoldInPeriod, vel=AvgDailyUnitSales, doc=DaysOfCoverCurrentVelocity (blank if null), ad30=AdSpendInWindow, risk=StockRisk, spending_low=StillSpendingWhileLowStock, name=short product name (only needed for ASINs that H10 does not return, e.g. US bundles; may be blank otherwise).
 
+## 2b. Scale Insights sales revenue (one call per market, feeds the Lost rev estimate)
+Scale Insights is the Cerakote Auto account only (same as step 2). Call `mcp__Scale_Insights__get_sales_data` with `country: <CC>, days: 30, mode: "raw", count: 100, include_growth: false` for CC in US, CA, UK, DE, FR, IT, ES, NL, AU. (AE and SA usually return no rows; try once, skip if empty. Page through if has_next_page.)
+Write `data/raw/$WEEK/sales_rev30.csv`, one row per ASIN returned, header exactly:
+```
+market,asin,rev30
+```
+Map: rev30 = TotalSales (30-day sales revenue, marketplace's own currency). This file is OPTIONAL and only powers the dashboard's Lost rev column (best observed daily rate x days out of stock). If a market errors or returns nothing, skip it and move on; the dashboard just shows blank Lost rev there. Never fail the run over this step. normalize.py reads this file automatically if present.
+
 ## 3. Seller feedback (one call per seller x market)
 Call `mcp__Helium10__get_seller_feedback` with `time_window: "30d"` for:
 AOXMQPMOL1F1Y x US, CA; A3BMUMIXNXIR6G x UK, DE, FR, IT, ES, NL, AE, SA; A22UNGVVL3ZGDF x AU; A1KUYEQ8RRQVVI x US; A21D21T8B6U09C x US.
