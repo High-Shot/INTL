@@ -460,7 +460,7 @@
    "ad30": 0.0,
    "restock_rec": null,
    "restock_est": 1499,
-   "rev30": null,
+   "rev30": 53418.65,
    "owner": "client",
    "action": "Create FBA shipment"
   },
@@ -484,7 +484,7 @@
    "ad30": 0.0,
    "restock_rec": null,
    "restock_est": 270,
-   "rev30": null,
+   "rev30": 16481.69,
    "owner": "client",
    "action": "Create FBA shipment"
   },
@@ -574,7 +574,7 @@
    "ad30": 7160.87,
    "restock_rec": null,
    "restock_est": 11660,
-   "rev30": null,
+   "rev30": 87819.63,
    "owner": "client",
    "action": "Create FBA shipment",
    "cases": [
@@ -900,7 +900,7 @@
    "ad30": 0.0,
    "restock_rec": null,
    "restock_est": 98,
-   "rev30": null,
+   "rev30": 575.9699999999999,
    "owner": "client",
    "action": "Create FBA shipment"
   },
@@ -1048,7 +1048,7 @@
    "ad30": 9994.99,
    "restock_rec": null,
    "restock_est": 0,
-   "rev30": null,
+   "rev30": 102834.13,
    "owner": "client",
    "action": "Plan shipment"
   },
@@ -1072,7 +1072,7 @@
    "ad30": 9203.12,
    "restock_rec": null,
    "restock_est": 230,
-   "rev30": null,
+   "rev30": 66462.64,
    "owner": "client",
    "action": "Plan shipment"
   },
@@ -1096,7 +1096,7 @@
    "ad30": 3754.75,
    "restock_rec": null,
    "restock_est": 1990,
-   "rev30": null,
+   "rev30": 19327.86,
    "owner": "client",
    "action": "Plan shipment"
   },
@@ -1120,7 +1120,7 @@
    "ad30": 0.0,
    "restock_rec": null,
    "restock_est": 212,
-   "rev30": null,
+   "rev30": 5811.7,
    "owner": "client",
    "action": "Plan shipment"
   },
@@ -1144,7 +1144,7 @@
    "ad30": 5180.53,
    "restock_rec": null,
    "restock_est": 499,
-   "rev30": null,
+   "rev30": 50004.7,
    "owner": "client",
    "action": "Plan shipment"
   },
@@ -1168,7 +1168,7 @@
    "ad30": 21416.14,
    "restock_rec": null,
    "restock_est": 7680,
-   "rev30": null,
+   "rev30": 255717.44,
    "owner": "client",
    "action": "Plan shipment"
   },
@@ -1192,7 +1192,7 @@
    "ad30": 57209.4,
    "restock_rec": null,
    "restock_est": 31413,
-   "rev30": null,
+   "rev30": 767497.73,
    "owner": "client",
    "action": "Plan shipment",
    "cases": [
@@ -1219,7 +1219,7 @@
    "ad30": 0.0,
    "restock_rec": null,
    "restock_est": 176,
-   "rev30": null,
+   "rev30": 2366.8,
    "owner": "client",
    "action": "Plan shipment"
   },
@@ -1243,7 +1243,7 @@
    "ad30": 62.83,
    "restock_rec": null,
    "restock_est": 39,
-   "rev30": null,
+   "rev30": 3531.05,
    "owner": "client",
    "action": "Plan shipment"
   },
@@ -1267,7 +1267,7 @@
    "ad30": 2759.62,
    "restock_rec": null,
    "restock_est": 468,
-   "rev30": null,
+   "rev30": 12570.75,
    "owner": "client",
    "action": "Plan shipment"
   },
@@ -1291,7 +1291,7 @@
    "ad30": 9192.03,
    "restock_rec": null,
    "restock_est": 834,
-   "rev30": null,
+   "rev30": 89220.4,
    "owner": "client",
    "action": "Plan shipment",
    "cases": [
@@ -1333,7 +1333,7 @@
    "ad30": 2158.33,
    "restock_rec": null,
    "restock_est": 0,
-   "rev30": null,
+   "rev30": 35493.37,
    "owner": "client",
    "action": "Plan shipment"
   },
@@ -1357,7 +1357,7 @@
    "ad30": 2247.87,
    "restock_rec": null,
    "restock_est": 0,
-   "rev30": null,
+   "rev30": 15693.02,
    "owner": "client",
    "action": "Plan shipment"
   },
@@ -1381,7 +1381,7 @@
    "ad30": 0.0,
    "restock_rec": null,
    "restock_est": 207,
-   "rev30": null,
+   "rev30": 1704.3,
    "owner": "client",
    "action": "Plan shipment"
   },
@@ -1405,7 +1405,7 @@
    "ad30": 243.38,
    "restock_rec": null,
    "restock_est": 381,
-   "rev30": null,
+   "rev30": 3360.15,
    "owner": "client",
    "action": "Plan shipment"
   },
@@ -1527,7 +1527,7 @@
    "ad30": 0.0,
    "restock_rec": null,
    "restock_est": 33,
-   "rev30": null,
+   "rev30": 503.1,
    "owner": "client",
    "action": "Plan shipment"
   },
@@ -1551,7 +1551,7 @@
    "ad30": 1794.14,
    "restock_rec": null,
    "restock_est": 840,
-   "rev30": null,
+   "rev30": 42502.25,
    "owner": "client",
    "action": "Plan shipment",
    "cases": [
@@ -1674,7 +1674,7 @@
    "ad30": 0.0,
    "restock_rec": null,
    "restock_est": 0,
-   "rev30": null,
+   "rev30": 1376.87,
    "owner": "client",
    "action": "Plan shipment"
   },
@@ -1704,7 +1704,7 @@
    "ad30": 688.15,
    "restock_rec": null,
    "restock_est": 1073,
-   "rev30": null,
+   "rev30": 11798.46,
    "owner": "client",
    "action": "Plan shipment"
   },
@@ -1734,7 +1734,7 @@
    "ad30": 1290.45,
    "restock_rec": null,
    "restock_est": 937,
-   "rev30": null,
+   "rev30": 9524.909999999998,
    "owner": "client",
    "action": "Plan shipment",
    "cases": [
@@ -1766,7 +1766,7 @@
    "ad30": 2580.46,
    "restock_rec": null,
    "restock_est": 469,
-   "rev30": null,
+   "rev30": 52991.369999999995,
    "owner": "client",
    "action": "Plan shipment",
    "cases": [
@@ -2189,7 +2189,7 @@
      "restock_rec": null,
      "restock_rec_date": null,
      "restock_est": 1499,
-     "rev30": null
+     "rev30": 53418.65
     },
     {
      "asin": "B08DDGFXPK",
@@ -2222,7 +2222,7 @@
      "restock_rec": null,
      "restock_rec_date": null,
      "restock_est": 270,
-     "rev30": null
+     "rev30": 16481.69
     },
     {
      "asin": "B0F2JKWWMM",
@@ -2290,7 +2290,7 @@
      "restock_rec": null,
      "restock_rec_date": null,
      "restock_est": 0,
-     "rev30": null
+     "rev30": 102834.13
     },
     {
      "asin": "B0FYRJ1966",
@@ -2324,7 +2324,7 @@
      "restock_rec": null,
      "restock_rec_date": null,
      "restock_est": 230,
-     "rev30": null
+     "rev30": 66462.64
     },
     {
      "asin": "B0DKVZRX69",
@@ -2358,7 +2358,7 @@
      "restock_rec": null,
      "restock_rec_date": null,
      "restock_est": 1990,
-     "rev30": null
+     "rev30": 19327.86
     },
     {
      "asin": "B0H1NM7467",
@@ -2391,7 +2391,7 @@
      "restock_rec": null,
      "restock_rec_date": null,
      "restock_est": 212,
-     "rev30": null
+     "rev30": 5811.7
     },
     {
      "asin": "B0CN8HJSYM",
@@ -2424,7 +2424,7 @@
      "restock_rec": null,
      "restock_rec_date": null,
      "restock_est": 499,
-     "rev30": null
+     "rev30": 50004.7
     },
     {
      "asin": "B07SHJVK4G",
@@ -2457,7 +2457,7 @@
      "restock_rec": null,
      "restock_rec_date": null,
      "restock_est": 7680,
-     "rev30": null
+     "rev30": 255717.44
     },
     {
      "asin": "B084RQKLV8",
@@ -2490,7 +2490,7 @@
      "restock_rec": null,
      "restock_rec_date": null,
      "restock_est": 31413,
-     "rev30": null
+     "rev30": 767497.73
     },
     {
      "asin": "B0DH5HKH5R",
@@ -2523,7 +2523,7 @@
      "restock_rec": null,
      "restock_rec_date": null,
      "restock_est": 176,
-     "rev30": null
+     "rev30": 2366.8
     },
     {
      "asin": "B0GYBH76BR",
@@ -2556,7 +2556,7 @@
      "restock_rec": null,
      "restock_rec_date": null,
      "restock_est": 39,
-     "rev30": null
+     "rev30": 3531.05
     },
     {
      "asin": "B0CQN1RXYB",
@@ -2589,7 +2589,7 @@
      "restock_rec": null,
      "restock_rec_date": null,
      "restock_est": 468,
-     "rev30": null
+     "rev30": 12570.75
     },
     {
      "asin": "B0F45C2YHV",
@@ -2622,7 +2622,7 @@
      "restock_rec": null,
      "restock_rec_date": null,
      "restock_est": 834,
-     "rev30": null
+     "rev30": 89220.4
     },
     {
      "asin": "B0H1NP4461",
@@ -2653,7 +2653,7 @@
      "restock_rec": null,
      "restock_rec_date": null,
      "restock_est": null,
-     "rev30": null
+     "rev30": 3357.55
     },
     {
      "asin": "B0DH5ZC1N4",
@@ -2684,7 +2684,7 @@
      "restock_rec": null,
      "restock_rec_date": null,
      "restock_est": null,
-     "rev30": null
+     "rev30": 1579.65
     },
     {
      "asin": "B0C4QX35KX",
@@ -2715,7 +2715,7 @@
      "restock_rec": null,
      "restock_rec_date": null,
      "restock_est": null,
-     "rev30": null
+     "rev30": 18247.0
     },
     {
      "asin": "B0FW6WFX4D",
@@ -2746,7 +2746,7 @@
      "restock_rec": null,
      "restock_rec_date": null,
      "restock_est": null,
-     "rev30": null
+     "rev30": 9266.1
     },
     {
      "asin": "B0DJMW6283",
@@ -2777,7 +2777,7 @@
      "restock_rec": null,
      "restock_rec_date": null,
      "restock_est": null,
-     "rev30": null
+     "rev30": 21687.01
     },
     {
      "asin": "B0DVV6K9Y6",
@@ -2808,7 +2808,7 @@
      "restock_rec": null,
      "restock_rec_date": null,
      "restock_est": null,
-     "rev30": null
+     "rev30": 11406.55
     },
     {
      "asin": "B0GY1XLQMS",
@@ -2839,7 +2839,7 @@
      "restock_rec": null,
      "restock_rec_date": null,
      "restock_est": null,
-     "rev30": null
+     "rev30": 12077.55
     },
     {
      "asin": "B0F8JJM54R",
@@ -2870,7 +2870,7 @@
      "restock_rec": null,
      "restock_rec_date": null,
      "restock_est": null,
-     "rev30": null
+     "rev30": 843.65
     },
     {
      "asin": "B08DDJ49X7",
@@ -2901,7 +2901,7 @@
      "restock_rec": null,
      "restock_rec_date": null,
      "restock_est": null,
-     "rev30": null
+     "rev30": 10104.5
     },
     {
      "asin": "B0H1NDSGVJ",
@@ -2932,7 +2932,7 @@
      "restock_rec": null,
      "restock_rec_date": null,
      "restock_est": null,
-     "rev30": null
+     "rev30": 1127.1
     },
     {
      "asin": "B0H1SP98C3",
@@ -2963,7 +2963,7 @@
      "restock_rec": null,
      "restock_rec_date": null,
      "restock_est": null,
-     "rev30": null
+     "rev30": 639.2
     },
     {
      "asin": "B0GZSHD4GP",
@@ -2994,7 +2994,7 @@
      "restock_rec": null,
      "restock_rec_date": null,
      "restock_est": null,
-     "rev30": null
+     "rev30": 669.72
     },
     {
      "asin": "B0F3G1V5SF",
@@ -3025,7 +3025,7 @@
      "restock_rec": null,
      "restock_rec_date": null,
      "restock_est": null,
-     "rev30": null
+     "rev30": 4766.0
     },
     {
      "asin": "B0H3QRH9B7",
@@ -3056,7 +3056,7 @@
      "restock_rec": null,
      "restock_rec_date": null,
      "restock_est": null,
-     "rev30": null
+     "rev30": 2349.67
     },
     {
      "asin": "B0DVB4P9KQ",
@@ -3087,7 +3087,7 @@
      "restock_rec": null,
      "restock_rec_date": null,
      "restock_est": null,
-     "rev30": null
+     "rev30": 3438.15
     },
     {
      "asin": "B0F2JL4F2W",
@@ -3118,7 +3118,7 @@
      "restock_rec": null,
      "restock_rec_date": null,
      "restock_est": null,
-     "rev30": null
+     "rev30": 638.55
     },
     {
      "asin": "B0C4ZVMRRK",
@@ -3150,7 +3150,7 @@
      "restock_rec": null,
      "restock_rec_date": null,
      "restock_est": null,
-     "rev30": null
+     "rev30": 15337.94
     },
     {
      "asin": "B0F2JBJXYJ",
@@ -3181,7 +3181,7 @@
      "restock_rec": null,
      "restock_rec_date": null,
      "restock_est": null,
-     "rev30": null
+     "rev30": 817.8
     },
     {
      "asin": "B0F3G9BC3G",
@@ -3212,7 +3212,7 @@
      "restock_rec": null,
      "restock_rec_date": null,
      "restock_est": null,
-     "rev30": null
+     "rev30": 549.5
     },
     {
      "asin": "B0H51RDY69",
@@ -3243,7 +3243,7 @@
      "restock_rec": null,
      "restock_rec_date": null,
      "restock_est": null,
-     "rev30": null
+     "rev30": 545.8
     }
    ],
    "feedback": {
@@ -3411,7 +3411,7 @@
      "restock_rec": null,
      "restock_rec_date": null,
      "restock_est": 0,
-     "rev30": null
+     "rev30": 35493.37
     },
     {
      "asin": "B0B94G13CN",
@@ -3444,7 +3444,7 @@
      "restock_rec": null,
      "restock_rec_date": null,
      "restock_est": 0,
-     "rev30": null
+     "rev30": 15693.02
     },
     {
      "asin": "B084RQKLV8",
@@ -3475,7 +3475,7 @@
      "restock_rec": null,
      "restock_rec_date": null,
      "restock_est": null,
-     "rev30": null
+     "rev30": 148824.12
     },
     {
      "asin": "B0DJMW6283",
@@ -3506,7 +3506,7 @@
      "restock_rec": null,
      "restock_rec_date": null,
      "restock_est": null,
-     "rev30": null
+     "rev30": 814.47
     },
     {
      "asin": "B0FYRJ1966",
@@ -3537,7 +3537,7 @@
      "restock_rec": null,
      "restock_rec_date": null,
      "restock_est": null,
-     "rev30": null
+     "rev30": 8299.4
     },
     {
      "asin": "B0F45C2YHV",
@@ -3568,7 +3568,7 @@
      "restock_rec": null,
      "restock_rec_date": null,
      "restock_est": null,
-     "rev30": null
+     "rev30": 19424.35
     },
     {
      "asin": "B0FW6WFX4D",
@@ -3599,7 +3599,7 @@
      "restock_rec": null,
      "restock_rec_date": null,
      "restock_est": null,
-     "rev30": null
+     "rev30": 2368.65
     },
     {
      "asin": "B0DVB4P9KQ",
@@ -3630,7 +3630,7 @@
      "restock_rec": null,
      "restock_rec_date": null,
      "restock_est": null,
-     "rev30": null
+     "rev30": 1108.25
     },
     {
      "asin": "B0H1NM7467",
@@ -3661,7 +3661,7 @@
      "restock_rec": null,
      "restock_rec_date": null,
      "restock_est": null,
-     "rev30": null
+     "rev30": 361.73
     },
     {
      "asin": "B0F8JJM54R",
@@ -3692,7 +3692,7 @@
      "restock_rec": null,
      "restock_rec_date": null,
      "restock_est": null,
-     "rev30": null
+     "rev30": 89.2
     },
     {
      "asin": "B0H3QRH9B7",
@@ -3723,7 +3723,7 @@
      "restock_rec": null,
      "restock_rec_date": null,
      "restock_est": null,
-     "rev30": null
+     "rev30": 186.36
     },
     {
      "asin": "B0H1NP4461",
@@ -3754,7 +3754,7 @@
      "restock_rec": null,
      "restock_rec_date": null,
      "restock_est": null,
-     "rev30": null
+     "rev30": 38.33
     },
     {
      "asin": "B08DDGFXPK",
@@ -4017,7 +4017,7 @@
      "restock_rec": null,
      "restock_rec_date": null,
      "restock_est": 11660,
-     "rev30": null
+     "rev30": 87819.63
     },
     {
      "asin": "B0FW6WFX4D",
@@ -4050,7 +4050,7 @@
      "restock_rec": null,
      "restock_rec_date": null,
      "restock_est": 207,
-     "rev30": null
+     "rev30": 1704.3
     },
     {
      "asin": "B0FYRJ1966",
@@ -4083,7 +4083,7 @@
      "restock_rec": null,
      "restock_rec_date": null,
      "restock_est": 381,
-     "rev30": null
+     "rev30": 3360.15
     },
     {
      "asin": "B0CQN1RXYB",
@@ -4114,7 +4114,7 @@
      "restock_rec": null,
      "restock_rec_date": null,
      "restock_est": null,
-     "rev30": null
+     "rev30": 1087.45
     },
     {
      "asin": "B0CN8HJSYM",
@@ -4145,7 +4145,7 @@
      "restock_rec": null,
      "restock_rec_date": null,
      "restock_est": null,
-     "rev30": null
+     "rev30": 849.5
     },
     {
      "asin": "B0DJMW6283",
@@ -4176,7 +4176,7 @@
      "restock_rec": null,
      "restock_rec_date": null,
      "restock_est": null,
-     "rev30": null
+     "rev30": 348.25
     },
     {
      "asin": "B0F45C2YHV",
@@ -4207,7 +4207,7 @@
      "restock_rec": null,
      "restock_rec_date": null,
      "restock_est": null,
-     "rev30": null
+     "rev30": 12724.1
     },
     {
      "asin": "B0B94G13CN",
@@ -4238,7 +4238,7 @@
      "restock_rec": null,
      "restock_rec_date": null,
      "restock_est": null,
-     "rev30": null
+     "rev30": 4077.56
     },
     {
      "asin": "B0DKVZRX69",
@@ -4269,7 +4269,7 @@
      "restock_rec": null,
      "restock_rec_date": null,
      "restock_est": null,
-     "rev30": null
+     "rev30": 1226.4
     },
     {
      "asin": "B0DVB4P9KQ",
@@ -4300,7 +4300,7 @@
      "restock_rec": null,
      "restock_rec_date": null,
      "restock_est": null,
-     "rev30": null
+     "rev30": 460.26
     },
     {
      "asin": "B0FX5WH19H",
@@ -4448,7 +4448,7 @@
      "restock_rec": null,
      "restock_rec_date": null,
      "restock_est": 98,
-     "rev30": null
+     "rev30": 575.9699999999999
     },
     {
      "asin": "B0FYRJ1966",
@@ -4487,7 +4487,7 @@
      "restock_rec": null,
      "restock_rec_date": null,
      "restock_est": 0,
-     "rev30": null
+     "rev30": 1376.87
     },
     {
      "asin": "B07SHJVK4G",
@@ -4527,7 +4527,7 @@
      "restock_rec": null,
      "restock_rec_date": null,
      "restock_est": 1073,
-     "rev30": null
+     "rev30": 11798.46
     },
     {
      "asin": "B0F45C2YHV",
@@ -4566,7 +4566,7 @@
      "restock_rec": null,
      "restock_rec_date": null,
      "restock_est": 937,
-     "rev30": null
+     "rev30": 9524.909999999998
     },
     {
      "asin": "B0B94G13CN",
@@ -4603,7 +4603,7 @@
      "restock_rec": null,
      "restock_rec_date": null,
      "restock_est": null,
-     "rev30": null
+     "rev30": 4466.9
     },
     {
      "asin": "B0CQN1RXYB",
@@ -4640,7 +4640,7 @@
      "restock_rec": null,
      "restock_rec_date": null,
      "restock_est": null,
-     "rev30": null
+     "rev30": 1210.25
     },
     {
      "asin": "B0DJMW6283",
@@ -4677,7 +4677,7 @@
      "restock_rec": null,
      "restock_rec_date": null,
      "restock_est": null,
-     "rev30": null
+     "rev30": 350.89
     },
     {
      "asin": "B0DVB4P9KQ",
@@ -4713,7 +4713,7 @@
      "restock_rec": null,
      "restock_rec_date": null,
      "restock_est": null,
-     "rev30": null
+     "rev30": 160.07
     },
     {
      "asin": "B0CN8HJSYM",
@@ -4748,7 +4748,7 @@
      "restock_rec": null,
      "restock_rec_date": null,
      "restock_est": null,
-     "rev30": null
+     "rev30": 120.75
     }
    ],
    "feedback": {
@@ -4894,7 +4894,7 @@
      "restock_rec": null,
      "restock_rec_date": null,
      "restock_est": 98,
-     "rev30": null
+     "rev30": 575.9699999999999
     },
     {
      "asin": "B0FYRJ1966",
@@ -4933,7 +4933,7 @@
      "restock_rec": null,
      "restock_rec_date": null,
      "restock_est": 0,
-     "rev30": null
+     "rev30": 1376.87
     },
     {
      "asin": "B07SHJVK4G",
@@ -4973,7 +4973,7 @@
      "restock_rec": null,
      "restock_rec_date": null,
      "restock_est": 1073,
-     "rev30": null
+     "rev30": 11798.46
     },
     {
      "asin": "B0F45C2YHV",
@@ -5012,7 +5012,7 @@
      "restock_rec": null,
      "restock_rec_date": null,
      "restock_est": 937,
-     "rev30": null
+     "rev30": 9524.909999999998
     },
     {
      "asin": "B084RQKLV8",
@@ -5050,7 +5050,7 @@
      "restock_rec": null,
      "restock_rec_date": null,
      "restock_est": 469,
-     "rev30": null
+     "rev30": 52991.369999999995
     },
     {
      "asin": "B0B94G13CN",
@@ -5087,7 +5087,7 @@
      "restock_rec": null,
      "restock_rec_date": null,
      "restock_est": null,
-     "rev30": null
+     "rev30": 4466.9
     },
     {
      "asin": "B0CQN1RXYB",
@@ -5124,7 +5124,7 @@
      "restock_rec": null,
      "restock_rec_date": null,
      "restock_est": null,
-     "rev30": null
+     "rev30": 1210.25
     },
     {
      "asin": "B0DJMW6283",
@@ -5161,7 +5161,7 @@
      "restock_rec": null,
      "restock_rec_date": null,
      "restock_est": null,
-     "rev30": null
+     "rev30": 350.89
     },
     {
      "asin": "B0DVB4P9KQ",
@@ -5197,7 +5197,7 @@
      "restock_rec": null,
      "restock_rec_date": null,
      "restock_est": null,
-     "rev30": null
+     "rev30": 160.07
     },
     {
      "asin": "B0CN8HJSYM",
@@ -5232,7 +5232,7 @@
      "restock_rec": null,
      "restock_rec_date": null,
      "restock_est": null,
-     "rev30": null
+     "rev30": 120.75
     }
    ],
    "feedback": {
@@ -5325,7 +5325,7 @@
      "restock_rec": null,
      "restock_rec_date": null,
      "restock_est": 98,
-     "rev30": null
+     "rev30": 575.9699999999999
     },
     {
      "asin": "B0FYRJ1966",
@@ -5364,7 +5364,7 @@
      "restock_rec": null,
      "restock_rec_date": null,
      "restock_est": 0,
-     "rev30": null
+     "rev30": 1376.87
     },
     {
      "asin": "B07SHJVK4G",
@@ -5404,7 +5404,7 @@
      "restock_rec": null,
      "restock_rec_date": null,
      "restock_est": 1073,
-     "rev30": null
+     "rev30": 11798.46
     },
     {
      "asin": "B0F45C2YHV",
@@ -5443,7 +5443,7 @@
      "restock_rec": null,
      "restock_rec_date": null,
      "restock_est": 937,
-     "rev30": null
+     "rev30": 9524.909999999998
     },
     {
      "asin": "B084RQKLV8",
@@ -5481,7 +5481,7 @@
      "restock_rec": null,
      "restock_rec_date": null,
      "restock_est": 469,
-     "rev30": null
+     "rev30": 52991.369999999995
     },
     {
      "asin": "B0B94G13CN",
@@ -5518,7 +5518,7 @@
      "restock_rec": null,
      "restock_rec_date": null,
      "restock_est": null,
-     "rev30": null
+     "rev30": 4466.9
     },
     {
      "asin": "B0CQN1RXYB",
@@ -5555,7 +5555,7 @@
      "restock_rec": null,
      "restock_rec_date": null,
      "restock_est": null,
-     "rev30": null
+     "rev30": 1210.25
     },
     {
      "asin": "B0DJMW6283",
@@ -5592,7 +5592,7 @@
      "restock_rec": null,
      "restock_rec_date": null,
      "restock_est": null,
-     "rev30": null
+     "rev30": 350.89
     },
     {
      "asin": "B0DVB4P9KQ",
@@ -5628,7 +5628,7 @@
      "restock_rec": null,
      "restock_rec_date": null,
      "restock_est": null,
-     "rev30": null
+     "rev30": 160.07
     },
     {
      "asin": "B0CN8HJSYM",
@@ -5663,7 +5663,7 @@
      "restock_rec": null,
      "restock_rec_date": null,
      "restock_est": null,
-     "rev30": null
+     "rev30": 120.75
     }
    ],
    "feedback": {
@@ -5767,7 +5767,7 @@
      "restock_rec": null,
      "restock_rec_date": null,
      "restock_est": 98,
-     "rev30": null
+     "rev30": 575.9699999999999
     },
     {
      "asin": "B0FYRJ1966",
@@ -5806,7 +5806,7 @@
      "restock_rec": null,
      "restock_rec_date": null,
      "restock_est": 0,
-     "rev30": null
+     "rev30": 1376.87
     },
     {
      "asin": "B07SHJVK4G",
@@ -5848,7 +5848,7 @@
      "restock_rec": null,
      "restock_rec_date": null,
      "restock_est": 1073,
-     "rev30": null
+     "rev30": 11798.46
     },
     {
      "asin": "B0F45C2YHV",
@@ -5887,7 +5887,7 @@
      "restock_rec": null,
      "restock_rec_date": null,
      "restock_est": 937,
-     "rev30": null
+     "rev30": 9524.909999999998
     },
     {
      "asin": "B084RQKLV8",
@@ -5925,7 +5925,7 @@
      "restock_rec": null,
      "restock_rec_date": null,
      "restock_est": 469,
-     "rev30": null
+     "rev30": 52991.369999999995
     },
     {
      "asin": "B0B94G13CN",
@@ -5962,7 +5962,7 @@
      "restock_rec": null,
      "restock_rec_date": null,
      "restock_est": null,
-     "rev30": null
+     "rev30": 4466.9
     },
     {
      "asin": "B0CQN1RXYB",
@@ -5999,7 +5999,7 @@
      "restock_rec": null,
      "restock_rec_date": null,
      "restock_est": null,
-     "rev30": null
+     "rev30": 1210.25
     },
     {
      "asin": "B0DJMW6283",
@@ -6036,7 +6036,7 @@
      "restock_rec": null,
      "restock_rec_date": null,
      "restock_est": null,
-     "rev30": null
+     "rev30": 350.89
     },
     {
      "asin": "B0DVB4P9KQ",
@@ -6072,7 +6072,7 @@
      "restock_rec": null,
      "restock_rec_date": null,
      "restock_est": null,
-     "rev30": null
+     "rev30": 160.07
     }
    ],
    "feedback": {
@@ -6177,7 +6177,7 @@
      "restock_rec": null,
      "restock_rec_date": null,
      "restock_est": 188,
-     "rev30": null
+     "rev30": 1376.87
     },
     {
      "asin": "B0DKVZRX69",
@@ -6217,7 +6217,7 @@
      "restock_rec": null,
      "restock_rec_date": null,
      "restock_est": 98,
-     "rev30": null
+     "rev30": 575.9699999999999
     },
     {
      "asin": "B07SHJVK4G",
@@ -6260,7 +6260,7 @@
      "restock_rec": null,
      "restock_rec_date": null,
      "restock_est": 1073,
-     "rev30": null
+     "rev30": 11798.46
     },
     {
      "asin": "B0F45C2YHV",
@@ -6300,7 +6300,7 @@
      "restock_rec": null,
      "restock_rec_date": null,
      "restock_est": 937,
-     "rev30": null
+     "rev30": 9524.909999999998
     },
     {
      "asin": "B084RQKLV8",
@@ -6339,7 +6339,7 @@
      "restock_rec": null,
      "restock_rec_date": null,
      "restock_est": 469,
-     "rev30": null
+     "rev30": 52991.369999999995
     },
     {
      "asin": "B0B94G13CN",
@@ -6376,7 +6376,7 @@
      "restock_rec": null,
      "restock_rec_date": null,
      "restock_est": null,
-     "rev30": null
+     "rev30": 4466.9
     },
     {
      "asin": "B0CQN1RXYB",
@@ -6413,7 +6413,7 @@
      "restock_rec": null,
      "restock_rec_date": null,
      "restock_est": null,
-     "rev30": null
+     "rev30": 1210.25
     },
     {
      "asin": "B0DJMW6283",
@@ -6450,7 +6450,7 @@
      "restock_rec": null,
      "restock_rec_date": null,
      "restock_est": null,
-     "rev30": null
+     "rev30": 350.89
     }
    ],
    "feedback": {
@@ -6965,7 +6965,7 @@
      "restock_rec": null,
      "restock_rec_date": null,
      "restock_est": 33,
-     "rev30": null
+     "rev30": 503.1
     },
     {
      "asin": "B084RQKLV8",
@@ -6999,7 +6999,7 @@
      "restock_rec": null,
      "restock_rec_date": null,
      "restock_est": 840,
-     "rev30": null
+     "rev30": 42502.25
     },
     {
      "asin": "B0FYRJ1966",
@@ -7030,7 +7030,7 @@
      "restock_rec": null,
      "restock_rec_date": null,
      "restock_est": null,
-     "rev30": null
+     "rev30": 2068.3
     },
     {
      "asin": "B0FW6WFX4D",
@@ -7061,7 +7061,7 @@
      "restock_rec": null,
      "restock_rec_date": null,
      "restock_est": null,
-     "rev30": null
+     "rev30": 509.15
     },
     {
      "asin": "B0DJMW6283",
@@ -7092,7 +7092,7 @@
      "restock_rec": null,
      "restock_rec_date": null,
      "restock_est": null,
-     "rev30": null
+     "rev30": 377.1
     },
     {
      "asin": "B0F45C2YHV",
@@ -7123,7 +7123,7 @@
      "restock_rec": null,
      "restock_rec_date": null,
      "restock_est": null,
-     "rev30": null
+     "rev30": 3326.05
     },
     {
      "asin": "B0B94G13CN",
@@ -7154,7 +7154,7 @@
      "restock_rec": null,
      "restock_rec_date": null,
      "restock_est": null,
-     "rev30": null
+     "rev30": 2310.14
     },
     {
      "asin": "B0CQN1RXYB",
@@ -7185,7 +7185,7 @@
      "restock_rec": null,
      "restock_rec_date": null,
      "restock_est": null,
-     "rev30": null
+     "rev30": 1229.2
     },
     {
      "asin": "B0CN8HJSYM",
@@ -7216,7 +7216,7 @@
      "restock_rec": null,
      "restock_rec_date": null,
      "restock_est": null,
-     "rev30": null
+     "rev30": 359.9
     }
    ],
    "feedback": {
@@ -8412,6 +8412,2167 @@
   "CC_AU",
   "CL_US",
   "PP_US"
+ ],
+ "selling": [
+  {
+   "account": "CC_US",
+   "label": "US AUTO",
+   "brand": "CC",
+   "market": "US",
+   "cur": "$",
+   "asin": "B084RQKLV8",
+   "parent": "B089TVMF6J",
+   "name": "Ceramic Headlight Restoration Kit",
+   "rev30": 767497.73,
+   "units30": 43061,
+   "price": 17.95,
+   "available": 21710,
+   "doc": 15.1,
+   "severity": "WATCH",
+   "oos": false
+  },
+  {
+   "account": "CC_US",
+   "label": "US AUTO",
+   "brand": "CC",
+   "market": "US",
+   "cur": "$",
+   "asin": "B07SHJVK4G",
+   "parent": "B0D67BNBP5",
+   "name": "Ceramic Trim Coat Kit",
+   "rev30": 255717.44,
+   "units30": 15233,
+   "price": 16.88,
+   "available": 7635,
+   "doc": 15.0,
+   "severity": "WATCH",
+   "oos": false
+  },
+  {
+   "account": "CC_CA",
+   "label": "CA AUTO",
+   "brand": "CC",
+   "market": "CA",
+   "cur": "C$",
+   "asin": "B084RQKLV8",
+   "parent": "B089V57R5K",
+   "name": "Ceramic Headlight Restoration Kit",
+   "rev30": 148824.12,
+   "units30": 5022,
+   "price": 33.71,
+   "available": 4723,
+   "doc": 28.2,
+   "severity": "OK",
+   "oos": false
+  },
+  {
+   "account": "CC_US",
+   "label": "US AUTO",
+   "brand": "CC",
+   "market": "US",
+   "cur": "$",
+   "asin": "B0B94G13CN",
+   "parent": "B0FPPKL8NX",
+   "name": "Rapid Ceramic Paint Sealant",
+   "rev30": 102834.13,
+   "units30": 5259,
+   "price": 19.69,
+   "available": 330,
+   "doc": 1.9,
+   "severity": "WATCH",
+   "oos": false
+  },
+  {
+   "account": "CC_US",
+   "label": "US AUTO",
+   "brand": "CC",
+   "market": "US",
+   "cur": "$",
+   "asin": "B0F45C2YHV",
+   "parent": "B0GYB3BNQD",
+   "name": "Rapid Ceramic Tire Coat",
+   "rev30": 89220.4,
+   "units30": 5996,
+   "price": 14.95,
+   "available": 7987,
+   "doc": 39.9,
+   "severity": "WATCH",
+   "oos": false
+  },
+  {
+   "account": "CC_UK",
+   "label": "UK AUTO",
+   "brand": "CC",
+   "market": "UK",
+   "cur": "£",
+   "asin": "B084RQKLV8",
+   "parent": "B0GTN83VCZ",
+   "name": "Ceramic Headlight Restoration Kit",
+   "rev30": 87819.63,
+   "units30": 4896,
+   "price": 17.95,
+   "available": 593,
+   "doc": 3.7,
+   "severity": "URGENT",
+   "oos": false
+  },
+  {
+   "account": "CC_US",
+   "label": "US AUTO",
+   "brand": "CC",
+   "market": "US",
+   "cur": "$",
+   "asin": "B0FYRJ1966",
+   "parent": "B0H1SW5VNC",
+   "name": "Rapid Ceramic Plastic Restorer",
+   "rev30": 66462.64,
+   "units30": 4479,
+   "price": 14.9,
+   "available": 581,
+   "doc": 3.9,
+   "severity": "WATCH",
+   "oos": false
+  },
+  {
+   "account": "CC_US",
+   "label": "US AUTO",
+   "brand": "CC",
+   "market": "US",
+   "cur": "$",
+   "asin": "B08FF6X75N",
+   "parent": "B089TVMF6J",
+   "name": "Ceramic Headlight Restoration Detailer Pack, 20 ",
+   "rev30": 53418.65,
+   "units30": 1077,
+   "price": 49.95,
+   "available": 84,
+   "doc": 2.3,
+   "severity": "URGENT",
+   "oos": false
+  },
+  {
+   "account": "CC_US",
+   "label": "US AUTO",
+   "brand": "CC",
+   "market": "US",
+   "cur": "$",
+   "asin": "B0CN8HJSYM",
+   "parent": "B0HF6JLTTZ",
+   "name": "Pro Ceramic Coating, 60ml",
+   "rev30": 50004.7,
+   "units30": 507,
+   "price": 99.95,
+   "available": 249,
+   "doc": 14.6,
+   "severity": "WATCH",
+   "oos": false
+  },
+  {
+   "account": "CC_AU",
+   "label": "AU AUTO",
+   "brand": "CC",
+   "market": "AU",
+   "cur": "A$",
+   "asin": "B084RQKLV8",
+   "parent": "B08CDXP2ZQ",
+   "name": "Ceramic Headlight Restoration Kit",
+   "rev30": 42502.25,
+   "units30": 1251,
+   "price": 33.95,
+   "available": 2297,
+   "doc": 54.9,
+   "severity": "WATCH",
+   "oos": false
+  },
+  {
+   "account": "CC_CA",
+   "label": "CA AUTO",
+   "brand": "CC",
+   "market": "CA",
+   "cur": "C$",
+   "asin": "B07SHJVK4G",
+   "parent": "B07Z434B8X",
+   "name": "Ceramic Trim Coat Kit",
+   "rev30": 35493.37,
+   "units30": 1319,
+   "price": 31.18,
+   "available": 2987,
+   "doc": 67.8,
+   "severity": "WATCH",
+   "oos": false
+  },
+  {
+   "account": "CC_FR",
+   "label": "FR AUTO",
+   "brand": "CC",
+   "market": "FR",
+   "cur": "€",
+   "asin": "B084RQKLV8",
+   "parent": null,
+   "name": "Ceramic Headlight Restoration Kit",
+   "rev30": 25844.89,
+   "units30": 1129,
+   "price": 22.95,
+   "available": 4788,
+   "doc": 68.3,
+   "severity": "WATCH",
+   "oos": false
+  },
+  {
+   "account": "CC_US",
+   "label": "US AUTO",
+   "brand": "CC",
+   "market": "US",
+   "cur": "$",
+   "asin": "B0DJMW6283",
+   "parent": "B0GHPTBVQK",
+   "name": "Microfiber Towels, 12pk",
+   "rev30": 21687.01,
+   "units30": 2189,
+   "price": 9.95,
+   "available": 2495,
+   "doc": 34.2,
+   "severity": "OK",
+   "oos": false
+  },
+  {
+   "account": "CC_CA",
+   "label": "CA AUTO",
+   "brand": "CC",
+   "market": "CA",
+   "cur": "C$",
+   "asin": "B0F45C2YHV",
+   "parent": null,
+   "name": "Rapid Ceramic Tire Coat",
+   "rev30": 19424.35,
+   "units30": 887,
+   "price": 21.95,
+   "available": 1113,
+   "doc": 37.6,
+   "severity": "OK",
+   "oos": false
+  },
+  {
+   "account": "CC_US",
+   "label": "US AUTO",
+   "brand": "CC",
+   "market": "US",
+   "cur": "$",
+   "asin": "B0DKVZRX69",
+   "parent": "B0F7CLSLCC",
+   "name": "Rapid Ceramic Interior Detailer",
+   "rev30": 19327.86,
+   "units30": 1673,
+   "price": 11.63,
+   "available": 432,
+   "doc": 7.7,
+   "severity": "WATCH",
+   "oos": false
+  },
+  {
+   "account": "CC_US",
+   "label": "US AUTO",
+   "brand": "CC",
+   "market": "US",
+   "cur": "$",
+   "asin": "B0C4QX35KX",
+   "parent": null,
+   "name": "Ceramic Trim Coat Black Plastic Restorer for Car",
+   "rev30": 18247.0,
+   "units30": 464,
+   "price": 39.95,
+   "available": 405,
+   "doc": 26.2,
+   "severity": "OK",
+   "oos": false
+  },
+  {
+   "account": "CC_US",
+   "label": "US AUTO",
+   "brand": "CC",
+   "market": "US",
+   "cur": "$",
+   "asin": "B08DDGFXPK",
+   "parent": "B0D67BNBP5",
+   "name": "Ceramic Trim Coat Black Plastic Restorer for Car",
+   "rev30": 16481.69,
+   "units30": 227,
+   "price": 74.95,
+   "available": 66,
+   "doc": 8.8,
+   "severity": "URGENT",
+   "oos": false
+  },
+  {
+   "account": "CC_CA",
+   "label": "CA AUTO",
+   "brand": "CC",
+   "market": "CA",
+   "cur": "C$",
+   "asin": "B0B94G13CN",
+   "parent": "B0C8BZS9DK",
+   "name": "Rapid Ceramic Paint Sealant",
+   "rev30": 15693.02,
+   "units30": 548,
+   "price": 29.86,
+   "available": 2229,
+   "doc": 122.1,
+   "severity": "WATCH",
+   "oos": false
+  },
+  {
+   "account": "CC_US",
+   "label": "US AUTO",
+   "brand": "CC",
+   "market": "US",
+   "cur": "$",
+   "asin": "B0C4ZVMRRK",
+   "parent": "B0FPPKL8NX",
+   "name": "RC PAINT 32",
+   "rev30": 15337.94,
+   "units30": 441,
+   "price": 34.95,
+   "available": 1559,
+   "doc": 106.1,
+   "severity": "OK",
+   "oos": false
+  },
+  {
+   "account": "CC_UK",
+   "label": "UK AUTO",
+   "brand": "CC",
+   "market": "UK",
+   "cur": "£",
+   "asin": "B0F45C2YHV",
+   "parent": null,
+   "name": "Rapid Ceramic Tire Coat",
+   "rev30": 12724.1,
+   "units30": 913,
+   "price": 13.95,
+   "available": 1678,
+   "doc": 55.1,
+   "severity": "OK",
+   "oos": false
+  },
+  {
+   "account": "CC_US",
+   "label": "US AUTO",
+   "brand": "CC",
+   "market": "US",
+   "cur": "$",
+   "asin": "B0CQN1RXYB",
+   "parent": "B0F3YX7X5K",
+   "name": "Ceramic Glass Coat Protectant",
+   "rev30": 12570.75,
+   "units30": 1265,
+   "price": 9.95,
+   "available": 1390,
+   "doc": 33.0,
+   "severity": "WATCH",
+   "oos": false
+  },
+  {
+   "account": "CC_US",
+   "label": "US AUTO",
+   "brand": "CC",
+   "market": "US",
+   "cur": "$",
+   "asin": "B0GY1XLQMS",
+   "parent": "B0GYB3BNQD",
+   "name": "Rapid Ceramic Tire Coat, Deep Black Tire Shine P",
+   "rev30": 12077.55,
+   "units30": 322,
+   "price": 37.95,
+   "available": 390,
+   "doc": 36.4,
+   "severity": "OK",
+   "oos": false
+  },
+  {
+   "account": "CC_AU",
+   "label": "AU AUTO",
+   "brand": "CC",
+   "market": "AU",
+   "cur": "A$",
+   "asin": "B07SHJVK4G",
+   "parent": "B0819BGBSV",
+   "name": "Ceramic Trim Coat Kit",
+   "rev30": 11466.6,
+   "units30": 348,
+   "price": 32.95,
+   "available": 0,
+   "doc": 0.0,
+   "severity": "CRITICAL",
+   "oos": true
+  },
+  {
+   "account": "CC_US",
+   "label": "US AUTO",
+   "brand": "CC",
+   "market": "US",
+   "cur": "$",
+   "asin": "B0DVV6K9Y6",
+   "parent": "B0DW3TSFP9",
+   "name": "SOAP 32",
+   "rev30": 11406.55,
+   "units30": 718,
+   "price": 15.97,
+   "available": 847,
+   "doc": 35.3,
+   "severity": "OK",
+   "oos": false
+  },
+  {
+   "account": "CC_ES",
+   "label": "ES AUTO",
+   "brand": "CC",
+   "market": "ES",
+   "cur": "€",
+   "asin": "B084RQKLV8",
+   "parent": null,
+   "name": "Ceramic Headlight Restoration Kit",
+   "rev30": 10452.57,
+   "units30": 477,
+   "price": 21.95,
+   "available": 4788,
+   "doc": 68.3,
+   "severity": "WATCH",
+   "oos": false
+  },
+  {
+   "account": "CC_US",
+   "label": "US AUTO",
+   "brand": "CC",
+   "market": "US",
+   "cur": "$",
+   "asin": "B08DDJ49X7",
+   "parent": "B089TVMF6J",
+   "name": "Ceramic Headlight Restoration Detailer Pack, Ste",
+   "rev30": 10104.5,
+   "units30": 170,
+   "price": 59.95,
+   "available": 222,
+   "doc": 39.2,
+   "severity": "OK",
+   "oos": false
+  },
+  {
+   "account": "CC_US",
+   "label": "US AUTO",
+   "brand": "CC",
+   "market": "US",
+   "cur": "$",
+   "asin": "B0FW6WFX4D",
+   "parent": null,
+   "name": "Rapid Ceramic Wheel Sealant",
+   "rev30": 9266.1,
+   "units30": 582,
+   "price": 15.95,
+   "available": 592,
+   "doc": 30.6,
+   "severity": "OK",
+   "oos": false
+  },
+  {
+   "account": "CC_UK",
+   "label": "UK AUTO",
+   "brand": "CC",
+   "market": "UK",
+   "cur": "£",
+   "asin": "B07SHJVK4G",
+   "parent": "B08KXXDZMK",
+   "name": "Ceramic Trim Coat Kit",
+   "rev30": 8630.91,
+   "units30": 509,
+   "price": 16.95,
+   "available": 0,
+   "doc": 0.0,
+   "severity": "CRITICAL",
+   "oos": true
+  },
+  {
+   "account": "CC_CA",
+   "label": "CA AUTO",
+   "brand": "CC",
+   "market": "CA",
+   "cur": "C$",
+   "asin": "B0FYRJ1966",
+   "parent": null,
+   "name": "Rapid Ceramic Plastic Restorer",
+   "rev30": 8299.4,
+   "units30": 364,
+   "price": 22.95,
+   "available": 432,
+   "doc": 35.5,
+   "severity": "OK",
+   "oos": false
+  },
+  {
+   "account": "CC_DE",
+   "label": "DE AUTO",
+   "brand": "CC",
+   "market": "DE",
+   "cur": "€",
+   "asin": "B0F45C2YHV",
+   "parent": null,
+   "name": "Rapid Ceramic Tire Coat",
+   "rev30": 6423.21,
+   "units30": 403,
+   "price": 15.95,
+   "available": 503,
+   "doc": 26.2,
+   "severity": "WATCH",
+   "oos": false
+  },
+  {
+   "account": "CC_DE",
+   "label": "DE AUTO",
+   "brand": "CC",
+   "market": "DE",
+   "cur": "€",
+   "asin": "B084RQKLV8",
+   "parent": null,
+   "name": "Ceramic Headlight Restoration Kit",
+   "rev30": 5883.12,
+   "units30": 295,
+   "price": 19.95,
+   "available": null,
+   "doc": null,
+   "severity": null,
+   "oos": null
+  },
+  {
+   "account": "CC_IT",
+   "label": "IT AUTO",
+   "brand": "CC",
+   "market": "IT",
+   "cur": "€",
+   "asin": "B084RQKLV8",
+   "parent": null,
+   "name": "Ceramic Headlight Restoration Kit",
+   "rev30": 5824.69,
+   "units30": 255,
+   "price": 22.95,
+   "available": 4788,
+   "doc": 68.3,
+   "severity": "WATCH",
+   "oos": false
+  },
+  {
+   "account": "CC_DE",
+   "label": "DE AUTO",
+   "brand": "CC",
+   "market": "DE",
+   "cur": "€",
+   "asin": "B07SHJVK4G",
+   "parent": null,
+   "name": "Ceramic Trim Coat Kit",
+   "rev30": 5818.29,
+   "units30": 306,
+   "price": 18.95,
+   "available": 419,
+   "doc": 21.1,
+   "severity": "WATCH",
+   "oos": false
+  },
+  {
+   "account": "CC_US",
+   "label": "US AUTO",
+   "brand": "CC",
+   "market": "US",
+   "cur": "$",
+   "asin": "B0H1NM7467",
+   "parent": "B0H1SW5VNC",
+   "name": "Rapid Ceramic Plastic Restorer Pro, 32oz",
+   "rev30": 5811.7,
+   "units30": 217,
+   "price": 26.95,
+   "available": 73,
+   "doc": 10.1,
+   "severity": "WATCH",
+   "oos": false
+  },
+  {
+   "account": "CC_NL",
+   "label": "NL AUTO",
+   "brand": "CC",
+   "market": "NL",
+   "cur": "€",
+   "asin": "B084RQKLV8",
+   "parent": null,
+   "name": "Ceramic Headlight Restoration Kit",
+   "rev30": 4986.1,
+   "units30": 238,
+   "price": 20.95,
+   "available": 4788,
+   "doc": 68.3,
+   "severity": "WATCH",
+   "oos": false
+  },
+  {
+   "account": "CC_US",
+   "label": "US AUTO",
+   "brand": "CC",
+   "market": "US",
+   "cur": "$",
+   "asin": "B0F3G1V5SF",
+   "parent": "B0F3YX7X5K",
+   "name": "Ceramic Glass Coat Pro Pack, Rain Repellent, 20 ",
+   "rev30": 4766.0,
+   "units30": 120,
+   "price": 39.95,
+   "available": 239,
+   "doc": 59.8,
+   "severity": "OK",
+   "oos": false
+  },
+  {
+   "account": "CC_UK",
+   "label": "UK AUTO",
+   "brand": "CC",
+   "market": "UK",
+   "cur": "£",
+   "asin": "B0B94G13CN",
+   "parent": "B0HFFCTL5Y",
+   "name": "Rapid Ceramic Paint Sealant",
+   "rev30": 4077.56,
+   "units30": 216,
+   "price": 18.95,
+   "available": 471,
+   "doc": 65.7,
+   "severity": "OK",
+   "oos": false
+  },
+  {
+   "account": "CC_US",
+   "label": "US AUTO",
+   "brand": "CC",
+   "market": "US",
+   "cur": "$",
+   "asin": "B0GYBH76BR",
+   "parent": "B0HF6JLTTZ",
+   "name": "Ceramic Coating for Wheels and Rims, Professiona",
+   "rev30": 3531.05,
+   "units30": 59,
+   "price": 59.95,
+   "available": 48,
+   "doc": 24.4,
+   "severity": "WATCH",
+   "oos": false
+  },
+  {
+   "account": "CC_US",
+   "label": "US AUTO",
+   "brand": "CC",
+   "market": "US",
+   "cur": "$",
+   "asin": "B0DVB4P9KQ",
+   "parent": "B0DW3TSFP9",
+   "name": "High Foam Vehicle Shampoo",
+   "rev30": 3438.15,
+   "units30": 346,
+   "price": 9.97,
+   "available": 911,
+   "doc": 78.8,
+   "severity": "OK",
+   "oos": false
+  },
+  {
+   "account": "CC_UK",
+   "label": "UK AUTO",
+   "brand": "CC",
+   "market": "UK",
+   "cur": "£",
+   "asin": "B0FYRJ1966",
+   "parent": null,
+   "name": "Rapid Ceramic Plastic Restorer",
+   "rev30": 3360.15,
+   "units30": 225,
+   "price": 14.95,
+   "available": 181,
+   "doc": 24.1,
+   "severity": "WATCH",
+   "oos": false
+  },
+  {
+   "account": "CC_US",
+   "label": "US AUTO",
+   "brand": "CC",
+   "market": "US",
+   "cur": "$",
+   "asin": "B0H1NP4461",
+   "parent": "B0H1T7P4WX",
+   "name": "Rapid Ceramic PPF/Vinyl Sealant, 14oz",
+   "rev30": 3357.55,
+   "units30": 147,
+   "price": 22.95,
+   "available": 74,
+   "doc": 15.1,
+   "severity": "OK",
+   "oos": false
+  },
+  {
+   "account": "CC_AU",
+   "label": "AU AUTO",
+   "brand": "CC",
+   "market": "AU",
+   "cur": "A$",
+   "asin": "B0F45C2YHV",
+   "parent": null,
+   "name": "Rapid Ceramic Tire Coat",
+   "rev30": 3326.05,
+   "units30": 119,
+   "price": 27.95,
+   "available": 275,
+   "doc": 69.3,
+   "severity": "OK",
+   "oos": false
+  },
+  {
+   "account": "CC_US",
+   "label": "US AUTO",
+   "brand": "CC",
+   "market": "US",
+   "cur": "$",
+   "asin": "B0H3QLBNZF",
+   "parent": "B0HF6JLTTZ",
+   "name": "Pro Ceramic Coating PPF/Vinyl, 60ml",
+   "rev30": 2396.7,
+   "units30": 21,
+   "price": 114.95,
+   "available": 0,
+   "doc": 0.0,
+   "severity": "CRITICAL",
+   "oos": true
+  },
+  {
+   "account": "CC_CA",
+   "label": "CA AUTO",
+   "brand": "CC",
+   "market": "CA",
+   "cur": "C$",
+   "asin": "B0FW6WFX4D",
+   "parent": null,
+   "name": "Rapid Ceramic Wheel Sealant",
+   "rev30": 2368.65,
+   "units30": 99,
+   "price": 23.95,
+   "available": 207,
+   "doc": 63.0,
+   "severity": "OK",
+   "oos": false
+  },
+  {
+   "account": "CC_US",
+   "label": "US AUTO",
+   "brand": "CC",
+   "market": "US",
+   "cur": "$",
+   "asin": "B0DH5HKH5R",
+   "parent": null,
+   "name": "Premium Microfiber Applicator Pads for Cars, 3 P",
+   "rev30": 2366.8,
+   "units30": 265,
+   "price": 8.95,
+   "available": 213,
+   "doc": 24.1,
+   "severity": "WATCH",
+   "oos": false
+  },
+  {
+   "account": "CC_US",
+   "label": "US AUTO",
+   "brand": "CC",
+   "market": "US",
+   "cur": "$",
+   "asin": "B0H3QRH9B7",
+   "parent": "B0HF6JLTTZ",
+   "name": "Marine Ceramic Coating, Pro",
+   "rev30": 2349.67,
+   "units30": 19,
+   "price": 124.95,
+   "available": 45,
+   "doc": 71.4,
+   "severity": "OK",
+   "oos": false
+  },
+  {
+   "account": "CC_AU",
+   "label": "AU AUTO",
+   "brand": "CC",
+   "market": "AU",
+   "cur": "A$",
+   "asin": "B0B94G13CN",
+   "parent": null,
+   "name": "Rapid Ceramic Paint Sealant",
+   "rev30": 2310.14,
+   "units30": 68,
+   "price": 33.95,
+   "available": 279,
+   "doc": 122.9,
+   "severity": "OK",
+   "oos": false
+  },
+  {
+   "account": "CC_AU",
+   "label": "AU AUTO",
+   "brand": "CC",
+   "market": "AU",
+   "cur": "A$",
+   "asin": "B0FYRJ1966",
+   "parent": null,
+   "name": "Rapid Ceramic Plastic Restorer",
+   "rev30": 2068.3,
+   "units30": 74,
+   "price": 27.95,
+   "available": 89,
+   "doc": 36.0,
+   "severity": "OK",
+   "oos": false
+  },
+  {
+   "account": "CC_ES",
+   "label": "ES AUTO",
+   "brand": "CC",
+   "market": "ES",
+   "cur": "€",
+   "asin": "B07SHJVK4G",
+   "parent": "B07SXR64X2",
+   "name": "Ceramic Trim Coat Kit",
+   "rev30": 1838.34,
+   "units30": 93,
+   "price": 19.95,
+   "available": 419,
+   "doc": 21.1,
+   "severity": "WATCH",
+   "oos": false
+  },
+  {
+   "account": "CC_NL",
+   "label": "NL AUTO",
+   "brand": "CC",
+   "market": "NL",
+   "cur": "€",
+   "asin": "B07SHJVK4G",
+   "parent": null,
+   "name": "Ceramic Trim Coat Kit",
+   "rev30": 1835.4,
+   "units30": 92,
+   "price": 19.95,
+   "available": 419,
+   "doc": 21.1,
+   "severity": "WATCH",
+   "oos": false
+  },
+  {
+   "account": "CC_US",
+   "label": "US AUTO",
+   "brand": "CC",
+   "market": "US",
+   "cur": "$",
+   "asin": "B0DKVBTNNT",
+   "parent": "B0F7CLSLCC",
+   "name": "Rapid Ceramic Interior Detailer, 2pk",
+   "rev30": 1808.35,
+   "units30": 92,
+   "price": 19.96,
+   "available": 0,
+   "doc": 0.0,
+   "severity": "CRITICAL",
+   "oos": true
+  },
+  {
+   "account": "CC_FR",
+   "label": "FR AUTO",
+   "brand": "CC",
+   "market": "FR",
+   "cur": "€",
+   "asin": "B0F45C2YHV",
+   "parent": null,
+   "name": "Rapid Ceramic Tire Coat",
+   "rev30": 1781.29,
+   "units30": 95,
+   "price": 18.95,
+   "available": 503,
+   "doc": 26.2,
+   "severity": "WATCH",
+   "oos": false
+  },
+  {
+   "account": "CC_UK",
+   "label": "UK AUTO",
+   "brand": "CC",
+   "market": "UK",
+   "cur": "£",
+   "asin": "B0FW6WFX4D",
+   "parent": null,
+   "name": "Rapid Ceramic Wheel Sealant",
+   "rev30": 1704.3,
+   "units30": 114,
+   "price": 14.95,
+   "available": 78,
+   "doc": 20.5,
+   "severity": "WATCH",
+   "oos": false
+  },
+  {
+   "account": "CC_FR",
+   "label": "FR AUTO",
+   "brand": "CC",
+   "market": "FR",
+   "cur": "€",
+   "asin": "B07SHJVK4G",
+   "parent": null,
+   "name": "Ceramic Trim Coat Kit",
+   "rev30": 1691.83,
+   "units30": 78,
+   "price": 21.95,
+   "available": 419,
+   "doc": 21.1,
+   "severity": "WATCH",
+   "oos": false
+  },
+  {
+   "account": "CC_US",
+   "label": "US AUTO",
+   "brand": "CC",
+   "market": "US",
+   "cur": "$",
+   "asin": "B0CN8MFBLH",
+   "parent": null,
+   "name": "Pro Ceramic Coating for Cars, 360ml",
+   "rev30": 1594.85,
+   "units30": 3,
+   "price": 549.95,
+   "available": 0,
+   "doc": 0.0,
+   "severity": "CRITICAL",
+   "oos": true
+  },
+  {
+   "account": "CC_US",
+   "label": "US AUTO",
+   "brand": "CC",
+   "market": "US",
+   "cur": "$",
+   "asin": "B0DH5ZC1N4",
+   "parent": null,
+   "name": "Foam Applicator Pads for Tire Coating, 3 Pack",
+   "rev30": 1579.65,
+   "units30": 177,
+   "price": 8.95,
+   "available": 108,
+   "doc": 18.5,
+   "severity": "OK",
+   "oos": false
+  },
+  {
+   "account": "CC_DE",
+   "label": "DE AUTO",
+   "brand": "CC",
+   "market": "DE",
+   "cur": "€",
+   "asin": "B0B94G13CN",
+   "parent": "B0C8CGBD4X",
+   "name": "Rapid Ceramic Paint Sealant",
+   "rev30": 1496.99,
+   "units30": 75,
+   "price": 19.95,
+   "available": 325,
+   "doc": 47.5,
+   "severity": "OK",
+   "oos": false
+  },
+  {
+   "account": "CC_IT",
+   "label": "IT AUTO",
+   "brand": "CC",
+   "market": "IT",
+   "cur": "€",
+   "asin": "B0B94G13CN",
+   "parent": "B0C8CFXPM8",
+   "name": "Rapid Ceramic Paint Sealant",
+   "rev30": 1346.39,
+   "units30": 59,
+   "price": 22.95,
+   "available": 325,
+   "doc": 47.5,
+   "severity": "OK",
+   "oos": false
+  },
+  {
+   "account": "CC_ES",
+   "label": "ES AUTO",
+   "brand": "CC",
+   "market": "ES",
+   "cur": "€",
+   "asin": "B0B94G13CN",
+   "parent": "B0C8CFN87Q",
+   "name": "Rapid Ceramic Paint Sealant",
+   "rev30": 1306.22,
+   "units30": 57,
+   "price": 22.95,
+   "available": 325,
+   "doc": 47.5,
+   "severity": "OK",
+   "oos": false
+  },
+  {
+   "account": "CC_AU",
+   "label": "AU AUTO",
+   "brand": "CC",
+   "market": "AU",
+   "cur": "A$",
+   "asin": "B0CQN1RXYB",
+   "parent": null,
+   "name": "Ceramic Glass Coat Protectant",
+   "rev30": 1229.2,
+   "units30": 56,
+   "price": 21.95,
+   "available": 253,
+   "doc": 135.3,
+   "severity": "OK",
+   "oos": false
+  },
+  {
+   "account": "CC_UK",
+   "label": "UK AUTO",
+   "brand": "CC",
+   "market": "UK",
+   "cur": "£",
+   "asin": "B0DKVZRX69",
+   "parent": null,
+   "name": "Rapid Ceramic Interior Detailer",
+   "rev30": 1226.4,
+   "units30": 112,
+   "price": 10.95,
+   "available": 773,
+   "doc": 205.0,
+   "severity": "OK",
+   "oos": false
+  },
+  {
+   "account": "CC_US",
+   "label": "US AUTO",
+   "brand": "CC",
+   "market": "US",
+   "cur": "$",
+   "asin": "B0H1NDSGVJ",
+   "parent": "B0F7CLSLCC",
+   "name": "Rapid Ceramic Interior Detailer and Protectant P",
+   "rev30": 1127.1,
+   "units30": 54,
+   "price": 20.95,
+   "available": 74,
+   "doc": 41.1,
+   "severity": "OK",
+   "oos": false
+  },
+  {
+   "account": "CC_CA",
+   "label": "CA AUTO",
+   "brand": "CC",
+   "market": "CA",
+   "cur": "C$",
+   "asin": "B0DVB4P9KQ",
+   "parent": null,
+   "name": "High Foam Vehicle Shampoo",
+   "rev30": 1108.25,
+   "units30": 53,
+   "price": 20.95,
+   "available": 165,
+   "doc": 93.2,
+   "severity": "OK",
+   "oos": false
+  },
+  {
+   "account": "CC_UK",
+   "label": "UK AUTO",
+   "brand": "CC",
+   "market": "UK",
+   "cur": "£",
+   "asin": "B0CQN1RXYB",
+   "parent": null,
+   "name": "Ceramic Glass Coat Protectant",
+   "rev30": 1087.45,
+   "units30": 91,
+   "price": 11.95,
+   "available": 89,
+   "doc": 29.0,
+   "severity": "OK",
+   "oos": false
+  },
+  {
+   "account": "CC_US",
+   "label": "US AUTO",
+   "brand": "CC",
+   "market": "US",
+   "cur": "$",
+   "asin": "B0CXKPY6B8",
+   "parent": null,
+   "name": "Headlight Restoration Pro Kit",
+   "rev30": 1055.55,
+   "units30": 9,
+   "price": 119.95,
+   "available": 0,
+   "doc": 0.0,
+   "severity": "CRITICAL",
+   "oos": true
+  },
+  {
+   "account": "CC_UK",
+   "label": "UK AUTO",
+   "brand": "CC",
+   "market": "UK",
+   "cur": "£",
+   "asin": "B0CN8HJSYM",
+   "parent": null,
+   "name": "Pro Ceramic Coating, 60ml",
+   "rev30": 849.5,
+   "units30": 10,
+   "price": 84.95,
+   "available": 14,
+   "doc": 42.4,
+   "severity": "OK",
+   "oos": false
+  },
+  {
+   "account": "CC_US",
+   "label": "US AUTO",
+   "brand": "CC",
+   "market": "US",
+   "cur": "$",
+   "asin": "B0F8JJM54R",
+   "parent": null,
+   "name": "Clay Prep Mitt",
+   "rev30": 843.65,
+   "units30": 51,
+   "price": 17.95,
+   "available": 63,
+   "doc": 37.1,
+   "severity": "OK",
+   "oos": false
+  },
+  {
+   "account": "CC_ES",
+   "label": "ES AUTO",
+   "brand": "CC",
+   "market": "ES",
+   "cur": "€",
+   "asin": "B0F45C2YHV",
+   "parent": null,
+   "name": "Rapid Ceramic Tire Coat",
+   "rev30": 841.81,
+   "units30": 50,
+   "price": 16.95,
+   "available": 503,
+   "doc": 26.2,
+   "severity": "WATCH",
+   "oos": false
+  },
+  {
+   "account": "CC_US",
+   "label": "US AUTO",
+   "brand": "CC",
+   "market": "US",
+   "cur": "$",
+   "asin": "B0F2JBJXYJ",
+   "parent": "B0H7WGD8YY",
+   "name": "Cerakote Rapid Ceramic Aircraft Protective Coati",
+   "rev30": 817.8,
+   "units30": 30,
+   "price": 27.95,
+   "available": 108,
+   "doc": 108.0,
+   "severity": "OK",
+   "oos": false
+  },
+  {
+   "account": "CC_CA",
+   "label": "CA AUTO",
+   "brand": "CC",
+   "market": "CA",
+   "cur": "C$",
+   "asin": "B0DJMW6283",
+   "parent": null,
+   "name": "Microfiber Towels, 12pk",
+   "rev30": 814.47,
+   "units30": 51,
+   "price": 15.97,
+   "available": 55,
+   "doc": 32.4,
+   "severity": "OK",
+   "oos": false
+  },
+  {
+   "account": "CC_AU",
+   "label": "AU AUTO",
+   "brand": "CC",
+   "market": "AU",
+   "cur": "A$",
+   "asin": "B0DKVZRX69",
+   "parent": null,
+   "name": "Rapid Ceramic Interior Detailer",
+   "rev30": 768.25,
+   "units30": 35,
+   "price": 21.95,
+   "available": null,
+   "doc": null,
+   "severity": null,
+   "oos": null
+  },
+  {
+   "account": "CC_US",
+   "label": "US AUTO",
+   "brand": "CC",
+   "market": "US",
+   "cur": "$",
+   "asin": "B0GZSHD4GP",
+   "parent": null,
+   "name": "Glass Cleaner for Cars, Streak-Free Formula, 16 ",
+   "rev30": 669.72,
+   "units30": 57,
+   "price": 11.97,
+   "available": 112,
+   "doc": 58.9,
+   "severity": "OK",
+   "oos": false
+  },
+  {
+   "account": "CC_US",
+   "label": "US AUTO",
+   "brand": "CC",
+   "market": "US",
+   "cur": "$",
+   "asin": "B0H1SP98C3",
+   "parent": "B0H1T7P4WX",
+   "name": "Rapid Ceramic PPF/Vinyl Sealant, 32oz",
+   "rev30": 639.2,
+   "units30": 16,
+   "price": 39.95,
+   "available": 31,
+   "doc": 58.5,
+   "severity": "OK",
+   "oos": false
+  },
+  {
+   "account": "CC_US",
+   "label": "US AUTO",
+   "brand": "CC",
+   "market": "US",
+   "cur": "$",
+   "asin": "B0F2JL4F2W",
+   "parent": "B0HF1D67G1",
+   "name": "Ceramic Car Wash Kit, 7pc",
+   "rev30": 638.55,
+   "units30": 9,
+   "price": 70.95,
+   "available": 28,
+   "doc": 93.3,
+   "severity": "OK",
+   "oos": false
+  },
+  {
+   "account": "CC_IT",
+   "label": "IT AUTO",
+   "brand": "CC",
+   "market": "IT",
+   "cur": "€",
+   "asin": "B07SHJVK4G",
+   "parent": null,
+   "name": "Ceramic Trim Coat Kit",
+   "rev30": 614.6,
+   "units30": 28,
+   "price": 21.95,
+   "available": 419,
+   "doc": 21.1,
+   "severity": "WATCH",
+   "oos": false
+  },
+  {
+   "account": "CC_US",
+   "label": "US AUTO",
+   "brand": "CC",
+   "market": "US",
+   "cur": "$",
+   "asin": "B0F3GD9G6N",
+   "parent": "B0HF1D67G1",
+   "name": "Car Detailing Bundle, Fully Covered 8pc",
+   "rev30": 564.05,
+   "units30": 5,
+   "price": 113.95,
+   "available": 0,
+   "doc": 0.0,
+   "severity": "CRITICAL",
+   "oos": true
+  },
+  {
+   "account": "CC_US",
+   "label": "US AUTO",
+   "brand": "CC",
+   "market": "US",
+   "cur": "$",
+   "asin": "B0F3G9BC3G",
+   "parent": "B0HF1D67G1",
+   "name": "Ceramic Car Wash and Detailing Kit, 5 Piece",
+   "rev30": 549.5,
+   "units30": 10,
+   "price": 54.95,
+   "available": 68,
+   "doc": 206.1,
+   "severity": "OK",
+   "oos": false
+  },
+  {
+   "account": "CC_US",
+   "label": "US AUTO",
+   "brand": "CC",
+   "market": "US",
+   "cur": "$",
+   "asin": "B0H51RDY69",
+   "parent": "B0HF6JLTTZ",
+   "name": "Aircraft Ceramic Coating, Professional 60 ml Kit",
+   "rev30": 545.8,
+   "units30": 4,
+   "price": 139.95,
+   "available": 105,
+   "doc": 807.7,
+   "severity": "OK",
+   "oos": false
+  },
+  {
+   "account": "CC_DE",
+   "label": "DE AUTO",
+   "brand": "CC",
+   "market": "DE",
+   "cur": "€",
+   "asin": "B0CQN1RXYB",
+   "parent": null,
+   "name": "Ceramic Glass Coat Protectant",
+   "rev30": 538.65,
+   "units30": 45,
+   "price": 11.95,
+   "available": 205,
+   "doc": 64.7,
+   "severity": "OK",
+   "oos": false
+  },
+  {
+   "account": "CC_DE",
+   "label": "DE AUTO",
+   "brand": "CC",
+   "market": "DE",
+   "cur": "€",
+   "asin": "B0FYRJ1966",
+   "parent": null,
+   "name": "Rapid Ceramic Plastic Restorer",
+   "rev30": 532.37,
+   "units30": 36,
+   "price": 14.7,
+   "available": 24,
+   "doc": 8.5,
+   "severity": "WATCH",
+   "oos": false
+  },
+  {
+   "account": "CC_US",
+   "label": "US AUTO",
+   "brand": "CC",
+   "market": "US",
+   "cur": "$",
+   "asin": "B0HCR5GFYG",
+   "parent": null,
+   "name": "Pro Ceramic Coating for RVs, 360ml",
+   "rev30": 517.28,
+   "units30": 1,
+   "price": 517.28,
+   "available": 0,
+   "doc": 0.0,
+   "severity": "CRITICAL",
+   "oos": true
+  },
+  {
+   "account": "CC_AU",
+   "label": "AU AUTO",
+   "brand": "CC",
+   "market": "AU",
+   "cur": "A$",
+   "asin": "B0FW6WFX4D",
+   "parent": null,
+   "name": "Rapid Ceramic Wheel Sealant",
+   "rev30": 509.15,
+   "units30": 17,
+   "price": 29.95,
+   "available": 22,
+   "doc": 38.6,
+   "severity": "OK",
+   "oos": false
+  },
+  {
+   "account": "CC_AU",
+   "label": "AU AUTO",
+   "brand": "CC",
+   "market": "AU",
+   "cur": "A$",
+   "asin": "B0DVB4P9KQ",
+   "parent": null,
+   "name": "High Foam Vehicle Shampoo",
+   "rev30": 503.1,
+   "units30": 18,
+   "price": 27.95,
+   "available": 12,
+   "doc": 21.7,
+   "severity": "WATCH",
+   "oos": false
+  },
+  {
+   "account": "CC_UK",
+   "label": "UK AUTO",
+   "brand": "CC",
+   "market": "UK",
+   "cur": "£",
+   "asin": "B0DVB4P9KQ",
+   "parent": null,
+   "name": "High Foam Vehicle Shampoo",
+   "rev30": 460.26,
+   "units30": 36,
+   "price": 12.95,
+   "available": 359,
+   "doc": 299.2,
+   "severity": "OK",
+   "oos": false
+  },
+  {
+   "account": "CC_NL",
+   "label": "NL AUTO",
+   "brand": "CC",
+   "market": "NL",
+   "cur": "€",
+   "asin": "B0F45C2YHV",
+   "parent": null,
+   "name": "Rapid Ceramic Tire Coat",
+   "rev30": 406.8,
+   "units30": 24,
+   "price": 16.95,
+   "available": 503,
+   "doc": 26.2,
+   "severity": "WATCH",
+   "oos": false
+  },
+  {
+   "account": "CC_ES",
+   "label": "ES AUTO",
+   "brand": "CC",
+   "market": "ES",
+   "cur": "€",
+   "asin": "B0FYRJ1966",
+   "parent": null,
+   "name": "Rapid Ceramic Plastic Restorer",
+   "rev30": 389.79,
+   "units30": 22,
+   "price": 17.95,
+   "available": 24,
+   "doc": 8.5,
+   "severity": "WATCH",
+   "oos": false
+  },
+  {
+   "account": "CC_AU",
+   "label": "AU AUTO",
+   "brand": "CC",
+   "market": "AU",
+   "cur": "A$",
+   "asin": "B0DJMW6283",
+   "parent": null,
+   "name": "Microfiber Towels, 12pk",
+   "rev30": 377.1,
+   "units30": 18,
+   "price": 20.95,
+   "available": 26,
+   "doc": 43.3,
+   "severity": "OK",
+   "oos": false
+  },
+  {
+   "account": "CC_CA",
+   "label": "CA AUTO",
+   "brand": "CC",
+   "market": "CA",
+   "cur": "C$",
+   "asin": "B0H1NM7467",
+   "parent": null,
+   "name": "Rapid Ceramic Plastic Restorer Pro, 32oz",
+   "rev30": 361.73,
+   "units30": 9,
+   "price": 43.9,
+   "available": 73,
+   "doc": 243.3,
+   "severity": "OK",
+   "oos": false
+  },
+  {
+   "account": "CC_AU",
+   "label": "AU AUTO",
+   "brand": "CC",
+   "market": "AU",
+   "cur": "A$",
+   "asin": "B0CN8HJSYM",
+   "parent": null,
+   "name": "Pro Ceramic Coating, 60ml",
+   "rev30": 359.9,
+   "units30": 2,
+   "price": 179.95,
+   "available": 26,
+   "doc": 371.4,
+   "severity": "OK",
+   "oos": false
+  },
+  {
+   "account": "CC_UK",
+   "label": "UK AUTO",
+   "brand": "CC",
+   "market": "UK",
+   "cur": "£",
+   "asin": "B0DJMW6283",
+   "parent": null,
+   "name": "Microfiber Towels, 12pk",
+   "rev30": 348.25,
+   "units30": 35,
+   "price": 9.95,
+   "available": 62,
+   "doc": 53.0,
+   "severity": "OK",
+   "oos": false
+  },
+  {
+   "account": "CC_US",
+   "label": "US AUTO",
+   "brand": "CC",
+   "market": "US",
+   "cur": "$",
+   "asin": "B0F2BFSMZT",
+   "parent": "B0HF1D67G1",
+   "name": "Ceramic Coating Kit for Cars, 5pc",
+   "rev30": 289.9,
+   "units30": 2,
+   "price": 144.95,
+   "available": 0,
+   "doc": 0.0,
+   "severity": "CRITICAL",
+   "oos": true
+  },
+  {
+   "account": "CC_DE",
+   "label": "DE AUTO",
+   "brand": "CC",
+   "market": "DE",
+   "cur": "€",
+   "asin": "B0DKVZRX69",
+   "parent": null,
+   "name": "Rapid Ceramic Interior Detailer",
+   "rev30": 274.39,
+   "units30": 24,
+   "price": 11.44,
+   "available": 19,
+   "doc": 12.2,
+   "severity": "URGENT",
+   "oos": false
+  },
+  {
+   "account": "CC_US",
+   "label": "US AUTO",
+   "brand": "CC",
+   "market": "US",
+   "cur": "$",
+   "asin": "B0F23KPC5G",
+   "parent": "B0HF1D67G1",
+   "name": "Car Wash & Detailing Kit, All-In 11pc",
+   "rev30": 241.95,
+   "units30": 1,
+   "price": 241.95,
+   "available": 0,
+   "doc": 0.0,
+   "severity": "CRITICAL",
+   "oos": true
+  },
+  {
+   "account": "CC_NL",
+   "label": "NL AUTO",
+   "brand": "CC",
+   "market": "NL",
+   "cur": "€",
+   "asin": "B0FYRJ1966",
+   "parent": null,
+   "name": "Rapid Ceramic Plastic Restorer",
+   "rev30": 220.35,
+   "units30": 13,
+   "price": 16.95,
+   "available": 24,
+   "doc": 8.5,
+   "severity": "URGENT",
+   "oos": false
+  },
+  {
+   "account": "CC_NL",
+   "label": "NL AUTO",
+   "brand": "CC",
+   "market": "NL",
+   "cur": "€",
+   "asin": "B0CQN1RXYB",
+   "parent": null,
+   "name": "Ceramic Glass Coat Protectant",
+   "rev30": 220.15,
+   "units30": 17,
+   "price": 12.95,
+   "available": 205,
+   "doc": 64.7,
+   "severity": "OK",
+   "oos": false
+  },
+  {
+   "account": "CC_FR",
+   "label": "FR AUTO",
+   "brand": "CC",
+   "market": "FR",
+   "cur": "€",
+   "asin": "B0B94G13CN",
+   "parent": "B0C8CXV7FT",
+   "name": "Rapid Ceramic Paint Sealant",
+   "rev30": 191.6,
+   "units30": 8,
+   "price": 23.95,
+   "available": 325,
+   "doc": 47.5,
+   "severity": "OK",
+   "oos": false
+  },
+  {
+   "account": "CC_CA",
+   "label": "CA AUTO",
+   "brand": "CC",
+   "market": "CA",
+   "cur": "C$",
+   "asin": "B0H3QRH9B7",
+   "parent": null,
+   "name": "Marine Ceramic Coating, Pro",
+   "rev30": 186.36,
+   "units30": 1,
+   "price": 184.82,
+   "available": 45,
+   "doc": 1500.0,
+   "severity": "OK",
+   "oos": false
+  },
+  {
+   "account": "CC_IT",
+   "label": "IT AUTO",
+   "brand": "CC",
+   "market": "IT",
+   "cur": "€",
+   "asin": "B0CQN1RXYB",
+   "parent": null,
+   "name": "Ceramic Glass Coat Protectant",
+   "rev30": 167.4,
+   "units30": 12,
+   "price": 13.95,
+   "available": 205,
+   "doc": 64.7,
+   "severity": "OK",
+   "oos": false
+  },
+  {
+   "account": "CC_ES",
+   "label": "ES AUTO",
+   "brand": "CC",
+   "market": "ES",
+   "cur": "€",
+   "asin": "B0CQN1RXYB",
+   "parent": null,
+   "name": "Ceramic Glass Coat Protectant",
+   "rev30": 164.45,
+   "units30": 13,
+   "price": 12.95,
+   "available": 205,
+   "doc": 64.7,
+   "severity": "OK",
+   "oos": false
+  },
+  {
+   "account": "CC_IT",
+   "label": "IT AUTO",
+   "brand": "CC",
+   "market": "IT",
+   "cur": "€",
+   "asin": "B0FYRJ1966",
+   "parent": null,
+   "name": "Rapid Ceramic Plastic Restorer",
+   "rev30": 158.56,
+   "units30": 9,
+   "price": 17.95,
+   "available": 24,
+   "doc": 8.5,
+   "severity": "WATCH",
+   "oos": false
+  },
+  {
+   "account": "CC_FR",
+   "label": "FR AUTO",
+   "brand": "CC",
+   "market": "FR",
+   "cur": "€",
+   "asin": "B0DJMW6283",
+   "parent": null,
+   "name": "Microfiber Towels, 12pk",
+   "rev30": 135.29,
+   "units30": 14,
+   "price": 9.78,
+   "available": 281,
+   "doc": 246.5,
+   "severity": "OK",
+   "oos": false
+  },
+  {
+   "account": "CC_DE",
+   "label": "DE AUTO",
+   "brand": "CC",
+   "market": "DE",
+   "cur": "€",
+   "asin": "B0FW6WFX4D",
+   "parent": null,
+   "name": "Rapid Ceramic Wheel Sealant",
+   "rev30": 125.72,
+   "units30": 8,
+   "price": 15.68,
+   "available": null,
+   "doc": null,
+   "severity": null,
+   "oos": null
+  },
+  {
+   "account": "CC_NL",
+   "label": "NL AUTO",
+   "brand": "CC",
+   "market": "NL",
+   "cur": "€",
+   "asin": "B0B94G13CN",
+   "parent": "B0F2MYMWBH",
+   "name": "Rapid Ceramic Paint Sealant",
+   "rev30": 125.7,
+   "units30": 6,
+   "price": 20.95,
+   "available": 325,
+   "doc": 47.5,
+   "severity": "OK",
+   "oos": false
+  },
+  {
+   "account": "CC_DE",
+   "label": "DE AUTO",
+   "brand": "CC",
+   "market": "DE",
+   "cur": "€",
+   "asin": "B0CN8HJSYM",
+   "parent": "B0DNWGJL1K",
+   "name": "Pro Ceramic Coating, 60ml",
+   "rev30": 120.75,
+   "units30": 1,
+   "price": 114.95,
+   "available": 25,
+   "doc": 833.3,
+   "severity": "OK",
+   "oos": false
+  },
+  {
+   "account": "CC_FR",
+   "label": "FR AUTO",
+   "brand": "CC",
+   "market": "FR",
+   "cur": "€",
+   "asin": "B0CQN1RXYB",
+   "parent": null,
+   "name": "Ceramic Glass Coat Protectant",
+   "rev30": 119.6,
+   "units30": 8,
+   "price": 14.95,
+   "available": 205,
+   "doc": 64.7,
+   "severity": "OK",
+   "oos": false
+  },
+  {
+   "account": "CC_DE",
+   "label": "DE AUTO",
+   "brand": "CC",
+   "market": "DE",
+   "cur": "€",
+   "asin": "B0DJMW6283",
+   "parent": null,
+   "name": "Microfiber Towels, 12pk",
+   "rev30": 115.8,
+   "units30": 12,
+   "price": 9.78,
+   "available": 281,
+   "doc": 246.5,
+   "severity": "OK",
+   "oos": false
+  },
+  {
+   "account": "CC_FR",
+   "label": "FR AUTO",
+   "brand": "CC",
+   "market": "FR",
+   "cur": "€",
+   "asin": "B0DKVZRX69",
+   "parent": null,
+   "name": "Rapid Ceramic Interior Detailer",
+   "rev30": 109.27,
+   "units30": 8,
+   "price": 13.95,
+   "available": 19,
+   "doc": 12.2,
+   "severity": "URGENT",
+   "oos": false
+  },
+  {
+   "account": "CC_CA",
+   "label": "CA AUTO",
+   "brand": "CC",
+   "market": "CA",
+   "cur": "C$",
+   "asin": "B0F2JL4F2W",
+   "parent": null,
+   "name": "Ceramic Car Wash Kit, 7pc",
+   "rev30": 105.02,
+   "units30": 1,
+   "price": 105.02,
+   "available": null,
+   "doc": null,
+   "severity": null,
+   "oos": null
+  },
+  {
+   "account": "CC_NL",
+   "label": "NL AUTO",
+   "brand": "CC",
+   "market": "NL",
+   "cur": "€",
+   "asin": "B0DKVZRX69",
+   "parent": null,
+   "name": "Rapid Ceramic Interior Detailer",
+   "rev30": 90.65,
+   "units30": 7,
+   "price": 12.95,
+   "available": 19,
+   "doc": 12.2,
+   "severity": "URGENT",
+   "oos": false
+  },
+  {
+   "account": "CC_CA",
+   "label": "CA AUTO",
+   "brand": "CC",
+   "market": "CA",
+   "cur": "C$",
+   "asin": "B0F8JJM54R",
+   "parent": null,
+   "name": "Clay Prep Mitt",
+   "rev30": 89.2,
+   "units30": 3,
+   "price": 30.32,
+   "available": 63,
+   "doc": 630.0,
+   "severity": "OK",
+   "oos": false
+  },
+  {
+   "account": "CC_FR",
+   "label": "FR AUTO",
+   "brand": "CC",
+   "market": "FR",
+   "cur": "€",
+   "asin": "B0FYRJ1966",
+   "parent": null,
+   "name": "Rapid Ceramic Plastic Restorer",
+   "rev30": 75.8,
+   "units30": 4,
+   "price": 18.95,
+   "available": 24,
+   "doc": 8.5,
+   "severity": "WATCH",
+   "oos": false
+  },
+  {
+   "account": "CC_IT",
+   "label": "IT AUTO",
+   "brand": "CC",
+   "market": "IT",
+   "cur": "€",
+   "asin": "B0F45C2YHV",
+   "parent": null,
+   "name": "Rapid Ceramic Tire Coat",
+   "rev30": 71.8,
+   "units30": 4,
+   "price": 17.95,
+   "available": 503,
+   "doc": 26.2,
+   "severity": "WATCH",
+   "oos": false
+  },
+  {
+   "account": "CC_ES",
+   "label": "ES AUTO",
+   "brand": "CC",
+   "market": "ES",
+   "cur": "€",
+   "asin": "B0FW6WFX4D",
+   "parent": null,
+   "name": "Rapid Ceramic Wheel Sealant",
+   "rev30": 53.85,
+   "units30": 3,
+   "price": 17.95,
+   "available": null,
+   "doc": null,
+   "severity": null,
+   "oos": null
+  },
+  {
+   "account": "CC_ES",
+   "label": "ES AUTO",
+   "brand": "CC",
+   "market": "ES",
+   "cur": "€",
+   "asin": "B0DKVZRX69",
+   "parent": null,
+   "name": "Rapid Ceramic Interior Detailer",
+   "rev30": 52.02,
+   "units30": 4,
+   "price": 12.95,
+   "available": 19,
+   "doc": 12.2,
+   "severity": "URGENT",
+   "oos": false
+  },
+  {
+   "account": "CC_IT",
+   "label": "IT AUTO",
+   "brand": "CC",
+   "market": "IT",
+   "cur": "€",
+   "asin": "B0DJMW6283",
+   "parent": null,
+   "name": "Microfiber Towels, 12pk",
+   "rev30": 51.8,
+   "units30": 4,
+   "price": 12.95,
+   "available": 281,
+   "doc": 246.5,
+   "severity": "OK",
+   "oos": false
+  },
+  {
+   "account": "CC_FR",
+   "label": "FR AUTO",
+   "brand": "CC",
+   "market": "FR",
+   "cur": "€",
+   "asin": "B0DVB4P9KQ",
+   "parent": null,
+   "name": "High Foam Vehicle Shampoo",
+   "rev30": 50.85,
+   "units30": 3,
+   "price": 16.95,
+   "available": 120,
+   "doc": 363.6,
+   "severity": "OK",
+   "oos": false
+  },
+  {
+   "account": "CC_IT",
+   "label": "IT AUTO",
+   "brand": "CC",
+   "market": "IT",
+   "cur": "€",
+   "asin": "B0DVB4P9KQ",
+   "parent": null,
+   "name": "High Foam Vehicle Shampoo",
+   "rev30": 50.85,
+   "units30": 3,
+   "price": 16.95,
+   "available": 120,
+   "doc": 363.6,
+   "severity": "OK",
+   "oos": false
+  },
+  {
+   "account": "CC_IT",
+   "label": "IT AUTO",
+   "brand": "CC",
+   "market": "IT",
+   "cur": "€",
+   "asin": "B0DKVZRX69",
+   "parent": null,
+   "name": "Rapid Ceramic Interior Detailer",
+   "rev30": 49.64,
+   "units30": 4,
+   "price": 12.95,
+   "available": 19,
+   "doc": 12.2,
+   "severity": "URGENT",
+   "oos": false
+  },
+  {
+   "account": "CC_DE",
+   "label": "DE AUTO",
+   "brand": "CC",
+   "market": "DE",
+   "cur": "€",
+   "asin": "B0DVB4P9KQ",
+   "parent": null,
+   "name": "High Foam Vehicle Shampoo",
+   "rev30": 42.16,
+   "units30": 3,
+   "price": 13.74,
+   "available": 120,
+   "doc": 363.6,
+   "severity": "OK",
+   "oos": false
+  },
+  {
+   "account": "CC_CA",
+   "label": "CA AUTO",
+   "brand": "CC",
+   "market": "CA",
+   "cur": "C$",
+   "asin": "B0H1NP4461",
+   "parent": null,
+   "name": "Rapid Ceramic PPF/Vinyl Sealant, 14oz",
+   "rev30": 38.33,
+   "units30": 1,
+   "price": 37.2,
+   "available": 74,
+   "doc": 2466.7,
+   "severity": "OK",
+   "oos": false
+  },
+  {
+   "account": "CC_FR",
+   "label": "FR AUTO",
+   "brand": "CC",
+   "market": "FR",
+   "cur": "€",
+   "asin": "B0FW6WFX4D",
+   "parent": null,
+   "name": "Rapid Ceramic Wheel Sealant",
+   "rev30": 36.57,
+   "units30": 2,
+   "price": 19.95,
+   "available": null,
+   "doc": null,
+   "severity": null,
+   "oos": null
+  },
+  {
+   "account": "CC_US",
+   "label": "US AUTO",
+   "brand": "CC",
+   "market": "US",
+   "cur": "$",
+   "asin": "B0FX5WH19H",
+   "parent": null,
+   "name": "Premium Microfiber Drying Towel for Cars, 1200 G",
+   "rev30": 27.95,
+   "units30": 1,
+   "price": 27.95,
+   "available": null,
+   "doc": null,
+   "severity": null,
+   "oos": null
+  },
+  {
+   "account": "CC_ES",
+   "label": "ES AUTO",
+   "brand": "CC",
+   "market": "ES",
+   "cur": "€",
+   "asin": "B0DJMW6283",
+   "parent": null,
+   "name": "Microfiber Towels, 12pk",
+   "rev30": 24.1,
+   "units30": 2,
+   "price": 11.95,
+   "available": 281,
+   "doc": 246.5,
+   "severity": "OK",
+   "oos": false
+  },
+  {
+   "account": "CC_NL",
+   "label": "NL AUTO",
+   "brand": "CC",
+   "market": "NL",
+   "cur": "€",
+   "asin": "B0DJMW6283",
+   "parent": null,
+   "name": "Microfiber Towels, 12pk",
+   "rev30": 23.9,
+   "units30": 2,
+   "price": 11.95,
+   "available": 281,
+   "doc": 246.5,
+   "severity": "OK",
+   "oos": false
+  },
+  {
+   "account": "CC_IT",
+   "label": "IT AUTO",
+   "brand": "CC",
+   "market": "IT",
+   "cur": "€",
+   "asin": "B0FW6WFX4D",
+   "parent": null,
+   "name": "Rapid Ceramic Wheel Sealant",
+   "rev30": 18.95,
+   "units30": 1,
+   "price": 18.95,
+   "available": null,
+   "doc": null,
+   "severity": null,
+   "oos": null
+  },
+  {
+   "account": "CC_NL",
+   "label": "NL AUTO",
+   "brand": "CC",
+   "market": "NL",
+   "cur": "€",
+   "asin": "B0FW6WFX4D",
+   "parent": null,
+   "name": "Rapid Ceramic Wheel Sealant",
+   "rev30": 17.95,
+   "units30": 1,
+   "price": 17.95,
+   "available": null,
+   "doc": null,
+   "severity": null,
+   "oos": null
+  },
+  {
+   "account": "CC_ES",
+   "label": "ES AUTO",
+   "brand": "CC",
+   "market": "ES",
+   "cur": "€",
+   "asin": "B0DVB4P9KQ",
+   "parent": null,
+   "name": "High Foam Vehicle Shampoo",
+   "rev30": 16.21,
+   "units30": 1,
+   "price": 15.95,
+   "available": 120,
+   "doc": 363.6,
+   "severity": "OK",
+   "oos": false
+  }
  ],
  "cases": [
   {

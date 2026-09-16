@@ -34,13 +34,13 @@ market,asin,sku,fba,transfer,inbound,units30,vel,doc,ad30,risk,spending_low,name
 ```
 Map: fba=CurrentFBAStock, transfer=StockInTransfer, inbound=StockInbound, units30=UnitsSoldInPeriod, vel=AvgDailyUnitSales, doc=DaysOfCoverCurrentVelocity (blank if null), ad30=AdSpendInWindow, risk=StockRisk, spending_low=StillSpendingWhileLowStock, name=short product name (only needed for ASINs that H10 does not return, e.g. US bundles; may be blank otherwise).
 
-## 2b. Scale Insights sales revenue (one call per market, feeds the Lost rev estimate)
+## 2b. Scale Insights sales (one call per market, feeds Lost rev AND the What's selling section)
 Scale Insights is the Cerakote Auto account only (same as step 2). Call `mcp__Scale_Insights__get_sales_data` with `country: <CC>, days: 30, mode: "raw", count: 100, include_growth: false` for CC in US, CA, UK, DE, FR, IT, ES, NL, AU. (AE and SA usually return no rows; try once, skip if empty. Page through if has_next_page.)
-Write `data/raw/$WEEK/sales_rev30.csv`, one row per ASIN returned, header exactly:
+Write `data/raw/$WEEK/sales_products.csv`, one row per ASIN returned that has sales (TotalUnits > 0 or TotalSales > 0), header exactly:
 ```
-market,asin,rev30
+market,asin,parent,name,rev30,units30,price
 ```
-Map: rev30 = TotalSales (30-day sales revenue, marketplace's own currency). This file is OPTIONAL and only powers the dashboard's Lost rev column (best observed daily rate x days out of stock). If a market errors or returns nothing, skip it and move on; the dashboard just shows blank Lost rev there. Never fail the run over this step. normalize.py reads this file automatically if present.
+Map: parent = ParentASIN (blank if none), name = ShortName or a short version of Title, rev30 = TotalSales, units30 = TotalUnits, price = SellingPrice (fallback AverageSellingPrice); money is in the marketplace's own currency. This one file powers two things: the Lost rev estimate (best observed daily rate x days out of stock) and the What's selling (30d) section (revenue-ranked, grouped by parent). OPTIONAL: if a market errors or returns nothing, skip it; the dashboard shows blank Lost rev and drops that market from What's selling. Never fail the run over this step. normalize.py reads it automatically if present. (Legacy: an older `sales_rev30.csv` of just market,asin,rev30 is still read as a fallback for backfilled weeks; new runs write sales_products.csv.)
 
 ## 3. Seller feedback (one call per seller x market)
 Call `mcp__Helium10__get_seller_feedback` with `time_window: "30d"` for:

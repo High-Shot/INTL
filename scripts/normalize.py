@@ -262,10 +262,15 @@ def build_snapshot(week, generated):
     h10 = load_h10(week_dir)
     h10v = load_h10_velocity(week_dir)
     si = load_si(week_dir)
-    # Optional: 30-day sales revenue per (account, asin) from Scale Insights get_sales_data.
-    # Used to estimate lost revenue on out-of-stock items (avg daily sales x days OOS).
+    # 30-day sales per (account, asin) from Scale Insights get_sales_data.
+    # sales_products.csv = every selling ASIN (feeds lost-rev AND the "What's selling" section).
+    # sales_rev30.csv = older OOS-only file, kept as a fallback for backfilled weeks.
+    products = load_csv(week_dir, 'sales_products.csv')
     rev30_map = {}
     for r in load_csv(week_dir, 'sales_rev30.csv'):
+        code_ = r['market'] if '_' in r['market'] else 'CC_' + r['market']
+        rev30_map[(code_, r['asin'])] = fnum(r.get('rev30'), None)
+    for r in products:
         code_ = r['market'] if '_' in r['market'] else 'CC_' + r['market']
         rev30_map[(code_, r['asin'])] = fnum(r.get('rev30'), None)
     feedback = load_csv(week_dir, 'seller_feedback.csv')
@@ -457,6 +462,33 @@ def build_snapshot(week, generated):
                          'asin': c['asin'], 'sku': None, 'name': f"Case {c['id']}", 'reason': c['subject'] + (f" ({c['note']})" if c['note'] else ''),
                          'opened': c['created'], 'status': c['status'] + (f", last Amazon reply {c['last_reply']}" if c['last_reply'] else ', no Amazon reply yet'),
                          'owner': 'barcus', 'action': 'Reply in the case or route to the client', 'url': c['url']})
+    # "What's selling (30d)": every ASIN with 30d sales, joined to current stock status. Cerakote Auto (SI) only.
+    inv_by = {}
+    for code, acc in accounts_out.items():
+        for r in acc.get('inventory', []):
+            inv_by[(code, r['asin'])] = r
+    selling = []
+    for r in products:
+        code = r['market'] if '_' in r['market'] else 'CC_' + r['market']
+        if code not in ACC:
+            continue
+        rev = fnum(r.get('rev30'), 0) or 0
+        units = int(fnum(r.get('units30'), 0) or 0)
+        if rev <= 0 and units <= 0:
+            continue
+        meta = ACC[code]
+        inv = inv_by.get((code, r['asin']))
+        selling.append({
+            'account': code, 'label': meta['label'], 'brand': meta['brand'], 'market': meta['market'], 'cur': meta['cur'],
+            'asin': r['asin'], 'parent': (r.get('parent') or '').strip() or None, 'name': r.get('name') or r['asin'],
+            'rev30': round(rev, 2), 'units30': units, 'price': fnum(r.get('price'), None),
+            'available': inv['available'] if inv else None,
+            'doc': (inv['pool_doc'] if inv and inv.get('pool_doc') is not None else (inv['doc'] if inv else None)),
+            'severity': inv['severity'] if inv else None,
+            'oos': (inv['available'] <= 0) if inv else None,
+        })
+    selling.sort(key=lambda x: -x['rev30'])
+
     AORDER = ORDER + sorted(shared_pools)
     flat.sort(key=lambda f_: (SEV_RANK[f_['severity']], AORDER.index(f_['account']) if f_['account'] in AORDER else 99, f_.get('doc') if f_.get('doc') is not None else 9e9))
     totals = {k: sum(1 for f_ in flat if f_['severity'] == k) for k in ('CRITICAL', 'URGENT', 'WATCH')}
@@ -465,7 +497,7 @@ def build_snapshot(week, generated):
         'sources': {'h10_inventory': bool(h10), 'h10_velocity': bool(h10v), 'si_inventory': bool(si), 'seller_feedback': bool(feedback),
                     'account_health': bool(health), 'restock_recs': bool(recs)},
         'thresholds': {'urgent_doc': URGENT_DOC, 'watch_doc': WATCH_DOC, 'lead_time_days': LEAD_TIME_DAYS, 'review_cover_days': REVIEW_COVER_DAYS},
-        'totals': totals, 'items': flat, 'accounts': accounts_out, 'order': ORDER,
+        'totals': totals, 'items': flat, 'accounts': accounts_out, 'order': ORDER, 'selling': selling,
         'cases': cases, 'case_totals': case_totals,
         'brands': BRANDS, 'pools': {pl: [ACC[c]['market'] for c in mem] for pl, mem in pool_members.items() if len(mem) > 1},
     }

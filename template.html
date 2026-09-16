@@ -122,6 +122,10 @@ td.num,th.num{text-align:right;font-family:var(--font-mono);white-space:nowrap;f
 .fb-neg{font-size:10px;color:var(--muted);flex:1;}
 .fb-neg div{padding:2px 0;}
 .note{font-size:11px;color:var(--muted);padding:10px 16px;border-top:1px solid var(--border);background:var(--bg2);}
+.lost-total{padding:8px 16px;font-family:var(--font-mono);font-size:12px;color:var(--muted);background:var(--red-bg);border-top:1px solid var(--red-border);border-bottom:1px solid var(--red-border);}
+.lost-total b{color:var(--red);font-size:15px;font-weight:700;}
+.lost-amt{color:var(--red);font-weight:700;font-size:13px;}
+tr.fam td{background:var(--bg3);border-top:1px solid var(--border2);}
 .diff-list{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
 @media(max-width:900px){.diff-list{grid-template-columns:1fr;}}
 .diff-item{padding:5px 0;border-bottom:1px solid var(--border);font-size:11px;display:flex;gap:8px;align-items:baseline;}
@@ -193,10 +197,11 @@ footer{padding:12px 32px 28px;text-align:center;font-family:var(--font-mono);fon
       </div>
       <button class="btn" id="copy-restock">Copy restock list</button>
     </div>
+    <div class="lost-total" id="lost-total" style="display:none"></div>
     <div style="overflow-x:auto"><table><thead><tr>
       <th>Sev</th><th>Account</th><th>Product</th><th>Why</th><th class="num">Avail</th><th class="num">Inbound</th><th class="num">Days</th><th class="num">Vel/day</th><th class="num">Ads 30d</th><th class="num">Lost rev</th><th class="num">Restock</th><th>Owner</th><th>Action</th><th>Open</th>
     </tr></thead><tbody id="act-body"></tbody></table></div>
-    <div class="note">Only open items appear here; healthy stock is not listed. Severity: out of stock + nothing inbound + sales in last 30d = critical; out of stock + nothing inbound + no sales = urgent. Lost rev = (30d sales / 30) x days out of stock; days OOS counted in whole weeks from snapshot history, so it steps up 7 days at a time and reads low in an item's first flagged week. Blank = no sales in the last 30 days. Restock: green = Amazon FBA recommendation (restock_recs.csv). Grey "est." = velocity x (lead time + 30 days) minus available and inbound; lead time assumed 14d NA, 45d UK/EU/AE/SA/AU. Owner "client" = NIC creates the shipment.</div>
+    <div class="note">Only open items appear here; healthy stock is not listed. Severity: out of stock + nothing inbound + sales in last 30d = critical; out of stock + nothing inbound + no sales = urgent. Lost rev is a rough estimate = the item's best observed daily sales rate (highest 30d sales / 30 across tracked weeks) x days out of stock. Days OOS counted in whole weeks from snapshot history, so it steps up 7 days at a time. Blank = no sales on record. Restock: green = Amazon FBA recommendation (restock_recs.csv). Grey "est." = velocity x (lead time + 30 days) minus available and inbound; lead time assumed 14d NA, 45d UK/EU/AE/SA/AU. Owner "client" = NIC creates the shipment.</div>
   </div>
 
   <div class="panel">
@@ -205,6 +210,17 @@ footer{padding:12px 32px 28px;text-align:center;font-family:var(--font-mono);fon
       <div><div class="sec">New</div><div id="diff-new"></div></div>
       <div><div class="sec">Resolved</div><div id="diff-resolved"></div></div>
     </div>
+  </div>
+
+  <div class="panel" id="selling">
+    <div class="panel-header">
+      <div class="panel-title">What's selling <span class="hint">last 30 days</span> <span id="sell-count" style="color:var(--dim);font-weight:400"></span></div>
+    </div>
+    <div class="lost-total" id="sell-total" style="display:none;background:var(--green-bg);border-color:var(--green-border)"></div>
+    <div style="overflow-x:auto"><table><thead><tr>
+      <th>Product</th><th>Market</th><th class="num">Rev 30d</th><th class="num">Units 30d</th><th class="num">Price</th><th>Stock</th>
+    </tr></thead><tbody id="sell-body"></tbody></table></div>
+    <div class="note">Cerakote Auto only (Scale Insights is connected to that account). Every ASIN with a sale in the last 30 days, sorted by revenue and grouped by parent family with a family subtotal. Stock column shows current cover or an OOS flag. Products with no 30d sales are hidden.</div>
   </div>
 
   <div class="two-col">
@@ -259,6 +275,8 @@ footer{padding:12px 32px 28px;text-align:center;font-family:var(--font-mono);fon
   function ids(snap){var o={};(snap?snap.items:[]).forEach(function(i){o[i.id]=i});return o}
   function weeksOpen(id){var n=0;for(var k=idx;k>=0;k--){if(ids(S[k])[id])n++;else break;}return n}
   function daysOOS(it){if(it.type!=='stock'||(it.available||0)>0)return 0;var n=0;for(var k=idx;k>=0;k--){var x=ids(S[k])[it.id];if(x&&(x.available||0)<=0)n++;else break;}return n*7}
+  function bestRev30(it){var mx=null;for(var k=0;k<S.length;k++){var x=ids(S[k])[it.id];if(x&&x.rev30>0&&(mx==null||x.rev30>mx))mx=x.rev30;}return mx}
+  function lostRev(it){if(it.type!=='stock')return null;var d=daysOOS(it),br=bestRev30(it);return(br>0&&d>0)?(br/30)*d:null}
   function inBrand(it){return brandFilter==='ALL'||it.brand===brandFilter}
   function inAcct(it){if(!acctFilter)return true;if(it.account===acctFilter)return true;var a=S[idx].accounts[acctFilter];if(!a)return false;if(a.pool_shared&&it.account===a.pool&&it.pool_markets&&it.pool_markets.indexOf(a.market)>=0)return true;if(it.type==='case'){var cid=String(it.id).split('|').pop();var cs=(S[idx].cases||[]).filter(function(x){return String(x.id)===cid})[0];if(cs&&((cs.members&&cs.members.indexOf(acctFilter)>=0)||cs.group===acctFilter))return true;}return false;}
 
@@ -280,7 +298,7 @@ footer{padding:12px 32px 28px;text-align:center;font-family:var(--font-mono);fon
     $('wk-prev').disabled=idx===0; $('wk-next').disabled=idx===S.length-1;
     $('wk-note').textContent=p?'compared to '+p.week:'first snapshot, no comparison';
     $('hdr-sources').innerHTML=Object.keys(s.sources).map(function(k){return '<span class="badge '+(s.sources[k]?'badge-on':'badge-off')+'">'+k.replace(/_/g,' ')+'</span>'}).join('');
-    renderBrandBar(); renderTrend(); renderCards(); renderActions(); renderDiff(); renderFeedback(); renderAcct(); renderCases();
+    renderBrandBar(); renderTrend(); renderCards(); renderActions(); renderDiff(); renderSelling(); renderFeedback(); renderAcct(); renderCases();
   }
 
   function brandCounts(b){var s=S[idx],c={CRITICAL:0,URGENT:0};s.items.forEach(function(it){if((b==='ALL'||it.brand===b)&&c[it.severity]!==undefined)c[it.severity]++});return c}
@@ -327,11 +345,16 @@ footer{padding:12px 32px 28px;text-align:center;font-family:var(--font-mono);fon
     Array.prototype.forEach.call($('sev-chips').querySelectorAll('.chip'),function(c){c.classList.toggle('active',!!((c.dataset.sev&&c.dataset.sev===sevFilter)||(c.dataset.type&&c.dataset.type===typeFilter)||(c.dataset.new&&newOnly)))});
     var rows=s.items.filter(function(it){return (sevFilter==='ALL'||it.severity===sevFilter)&&(!typeFilter||it.type===typeFilter)&&(!newOnly||(p&&!pid[it.id]))&&inBrand(it)&&inAcct(it)});
     $('act-count').textContent='('+rows.length+(acctFilter?' · '+acctFilter.replace('_',' '):'')+')';
+    var lostByCur={};
+    rows.forEach(function(it){var l=lostRev(it);if(l>0){var c=curFor(it);lostByCur[c]=(lostByCur[c]||0)+l;}});
+    var lostKeys=Object.keys(lostByCur);
+    $('lost-total').innerHTML=lostKeys.length?'Est. lost to stockouts: '+lostKeys.map(function(c){return '<b>'+c+fmt(Math.round(lostByCur[c]))+'</b>'}).join(' · '):'';
+    $('lost-total').style.display=lostKeys.length?'block':'none';
     if(!rows.length){$('act-body').innerHTML='<tr><td colspan="14" class="empty">Nothing open.</td></tr>';return}
     $('act-body').innerHTML=rows.map(function(it){
       var isNew=p&&!pid[it.id], wk=weeksOpen(it.id);
-      var dOOS=daysOOS(it), lost=(it.type==='stock'&&it.rev30>0&&dOOS>0)?(it.rev30/30)*dOOS:null;
-      var lostCell=lost!=null?curFor(it)+fmt(Math.round(lost))+'<div class="age">'+dOOS+'d OOS</div>':(it.type==='stock'&&(it.available||0)<=0?'<span class="sub">—</span>':'');
+      var dOOS=daysOOS(it), lost=lostRev(it);
+      var lostCell=lost!=null?'<span class="lost-amt">'+curFor(it)+fmt(Math.round(lost))+'</span><div class="age">'+dOOS+'d OOS</div>':(it.type==='stock'&&(it.available||0)<=0?'<span class="sub">—</span>':'');
       var lab=esc(it.label)+(it.pool_markets?' <span class="sub">'+it.pool_markets.join(' ')+'</span>':'');
       var restock=it.restock_rec!=null?'<span class="rec">'+fmt(it.restock_rec)+'</span>':(it.restock_est!=null?'<span class="est">est. '+fmt(it.restock_est)+'</span>':'—');
       var opened=it.opened?'<div class="age">opened '+esc(it.opened)+(it.status?' · '+esc(it.status):'')+'</div>':'';
@@ -390,6 +413,43 @@ footer{padding:12px 32px 28px;text-align:center;font-family:var(--font-mono);fon
       +'<td class="mono" style="font-size:11px">'+esc(c.label)+'</td><td class="mono" style="font-size:11px"><a href="'+c.url+'" target="_blank">'+c.id+'</a></td>'
       +'<td>'+esc(c.subject)+(c.note?'<div class="sub">'+esc(c.note)+'</div>':'')+'</td><td class="mono" style="font-size:11px">'+esc(c.created||'')+'</td><td class="mono" style="font-size:11px">'+esc(c.last_reply||'no reply')+'</td>'
       +'<td class="num">'+(c.age_days!=null?c.age_days+'d':'')+'</td><td class="mono" style="font-size:11px">'+(c.asin?'<a href="'+amz(c.region==='EU'?'DE':c.region,c.asin)+'" target="_blank">'+c.asin+'</a>':'')+'</td></tr>'}).join('');
+  }
+
+  function sellStock(r){
+    if(r.available==null)return '<span class="sub">no stock data</span>';
+    if(r.oos)return '<span class="lost-amt">OUT OF STOCK</span>';
+    var d=r.doc!=null?fmt(r.doc,0)+'d cover':'in stock';
+    return (r.severity&&r.severity!=='OK'?badge(r.severity)+' ':'')+'<span class="sub">'+d+'</span>';
+  }
+  function sellRow(r,indent){
+    return '<tr>'
+      +'<td'+(indent?' style="padding-left:24px"':'')+'><div class="prod">'+esc(r.name)+'</div><div class="sub">'+r.asin+'</div></td>'
+      +'<td class="mono" style="font-size:11px">'+esc(r.label)+'</td>'
+      +'<td class="num">'+r.cur+fmt(Math.round(r.rev30))+'</td>'
+      +'<td class="num">'+fmt(r.units30)+'</td>'
+      +'<td class="num">'+(r.price!=null?r.cur+fmt(r.price,2):'—')+'</td>'
+      +'<td>'+sellStock(r)+'</td></tr>';
+  }
+  function renderSelling(){
+    var s=S[idx], list=(s.selling||[]).filter(function(r){return (brandFilter==='ALL'||r.brand===brandFilter)&&(!acctFilter||r.account===acctFilter)});
+    var byCur={}; list.forEach(function(r){byCur[r.cur]=(byCur[r.cur]||0)+r.rev30});
+    var curKeys=Object.keys(byCur);
+    $('sell-count').textContent='('+list.length+' ASINs)';
+    $('sell-total').innerHTML=curKeys.length?'Revenue (30d): '+curKeys.map(function(c){return '<b>'+c+fmt(Math.round(byCur[c]))+'</b>'}).join(' · '):'';
+    $('sell-total').style.display=curKeys.length?'block':'none';
+    if(!list.length){$('sell-body').innerHTML='<tr><td colspan="6" class="empty">'+(brandFilter!=='ALL'&&brandFilter!=='CC'?'Sales data is Cerakote Auto only.':'No sales in the last 30 days.')+'</td></tr>';return}
+    var groups={}, order=[];
+    list.forEach(function(r){var key=r.parent?('P:'+r.parent+'|'+r.account):('S:'+r.asin+'|'+r.account);if(!groups[key]){groups[key]={rows:[],rev:0,units:0};order.push(key)}groups[key].rows.push(r);groups[key].rev+=r.rev30;groups[key].units+=r.units30});
+    order.sort(function(a,b){return groups[b].rev-groups[a].rev});
+    var html='';
+    order.forEach(function(key){var g=groups[key];g.rows.sort(function(a,b){return b.rev30-a.rev30});
+      var multi=g.rows.length>1&&key.charAt(0)==='P';
+      if(multi){var fam=g.rows[0].name.split(',')[0], cur=g.rows[0].cur;
+        html+='<tr class="fam"><td colspan="2"><b>'+esc(fam)+'</b> <span class="sub">'+g.rows.length+' variations · '+esc(g.rows[0].label)+'</span></td>'
+          +'<td class="num"><b>'+cur+fmt(Math.round(g.rev))+'</b></td><td class="num"><b>'+fmt(g.units)+'</b></td><td></td><td></td></tr>';}
+      g.rows.forEach(function(r){html+=sellRow(r,multi)});
+    });
+    $('sell-body').innerHTML=html;
   }
 
   function copyRestock(){
