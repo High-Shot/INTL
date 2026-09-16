@@ -1,0 +1,2 @@
+# Development/test dependencies only. The scripts themselves are stdlib-only.
+pytest==9.1.1
