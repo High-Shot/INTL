@@ -213,7 +213,7 @@ footer{padding:12px 32px 28px;text-align:center;font-family:var(--font-mono);fon
       </div>
     </div>
     <div class="panel">
-      <div class="panel-header"><div class="panel-title">Open items by week</div></div>
+      <div class="panel-header"><div class="panel-title">New vs resolved by week</div></div>
       <div class="panel-body chart-wrap"><canvas id="hist"></canvas></div>
     </div>
   </div>
@@ -244,11 +244,12 @@ footer{padding:12px 32px 28px;text-align:center;font-family:var(--font-mono);fon
     <div class="panel-header">
       <div class="panel-title">FBA inventory detail</div>
       <div class="inv-tabs" id="inv-tabs"></div>
-      <div class="chip" id="show-ok">Show healthy rows</div>
+      <div class="chip" id="show-flagged">Show flagged rows</div>
     </div>
     <div style="overflow-x:auto"><table><thead><tr>
       <th>Sev</th><th>Product</th><th>SKU</th><th class="num">Avail</th><th class="num">Inbound</th><th class="num">Unfulf.</th><th class="num">Units 30d</th><th class="num">Vel/day</th><th class="num">Days (mkt)</th><th class="num">Days (pool)</th><th class="num">Ads 30d</th><th>Notes</th>
     </tr></thead><tbody id="inv-body"></tbody></table></div>
+    <div class="note">Full SKU ledger. Flagged SKUs (critical / urgent / watch) are hidden here because they already appear in the action list above; toggle "Show flagged rows" to include them.</div>
   </div>
 </div>
 <div class="brand-ribbon">
@@ -267,7 +268,8 @@ footer{padding:12px 32px 28px;text-align:center;font-family:var(--font-mono);fon
 <script>
 (function(){
   if(!window.SNAPSHOTS||!SNAPSHOTS.length){document.body.innerHTML='<div class="empty">No snapshots yet.</div>';return;}
-  var S=SNAPSHOTS, idx=S.length-1, sevFilter='ALL', typeFilter=null, newOnly=false, acctFilter=null, brandFilter='ALL', invTab=null, showOk=false, showAnswered=false;
+  var S=SNAPSHOTS, idx=S.length-1, sevFilter='ALL', typeFilter=null, newOnly=false, acctFilter=null, brandFilter='ALL', invTab=null, showFlagged=false, showAnswered=false;
+  var FLAG={CRITICAL:1,URGENT:1,WATCH:1};
   var $=function(id){return document.getElementById(id)};
   var RANK={CRITICAL:0,URGENT:1,WATCH:2,INFO:3,OK:4,NONE:5};
   function fmt(n,d){if(n===null||n===undefined)return '—';return Number(n).toLocaleString('en-US',{maximumFractionDigits:d===undefined?0:d})}
@@ -292,7 +294,7 @@ footer{padding:12px 32px 28px;text-align:center;font-family:var(--font-mono);fon
     else if(c.dataset.new){newOnly=!newOnly}
     renderActions()};
   $('copy-restock').onclick=copyRestock;
-  $('show-ok').onclick=function(){showOk=!showOk;$('show-ok').classList.toggle('active',showOk);renderInv()};
+  $('show-flagged').onclick=function(){showFlagged=!showFlagged;$('show-flagged').classList.toggle('active',showFlagged);renderInv()};
   $('show-answered').onclick=function(){showAnswered=!showAnswered;$('show-answered').classList.toggle('active',showAnswered);renderCases()};
 
   function render(){
@@ -317,10 +319,8 @@ footer{padding:12px 32px 28px;text-align:center;font-family:var(--font-mono);fon
     var cur_={CRITICAL:0,URGENT:0,WATCH:0}, prv={CRITICAL:0,URGENT:0,WATCH:0};
     s.items.forEach(function(it){if(inBrand(it)&&cur_[it.severity]!==undefined)cur_[it.severity]++});
     if(p)p.items.forEach(function(it){if(inBrand(it)&&prv[it.severity]!==undefined)prv[it.severity]++});
-    var newN=s.items.filter(function(it){return inBrand(it)&&p&&!pid[it.id]}).length, resN=p?p.items.filter(function(it){return inBrand(it)&&!cid[it.id]}).length:0;
     function delta(k){if(!p)return '<span class="trend-delta neutral">—</span>';var d=cur_[k]-prv[k];return '<span class="trend-delta '+(d>0?'up-bad':d<0?'down-good':'neutral')+'">'+(d>0?'+':'')+d+'</span>'}
     $('trend').innerHTML=['CRITICAL','URGENT','WATCH'].map(function(k){return '<div class="trend-item" data-sev="'+k+'"><span class="trend-lbl">'+k+'</span><span class="trend-v c-'+k+'">'+cur_[k]+'</span>'+delta(k)+'</div>'}).join('<div class="trend-div"></div>')
-      +'<div class="trend-div"></div><div class="trend-item"><span class="trend-lbl">New</span><span class="trend-v">'+(p?newN:'—')+'</span></div><div class="trend-item"><span class="trend-lbl">Resolved</span><span class="trend-v c-OK">'+(p?resN:'—')+'</span></div>'
       +'<div class="trend-div"></div><div class="trend-item"><span class="trend-lbl">Rules</span><span class="trend-v" style="font-size:10px;color:var(--muted);font-weight:400">OOS + 0 inbound = critical · &lt;'+s.thresholds.urgent_doc+'d cover = urgent · &lt;'+s.thresholds.watch_doc+'d = watch</span></div>';
     Array.prototype.forEach.call($('trend').querySelectorAll('[data-sev]'),function(el){el.onclick=function(){sevFilter=el.dataset.sev;typeFilter=null;newOnly=false;renderActions()}});
   }
@@ -403,9 +403,9 @@ footer{padding:12px 32px 28px;text-align:center;font-family:var(--font-mono);fon
     $('inv-tabs').innerHTML=order.map(function(c){return '<div class="inv-tab'+(c===invTab?' active':'')+'" data-code="'+c+'">'+esc(s.accounts[c].label)+'</div>'}).join('');
     Array.prototype.forEach.call($('inv-tabs').querySelectorAll('.inv-tab'),function(el){el.onclick=function(){invTab=el.dataset.code;renderInv()}});
     var a=s.accounts[invTab], rows=a?a.inventory:[];
-    var shown=rows.filter(function(r){return showOk||(r.severity!=='OK')});
+    var shown=rows.filter(function(r){return showFlagged||!FLAG[r.severity]});
     if(!rows.length){$('inv-body').innerHTML='<tr><td colspan="12" class="empty">No FBA rows for '+esc(a?a.label:invTab)+(a&&a.launching?' (launching)':'')+'.</td></tr>';return}
-    if(!shown.length){$('inv-body').innerHTML='<tr><td colspan="12" class="empty">All '+rows.length+' ASINs healthy. Toggle "Show healthy rows" to list them.</td></tr>';return}
+    if(!shown.length){$('inv-body').innerHTML='<tr><td colspan="12" class="empty">All '+rows.length+' ASINs for this account are flagged and listed in the action list above. Toggle "Show flagged rows" to see them here.</td></tr>';return}
     $('inv-body').innerHTML=shown.map(function(r){return '<tr><td>'+badge(r.severity)+'</td>'
       +'<td><div class="prod">'+esc(r.name)+'</div><div class="sub">'+r.asin+'</div></td><td class="mono" style="font-size:10px">'+esc((r.skus||[r.sku]).join(', '))+'</td>'
       +'<td class="num">'+fmt(r.available)+'</td><td class="num">'+(r.inbound==null?'?':fmt(r.inbound))+'</td><td class="num">'+fmt(r.unfulfillable)+'</td>'
@@ -433,9 +433,25 @@ footer{padding:12px 32px 28px;text-align:center;font-family:var(--font-mono);fon
   function renderChart(){
     if(typeof Chart==='undefined'){$('hist').parentNode.innerHTML='<div class="empty">Chart library not loaded.</div>';return}
     var labels=S.map(function(s){return s.week});
-    var ds=['CRITICAL','URGENT','WATCH'].map(function(k,i){return {label:k,data:S.map(function(s){return s.items.filter(function(it){return inBrand(it)&&it.severity===k}).length}),borderColor:['#ef4444','#fb923c','#facc15'][i],backgroundColor:['#ef4444','#fb923c','#facc15'][i],tension:0.25,pointRadius:3}});
+    var newD=[], resD=[];
+    S.forEach(function(s,i){
+      var p=i>0?S[i-1]:null, pid=ids(p), cid=ids(s);
+      newD.push(p?s.items.filter(function(it){return inBrand(it)&&inAcct(it)&&!pid[it.id]}).length:0);
+      resD.push(p?p.items.filter(function(it){return inBrand(it)&&inAcct(it)&&!cid[it.id]}).length:0);
+    });
+    var ds=[
+      {label:'New',data:newD,backgroundColor:'#fb923c',borderColor:'#fb923c',borderWidth:0,borderRadius:2},
+      {label:'Resolved',data:resD,backgroundColor:'#10b981',borderColor:'#10b981',borderWidth:0,borderRadius:2}
+    ];
     if(chart)chart.destroy();
-    chart=new Chart($('hist'),{type:'line',data:{labels:labels,datasets:ds},options:{responsive:true,plugins:{legend:{labels:{color:'#a3a3a3',font:{family:'JetBrains Mono',size:10}}}},scales:{x:{ticks:{color:'#737373',font:{family:'JetBrains Mono',size:10}},grid:{color:'#262626'}},y:{beginAtZero:true,ticks:{color:'#737373',font:{family:'JetBrains Mono',size:10},precision:0},grid:{color:'#262626'}}}}});
+    chart=new Chart($('hist'),{type:'bar',data:{labels:labels,datasets:ds},
+      options:{responsive:true,
+        plugins:{legend:{labels:{color:'#a3a3a3',font:{family:'JetBrains Mono',size:10}}},
+          tooltip:{callbacks:{title:function(t){return t[0].label}}}},
+        scales:{x:{ticks:{color:'#737373',font:{family:'JetBrains Mono',size:10}},grid:{color:'#262626'}},
+          y:{beginAtZero:true,ticks:{color:'#737373',font:{family:'JetBrains Mono',size:10},precision:0},grid:{color:'#262626'}}}},
+      plugins:[{id:'vlabels',afterDatasetsDraw:function(c){var ctx=c.ctx;ctx.save();ctx.font='10px JetBrains Mono';ctx.fillStyle='#a3a3a3';ctx.textAlign='center';c.data.datasets.forEach(function(dset,di){var meta=c.getDatasetMeta(di);meta.data.forEach(function(bar,bi){var v=dset.data[bi];if(v>0)ctx.fillText(v,bar.x,bar.y-4)})});ctx.restore()}}]
+    });
   }
 
   function copyRestock(){
