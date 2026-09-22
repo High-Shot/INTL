@@ -83,13 +83,19 @@ If `"$HOME/mnt/Cerakote Management/intl-tracker/inbox/restock_*.csv"` exists on 
 python3 scripts/normalize.py $WEEK
 python3 scripts/build.py
 ```
-Then copy the new files onto the Mac and push from there (the Mac's git already has GitHub credentials via gh):
+Publishing prerequisites (READ THIS): a scheduled cloud run can push to high-shot/INTL only when the repo is in the scheduled session's authorized git sources. The cloud git proxy returns 403 ("not in this session's authorized repository set") for any repo that is not authorized, and a `https://x-access-token:$TOKEN@github.com/...` URL does NOT bypass it (the proxy gates by repo, not by credential) — so the Mac token is useless for a cloud push. Two ways to make publishing work: (A) add high-shot/INTL to the weekly task's authorized git sources, then a plain `git push origin main` from the cloud clone works with no Mac dependency (preferred for a headless 06:00 run); or (B) connect the "Cerakote Management" folder to the task and publish from the Mac (6a/6b), whose own gh credentials push directly and do not hit the cloud proxy.
+
+6-preferred (cloud push, needs option A). From the cloud clone: `git config user.email noreply@anthropic.com && git config user.name Claude`; commit index.html, data/snapshots/$WEEK.json, data/raw/$WEEK/* and notes/$WEEK-client-note.md as `Weekly snapshot $WEEK`; then `git push origin main`. On a 403 or any failure, do NOT loop: leave the commit local and treat as "not published (reason)".
+
+GUARANTEED DELIVERY (every run, regardless of push outcome): SendUserFile index.html (and data/snapshots/$WEEK.json) so Barcus always gets the dashboard even when the push is blocked.
+
+Mac path (option B, only if the folder is connected):
 6a. SendUserFile + device_commit_files for: index.html, data/snapshots/$WEEK.json, and every file in data/raw/$WEEK/, into the matching paths under `/Users/barcus/Documents/Claude/Projects/Cerakote Management/intl-tracker/`.
 6b. mcp__remote-devices__Control_your_Mac__osascript:
 ```
 do shell script "export PATH=/opt/homebrew/bin:/usr/local/bin:$PATH; cd \"$HOME/Documents/Claude/Projects/Cerakote Management/intl-tracker\" && git pull -q --rebase origin main; git add -A && git commit -q -m 'Weekly snapshot $WEEK' && git push -q origin main && git log --oneline -1"
 ```
-6c. If the Mac is unreachable: fall back to `.secrets/github_token` on the Mac if it exists (`git push https://x-access-token:$TOKEN@github.com/High-Shot/INTL.git main` from the cloud clone). If neither works, report "not published" in the summary; the files are already in the folder.
+6c. If neither the cloud push (option A) nor the Mac path (option B) is available, report "not published (reason)" in the summary. The commit is in the cloud clone and the dashboard was sent via SendUserFile (guaranteed delivery above), so Barcus can push it manually or open the file. Do NOT attempt `git push https://x-access-token:$TOKEN@github.com/...` from the cloud clone — the proxy blocks it (see Publishing prerequisites).
 
 ## 6d. Client note (bi-weekly, with same-week exceptions)
 ```
