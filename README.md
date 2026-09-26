@@ -15,15 +15,19 @@ RUNBOOK.md              what the Monday scheduled task does, step by step
 ```
 
 ## Rules
-CRITICAL: FBA available 0 and nothing inbound, with sales in the last 30 days. Also policy violation, A-to-Z claim, listing removal, account at risk.
-URGENT: under 14 days of cover and nothing inbound; out of stock with inbound; negative seller feedback at 15%+ of 5+ ratings.
-WATCH: 14 to 28 days of cover with nothing inbound; under 14 days with inbound on the way; 10+ unfulfillable units; any negative feedback.
+Stock follows the 8-week rule (owner-set 2026-09-25, same as MOAT): keep 8 weeks of inventory at Amazon on the past 30 days of sales, with tent-pole lift.
+CRITICAL: FBA available 0, nothing inbound, sales in the last 30 days; or days of cover under lead time. Also policy violation, A-to-Z claim, listing removal, account at risk.
+URGENT: under 56 days (8 weeks) of cover; out of stock with nothing inbound and no sales; negative seller feedback at 15%+ of 5+ ratings.
+WATCH: 56 to 69 days of cover; 10+ unfulfillable units; any negative feedback. 70+ days is healthy and hidden.
 
-Inbound = Helium10 inbound working + shipped + receiving. Scale Insights' inbound field is not used (it reads 0 even when H10 shows thousands of units in transit). Velocity = Scale Insights where connected (Cerakote Auto), else Helium10 get_sales_velocity (Legacy, Prismatic, SA).
+Days of cover = FBA available / velocity. Velocity = (FBA + FBM units in the last 30 complete days) / 30, from Helium10 `h10_velocity_all.json`, on any ASIN with an FBA SKU (FBM-only ASINs out of scope). Scale Insights units are the fallback when H10 has no row. Every ASIN with FBA sales in the window is in scope; no H10 inventory row = 0 available, 0 inbound.
+Inbound = Helium10 inbound working + shipped + receiving. Scale Insights' inbound field is not used.
+Lead times: US (CC, CL, PP) 5 days, CA 14, UK/EU/AE/SA/AU 45 (owner-confirmed 2026-09-25).
 
 DE, FR, IT, ES, NL share one FBA pool. An ASIN is treated as pooled only when every market in the pool reports the same available count. Pooled days of cover = shared stock divided by the summed velocity, and the item appears once in the action list (EU AUTO). Healthy rows are hidden by default.
 
-Restock quantity: Amazon's FBA restock recommendation when `restock_recs.csv` is present for the week; otherwise velocity x (lead time + 30 days) minus available and inbound, labelled "est." (lead times in scripts/normalize.py POOL_LEAD).
+Restock quantity: Amazon's FBA restock recommendation when `restock_recs.csv` is present for the week; otherwise velocity x (56 + lead time) x lift minus available and inbound, rounded up, labelled "est.".
+Event lift (Cerakote Auto only; Legacy and Prismatic = 1.0): when Prime Big Deal Days, Black Friday or Cyber Monday starts inside the next 56 days, lift = last year's event-week units / average of the 3 weeks before, per ASIN, floor 1.0, from `event_history.csv`. No clean history (a zero base week, base under 7 units/week, or a zero event week) = the CC brand median of measured lifts.
 
 ## One-time setup
 1. Done: repo High-Shot/INTL, Pages on main. The Monday task pushes from the Mac with gh; no token stored.

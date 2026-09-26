@@ -8,11 +8,13 @@ Reads  data/raw/<WEEK>/
   seller_feedback.csv   Helium10 get_seller_feedback, one row per seller x market      optional
   account_health.json   Seller Central notifications / AHR per market                   optional
   restock_recs.csv      Amazon FBA restock recommendations (market,asin,sku,rec_qty,rec_date) optional
+  h10_velocity_all.json Helium10 get_sales_velocity, FBA + FBM, last 30 complete days          preferred velocity source
+  event_history.csv     last year's weekly units around each tent-pole event (event lift)       optional
 Writes data/snapshots/<WEEK>.json
 
 Usage: python3 scripts/normalize.py 2026-W36 [--generated 2026-09-01T12:00:00Z]
 """
-import csv, json, sys, os, re, glob, datetime as dt
+import csv, json, sys, os, re, glob, math, statistics, datetime as dt
 from collections import defaultdict
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -51,18 +53,34 @@ for a in ACCOUNTS:
 ACC = {a['code']: a for a in ACCOUNTS}
 BY_SELLER_MKT = {(a['seller'], a['market']): a['code'] for a in ACCOUNTS}
 ORDER = [a['code'] for a in ACCOUNTS]
-POOL_LEAD = {'CC_US': 14, 'CC_CA': 14, 'CL_US': 14, 'PP_US': 14,
+# Lead times (days), owner-confirmed 2026-09-25: NIC US 5d, CA 14d, UK/EU/AE/SA/AU 45d.
+POOL_LEAD = {'CC_US': 5, 'CC_CA': 14, 'CL_US': 5, 'PP_US': 5,
              'CC_UK': 45, 'CC_EU': 45, 'CC_AE': 45, 'CC_SA': 45, 'CC_AU': 45}
 
-# Thresholds (days of cover). Project rule: <14 days = URGENT, OOS = CRITICAL.
-URGENT_DOC = 14
-WATCH_DOC = 28
-# Restock estimate (fallback when Amazon's recommendation is not loaded):
-#   qty = velocity x (lead_time_days + REVIEW_COVER_DAYS) - available - inbound
-# Lead times are ASSUMPTIONS as of 2026-09-01 (Barcus to correct): NA 14d, UK/EU/AU/SA 45d.
+# Inventory rule (owner-set 2026-09-25, same as MOAT): keep 8 weeks at Amazon, based on the past
+# 30 days of sales, with tent-pole uplift.
+#   CRITICAL: OOS + nothing inbound + selling, or days of cover < lead time
+#   URGENT:   days of cover < 56 (under 8 weeks)
+#   WATCH:    56 to 69 days
+#   healthy:  70+ (hidden)
+# Days of cover = FBA available / velocity. Velocity = (FBA + FBM units, last 30 complete days) / 30.
 LEAD_TIME_DAYS = POOL_LEAD
-REVIEW_COVER_DAYS = 30
-TARGET_DOC = 60          # kept for reference; est now uses LEAD_TIME_DAYS + REVIEW_COVER_DAYS
+TARGET_WEEKS = 8
+TARGET_DAYS = TARGET_WEEKS * 7
+URGENT_DOC = TARGET_DAYS
+WATCH_DOC = 70
+VEL_DAYS = 30.0
+# Restock estimate (when Amazon's recommendation is not loaded):
+#   qty = ceil(velocity x (56 + lead_time_days) x lift - available - inbound), floor 0
+# Event lift: when an event starts inside the next 56 days, lift = last year's event-week units /
+# average of the 3 weeks before it, per ASIN, floor 1.0. No clean history = CC brand median. CL, PP = 1.0.
+EVENTS = [
+    {'key': 'pbdd', 'name': 'Prime Big Deal Days', 'start': '2026-10-06', 'end': '2026-10-07'},
+    {'key': 'bf', 'name': 'Black Friday', 'start': '2026-11-27', 'end': '2026-11-27'},
+    {'key': 'cm', 'name': 'Cyber Monday', 'start': '2026-11-30', 'end': '2026-11-30'},
+]
+LIFT_BRANDS = {'CC'}
+LIFT_MIN_BASE_WEEKLY = 7   # clean history: every base week > 0, base avg >= 7 units/week, event week > 0
 UNFULFILLABLE_WATCH = 10
 FEEDBACK_NEG_PCT_URGENT = 0.15
 FEEDBACK_MIN_COUNT = 5
@@ -145,6 +163,55 @@ def load_h10_velocity(week_dir):
     return out
 
 
+def load_h10_velocity_all(week_dir):
+    """h10_velocity_all.json (FBA + FBM, one call) -> {(code, asin): {'fba', 'fbm', 'name', 'image'}}."""
+    p = os.path.join(week_dir, 'h10_velocity_all.json')
+    if not os.path.exists(p):
+        return None
+    with open(p) as f:
+        d = json.load(f)
+    out = {}
+    for r in d['data']['rows']:
+        code = BY_SELLER_MKT.get((r.get('seller_id'), r['marketplace']))
+        if not code:
+            continue
+        ft = (r.get('fulfillment_type') or '').upper()
+        if ft not in ('FBA', 'FBM'):
+            continue
+        units = sum(float(v or 0) for v in ((r.get('sales_velocity') or {}).get('values') or {}).values())
+        rec = out.setdefault((code, r['asin']), {'fba': 0.0, 'fbm': 0.0, 'has_fba_sku': False,
+                                                 'name': short_name(r.get('product_name')), 'title': r.get('product_name'),
+                                                 'image': r.get('image_url'), 'sku': None})
+        rec[ft.lower()] += units
+        if ft == 'FBA':
+            rec['has_fba_sku'] = True
+            rec['sku'] = rec['sku'] or r.get('sku')
+    return out
+
+
+def load_event_history(week_dir):
+    """event_history.csv -> {(event, market, asin): [w-3, w-2, w-1, event_week]} summed over SKUs and channels."""
+    out = {}
+    for r in load_csv(week_dir, 'event_history.csv'):
+        wk = sorted(k for k in r if k.startswith('wk_'))
+        vals = [fnum(r[k], 0) or 0 for k in wk]
+        key = (r['event'], r['market'], r['asin'])
+        prev = out.get(key, [0] * len(vals))
+        out[key] = [a + b for a, b in zip(prev, vals)]
+    return out
+
+
+def measured_lift(weeks):
+    """[w-3, w-2, w-1, event] -> lift or None when the history is not clean."""
+    if not weeks or len(weeks) < 4:
+        return None
+    base, ev = weeks[:3], weeks[3]
+    avg = sum(base) / 3.0
+    if min(base) <= 0 or avg < LIFT_MIN_BASE_WEEKLY or ev <= 0:
+        return None
+    return ev / avg
+
+
 def load_si(week_dir):
     p = os.path.join(week_dir, 'si_inventory.csv')
     out = {}
@@ -216,8 +283,8 @@ def load_cases(week_dir, week):
     return out, {k: v.get('total') for k, v in raw.items()}
 
 
-def classify(item, pool_vel, pool_doc):
-    """Return (severity, reasons[]). Uses pooled velocity for EU pool markets."""
+def classify(item, pool_vel, pool_doc, lead):
+    """Return (severity, reasons[]). Uses pooled velocity for EU pool markets. 8-week rule, see top of file."""
     reasons = []
     avail = item['available']
     inbound = item['inbound']
@@ -226,8 +293,9 @@ def classify(item, pool_vel, pool_doc):
     vel = pool_vel if pool_vel is not None else item['vel']
     doc = pool_doc if pool_doc is not None else item['doc']
     selling = (item['units30'] or 0) > 0 or (vel or 0) > 0
-
     had_sales_30d = (item['units30'] or 0) > 0
+    inb_txt = f'{inb} inbound' if inb > 0 else 'nothing inbound'
+
     sev = 'OK'
     if avail <= 0 and inb == 0:
         if had_sales_30d:
@@ -236,15 +304,15 @@ def classify(item, pool_vel, pool_doc):
             sev = 'URGENT'; reasons.append('Out of stock, nothing inbound, no sales in last 30d')
     elif avail <= 0 and inb > 0:
         if selling:
-            sev = 'URGENT'; reasons.append(f'Out of stock, {inb} inbound')
+            sev = 'CRITICAL'; reasons.append(f'Out of stock, {inb} inbound (cover under {lead}d lead time)')
         else:
             sev = 'INFO'; reasons.append(f'Out of stock, {inb} inbound, no sales in 30d')
-    elif doc is not None and doc < URGENT_DOC and inb == 0:
-        sev = 'URGENT'; reasons.append(f'{doc:.1f} days of cover, nothing inbound')
-    elif doc is not None and doc < URGENT_DOC and inb > 0:
-        sev = 'WATCH'; reasons.append(f'{doc:.1f} days of cover, {inb} inbound')
-    elif doc is not None and doc < WATCH_DOC and inb == 0:
-        sev = 'WATCH'; reasons.append(f'{doc:.1f} days of cover, nothing inbound')
+    elif doc is not None and doc < lead:
+        sev = 'CRITICAL'; reasons.append(f'{doc:.1f} days of cover, under {lead}d lead time, {inb_txt}')
+    elif doc is not None and doc < URGENT_DOC:
+        sev = 'URGENT'; reasons.append(f'{doc:.1f} days of cover, under {TARGET_WEEKS}-week target, {inb_txt}')
+    elif doc is not None and doc < WATCH_DOC:
+        sev = 'WATCH'; reasons.append(f'{doc:.1f} days of cover, {inb_txt}')
 
     if item['unfulfillable'] >= UNFULFILLABLE_WATCH:
         reasons.append(f"{item['unfulfillable']} unfulfillable units")
@@ -252,7 +320,9 @@ def classify(item, pool_vel, pool_doc):
             sev = 'WATCH'
     if sev in ('CRITICAL', 'URGENT') and (item['ad30'] or 0) > 0:
         reasons.append('Ads still running')
-    if not inbound_known and sev != 'OK':
+    if item.get('no_inv_row') and sev != 'OK':
+        reasons.append('No FBA inventory row in Helium10, treated as 0 available / 0 inbound')
+    elif not inbound_known and sev != 'OK':
         reasons.append('Inbound unknown (not reported), treated as 0')
     return sev, reasons
 
@@ -282,28 +352,78 @@ def build_snapshot(week, generated):
     health_raw = load_json(week_dir, 'account_health.json') or {}
     health = {(k if '_' in k else 'CC_' + k): v for k, v in health_raw.items()}
 
-    VEL_DAYS = 30.0
+    allv = load_h10_velocity_all(week_dir)
+    hist = load_event_history(week_dir)
     items = defaultdict(dict)   # code -> asin -> item
+
+    def velocity(code, asin, s_):
+        """(units30, source). FBA + FBM units, last 30 complete days, on ASINs with an FBA SKU."""
+        if allv is not None and (code, asin) in allv and allv[(code, asin)]['has_fba_sku']:
+            v_ = allv[(code, asin)]
+            return v_['fba'] + v_['fbm'], 'h10_fba+fbm'
+        if s_:
+            return s_.get('units30') or 0, 'si'   # SI units are ASIN-level, all channels
+        u = h10v.get((code, asin))
+        return (u or 0), ('h10' if u is not None else 'none')
+
     for (code, asin), h in h10.items():
         s_ = si.get((code, asin), {})
-        units_h10 = h10v.get((code, asin))
-        units30 = s_.get('units30') if s_ else units_h10
-        vel = s_.get('vel') if s_ else ((units_h10 or 0) / VEL_DAYS)
-        doc = s_.get('doc') if s_ else ((h['available'] / vel) if vel and vel > 0 else None)
+        units30, src = velocity(code, asin, s_)
+        vel = units30 / VEL_DAYS
+        doc = (h['available'] / vel) if vel > 0 else None
         items[code][asin] = {
-            **h, 'units30': units30 or 0, 'vel': vel or 0, 'doc': doc,
+            **h, 'units30': units30, 'vel': vel, 'doc': doc,
             'ad30': s_.get('ad30', 0) if s_ else 0, 'si_risk': s_.get('risk') if s_ else None,
             'transfer': s_.get('transfer', 0) if s_ else 0,
-            'si_present': bool(s_), 'vel_source': 'si' if s_ else ('h10' if units_h10 is not None else 'none'),
+            'si_present': bool(s_), 'vel_source': src,
         }
     for (code, asin), s_ in si.items():
         if code in ACC and asin not in items[code]:
+            units30, src = velocity(code, asin, s_)
+            vel = units30 / VEL_DAYS
+            fba = int(s_.get('fba') or 0)
             items[code][asin] = {
                 'asin': asin, 'sku': s_.get('sku'), 'skus': [s_.get('sku')], 'name': s_.get('name') or asin, 'title': s_.get('name') or asin, 'image': None,
-                'available': int(s_.get('fba') or 0), 'inbound': int(s_.get('si_inbound') or 0), 'inbound_reported': False,
-                'unfulfillable': 0, 'units30': s_.get('units30', 0), 'vel': s_.get('vel', 0), 'doc': s_.get('doc'),
-                'ad30': s_.get('ad30', 0), 'si_risk': s_.get('risk'), 'transfer': s_.get('transfer', 0), 'si_present': True, 'vel_source': 'si',
+                'available': fba, 'inbound': int(s_.get('si_inbound') or 0), 'inbound_reported': False,
+                'unfulfillable': 0, 'units30': units30, 'vel': vel, 'doc': (fba / vel) if vel > 0 else None,
+                'ad30': s_.get('ad30', 0), 'si_risk': s_.get('risk'), 'transfer': s_.get('transfer', 0), 'si_present': True, 'vel_source': src,
             }
+    # ASIN universe: every ASIN with FBA sales in the last 30 days, even with no inventory row (= 0 available, 0 inbound).
+    for (code, asin), v_ in (allv or {}).items():
+        if v_['has_fba_sku'] and v_['fba'] > 0 and asin not in items[code]:
+            units30 = v_['fba'] + v_['fbm']
+            items[code][asin] = {
+                'asin': asin, 'sku': v_['sku'], 'skus': [v_['sku']], 'name': v_['name'], 'title': v_['title'], 'image': v_['image'],
+                'available': 0, 'inbound': 0, 'inbound_reported': False, 'no_inv_row': True,
+                'unfulfillable': 0, 'units30': units30, 'vel': units30 / VEL_DAYS, 'doc': 0.0,
+                'ad30': 0, 'si_risk': None, 'transfer': 0, 'si_present': False, 'vel_source': 'h10_fba+fbm',
+            }
+
+    # Event lift: events starting inside the next TARGET_DAYS from the week's Monday.
+    as_of = dt.date.fromisocalendar(int(week[:4]), int(week.split('-W')[1]), 1)
+    horizon_end = as_of + dt.timedelta(days=TARGET_DAYS)
+    live_events = [e for e in EVENTS if as_of <= dt.date.fromisoformat(e['start']) <= horizon_end]
+    brand_median = {}
+    for e in live_events:
+        ls = [measured_lift(w) for (ev, mk, a), w in hist.items() if ev == e['key']]
+        ls = [x for x in ls if x is not None]
+        brand_median[e['key']] = {'median': round(statistics.median(ls), 3) if ls else 1.0, 'n': len(ls)}
+
+    def lift_for(brand, markets, asin):
+        """(lift, basis). Max over live events; pooled markets sum their history."""
+        if brand not in LIFT_BRANDS or not live_events:
+            return 1.0, 'none' if not live_events else 'brand=1.0'
+        best, basis = 1.0, None
+        for e in live_events:
+            ws = [hist.get((e['key'], m, asin)) for m in markets]
+            ws = [w for w in ws if w]
+            summed = [sum(x) for x in zip(*ws)] if ws else None
+            m_ = measured_lift(summed)
+            val, b = (m_, 'measured') if m_ is not None else (brand_median[e['key']]['median'], 'brand median')
+            val = max(1.0, val)
+            if basis is None or val > best:
+                best, basis = val, f"{e['key']} {b}"
+        return round(best, 3), basis
 
     # Shared FBA pools (EU): pooled velocity per ASIN across the pool's markets
     pool_members = defaultdict(list)
@@ -336,16 +456,18 @@ def build_snapshot(week, generated):
             if is_pooled:
                 pv = pool_vel[(pl, asin)]
                 pd = (it['available'] / pv) if pv > 0 else None
-            sev, reasons = classify(it, pv, pd)
+            lead = LEAD_TIME_DAYS.get(pl, 30)
+            sev, reasons = classify(it, pv, pd, lead)
             if meta['launching'] and (it['units30'] or 0) == 0:
                 sev = 'INFO'
                 reasons = [f"Launching: {it['available']} available, {it['inbound'] if it['inbound'] is not None else '?'} inbound"]
             rec = recs.get((code, asin))
             est = None
             v = pv if pv is not None else (it['vel'] or 0)
+            lift, lift_basis = lift_for(meta['brand'], [ACC[c]['market'] for c in pool_members[pl]] if is_pooled else [meta['market']], asin)
+            target_units = math.ceil(v * TARGET_DAYS * lift) if v > 0 else 0
             if sev in ('CRITICAL', 'URGENT', 'WATCH') and v > 0:
-                horizon = LEAD_TIME_DAYS.get(pl, 30) + REVIEW_COVER_DAYS
-                est = max(0, int(round(v * horizon)) - it['available'] - (it['inbound'] or 0))
+                est = max(0, math.ceil(v * (TARGET_DAYS + lead) * lift - it['available'] - (it['inbound'] or 0)))
             if is_pooled:
                 _rv = sum((rev30_map.get((c, asin)) or 0) for c in pool_members[pl])
                 rev30 = _rv if _rv else None
@@ -364,6 +486,7 @@ def build_snapshot(week, generated):
                 'restock_rec': int(rec['rec_qty']) if rec and rec.get('rec_qty') else None,
                 'restock_rec_date': rec.get('rec_date') if rec else None,
                 'restock_est': est, 'rev30': rev30,
+                'lift': lift, 'lift_basis': lift_basis, 'target_units': target_units, 'lead_time_days': lead,
             }
             inv_rows.append(row)
             fm = pl if is_pooled else code
@@ -376,6 +499,7 @@ def build_snapshot(week, generated):
                              'doc': row['pool_doc'] if row['pool_doc'] is not None else row['doc'],
                              'vel': row['pool_vel'] if row['pool_vel'] is not None else row['vel'],
                              'ad30': it['ad30'], 'restock_rec': row['restock_rec'], 'restock_est': est, 'rev30': rev30,
+                             'lift': lift, 'target_units': target_units, 'lead_time_days': lead,
                              'owner': 'client', 'action': 'Create FBA shipment' if sev != 'WATCH' else 'Plan shipment'})
         inv_rows.sort(key=lambda r: (SEV_RANK[r['severity']], r['pool_doc'] if r['pool_doc'] is not None else (r['doc'] if r['doc'] is not None else 9e9)))
 
@@ -494,9 +618,11 @@ def build_snapshot(week, generated):
     totals = {k: sum(1 for f_ in flat if f_['severity'] == k) for k in ('CRITICAL', 'URGENT', 'WATCH')}
     snap = {
         'week': week, 'generated_at': generated,
-        'sources': {'h10_inventory': bool(h10), 'h10_velocity': bool(h10v), 'si_inventory': bool(si), 'seller_feedback': bool(feedback),
-                    'account_health': bool(health), 'restock_recs': bool(recs)},
-        'thresholds': {'urgent_doc': URGENT_DOC, 'watch_doc': WATCH_DOC, 'lead_time_days': LEAD_TIME_DAYS, 'review_cover_days': REVIEW_COVER_DAYS},
+        'sources': {'h10_inventory': bool(h10), 'h10_velocity': bool(h10v), 'h10_velocity_all': allv is not None, 'si_inventory': bool(si),
+                    'seller_feedback': bool(feedback), 'account_health': bool(health), 'restock_recs': bool(recs), 'event_history': bool(hist)},
+        'thresholds': {'urgent_doc': URGENT_DOC, 'watch_doc': WATCH_DOC, 'target_weeks': TARGET_WEEKS, 'lead_time_days': LEAD_TIME_DAYS,
+                       'events': EVENTS, 'events_in_window': [e['key'] for e in live_events], 'lift_brand_median': brand_median,
+                       'as_of': as_of.isoformat()},
         'totals': totals, 'items': flat, 'accounts': accounts_out, 'order': ORDER, 'selling': selling,
         'cases': cases, 'case_totals': case_totals,
         'brands': BRANDS, 'pools': {pl: [ACC[c]['market'] for c in mem] for pl, mem in pool_members.items() if len(mem) > 1},

@@ -121,7 +121,7 @@ def main():
         for k, rows in by.items():
             out.append(f'**{k}**')
             for i in rows:
-                q = f"{i['restock_rec']} units (Amazon rec)" if i.get('restock_rec') is not None else (f"~{i['restock_est']} units (estimate, lead time + 30d cover)" if i.get('restock_est') is not None else 'qty TBD')
+                q = f"{i['restock_rec']} units (Amazon rec)" if i.get('restock_rec') is not None else (f"~{i['restock_est']} units (estimate, 8 weeks + lead time" + (f", event lift x{i['lift']:.2f}" if (i.get('lift') or 1) > 1 else '') + ")" if i.get('restock_est') is not None else 'qty TBD')
                 sku = i['sku'] or i['asin']
                 out.append(f"- {sku} · {i['name']} ({i['asin']}) · available {i['available']} · inbound {i['inbound'] if i['inbound'] is not None else '?'} · {('%.1f' % i['doc']) if i.get('doc') is not None else '?'} days of cover · send {q}")
         if skipped:
@@ -135,7 +135,7 @@ def main():
     out.append('## Resolved since last note')
     out += [f"- {i['label']} · {i['name']}" for i in resolved] or ['- None.']
     out.append('')
-    out.append('_Generated from the NIC Account Health Tracker. Days of cover use Helium10 stock and 30-day velocity; EU markets share one FBA pool._')
+    out.append('_Generated from the NIC Account Health Tracker. Target: 8 weeks of stock at Amazon on 30-day velocity (FBA + FBM units), plus event lift ahead of Prime Big Deal Days, Black Friday and Cyber Monday. Days of cover use Helium10 stock; EU markets share one FBA pool._')
 
     os.makedirs(os.path.join(ROOT, 'notes'), exist_ok=True)
     path = os.path.join(ROOT, 'notes', f'{week}-client-note.md')

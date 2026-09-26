@@ -25,6 +25,12 @@ If total_count > 500, call page 2 and save it as `data/raw/$WEEK/h10_inventory_2
 Call `mcp__Helium10__get_sales_velocity` with `fulfillment_type: "FBA", granularity: "month", page_size: 500, current_date_from: <30 days ago>, current_date_to: <yesterday>` (both YYYY-MM-DD; if the window crosses a month boundary the row carries two buckets, normalize sums them).
 Copy the tool-results file verbatim to `data/raw/$WEEK/h10_velocity.json`. This is the velocity source for Legacy, Prismatic and SA; Scale Insights overrides it where present (Cerakote Auto).
 
+## 1c. Helium10 velocity, FBA + FBM (primary velocity source for the 8-week rule)
+Call `mcp__Helium10__get_sales_velocity` with the same five seller_ids, NO fulfillment_type (returns FBA and FBM rows), `granularity: "month", page_size: 1000, current_date_from: <30 days before yesterday>, current_date_to: <yesterday>` (30 complete days). Copy the tool-results file verbatim to `data/raw/$WEEK/h10_velocity_all.json`. normalize sums FBA + FBM units per ASIN on any ASIN with an FBA SKU (FBM-only ASINs are ignored) and adds every ASIN with FBA sales but no inventory row as 0 available / 0 inbound.
+
+## 1d. Event history for tent-pole lift (only when an event starts in the next 56 days)
+Events live in `EVENTS` in scripts/normalize.py (2026: Prime Big Deal Days 10-06, Black Friday 11-27, Cyber Monday 11-30). For each event inside the window, call `get_sales_velocity` with seller_ids AOXMQPMOL1F1Y, A3BMUMIXNXIR6G, A22UNGVVL3ZGDF, no fulfillment_type, `granularity: "week"`, covering last year's event week (Mon-Sun) plus the 3 weeks before it. Write `data/raw/$WEEK/event_history.csv`, header `event,market,asin,sku,fulfillment,wk_<d1>,wk_<d2>,wk_<d3>,wk_<event week>`, event key = pbdd | bf | cm, one row per SKU row returned (zero rows may be dropped). 2025 dates: PBDD week 2025-10-06 (base 09-15, 09-22, 09-29); BF/CM week 2025-11-24 and 2025-12-01. H10 has no 2025 history for UK/EU/AU, so those markets take the CC brand median. If this step is skipped, lift = 1.0.
+
 ## 2. Scale Insights velocity (one call per market)
 Scale Insights is connected to the Cerakote Auto account only. Call `mcp__Scale_Insights__get_inventory_data` with `country: <CC>, count: 100` for CC in
 US, CA, UK, DE, FR, IT, ES, NL, AU. (AE and SA return no data as of 2026-09-01; try them once, skip if empty. Page 2 if has_next_page.)
@@ -106,7 +112,7 @@ If SEND=yes: create a Gmail draft with `mcp__Gmail__create_draft`, to barcus@hig
 If SEND=no: skip the draft; the note is still committed for the record.
 
 ## 7. Summary message to Barcus (SendUserMessage)
-Lead line: "INTL $WEEK: N critical, N urgent, N watch (Δ vs last week)". Then one line per support case needing attention (account, case ID, subject, age). Then one line per CRITICAL and URGENT stock item: market, SKU, name, available, inbound, days of cover, ads 30d, restock qty (Amazon rec or est.). Then account items. Then `Client note: SEND=yes (reason), Gmail draft created` or `Client note: SEND=no (reason)`. Then one line for anything that failed (a market with no SI data, Gmail empty, push failed, Seller Central session expired). Link: https://high-shot.github.io/INTL/
+Lead line: "INTL $WEEK: N critical, N urgent, N watch (Δ vs last week)". Then one line per support case needing attention (account, case ID, subject, age). Then one line per CRITICAL and URGENT stock item: market, SKU, name, available, inbound, days of cover, ads 30d, restock qty (Amazon rec or est., with event lift when above 1.0). With the 8-week rule the lists are long; group CRITICAL by account and list URGENT only where est. >= 10 units. Then account items. Then `Client note: SEND=yes (reason), Gmail draft created` or `Client note: SEND=no (reason)`. Then one line for anything that failed (a market with no SI data, Gmail empty, push failed, Seller Central session expired). Link: https://high-shot.github.io/INTL/
 No other prose.
 
 ## Rules
@@ -116,7 +122,7 @@ No other prose.
 - Do not touch ads, listings, or shipments. This is read-only monitoring.
 
 ## Midweek check (Thursday 06:00 CT, separate scheduled task)
-Only steps 1 and 2 for the intl markets, no build, no push. Message Barcus only if any ASIN in CA/UK/DE/FR/IT/ES/NL/AE/SA/AU is at available 0 with inbound 0 and units30 > 0, or under 7 days of cover with inbound 0. If nothing qualifies, send nothing.
+Only steps 1 and 2 for the intl markets, no build, no push. Message Barcus only if any ASIN in CA/UK/DE/FR/IT/ES/NL/AE/SA/AU is at available 0 with inbound 0 and units30 > 0, or under its lead time of cover (CA 14d, others 45d) with inbound 0. If nothing qualifies, send nothing.
 
 ## 4b. Account health from Seller Central (built-in browser, weekly)
 The Claude built-in browser keeps Seller Central sessions. Three logins cover everything: sellercentral.amazon.com (CERAKOTE NA, NIC-Cerakote, PRISMATIC POWDERS), sellercentral-europe.amazon.com (CERAKOTE EU: UK, DE, FR, IT, ES, NL, AE, SA), sellercentral.amazon.com.au (Cerakote AU). If a page shows a sign-in form, stop and ask Barcus to sign in; never type credentials.

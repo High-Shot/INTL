@@ -201,7 +201,7 @@ footer{padding:12px 32px 28px;text-align:center;font-family:var(--font-mono);fon
     <div style="overflow-x:auto"><table><thead><tr>
       <th>Sev</th><th>Account</th><th>Product</th><th>Why</th><th class="num">Avail</th><th class="num">Inbound</th><th class="num">Days</th><th class="num">Vel/day</th><th class="num">Ads 30d</th><th class="num">Lost rev</th><th class="num">Restock</th><th>Owner</th><th>Action</th><th>Open</th>
     </tr></thead><tbody id="act-body"></tbody></table></div>
-    <div class="note">Only open items appear here; healthy stock is not listed. Severity: out of stock + nothing inbound + sales in last 30d = critical; out of stock + nothing inbound + no sales = urgent. Lost rev is a rough estimate = the item's best observed daily sales rate (highest 30d sales / 30 across tracked weeks) x days out of stock. Days OOS counted in whole weeks from snapshot history, so it steps up 7 days at a time. Blank = no sales on record. Restock: green = Amazon FBA recommendation (restock_recs.csv). Grey "est." = velocity x (lead time + 30 days) minus available and inbound; lead time assumed 14d NA, 45d UK/EU/AE/SA/AU. Owner "client" = NIC creates the shipment.</div>
+    <div class="note">Only open items appear here; healthy stock is not listed. Severity (8-week rule): out of stock + nothing inbound + sales in last 30d = critical; days of cover under lead time = critical; under 56 days (8 weeks) = urgent; 56 to 69 days = watch; 70+ healthy. Days of cover = FBA available / 30-day velocity (FBA + FBM units). Lost rev is a rough estimate = the item's best observed daily sales rate (highest 30d sales / 30 across tracked weeks) x days out of stock. Days OOS counted in whole weeks from snapshot history, so it steps up 7 days at a time. Blank = no sales on record. Restock: green = Amazon FBA recommendation (restock_recs.csv). Grey "est." = velocity x (56 days + lead time) x event lift, minus available and inbound, rounded up; lead time 5d US, 14d CA, 45d UK/EU/AE/SA/AU. Event lift applies when Prime Big Deal Days, Black Friday or Cyber Monday falls inside the next 56 days (hover the estimate for the lift). Owner "client" = NIC creates the shipment.</div>
   </div>
 
   <div class="panel">
@@ -316,7 +316,7 @@ footer{padding:12px 32px 28px;text-align:center;font-family:var(--font-mono);fon
     if(p)p.items.forEach(function(it){if(inBrand(it)&&prv[it.severity]!==undefined)prv[it.severity]++});
     function delta(k){if(!p)return '<span class="trend-delta neutral">—</span>';var d=cur_[k]-prv[k];return '<span class="trend-delta '+(d>0?'up-bad':d<0?'down-good':'neutral')+'">'+(d>0?'+':'')+d+'</span>'}
     $('trend').innerHTML=['CRITICAL','URGENT','WATCH'].map(function(k){return '<div class="trend-item" data-sev="'+k+'"><span class="trend-lbl">'+k+'</span><span class="trend-v c-'+k+'">'+cur_[k]+'</span>'+delta(k)+'</div>'}).join('<div class="trend-div"></div>')
-      +'<div class="trend-div"></div><div class="trend-item"><span class="trend-lbl">Rules</span><span class="trend-v" style="font-size:10px;color:var(--muted);font-weight:400">OOS + 0 inbound, selling = critical · OOS + 0 inbound, not selling = urgent · &lt;'+s.thresholds.urgent_doc+'d cover = urgent · &lt;'+s.thresholds.watch_doc+'d = watch</span></div>';
+      +'<div class="trend-div"></div><div class="trend-item"><span class="trend-lbl">Rules</span><span class="trend-v" style="font-size:10px;color:var(--muted);font-weight:400">OOS + 0 inbound, selling = critical · OOS + 0 inbound, not selling = urgent · '+(s.thresholds.target_weeks?'&lt;lead time cover = critical · ':'')+'&lt;'+s.thresholds.urgent_doc+'d cover = urgent · &lt;'+s.thresholds.watch_doc+'d = watch'+(s.thresholds.target_weeks?' · target '+s.thresholds.target_weeks+' weeks':'')+'</span></div>';
     Array.prototype.forEach.call($('trend').querySelectorAll('[data-sev]'),function(el){el.onclick=function(){sevFilter=el.dataset.sev;typeFilter=null;newOnly=false;renderActions()}});
   }
 
@@ -356,7 +356,7 @@ footer{padding:12px 32px 28px;text-align:center;font-family:var(--font-mono);fon
       var dOOS=daysOOS(it), lost=lostRev(it);
       var lostCell=lost!=null?'<span class="lost-amt">'+curFor(it)+fmt(Math.round(lost))+'</span><div class="age">'+dOOS+'d OOS</div>':(it.type==='stock'&&(it.available||0)<=0?'<span class="sub">—</span>':'');
       var lab=esc(it.label)+(it.pool_markets?' <span class="sub">'+it.pool_markets.join(' ')+'</span>':'');
-      var restock=it.restock_rec!=null?'<span class="rec">'+fmt(it.restock_rec)+'</span>':(it.restock_est!=null?'<span class="est">est. '+fmt(it.restock_est)+'</span>':'—');
+      var restock=it.restock_rec!=null?'<span class="rec">'+fmt(it.restock_rec)+'</span>':(it.restock_est!=null?'<span class="est"'+(it.lift!=null?' title="8 weeks + '+it.lead_time_days+'d lead, lift x'+it.lift+'"':'')+'>est. '+fmt(it.restock_est)+(it.lift>1?' <span class="sub">x'+it.lift.toFixed(2)+'</span>':'')+'</span>':'—');
       var opened=it.opened?'<div class="age">opened '+esc(it.opened)+(it.status?' · '+esc(it.status):'')+'</div>':'';
       if(it.cases&&it.cases.length)opened+='<div class="age">cases: '+it.cases.map(function(c){var cs=(S[idx].cases||[]).filter(function(x){return x.id===c})[0];return cs?'<a href="'+cs.url+'" target="_blank">'+c+'</a>':c}).join(', ')+'</div>';
       if(it.type==='case'&&it.url)opened+='<div class="age"><a href="'+it.url+'" target="_blank">open case &#8599;</a></div>';
@@ -457,7 +457,7 @@ footer{padding:12px 32px 28px;text-align:center;font-family:var(--font-mono);fon
     var items=s.items.filter(function(it){return it.type==='stock'&&it.severity!=='WATCH'&&inBrand(it)&&inAcct(it)});
     var by={}; items.forEach(function(it){(by[it.label]=by[it.label]||[]).push(it)});
     Object.keys(by).forEach(function(k){var first=by[k][0];lines.push(k+(first.pool_markets?' (pooled: '+first.pool_markets.join(' ')+')':''));
-      by[k].forEach(function(it){var q=it.restock_rec!=null?it.restock_rec+' units (Amazon rec)':(it.restock_est!=null?'~'+it.restock_est+' units (estimate: lead time + 30d cover)':'qty TBD');
+      by[k].forEach(function(it){var q=it.restock_rec!=null?it.restock_rec+' units (Amazon rec)':(it.restock_est!=null?'~'+it.restock_est+' units (estimate: '+(it.lift!=null?'8 weeks + lead time'+(it.lift>1?', event lift x'+it.lift.toFixed(2):''):'lead time + 30d cover')+')':'qty TBD');
         lines.push('  '+it.severity+' · '+it.sku+' · '+it.asin+' · '+it.name+' · avail '+it.available+' · inbound '+(it.inbound==null?'?':it.inbound)+' · '+q)});
       lines.push('')});
     navigator.clipboard.writeText(lines.join('\n')).then(function(){toast('Restock list copied ('+items.length+' items)')},function(){toast('Copy failed')});
