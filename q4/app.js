@@ -79,7 +79,10 @@
       copy([cols.join(',')].concat(rs.map(function(r){return cols.map(function(c){var v=r[c];v=v==null?'':String(v);return /[",]/.test(v)?'"'+v.replace(/"/g,'""')+'"':v}).join(',')})).join('\n'),'CSV copied')};
     var d=snap();$('method').innerHTML='Demand = base velocity (last '+d.rules.base_days+' in-stock days, FBA + FBM) x last-year seasonal index (same week in 2025 vs Sep 1-28 2025 average, clipped '+d.rules.index_clip[0]+'-'+d.rules.index_clip[1]+'x). Last-year weeks under 30% of the September base (last year\'s stockouts, or no data) fall through to the next curve. No 2025 history outside North America, so UK, EU, SA and AU use the same ASIN\'s US curve. Basis per row: own LY, US LY, brand LY, or flat. PBDD / BF / Dec columns = demand multiplier that week. Floor = 56 days of forecast demand, Target = 67 days. Ship now = forecast demand over lead time + 67 days, minus available and inbound. FBA capacity limits are ignored by design.';}
 
-  function render(){header();tabs();kpis();cards();lost();ship();prods()}
+  function files(){var d=snap(),f=d.files;if(!f){$('files-panel').style.display='none';return}$('files-panel').style.display='';
+    var base='files/'+d.week+'/';$('review-link').href=base+f.review;$('review-link').setAttribute('download','');
+    $('files-body').innerHTML=f.files.map(function(x){return '<tr><td><a href="'+base+x.file+'" download>'+esc(x.file)+'</a></td><td class="sub">'+esc(x.where)+'</td><td class="num">'+fmt(x.skus)+'</td><td class="num">'+fmt(x.units)+'</td><td class="num" style="color:'+(x.no_case_pack?'var(--amber)':'var(--dim)')+'">'+fmt(x.no_case_pack)+'</td></tr>'}).join('')}
+  function render(){header();tabs();kpis();cards();lost();files();ship();prods()}
   $('wk-select').onchange=function(){idx=+this.value;render()};
   $('wk-prev').onclick=function(){if(idx>0){idx--;render()}};
   $('wk-next').onclick=function(){if(idx<S.length-1){idx++;render()}};

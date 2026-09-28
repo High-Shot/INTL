@@ -21,6 +21,15 @@
     <div class="note">Running total since the product went out: base velocity x days out, minus any units still sold (FBM). Out-since = day after FBA sales collapsed (under 10% of base) or last FBA sale, never before the last tracker read that saw stock. Prices = Helium10 90-day average selling price, converted to USD.</div>
   </div>
 
+  <div class="panel" id="files-panel">
+    <div class="panel-header">
+      <div class="panel-title">Shipment upload files <span class="sub" style="text-transform:none;letter-spacing:0">Amazon Send to Amazon template, one per destination, quantities = Ship now</span></div>
+      <a class="btn" id="review-link" href="#">Download review workbook</a>
+    </div>
+    <div style="overflow-x:auto"><table><thead><tr><th>File</th><th>Create the workflow in</th><th class="num">SKUs</th><th class="num">Units</th><th class="num">Missing case pack</th></tr></thead><tbody id="files-body"></tbody></table></div>
+    <div class="note">Send to Amazon &gt; Choose inventory to send &gt; File upload. Check ship-from and marketplace first. Quantities round up to full boxes where the case pack is known; the rest ship as individual units until NIC adds units per box (data/q4_ref/casepacks.csv). Box size and weight are left for NIC. Listings on hold are left out.</div>
+  </div>
+
   <div class="panel">
     <div class="panel-header">
       <div class="panel-title">Ship-by schedule, Q4 <span class="sub" style="text-transform:none;letter-spacing:0">units that must leave NIC by each date to hold the 67-day target through Dec 31</span></div>

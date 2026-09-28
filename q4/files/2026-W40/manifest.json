@@ -1,0 +1,79 @@
+{
+ "week": "2026-W40",
+ "as_of": "2026-09-28",
+ "review": "Q4_ship_plan_2026-W40.xlsx",
+ "files": [
+  {
+   "account": "CC_US",
+   "label": "US AUTO",
+   "file": "STA_US_AUTO_2026-W40.xlsx",
+   "where": "Cerakote Auto, Amazon.com",
+   "skus": 34,
+   "units": 101369,
+   "no_case_pack": 14
+  },
+  {
+   "account": "CC_CA",
+   "label": "CA AUTO",
+   "file": "STA_CA_AUTO_2026-W40.xlsx",
+   "where": "Cerakote Auto, Amazon.ca",
+   "skus": 8,
+   "units": 7292,
+   "no_case_pack": 8
+  },
+  {
+   "account": "CC_UK",
+   "label": "UK AUTO",
+   "file": "STA_UK_AUTO_2026-W40.xlsx",
+   "where": "Cerakote Auto, Amazon.co.uk",
+   "skus": 9,
+   "units": 18450,
+   "no_case_pack": 9
+  },
+  {
+   "account": "CC_EU",
+   "label": "EU AUTO (pooled)",
+   "file": "STA_EU_AUTO_2026-W40.xlsx",
+   "where": "Cerakote Auto EU, the marketplace you normally inbound EU pool stock to",
+   "skus": 8,
+   "units": 7984,
+   "no_case_pack": 8
+  },
+  {
+   "account": "CC_SA",
+   "label": "SA AUTO",
+   "file": "STA_SA_AUTO_2026-W40.xlsx",
+   "where": "Cerakote Auto, Amazon.sa",
+   "skus": 6,
+   "units": 797,
+   "no_case_pack": 6
+  },
+  {
+   "account": "CC_AU",
+   "label": "AU AUTO",
+   "file": "STA_AU_AUTO_2026-W40.xlsx",
+   "where": "Cerakote Auto, Amazon.com.au",
+   "skus": 8,
+   "units": 3640,
+   "no_case_pack": 8
+  },
+  {
+   "account": "CL_US",
+   "label": "US LEGACY",
+   "file": "STA_US_LEGACY_2026-W40.xlsx",
+   "where": "Cerakote Legacy, Amazon.com",
+   "skus": 39,
+   "units": 1258,
+   "no_case_pack": 39
+  },
+  {
+   "account": "PP_US",
+   "label": "US PRIS",
+   "file": "STA_US_PRIS_2026-W40.xlsx",
+   "where": "Prismatic Powders, Amazon.com",
+   "skus": 43,
+   "units": 2446,
+   "no_case_pack": 43
+  }
+ ]
+}

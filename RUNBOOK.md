@@ -125,9 +125,10 @@ Separate page, same repo, same run. Rules live in the header of scripts/q4.py (8
 8b. Run AFTER normalize.py (q4.py reads the new tracker snapshot for out-of-stock dating and listing holds):
 ```
 python3 scripts/q4.py $WEEK --as-of <today YYYY-MM-DD>
+python3 scripts/q4_shipments.py $WEEK     # Send to Amazon upload files + review workbook -> q4/files/$WEEK/
 python3 scripts/build_q4.py
 ```
-8c. Publish with the tracker commit: add q4/index.html, data/q4/$WEEK.json. `data/raw/*/q4/` is gitignored (4 MB a week); keep it on the Mac only.
+8c. Publish with the tracker commit: add q4/index.html, data/q4/$WEEK.json, q4/files/$WEEK/. Case packs live in data/q4_ref/casepacks.csv (account,sku,units_per_box,source); add rows as NIC supplies them. `data/raw/*/q4/` is gitignored (4 MB a week); keep it on the Mac only.
 8d. Summary line to Barcus: out of stock count, lost sales to date (USD), ship-now units, and any new ship-by date inside 7 days for UK/EU/SA/AU (45-day lead).
 
 ## Rules

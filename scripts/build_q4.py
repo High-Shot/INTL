@@ -30,7 +30,12 @@ def main():
     snaps = []
     for p in sorted(glob.glob(os.path.join(ROOT, 'data', 'q4', '*.json')))[-26:]:
         with open(p) as f:
-            snaps.append(json.load(f))
+            s_ = json.load(f)
+        mf = os.path.join(ROOT, 'q4', 'files', s_['week'], 'manifest.json')
+        if os.path.exists(mf):
+            with open(mf) as f:
+                s_['files'] = json.load(f)
+        snaps.append(s_)
     data_js = 'var Q4 = ' + json.dumps(snaps, ensure_ascii=False, separators=(',', ':')).replace('</', '<\\/') + ';'
     html = head + '\n' + body + tail + '<div class="toast" id="toast"></div>\n<script>\n' + data_js + '\n</script>\n<script>\n' + app + '\n</script>\n</body>\n</html>\n'
     out = os.path.join(ROOT, 'q4', 'index.html')

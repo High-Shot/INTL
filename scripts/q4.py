@@ -311,6 +311,11 @@ def main():
     pooled = {}
     for (pl, asin), its in groups.items():
         rep_ = [x for x in its if x['has_inv']]
+        if not rep_ and len(its) > 1:   # out everywhere, no stock row in any member: one shared pool at zero
+            rep_ = [x for x in its if (x['code'], asin) not in blocked]
+            if len(rep_) > 1:
+                pooled[(pl, asin)] = rep_
+            continue
         if len(rep_) > 1 and len({x['available'] for x in rep_}) == 1:
             extra = [x for x in its if not x['has_inv'] and (x['code'], asin) not in blocked]
             for x in extra:
