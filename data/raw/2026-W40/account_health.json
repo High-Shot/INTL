@@ -1,0 +1,337 @@
+{
+ "CC_US": {
+  "as_of": "2026-09-10",
+  "ahr_status": "Healthy",
+  "ahr_score": 1000,
+  "odr": "0.01% (20 of 165,782 FBA orders, 60d)",
+  "policy_violations": 0,
+  "atoz_claims": 0,
+  "listing_issues": false,
+  "notes": "Account Health Assurance enrolled. Payment Policy banner: a portion of funds held due to open A-to-z claims or pending chargebacks. Seller-fulfilled: LSR 0%, cancel 0%, VTR 99.27%, OTDR 93.94% (14d, down from 96.25%). No new performance notifications since 10 Aug.",
+  "notifications": [
+   {
+    "date": "2026-09-08",
+    "type": "restricted_product",
+    "asin": "B0H51RDY69",
+    "subject": "Hazmat review could not classify Pro Ceramic Aircraft Coating Kit: Amazon documentation request (case 21947520351). Units unfulfillable until a compliant SDS (16 sections, GHS/CLP, <5 yrs old, title and brand matching the listing) is attached to the case. Reminder 10 Sep: no SDS within 14 business days of 8 Sep may lead to disposal of FC stock at seller expense.",
+    "severity": "CRITICAL",
+    "status": "open, submission required (reminder sent 10 Sep)",
+    "action": "Attach the current SDS for the 60 ml aircraft kit to case 21947520351 (SDS must match listing title and brand)",
+    "owner": "client"
+   },
+   {
+    "date": "2026-08-10",
+    "type": "other",
+    "asin": null,
+    "subject": "Formal Notice: certify business information within 20 days (INFORM Act); 'Certification complete' same day",
+    "severity": "INFO",
+    "status": "resolved",
+    "action": "None",
+    "owner": "barcus"
+   },
+   {
+    "date": "2026-05-31",
+    "type": "other",
+    "asin": null,
+    "subject": "Your Amazon.com seller account (notice, content not read)",
+    "severity": "INFO",
+    "status": "unknown",
+    "action": "Open notification",
+    "owner": "barcus"
+   },
+   {
+    "date": "2026-03-27",
+    "type": "other",
+    "asin": null,
+    "subject": "Address your On-time delivery rate (seller-fulfilled)",
+    "severity": "INFO",
+    "status": "resolved (OTDR 96.25% now)",
+    "action": "None",
+    "owner": "barcus"
+   }
+  ]
+ },
+ "CC_DE": {
+  "as_of": "2026-09-10",
+  "ahr_status": "Healthy",
+  "ahr_score": 534,
+  "odr": "0.03% (2 of 6,255 FBA orders, 60d)",
+  "policy_violations": 3,
+  "atoz_claims": 0,
+  "listing_issues": true,
+  "notes": "Account Health Assurance NOT enrolled (AHR 534). IDR 0% (0 of 4, 7d). Priority actions: European VAT registration (10 Nov), Product Condition Complaint Defective: high performing listing removed, EUR 232,626.36 at-risk sales, PAST DUE. Policy page status for B084RQKLV8: 'Our evaluation is complete' (2 appeals rejected). Seller support case 13225682772 opened 31 Aug asking what is needed for reinstatement; Amazon 6 Sep: 'researching with the responsible team'.",
+  "notifications": [
+   {
+    "date": "2026-08-12",
+    "type": "listing_removed",
+    "asin": "B084RQKLV8",
+    "subject": "Product Condition Complaint, Defective: Headlight Restoration Kit listing removed on Amazon.de. EUR 233,701.79 at-risk sales, PAST DUE. AHR impact Low. Appeal rejected 17 Aug and again 27 Aug ('preventative action does not address the complaints'). Listing stays deactivated; AHR impact runs 180 days from posting.",
+    "severity": "CRITICAL",
+    "status": "open, 2 appeals rejected; policy page shows evaluation complete; support case 13225682772 in progress (Amazon researching, 6 Sep)",
+    "action": "Resubmit with a preventative action that maps to the VOC complaint reasons (see project notes on the DE headlight appeal)",
+    "owner": "barcus"
+   },
+   {
+    "date": "2026-08-23",
+    "type": "account_at_risk",
+    "asin": null,
+    "subject": "Invoice Defect Rate exceeded 5% (Amazon Business orders without invoice within 1 business day). 5th warning since April. Fix: activate VAT Calculation Service (automated invoices) or declare VAT exemption.",
+    "severity": "URGENT",
+    "status": "recurring, currently 0% (0 of 7, 7d)",
+    "action": "Client: enable VAT Calculation Service or VAT-exemption declaration so invoices auto-generate",
+    "owner": "client"
+   },
+   {
+    "date": "2026-08-07",
+    "type": "other",
+    "asin": null,
+    "subject": "Germany FBA Prime eligibility: cancellation rate (standard-size, units) first warning, performance period FAIL. Third infraction revokes Prime on the tier.",
+    "severity": "WATCH",
+    "status": "first warning",
+    "action": "Download the FBA Prime Eligibility report (reportcentral/prime_eligibility) and check cancellation cause",
+    "owner": "barcus"
+   },
+   {
+    "date": "2026-04-30",
+    "type": "compliance_documents",
+    "asin": null,
+    "subject": "Reactivate your EU listings, GPSR compliance required (18 Apr and 30 Apr notices).",
+    "severity": "WATCH",
+    "status": "unknown, partly resolved (10 Jun ASIN reinstated x2)",
+    "action": "Confirm no EU listings remain GPSR-deactivated",
+    "owner": "client"
+   },
+   {
+    "date": "2026-03-11",
+    "type": "listing_removed",
+    "asin": null,
+    "subject": "Listings deactivated on Amazon.de due to missing packaging registration (LUCID), notices 20 Feb, 7 Mar, 11 Mar.",
+    "severity": "WATCH",
+    "status": "unknown",
+    "action": "Confirm LUCID registration number is on file and listings reactivated",
+    "owner": "client"
+   }
+  ]
+ },
+ "CC_UK": {
+  "as_of": "2026-09-10",
+  "ahr_status": "Healthy",
+  "ahr_score": 1000,
+  "odr": "0.01% (2 of 14,988 FBA orders, 60d)",
+  "policy_violations": 3,
+  "atoz_claims": 0,
+  "listing_issues": true,
+  "notes": "Account Health Assurance enrolled. IDR 0% (0 of 24, 7d). Priority actions: European VAT registration (address by 10 Nov 2026, 61 days), IEN required for UK shipments PAST DUE. Suspected IP violations 1, Regulatory compliance 2. Notifications 27 and 30 Aug: 'Address trademark violation to restore listings'.",
+  "notifications": [
+   {
+    "date": "2026-08-28",
+    "type": "ip_complaint",
+    "asin": "B0H51RDY69",
+    "subject": "Trademark misuse (Boeing): Pro Ceramic Aircraft Coating Kit listing removed on Amazon.co.uk. AHR impact none. Submission required.",
+    "severity": "CRITICAL",
+    "status": "open, submission required (confirmed 10 Sep)",
+    "action": "Remove 'Boeing BSS7432 Certified' claim from title/bullets/images or provide authorisation, then submit",
+    "owner": "barcus"
+   },
+   {
+    "date": "2026-06-16",
+    "type": "other",
+    "asin": null,
+    "subject": "IEN (Import Entry Number) required for UK shipments received. PAST DUE. Inventory restrictions on the account; missing import details can block new UK shipments.",
+    "severity": "URGENT",
+    "status": "open, past due since June (confirmed 10 Sep)",
+    "action": "Client: add Import Entry Numbers to the flagged shipments in the UK Shipping Queue",
+    "owner": "client"
+   }
+  ]
+ },
+ "CC_FR": {
+  "as_of": "2026-09-10",
+  "ahr_status": "Healthy",
+  "ahr_score": 300,
+  "odr": "0% (0 of 1,830 FBA orders, 60d)",
+  "policy_violations": 2,
+  "atoz_claims": 0,
+  "listing_issues": true,
+  "notes": "IDR 0% (0 of 12, 7d). 2 regulatory compliance items (VAT registration warning, GPSR clay mitt), both tracked under CC_EU.",
+  "notifications": []
+ },
+ "CC_IT": {
+  "as_of": "2026-09-10",
+  "ahr_status": "Healthy",
+  "ahr_score": 240,
+  "odr": "0% (0 of 663 FBA orders, 60d)",
+  "policy_violations": 3,
+  "atoz_claims": 0,
+  "listing_issues": true,
+  "notes": "AHR 240, 40 points above the 'at risk' line. GPSR Responsible Person (B0C4ZV53DR) still under review.",
+  "notifications": [
+   {
+    "date": null,
+    "type": "compliance_documents",
+    "asin": "B0C4ZV53DR",
+    "subject": "GPSR: Responsible Person contact details, submission under review.",
+    "severity": "WATCH",
+    "status": "under review",
+    "action": "None until Amazon responds",
+    "owner": "none"
+   }
+  ]
+ },
+ "CC_ES": {
+  "as_of": "2026-09-10",
+  "ahr_status": "Healthy",
+  "ahr_score": 268,
+  "odr": "0.08% (1 of 1,329 FBA orders, 60d)",
+  "policy_violations": 3,
+  "atoz_claims": 0,
+  "listing_issues": true,
+  "notes": "Priority action: Spain Packaging EPR, high performing listing at risk, EUR 19,380.09 at-risk sales, PAST DUE.",
+  "notifications": [
+   {
+    "date": null,
+    "type": "compliance_documents",
+    "asin": "B0H1NM7467",
+    "subject": "EPR: Spain Packaging registration required, submission required. Listing at risk, EUR 19,469.68 at-risk sales, PAST DUE.",
+    "severity": "CRITICAL",
+    "status": "open, past due (confirmed 10 Sep; at-risk sales EUR 19,380.09)",
+    "action": "Client: provide Spain packaging EPR registration number in Manage Your Compliance",
+    "owner": "client"
+   }
+  ]
+ },
+ "CC_NL": {
+  "as_of": "2026-09-10",
+  "ahr_status": "Healthy",
+  "ahr_score": 232,
+  "odr": "0% (0 of 598 FBA orders, 60d)",
+  "policy_violations": 2,
+  "atoz_claims": 0,
+  "listing_issues": true,
+  "notes": "2 regulatory compliance items (VAT registration, GPSR clay mitt), tracked under CC_EU.",
+  "notifications": []
+ },
+ "CC_AE": {
+  "as_of": "2026-09-10",
+  "ahr_status": "Healthy",
+  "ahr_score": 200,
+  "odr": "N/A (no orders in 60d)",
+  "policy_violations": 0,
+  "atoz_claims": 0,
+  "listing_issues": false,
+  "notes": "Clean. No orders yet (launching).",
+  "notifications": []
+ },
+ "CC_SA": {
+  "as_of": "2026-09-10",
+  "ahr_status": "Healthy",
+  "ahr_score": 204,
+  "odr": "0% (0 of 315 FBA orders, 60d)",
+  "policy_violations": 0,
+  "atoz_claims": 0,
+  "listing_issues": false,
+  "notes": "Clean.",
+  "notifications": []
+ },
+ "CC_CA": {
+  "as_of": "2026-09-10",
+  "ahr_status": "Healthy",
+  "ahr_score": 1000,
+  "odr": "0.06% (11 of 19,499 FBA orders, 60d)",
+  "policy_violations": 1,
+  "atoz_claims": 0,
+  "listing_issues": true,
+  "notes": "One Food and Product Safety issue open since April (CCCR), submission still required. Seller-fulfilled LSR 0%.",
+  "notifications": [
+   {
+    "date": "2026-04-22",
+    "type": "listing_removed",
+    "asin": "B0DKVZRX69",
+    "subject": "Consumer Chemicals and Containers (CCCR) safety issue: Rapid Ceramic Interior Detailer listing removed on Amazon.ca, submission required. Open 4+ months; ASIN has no CA FBA offer in H10.",
+    "severity": "CRITICAL",
+    "status": "open since 2026-04-22, submission required (confirmed 10 Sep)",
+    "action": "Submit CCCR-compliant label/SDS evidence or bilingual hazard labelling in Manage Your Compliance",
+    "owner": "client"
+   }
+  ]
+ },
+ "CL_US": {
+  "as_of": "2026-09-10",
+  "ahr_status": "Healthy",
+  "ahr_score": 316,
+  "odr": "0% FBA (0 of 519), 0.08% MFN (1 of 1,250), 60d",
+  "policy_violations": 0,
+  "atoz_claims": 0,
+  "listing_issues": false,
+  "notes": "Policy compliance clean. Seller-fulfilled Late Shipment Rate 4.11% (23 of 560 orders, 30d) is ABOVE the 4% target; VTR 100%, OTDR 99.47%, cancel 0%. Non-NA marketplaces not monitored (H10 links NA only).",
+  "notifications": [
+   {
+    "date": "2026-09-10",
+    "type": "account_at_risk",
+    "asin": null,
+    "subject": "Seller-fulfilled Late Shipment Rate 4.11% (23 of 560 orders, 30d) above the 4% target on the Legacy account. Warning territory for MFN shipping eligibility.",
+    "severity": "URGENT",
+    "status": "open, metric above target",
+    "action": "Confirm MFN orders ship by the expected ship date; check handling-time settings on the slow SKUs",
+    "owner": "client"
+   },
+   {
+    "date": "2026-09-03",
+    "type": "restricted_product",
+    "asin": "B0DVPJNVN9",
+    "subject": "Listing not buyable / reserved inventory (case 21878431931): Product Compliance is reviewing B0DVPJNVN9 as possible hazmat and needs 6-sided product images plus an SDS; B0CJRVPZ7K reserved-inventory issue escalated internally. Amazon reminder 10 Sep: still waiting on the requested info.",
+    "severity": "URGENT",
+    "status": "open, Amazon waiting on seller (reminder 10 Sep)",
+    "action": "Reply to case 21878431931 with 6-sided images and the SDS for B0DVPJNVN9",
+    "owner": "client"
+   }
+  ]
+ },
+ "PP_US": {
+  "as_of": "2026-09-10",
+  "ahr_status": "Healthy",
+  "ahr_score": 326,
+  "odr": "0% FBA (0 of 1,110), 0% MFN (0 of 741), 60d",
+  "policy_violations": 0,
+  "atoz_claims": 0,
+  "listing_issues": false,
+  "notes": "Clean. LSR 0.27%, VTR 100%, OTDR 100%. No open support cases.",
+  "notifications": []
+ },
+ "CC_EU": {
+  "as_of": "2026-09-10",
+  "notifications": [
+   {
+    "date": "2026-08-12",
+    "type": "other",
+    "asin": null,
+    "subject": "European VAT Registration Requirements (EU account-wide, also shown on UK): warning sent 12 Aug, address by 10 Nov 2026. Companion notices: provide VAT registration details within 90/75 days to avoid inventory and FBA restrictions on Amazon.fr.",
+    "severity": "URGENT",
+    "status": "open, due 2026-11-10 (61 days on 10 Sep)",
+    "action": "Client: submit FR VAT registration details in Seller Central tax settings",
+    "owner": "client"
+   },
+   {
+    "date": "2026-07-31",
+    "type": "compliance_documents",
+    "asin": "B0F8JJM54R",
+    "subject": "GPSR warning and safety information: Clay Prep Mitt (B0F8JJM54R) at risk of removal on DE, FR, IT, ES, NL; submission required.",
+    "severity": "URGENT",
+    "status": "open, submission required (confirmed 10 Sep on DE and IT policy pages)",
+    "action": "Upload GPSR responsible-person and safety info in Manage Your Compliance",
+    "owner": "client"
+   }
+  ]
+ },
+ "CC_AU": {
+  "as_of": "2026-09-10",
+  "ahr_status": "Healthy",
+  "ahr_score": 352,
+  "odr": "0% (0 of 4,021 FBA orders, 60d)",
+  "policy_violations": 0,
+  "atoz_claims": 0,
+  "listing_issues": false,
+  "notes": "Clean. No support cases on the AU account.",
+  "notifications": []
+ }
+}
