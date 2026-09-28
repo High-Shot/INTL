@@ -1,12 +1,12 @@
 # INTL Health Tracker: weekly run
 
-Runs every Monday 06:00 CT as a Cowork scheduled task. Fresh session, no memory. Everything needed is below.
+Runs Monday and Thursday 06:30 CT as a Cowork scheduled task (NIC reviews each week on Thursday). Monday builds the reporting week that just ended; Thursday refreshes the same week in place. Fresh session, no memory. Everything needed is below.
 
 Accounts covered: Cerakote Auto (CC: US, CA, UK, DE, FR, IT, ES, NL, AE, SA, AU), Cerakote Legacy (CL: US only), Prismatic Powders (PP: US only). Seller IDs: AOXMQPMOL1F1Y = CC US/CA; A3BMUMIXNXIR6G = CC UK/EU/AE/SA; A22UNGVVL3ZGDF = CC AU; A1KUYEQ8RRQVVI = CL; A21D21T8B6U09C = PP.
 
 Goal: produce `data/raw/<WEEK>/*`, run normalize + build, push to GitHub, send Barcus a summary of CRITICAL and URGENT items only.
 
-WEEK = ISO week of the run date, formatted `YYYY-Www` (example: 2026-W37). `date +%G-W%V`.
+WEEK = the reporting week: the ISO week of the Sunday that just ended (NIC weeks run Monday to Sunday), formatted `YYYY-Www`. `date -d 'last sunday' +%G-W%V`. A Monday run and the Thursday run after it share one WEEK; Thursday overwrites that week's snapshot. Stock and account health are still read as of the run date; only the label is the reporting week. (Changed 2026-09-28: was the ISO week of the run date.)
 
 ## 0. Setup (cloud shell)
 ```
@@ -115,7 +115,7 @@ If SEND=no: skip the draft; the note is still committed for the record.
 Lead line: "INTL $WEEK: N critical, N urgent, N watch (Δ vs last week)". Then one line per support case needing attention (account, case ID, subject, age). Then one line per CRITICAL and URGENT stock item: market, SKU, name, available, inbound, days of cover, ads 30d, restock qty (Amazon rec or est., with event lift when above 1.0). With the 8-week rule the lists are long; group CRITICAL by account and list URGENT only where est. >= 10 units. Then account items. Then `Client note: SEND=yes (reason), Gmail draft created` or `Client note: SEND=no (reason)`. Then one line for anything that failed (a market with no SI data, Gmail empty, push failed, Seller Central session expired). Link: https://high-shot.github.io/INTL/
 No other prose.
 
-## 8. Q4 inventory projection (every Monday run through 2026-12-28; page at /q4/)
+## 8. Q4 inventory projection (every Monday and Thursday run through 2026-12-28; page at /q4/)
 Separate page, same repo, same run. Rules live in the header of scripts/q4.py (8-week floor, x1.2 target = 67 days, LY seasonal index, running lost sales since out of stock, no capacity limits).
 8a. Helium10 pulls into `data/raw/$WEEK/q4/` (every result is large; save the tool-result file as-is, do not re-type it):
   - `h10_inventory.json`: get_inventory_values, seller_ids AOXMQPMOL1F1Y, A3BMUMIXNXIR6G, A22UNGVVL3ZGDF, A1KUYEQ8RRQVVI, A21D21T8B6U09C, fulfillment_type FBA, page_size 1000.
