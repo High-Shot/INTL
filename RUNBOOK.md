@@ -115,6 +115,21 @@ If SEND=no: skip the draft; the note is still committed for the record.
 Lead line: "INTL $WEEK: N critical, N urgent, N watch (Δ vs last week)". Then one line per support case needing attention (account, case ID, subject, age). Then one line per CRITICAL and URGENT stock item: market, SKU, name, available, inbound, days of cover, ads 30d, restock qty (Amazon rec or est., with event lift when above 1.0). With the 8-week rule the lists are long; group CRITICAL by account and list URGENT only where est. >= 10 units. Then account items. Then `Client note: SEND=yes (reason), Gmail draft created` or `Client note: SEND=no (reason)`. Then one line for anything that failed (a market with no SI data, Gmail empty, push failed, Seller Central session expired). Link: https://high-shot.github.io/INTL/
 No other prose.
 
+## 8. Q4 inventory projection (every Monday run through 2026-12-28; page at /q4/)
+Separate page, same repo, same run. Rules live in the header of scripts/q4.py (8-week floor, x1.2 target = 67 days, LY seasonal index, running lost sales since out of stock, no capacity limits).
+8a. Helium10 pulls into `data/raw/$WEEK/q4/` (every result is large; save the tool-result file as-is, do not re-type it):
+  - `h10_inventory.json`: get_inventory_values, seller_ids AOXMQPMOL1F1Y, A3BMUMIXNXIR6G, A22UNGVVL3ZGDF, A1KUYEQ8RRQVVI, A21D21T8B6U09C, fulfillment_type FBA, page_size 1000.
+  - `daily_1.json`, `daily_2.json`, ...: get_sales_velocity, same five sellers, no fulfillment_type, granularity day, the last 120 complete days (yesterday back 119 days), page_size 1000, every page.
+  - `pnl90.json`: get_product_profit_and_loss_summary, same five sellers, product_level asin, currency USD, last 90 complete days, page_size 1000.
+  - Last-year weekly history is static in `data/q4_ref/` (NA sellers, 2025-08-25..2026-01-04). Do not re-pull. H10 has no 2025 history for UK/EU/AU; those use the ASIN's US curve.
+8b. Run AFTER normalize.py (q4.py reads the new tracker snapshot for out-of-stock dating and listing holds):
+```
+python3 scripts/q4.py $WEEK --as-of <today YYYY-MM-DD>
+python3 scripts/build_q4.py
+```
+8c. Publish with the tracker commit: add q4/index.html, data/q4/$WEEK.json. `data/raw/*/q4/` is gitignored (4 MB a week); keep it on the Mac only.
+8d. Summary line to Barcus: out of stock count, lost sales to date (USD), ship-now units, and any new ship-by date inside 7 days for UK/EU/SA/AU (45-day lead).
+
 ## Rules
 - Never invent a number. A market with no data is reported as "no data", not zero.
 - Never pause to ask a question. Make the reasonable call, flag it in the summary.

@@ -1,0 +1,52 @@
+<nav class="nav-row"><div class="mkt-bar" id="brand-bar"></div></nav>
+<div class="week-ctrl">
+  <button class="week-nav" id="wk-prev">&larr; Older</button>
+  <select class="week-select" id="wk-select"></select>
+  <button class="week-nav" id="wk-next">Newer &rarr;</button>
+  <div class="week-note" id="wk-note"></div>
+</div>
+<div class="trend-bar" id="kpis"></div>
+<div class="page">
+  <div class="sec">Accounts <span class="hint">click to filter. Floor = 8 weeks of forecast demand at Amazon. Target = floor + 20% check-in buffer (67 days). EU pooled stock shows as EU AUTO.</span></div>
+  <div class="mkt-cards" id="cards"></div>
+
+  <div class="panel">
+    <div class="panel-header">
+      <div class="panel-title">Lost sales, out of stock now <span id="lost-count" style="color:var(--dim);font-weight:400"></span></div>
+    </div>
+    <div class="lost-total" id="lost-total"></div>
+    <div style="overflow:auto;max-height:440px"><table><thead style="position:sticky;top:0;z-index:1"><tr>
+      <th>Product</th><th>Account</th><th>Out since</th><th class="num">Days out</th><th class="num">Base / day</th><th class="num">Price</th><th class="num">Lost units</th><th class="num">Lost sales</th><th class="num">Inbound</th><th class="num">Ship now</th>
+    </tr></thead><tbody id="lost-body"></tbody></table></div>
+    <div class="note">Running total since the product went out: base velocity x days out, minus any units still sold (FBM). Out-since = day after FBA sales collapsed (under 10% of base) or last FBA sale, never before the last tracker read that saw stock. Prices = Helium10 90-day average selling price, converted to USD.</div>
+  </div>
+
+  <div class="panel">
+    <div class="panel-header">
+      <div class="panel-title">Ship-by schedule, Q4 <span class="sub" style="text-transform:none;letter-spacing:0">units that must leave NIC by each date to hold the 67-day target through Dec 31</span></div>
+      <button class="btn" id="copy-ship">Copy ship list</button>
+    </div>
+    <div style="overflow-x:auto"><table id="ship-table"></table></div>
+    <div class="note">Ship-by = the Monday the units must be checked in, minus lead time (US 5d, CA 14d, UK/EU/SA/AU 45d). "Now" rolls up every date already past. Inbound already shipped is counted as stock. Listings on hold (removed or restricted) are left out.</div>
+  </div>
+
+  <div class="panel">
+    <div class="panel-header">
+      <div class="panel-title">Products <span id="prod-count" style="color:var(--dim);font-weight:400"></span></div>
+      <div class="chips" id="st-chips">
+        <div class="chip active" data-st="ACTION">Needs stock</div>
+        <div class="chip" data-st="OUT">Out</div>
+        <div class="chip" data-st="BELOW_FLOOR">Below floor</div>
+        <div class="chip" data-st="BELOW_TARGET">Below target</div>
+        <div class="chip" data-st="OK">At target</div>
+        <div class="chip" data-st="ALL">All</div>
+      </div>
+      <input id="search" placeholder="Search product or ASIN" style="background:var(--bg);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:5px 10px;font-family:var(--font-mono);font-size:11px;min-width:200px">
+      <button class="btn" id="copy-csv">Copy CSV</button>
+    </div>
+    <div style="overflow:auto;max-height:720px"><table><thead style="position:sticky;top:0;z-index:1"><tr>
+      <th>Status</th><th>Product</th><th>Account</th><th class="num">Avail</th><th class="num">Inbound</th><th class="num">Base / day</th><th class="num">Cover</th><th class="num">Floor</th><th class="num">Target</th><th class="num">Ship now</th><th class="num">Q4 total</th><th>Next ship-by</th><th class="num">PBDD</th><th class="num">BF</th><th class="num">Dec</th><th>Q4 weekly demand</th>
+    </tr></thead><tbody id="prod-body"></tbody></table></div>
+    <div class="note" id="method"></div>
+  </div>
+</div>

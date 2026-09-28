@@ -2,3 +2,4 @@
 inbox/
 __pycache__/
 .DS_Store
+data/raw/*/q4/
