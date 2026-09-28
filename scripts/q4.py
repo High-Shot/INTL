@@ -38,6 +38,7 @@ LY_OFFSET = 364                             # 2026 week <-> 2025 week, keeps wee
 LY_BASE_WEEKS = ['2025-09-01', '2025-09-08', '2025-09-15', '2025-09-22']
 LY_MIN_BASE_WEEKLY = 7                      # same bar as the tracker's event-lift rule
 INDEX_CLIP = (0.5, 3.0)
+LY_STOCKOUT_RATIO = 0.30                    # a LY week under 30% of its Sept base = LY stockout / no data: use the fallback curve
 Q4_END = dt.date(2026, 12, 31)
 EVENTS = [
     {'key': 'pbdd', 'name': 'Prime Big Deal Days', 'start': '2026-10-06', 'end': '2026-10-07'},
@@ -60,13 +61,13 @@ def monday(d):
     return d - dt.timedelta(days=d.weekday())
 
 
-def zero_runs(series):
-    """[(start_idx, length)] of consecutive zero days."""
+def zero_runs(series, eps=0.0):
+    """[(start_idx, length)] of consecutive days at or below eps (stray sales inside an outage count as zero)."""
     runs, i = [], 0
     while i < len(series):
-        if series[i] == 0:
+        if series[i] <= eps:
             j = i
-            while j < len(series) and series[j] == 0:
+            while j < len(series) and series[j] <= eps:
                 j += 1
             runs.append((i, j - i))
             i = j
@@ -85,14 +86,14 @@ def in_stock_velocity(days, fba, tot, end_idx):
     mean = sum(win_fba) / len(win_fba)
     out = set()
     if mean > 0:
-        for s, L in zero_runs(win_fba):
+        for s, L in zero_runs(win_fba, 0.1 * mean if mean >= 2 else 0.0):
             if mean * L >= ZERO_RUN_SIGMA:
                 out.update(range(start + s, start + s + L))
         kept = [i for i in range(start, end_idx + 1) if i not in out]
         mean2 = sum(fba[i] for i in kept) / len(kept) if kept else 0
         if mean2 > mean * 1.05:  # second pass with the cleaner mean
             out = set()
-            for s, L in zero_runs(win_fba):
+            for s, L in zero_runs(win_fba, 0.1 * mean2 if mean2 >= 2 else 0.0):
                 if mean2 * L >= ZERO_RUN_SIGMA:
                     out.update(range(start + s, start + s + L))
     picked = []
@@ -114,7 +115,7 @@ def main():
     q4dir = os.path.join(ROOT, 'data', 'raw', week, 'q4')
 
     # ---------- inventory (FBA) ----------
-    inv = {}
+    inv, inv_skus = {}, defaultdict(list)
     for r in load_rows(q4dir, 'h10_inventory*.json'):
         if r.get('fulfillment_type') != 'FBA':
             continue
@@ -124,18 +125,27 @@ def main():
         i_ = r.get('inventory', {})
         keys = ['inbound_working', 'inbound_shipped', 'inbound_received']
         has_inb = any(k in i_ for k in keys)
-        rec = {'available': int(i_.get('available') or 0),
-               'inbound': sum(int(i_.get(k) or 0) for k in keys) if has_inb else None,
-               'sku': r.get('sku'), 'name': short_name(r.get('product_name')), 'image': r.get('image_url')}
-        k = (code, r['asin'])
-        if k in inv:  # several FBA SKUs on one ASIN: sum them
-            inv[k]['available'] += rec['available']
-            if rec['inbound'] is not None:
-                inv[k]['inbound'] = (inv[k]['inbound'] or 0) + rec['inbound']
-            inv[k]['skus'].append(rec['sku'])
+        if has_inb:
+            inbound = sum(int(i_.get(k) or 0) for k in keys)
+        elif 'inbound_quantity' in i_:
+            inbound = int(i_.get('inbound_quantity') or 0)
         else:
-            rec['skus'] = [rec['sku']]
-            inv[k] = rec
+            inbound = None
+        rec = {'available': int(i_.get('available') or 0), 'inbound': inbound,
+               'sku': r.get('sku'), 'name': short_name(r.get('product_name')), 'image': r.get('image_url')}
+        inv_skus[(code, r['asin'])].append(rec)
+    # Several FBA SKUs on one ASIN. NA: separate stock, sum them. UK/EU/SA/AU: Helium10 repeats the same
+    # pool-level count on every SKU, so identical counts are one number, not N copies.
+    for k, recs in inv_skus.items():
+        rec = dict(recs[0])
+        rec['skus'] = [x['sku'] for x in recs]
+        rec['has_inv'] = True
+        same = len({(x['available'], x['inbound']) for x in recs}) == 1
+        if len(recs) > 1 and not (same and ACC[k[0]]['market'] not in ('US', 'CA')):
+            rec['available'] = sum(x['available'] for x in recs)
+            ib = [x['inbound'] for x in recs if x['inbound'] is not None]
+            rec['inbound'] = sum(ib) if ib else None
+        inv[k] = rec
 
     # ---------- daily sales ----------
     daily_rows = load_rows(q4dir, 'daily_*.json')
@@ -189,7 +199,7 @@ def main():
         avg = sum(base) / len(base)
         if min(base) <= 0 or avg < LY_MIN_BASE_WEEKLY:
             return None
-        return {w: v / avg for w, v in weeks.items()}
+        return {w: v / avg for w, v in weeks.items() if v / avg >= LY_STOCKOUT_RATIO}
 
     brand_curve = {b: curve(ws) for b, ws in ly_brand.items()}
 
@@ -240,7 +250,7 @@ def main():
     items = {}
     for k in sorted(universe):
         code, asin = k
-        i_ = inv.get(k, {'available': 0, 'inbound': 0, 'skus': [], 'sku': None, 'name': None, 'image': None})
+        i_ = inv.get(k, {'available': 0, 'inbound': None, 'skus': [], 'sku': None, 'name': None, 'image': None, 'has_inv': False})
         nm = names.get(k, (None, None, None))
         fba, tot = fba_d[k], tot_d[k]
         avail, inbound = i_['available'], i_['inbound']
@@ -283,7 +293,7 @@ def main():
         items[k] = {
             'code': code, 'asin': asin, 'sku': i_.get('sku') or nm[2], 'skus': i_.get('skus') or [nm[2]],
             'name': i_.get('name') or nm[0] or asin, 'image': i_.get('image') or nm[1],
-            'available': avail, 'inbound': inbound, 'inbound_known': inbound is not None,
+            'available': avail, 'inbound': inbound, 'inbound_known': inbound is not None, 'has_inv': i_.get('has_inv', False),
             'base_vel': v, 'raw_vel30': v30_raw, 'instock_days': instock_days, 'excluded_days': excluded,
             'oos': oos, 'oos_start': oos_start, 'oos_basis': oos_basis, 'price': price.get(k),
             'units_30d': sum(tot[-30:]),
@@ -300,8 +310,15 @@ def main():
             groups[(pl, asin)].append(it)
     pooled = {}
     for (pl, asin), its in groups.items():
-        if len(its) > 1 and len({x['available'] for x in its}) == 1:
-            pooled[(pl, asin)] = its
+        rep_ = [x for x in its if x['has_inv']]
+        if len(rep_) > 1 and len({x['available'] for x in rep_}) == 1:
+            extra = [x for x in its if not x['has_inv'] and (x['code'], asin) not in blocked]
+            for x in extra:
+                x['available'], x['inbound'], x['inbound_known'] = rep_[0]['available'], rep_[0]['inbound'], rep_[0]['inbound_known']
+                x['oos'] = rep_[0]['oos']
+                if not x['oos']:
+                    x['oos_start'] = x['oos_basis'] = None
+            pooled[(pl, asin)] = rep_ + extra
 
     def demand_series(its, start, n):
         """Forecast daily units for n days from start, summed over member items, plus index basis per item."""
@@ -422,7 +439,7 @@ def main():
             'asin': asin, 'sku': m0['sku'], 'name': m0['name'], 'image': m0['image'],
             'available': avail, 'inbound': inbound, 'inbound_known': inb_known,
             'base_vel': round(base_vel, 2), 'raw_vel30': round(sum(x['raw_vel30'] for x in its), 2),
-            'instock_days': min(x['instock_days'] for x in its), 'excluded_days': max(x['excluded_days'] for x in its),
+            'instock_days': min(x['instock_days'] for x in its), 'low_sample': min(x['instock_days'] for x in its) < 14, 'excluded_days': max(x['excluded_days'] for x in its),
             'index_basis': basis, 'event_index': ev,
             'cover_avail': round(cov_avail, 1), 'cover_total': round(cov_total, 1),
             'runout': runout.isoformat() if runout else None,
@@ -472,7 +489,8 @@ def main():
                          'below_target': sum(r['status'] == 'BELOW_TARGET' for r in rs),
                          'ship_now': sum(r['ship_now'] for r in rs if ok(r)), 'q4_units': sum(r['q4_units'] for r in rs if ok(r)),
                          'blocked': sum(bool(r['blocked']) for r in rs),
-                         'lost_usd': sum(r['lost_usd'] or 0 for r in rs),
+                         'lost_usd': sum(r['lost_usd'] or 0 for r in rs if ok(r)),
+                         'lost_hold_usd': sum(r['lost_usd'] or 0 for r in rs if not ok(r)),
                          'late': sum(r['late'] for r in rs if ok(r))})
     snap = {
         'week': week, 'as_of': as_of.isoformat(), 'sales_through': data_end.isoformat(),
@@ -487,8 +505,8 @@ def main():
                    'below_target': sum(r['status'] == 'BELOW_TARGET' for r in rows),
                    'late': sum(r['late'] for r in rows if ok(r)), 'blocked': sum(bool(r['blocked']) for r in rows),
                    'ship_now': tot('ship_now', ok), 'q4_units': tot('q4_units', ok),
-                   'lost_usd': tot('lost_usd'), 'lost_unpriced': sum(1 for r in rows if r['lost_units'] and r['lost_usd'] is None),
-                   'proj_short_usd': tot('proj_short_usd')},
+                   'lost_usd': tot('lost_usd', ok), 'lost_hold_usd': tot('lost_usd', lambda r: not ok(r)), 'lost_unpriced': sum(1 for r in rows if r['lost_units'] and r['lost_usd'] is None),
+                   'proj_short_usd': tot('proj_short_usd', ok)},
         'accounts': accounts,
         'ship_by': sorted([{'account': a, 'ship_by': d, 'units': round(u)} for (a, d), u in units_needed_by_week.items()],
                           key=lambda x: x['ship_by']),

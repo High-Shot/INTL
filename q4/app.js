@@ -26,7 +26,7 @@
 
   function kpis(){var rs=rowsIn(),t={out:0,bf:0,now:0,q4:0,lost:0,hold:0,short:0};
     rs.forEach(function(r){if(r.status==='OUT')t.out++;if(r.status==='BELOW_FLOOR')t.bf++;if(r.blocked){t.hold++;return}t.now+=r.ship_now;t.q4+=r.q4_units;t.short+=r.proj_short_usd||0});
-    rs.forEach(function(r){t.lost+=r.lost_usd||0});
+    rs.forEach(function(r){if(!r.blocked)t.lost+=r.lost_usd||0});
     function k(l,v,c){return '<div class="trend-item"><span class="trend-lbl">'+l+'</span><span class="trend-v '+(c||'')+'">'+v+'</span></div><div class="trend-div"></div>'}
     $('kpis').innerHTML=k('Out of stock',t.out,t.out?'c-CRITICAL':'c-OK')+k('Below 8-wk floor',t.bf,t.bf?'c-URGENT':'c-OK')+k('Ship now',fmt(t.now)+' u',t.now?'c-URGENT':'c-OK')+k('Q4 units to send',fmt(t.q4)+' u')+k('Lost sales to date',usd(t.lost),t.lost?'c-CRITICAL':'c-OK')+k('Short before next arrival (est)',usd(t.short),t.short?'c-URGENT':'c-OK')+(t.hold?k('On hold (listing)',t.hold,'c-WATCH'):'');}
 
@@ -35,7 +35,8 @@
       return '<div class="mkt-tab'+((acct===x||(x!=='ALL'&&acct.indexOf('_')>0&&acct.indexOf(x.slice(6))===0))?' active':'')+'" data-a="'+x+'">'+L[x]+(n?' <span class="cnt">'+n+'</span>':' <span class="cnt z">0</span>')+'</div>'}).join('');
     [].forEach.call($('brand-bar').children,function(el){el.onclick=function(){acct=el.dataset.a;render()}});}
 
-  function cards(){var d=snap();$('cards').innerHTML=d.accounts.filter(function(a){return acct==='ALL'||acct.indexOf('BRAND:')!==0||a.brand===acct.slice(6)||true}).map(function(a){
+  function cards(){var d=snap(),br=acct.indexOf('BRAND:')===0?acct.slice(6):(acct==='ALL'?null:(d.accounts.filter(function(a){return a.code===acct})[0]||{}).brand);
+    $('cards').innerHTML=d.accounts.filter(function(a){return !br||a.brand===br}).map(function(a){
       var s=a.out?'CRITICAL':a.below_floor?'URGENT':a.below_target?'WATCH':'OK';
       function tile(l,v,c){return '<div class="tile t-'+c+'"><div class="t-lbl">'+l+'</div><div class="t-val">'+v+'</div></div>'}
       return '<div class="mc s-'+s+(acct===a.code?' active':'')+'" data-a="'+a.code+'"><div class="mc-head"><div class="mc-name">'+esc(a.label)+'</div><div class="mc-sub">'+a.lead+'d lead</div></div>'+
@@ -45,9 +46,10 @@
     [].forEach.call($('cards').children,function(el){el.onclick=function(){acct=(acct===el.dataset.a?'ALL':el.dataset.a);render()}});}
 
   function lost(){var rs=rowsIn().filter(function(r){return r.status==='OUT'}).sort(function(a,b){return (b.lost_usd||0)-(a.lost_usd||0)});
-    var tot=rs.reduce(function(s,r){return s+(r.lost_usd||0)},0),u=rs.reduce(function(s,r){return s+(r.lost_units||0)},0);
+    var live=rs.filter(function(r){return !r.blocked}),hold=rs.filter(function(r){return r.blocked});
+    var tot=live.reduce(function(s,r){return s+(r.lost_usd||0)},0),u=live.reduce(function(s,r){return s+(r.lost_units||0)},0),th=hold.reduce(function(s,r){return s+(r.lost_usd||0)},0);
     $('lost-count').textContent='('+rs.length+')';
-    $('lost-total').innerHTML='Lost to date, estimate: <b>'+usd(tot)+'</b> &middot; '+fmt(u)+' units across '+rs.length+' products';
+    $('lost-total').innerHTML='Lost to date, estimate: <b>'+usd(tot)+'</b> &middot; '+fmt(u)+' units across '+live.length+' products'+(hold.length?' &middot; plus '+usd(th)+' on '+hold.length+' listing'+(hold.length>1?'s':'')+' on hold (removed/restricted, not a stock problem)':'');
     $('lost-body').innerHTML=rs.length?rs.map(function(r){return '<tr><td><div class="prod">'+esc(r.name)+(r.blocked?' <span class="badge badge-INFO" title="'+esc(r.blocked)+'">Hold</span>':'')+'</div><div class="sub"><a href="'+amz(mk(r),r.asin)+'" target="_blank" rel="noopener">'+r.asin+'</a> · '+esc(r.sku||'')+'</div>'+(r.blocked?'<div class="reason">'+esc(r.blocked)+'</div>':'')+'</td>'+
       '<td class="sub">'+esc(r.label)+'</td><td class="age" title="'+esc(r.oos_basis||'')+'">'+md(r.oos_start)+'</td><td class="num">'+fmt(r.oos_days)+'</td><td class="num">'+fmt(r.base_vel,1)+'</td><td class="num">'+(r.price_usd?'$'+fmt(r.price_usd,2):'—')+'</td>'+
       '<td class="num">'+fmt(r.lost_units)+'</td><td class="num lost-amt">'+usd(r.lost_usd)+'</td><td class="num">'+(r.inbound_known?fmt(r.inbound):'?')+'</td><td class="num">'+(r.blocked?'<span class="sub">hold</span>':fmt(r.ship_now))+'</td></tr>'}).join(''):'<tr><td colspan="10" class="empty">Nothing out of stock in this view.</td></tr>';}
@@ -69,13 +71,13 @@
       function ix(v){return v==null?'—':'<span style="color:'+(v>=1.3?'var(--accent)':v<0.8?'var(--dim)':'var(--text2)')+'">'+v.toFixed(2)+'x</span>'}
       return '<tr><td>'+badge(r)+'</td><td><div class="prod">'+esc(r.name)+'</div><div class="sub"><a href="'+amz(mk(r),r.asin)+'" target="_blank" rel="noopener">'+r.asin+'</a> · '+esc(r.sku||'')+' · '+esc(r.index_basis)+'</div></td>'+
       '<td class="sub">'+esc(r.label)+(r.pooled?'<div class="sub">'+r.markets.join(' ')+'</div>':'')+'</td><td class="num">'+fmt(r.available)+'</td><td class="num">'+(r.inbound_known?fmt(r.inbound):'?')+'</td>'+
-      '<td class="num" title="raw 30d avg '+fmt(r.raw_vel30,1)+'/day; '+r.instock_days+' in-stock days used">'+fmt(r.base_vel,1)+(Math.abs(r.base_vel-r.raw_vel30)>0.15*r.base_vel?'<div class="sub">raw '+fmt(r.raw_vel30,1)+'</div>':'')+'</td>'+
+      '<td class="num" title="raw 30d avg '+fmt(r.raw_vel30,1)+'/day; '+r.instock_days+' in-stock days used">'+fmt(r.base_vel,1)+(r.low_sample?'<div class="sub" style="color:var(--amber)">'+r.instock_days+'d data</div>':'')+(Math.abs(r.base_vel-r.raw_vel30)>0.15*r.base_vel?'<div class="sub">raw '+fmt(r.raw_vel30,1)+'</div>':'')+'</td>'+
       '<td class="num" title="days of forecast demand covered by available / available + inbound">'+fmt(r.cover_avail)+'d<div class="sub">'+fmt(r.cover_total)+'d w/ inb</div></td>'+
       '<td class="num">'+fmt(r.floor_units)+'</td><td class="num">'+fmt(r.target_units)+'</td><td class="num" style="font-weight:700;color:'+(r.ship_now&&!r.blocked?'var(--orange)':'var(--dim)')+'">'+(r.blocked?'hold':fmt(r.ship_now))+'</td><td class="num">'+fmt(r.q4_units)+'</td>'+
       '<td class="age">'+(nx?(nx.late?'<span style="color:var(--red)">now</span>':md(nx.ship_by)):'—')+'</td><td class="num">'+ix(ev.pbdd)+'</td><td class="num">'+ix(ev.bf)+'</td><td class="num">'+ix(ev.hol)+'</td><td>'+spark(r.weekly)+'</td></tr>'}).join(''):'<tr><td colspan="16" class="empty">No products match.</td></tr>';
     $('copy-csv').onclick=function(){var cols=['label','asin','sku','name','status','available','inbound','base_vel','raw_vel30','cover_avail','cover_total','floor_units','target_units','ship_now','q4_units','lost_units','lost_usd','oos_start','blocked'];
       copy([cols.join(',')].concat(rs.map(function(r){return cols.map(function(c){var v=r[c];v=v==null?'':String(v);return /[",]/.test(v)?'"'+v.replace(/"/g,'""')+'"':v}).join(',')})).join('\n'),'CSV copied')};
-    var d=snap();$('method').innerHTML='Demand = base velocity (last '+d.rules.base_days+' in-stock days, FBA + FBM) x last-year seasonal index (same week in 2025 vs Sep 1-28 2025 average, clipped '+d.rules.index_clip[0]+'-'+d.rules.index_clip[1]+'x). No 2025 history outside North America, so UK, EU, SA and AU use the same ASIN\'s US curve. Basis per row: own LY, US LY, brand LY, or flat. PBDD / BF / Dec columns = demand multiplier that week. Floor = 56 days of forecast demand, Target = 67 days. Ship now = forecast demand over lead time + 67 days, minus available and inbound. FBA capacity limits are ignored by design.';}
+    var d=snap();$('method').innerHTML='Demand = base velocity (last '+d.rules.base_days+' in-stock days, FBA + FBM) x last-year seasonal index (same week in 2025 vs Sep 1-28 2025 average, clipped '+d.rules.index_clip[0]+'-'+d.rules.index_clip[1]+'x). Last-year weeks under 30% of the September base (last year\'s stockouts, or no data) fall through to the next curve. No 2025 history outside North America, so UK, EU, SA and AU use the same ASIN\'s US curve. Basis per row: own LY, US LY, brand LY, or flat. PBDD / BF / Dec columns = demand multiplier that week. Floor = 56 days of forecast demand, Target = 67 days. Ship now = forecast demand over lead time + 67 days, minus available and inbound. FBA capacity limits are ignored by design.';}
 
   function render(){header();tabs();kpis();cards();lost();ship();prods()}
   $('wk-select').onchange=function(){idx=+this.value;render()};
