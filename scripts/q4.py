@@ -250,7 +250,9 @@ def main():
     items = {}
     for k in sorted(universe):
         code, asin = k
-        i_ = inv.get(k, {'available': 0, 'inbound': None, 'skus': [], 'sku': None, 'name': None, 'image': None, 'has_inv': False})
+        # No FBA row in Helium10 = Amazon holds nothing for the SKU: SKUs with a shipment in flight keep their row
+        # (0 available + inbound > 0 shows up), so a missing row is read as 0 inbound, flagged as inferred.
+        i_ = inv.get(k, {'available': 0, 'inbound': 0, 'skus': [], 'sku': None, 'name': None, 'image': None, 'has_inv': False})
         nm = names.get(k, (None, None, None))
         fba, tot = fba_d[k], tot_d[k]
         avail, inbound = i_['available'], i_['inbound']
@@ -343,6 +345,7 @@ def main():
         lead = POOL_LEAD.get(ACC[its[0]['code']]['pool'], 30)
         avail = its[0]['available'] if pooled_flag else sum(x['available'] for x in its)
         inb_known = all(x['inbound_known'] for x in its)
+        inb_inferred = any(not x.get('has_inv') for x in its)
         inbound = (its[0]['inbound'] or 0) if pooled_flag else sum((x['inbound'] or 0) for x in its)
         base_vel = sum(x['base_vel'] for x in its)
         D = demand_series(its, as_of, horizon_days)
@@ -442,7 +445,7 @@ def main():
             'label': (code0.split('_')[1] + ' ' + BRANDS[brand]['label']) if pooled_flag else ACC[code0]['label'],
             'markets': sorted(ACC[x['code']]['market'] for x in its), 'pooled': pooled_flag,
             'asin': asin, 'sku': m0['sku'], 'name': m0['name'], 'image': m0['image'],
-            'available': avail, 'inbound': inbound, 'inbound_known': inb_known,
+            'available': avail, 'inbound': inbound, 'inbound_known': inb_known, 'inbound_inferred': inb_inferred,
             'base_vel': round(base_vel, 2), 'raw_vel30': round(sum(x['raw_vel30'] for x in its), 2),
             'instock_days': min(x['instock_days'] for x in its), 'low_sample': min(x['instock_days'] for x in its) < 14, 'excluded_days': max(x['excluded_days'] for x in its),
             'index_basis': basis, 'event_index': ev,
