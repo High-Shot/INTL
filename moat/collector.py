@@ -259,6 +259,8 @@ def build_sales(raw, run_date):
     w7 = {(end - dt.timedelta(days=i)).isoformat() for i in range(7)}
     w30 = {(end - dt.timedelta(days=i)).isoformat() for i in range(30)}
     w30p = {(end - dt.timedelta(days=i)).isoformat() for i in range(30, 60)}
+    days60 = [(end - dt.timedelta(days=i)).isoformat() for i in range(59, -1, -1)]   # oldest first
+    pos = {d: i for i, d in enumerate(days60)}
     agg, notes, seen_days = {}, [], set()
     expected = got = 0
     for f in files:
@@ -280,12 +282,14 @@ def build_sales(raw, run_date):
             a = agg.setdefault(key(brand, mkt, asin), {'key': key(brand, mkt, asin), 'parent_asin': r.get('parent_asin'),
                                                      'product_name': r.get('product_name'), 'units_7d': 0,
                                                      'units_30d': 0, 'units_30d_prior': 0, 'fulfillment': set(),
-                                                     'skus': set()})
+                                                     'skus': set(), 'daily_start': days60[0], 'daily_units': [0] * 60})
             a['fulfillment'].add(r.get('fulfillment_type'))
             a['skus'].add(r.get('sku'))
             for day, u in ((r.get('sales_velocity') or {}).get('values') or {}).items():
                 seen_days.add(day)
                 u = int(u or 0)
+                if day in pos:
+                    a['daily_units'][pos[day]] += u
                 if day in w7:
                     a['units_7d'] += u
                 if day in w30:
@@ -303,7 +307,8 @@ def build_sales(raw, run_date):
         notes.append(f'{got} of {expected} SKU rows (missing pages)')
     if missing and got:
         notes.append(f'{len(missing)} of 60 days absent from the pull: {missing[0]}..{missing[-1]}')
-    notes.append('Units only, FBA + FBM summed per ASIN. Windows end on the last complete day before run_date.')
+    notes.append('Units only, FBA + FBM summed per ASIN. Windows end on the last complete day before run_date. '
+                 'daily_units: 60 values, oldest first from daily_start; days absent from the pull read 0 and are listed above.')
     brands = defaultdict(set)
     for r in rows:
         b, m, _ = r['key'].split('|')
@@ -455,7 +460,7 @@ def main():
             doc['status'] = 'failed'
             doc['notes'].append('validation failed: ' + '; '.join(errs[:10]))
         with open(os.path.join(run_dir, f'{name}.json'), 'w') as f:
-            json.dump(doc, f, indent=1, ensure_ascii=False)
+            json.dump(doc, f, ensure_ascii=False, separators=(',', ':'))   # compact: 8 weeks of snapshots stay small
         manifest['sources'][name] = {'file': f'{name}.json', 'status': doc['status'], 'rows': len(doc['rows']),
                                      'coverage': [{k: c[k] for k in c if k in ('brand', 'marketplace', 'window_days', 'status', 'date_range', 'age_days')}
                                                   for c in doc['coverage']],
