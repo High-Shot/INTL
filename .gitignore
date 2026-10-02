@@ -3,3 +3,6 @@ inbox/
 __pycache__/
 .DS_Store
 data/raw/*/q4/
+
+# MOAT snapshot: ad files never go to this public repo
+moat/snapshots/*/ads_*.json
