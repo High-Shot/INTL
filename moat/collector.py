@@ -390,6 +390,34 @@ def validate(doc):
     return errs
 
 
+
+# ---------------- source_stale flags ----------------
+def sync_stale_flags(flags_dir, run_date, docs):
+    """Declare every source or market that did not come back ok. Clears the rest."""
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    import flags as F
+    new = []
+    for name, doc in docs.items():
+        bad = [c for c in doc['coverage'] if c.get('status') not in ('ok', None)]
+        statuses = {c.get('status') for c in doc['coverage']}
+        # whole source down, or every market in the same non-ok state: one source-level flag
+        if doc['status'] == 'failed' or (bad and len(bad) == len(doc['coverage']) and len(statuses) == 1):
+            why = sorted({c.get('note') or c.get('status') for c in bad}) or doc['notes'][:1]
+            detail = '; '.join(n for n in doc['notes'] if 'missing' in n or 'absent' in n or 'unreadable' in n)
+            new.append({'type': 'source_stale', 'key': f'all|all|{name}', 'scope': 'source',
+                        'reason': (f'{name} {doc["status"]} on {run_date}: ' + '; '.join(why)
+                                   + (f' ({detail})' if detail else ''))[:300],
+                        'evidence': {'file': f'snapshots/{run_date}/manifest.json', 'source': name}})
+            continue
+        for c in bad:
+            if c.get('status') in ('ok', None):
+                continue
+            b, m = c.get('brand', 'all'), c.get('marketplace', 'all')
+            new.append({'type': 'source_stale', 'key': f'{b}|{m}|{name}', 'scope': 'marketplace',
+                        'reason': f'{name} {c["status"]} for {b} {m} on {run_date}',
+                        'evidence': {'file': f'snapshots/{run_date}/manifest.json', 'source': name}})
+    F.sync(flags_dir, 'moat-collector', ['source_stale'], new)
+
 # ---------------- main ----------------
 def main():
     ap = argparse.ArgumentParser()
@@ -397,6 +425,7 @@ def main():
     ap.add_argument('--out', required=True)
     ap.add_argument('--run-date', default=dt.date.today().isoformat())
     ap.add_argument('--bulk', nargs='*', default=[])
+    ap.add_argument('--flags-dir', default=None, help='MOAT flags dir; when set, source_stale flags are synced')
     ap.add_argument('--private', default='ads_si,ads_bulk',
                     help='sources written locally but kept out of the published repo (gitignored)')
     a = ap.parse_args()
@@ -438,6 +467,8 @@ def main():
         json.dump(manifest, f, indent=1)
     with open(os.path.join(a.out, 'latest'), 'w') as f:
         f.write(a.run_date + '\n')
+    if a.flags_dir:
+        sync_stale_flags(a.flags_dir, a.run_date, docs)
     for name, s in manifest['sources'].items():
         print(f"{name:10s} {s['status']:8s} rows={s['rows']:5d} errors={s['validation_errors']}")
     print(f"manifest   {manifest['status']}")
